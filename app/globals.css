@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-white text-gray-900 antialiased;
+  }
+}
+
+@layer utilities {
+  .text-shadow-patriotic {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .text-shadow-bold {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  }
+  
+  .border-patriotic {
+    border-color: #B22234;
+  }
+  
+  .bg-stars {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .bg-stripes {
+    background: repeating-linear-gradient(
+      0deg,
+      #B22234 0px,
+      #B22234 20px,
+      #FFFFFF 20px,
+      #FFFFFF 40px
+    );
+  }
+  
+  .bg-flag-pattern {
+    background: 
+      linear-gradient(to bottom, #3C3B6E 0%, #3C3B6E 40%),
+      repeating-linear-gradient(
+        90deg,
+        #B22234 0px,
+        #B22234 40px,
+        #FFFFFF 40px,
+        #FFFFFF 80px
+      );
+  }
+}
