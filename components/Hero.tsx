@@ -98,9 +98,10 @@ export default function Hero() {
                 {'SERVICE'.split('').map((letter, index) => (
                   <span
                     key={`service-${index}`}
-                    className={`inline-block text-camouflage-bg transition-all duration-300 ${
+                    className={`inline-block transition-all duration-300 ${
                       visibleService.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                     }`}
+                    style={{ color: '#8B9A5B' }}
                   >
                     {letter}
                   </span>
