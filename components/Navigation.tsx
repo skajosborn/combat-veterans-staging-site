@@ -48,6 +48,9 @@ export default function Navigation() {
             <a href="#contact" className="text-gray-300 font-medium hover:text-white transition-colors">
               Contact
             </a>
+            <a href="/donate" className="text-gray-300 font-medium hover:text-white transition-colors">
+              Donate
+            </a>
             <a 
               href="/veteran-application" 
               className="bg-white text-[#0a0e27] px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
@@ -88,6 +91,9 @@ export default function Navigation() {
             </a>
             <a href="#contact" className="block text-gray-300 font-medium hover:text-white py-2">
               Contact
+            </a>
+            <a href="/donate" className="block text-gray-300 font-medium hover:text-white py-2">
+              Donate
             </a>
             <a 
               href="/veteran-application" 
