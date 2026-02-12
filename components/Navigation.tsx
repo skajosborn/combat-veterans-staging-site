@@ -13,12 +13,13 @@ export default function Navigation() {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <div className="flex items-center space-x-3">
-              <div className="relative w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0">
+              <div className="relative flex-shrink-0">
                 <Image
                   src="/CVClogo.png"
                   alt="Combat Veterans to Careers Foundation Logo"
-                  fill
-                  className="object-contain"
+                  width={64}
+                  height={64}
+                  className="object-contain w-12 h-12 sm:w-16 sm:h-16"
                   priority
                 />
               </div>

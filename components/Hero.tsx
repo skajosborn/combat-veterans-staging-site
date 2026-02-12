@@ -6,14 +6,14 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{
-        backgroundImage: 'url(/cvcbg.png)',
+        backgroundImage: 'url(/bghelmet.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-[#0a0e27]/80"></div>
+      {/* Lighter overlay for better background visibility */}
+      <div className="absolute inset-0 bg-[#0a0e27]/40"></div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -23,7 +23,6 @@ export default function Hero() {
               <div className="relative rounded-lg overflow-hidden shadow-2xl border border-gray-700/50">
                 <video
                   autoPlay
-                  loop
                   muted
                   playsInline
                   className="w-full h-auto"
@@ -40,9 +39,9 @@ export default function Hero() {
           <div className="order-1 lg:order-2 text-center lg:text-left space-y-8">
             {/* Main Heading - Clean and Professional */}
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-tight">
-              <span className="block lg:inline text-gray-300">SERVICE</span>
-              <span className="block lg:inline text-white lg:ml-4 mt-2 lg:mt-0">TO</span>
-              <span className="block text-white mt-2 lg:mt-2">SUCCESS</span>
+              <span className="block lg:inline">SERVICE</span>
+              <span className="block lg:inline lg:ml-4 mt-2 lg:mt-0">TO</span>
+              <span className="block mt-2 lg:mt-2">SUCCESS</span>
             </h1>
 
             {/* Poetic subheading */}
@@ -66,22 +65,6 @@ export default function Hero() {
               >
                 Learn More
               </a>
-            </div>
-
-            {/* Clean Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8">
-              <div className="text-center lg:text-left">
-                <div className="text-3xl sm:text-4xl font-bold text-white mb-1">500+</div>
-                <div className="text-sm text-gray-400 font-medium">Veterans Served</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-3xl sm:text-4xl font-bold text-white mb-1">85%</div>
-                <div className="text-sm text-gray-400 font-medium">Placement Rate</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-3xl sm:text-4xl font-bold text-white mb-1">$75K+</div>
-                <div className="text-sm text-gray-400 font-medium">Avg Salary</div>
-              </div>
             </div>
           </div>
         </div>

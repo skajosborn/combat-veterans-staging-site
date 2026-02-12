@@ -50,4 +50,29 @@
         #FFFFFF 80px
       );
   }
+  
+  .text-camouflage {
+    background: linear-gradient(
+      135deg,
+      #556B2F 0%,
+      #8B7355 25%,
+      #6B8E23 50%,
+      #8B7355 75%,
+      #556B2F 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-camo-svg {
+    background-image: url('/camo.svg');
+    background-size: 200% 200%;
+    background-position: center;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
 }
