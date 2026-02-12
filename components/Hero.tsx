@@ -45,14 +45,14 @@ export default function Hero() {
   }, [])
 
   return (
-    <section 
+    <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative mt-20 flex min-h-[calc(100svh-5rem)] items-center overflow-hidden bg-hero-responsive bg-no-repeat bg-[#0a0e27]"
       style={{
-        backgroundImage: 'url(/bghelmet.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundImage: 'url(/flag-manbg.png)',
         backgroundRepeat: 'no-repeat',
+        backgroundSize: 'contain',
+        backgroundPosition: 'center center',
       }}
     >
       {/* Lighter overlay for better background visibility */}
@@ -94,20 +94,22 @@ export default function Hero() {
           <div className="order-1 lg:order-2 text-center lg:text-left space-y-8">
             {/* Main Heading - Clean and Professional */}
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-tight">
-              <span className="block lg:inline">
+              {/* SERVICE on first line */}
+              <span className="block pt-4 lg:pt-0 mb-1 text-white">
                 {'SERVICE'.split('').map((letter, index) => (
                   <span
                     key={`service-${index}`}
                     className={`inline-block transition-all duration-300 ${
                       visibleService.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                     }`}
-                    style={{ color: '#8B9A5B' }}
                   >
                     {letter}
                   </span>
                 ))}
               </span>
-              <span className="block lg:inline lg:ml-4 mt-2 lg:mt-0">
+
+              {/* TO on second line */}
+              <span className="block text-white mb-1">
                 {'TO'.split('').map((letter, index) => (
                   <span
                     key={`to-${index}`}
@@ -119,7 +121,9 @@ export default function Hero() {
                   </span>
                 ))}
               </span>
-              <span className="block text-red-600 mt-2 lg:mt-2">
+
+              {/* SUCCESS on third line */}
+              <span className="block text-red-600">
                 {'SUCCESS'.split('').map((letter, index) => (
                   <span
                     key={`success-${index}`}
