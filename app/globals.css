@@ -75,4 +75,30 @@
     background-clip: text;
     color: transparent;
   }
+  
+  .text-camouflage-bg {
+    background-image: url('/camouflage.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  @keyframes slide-in-from-left {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .animate-slide-in-from-left {
+    animation: slide-in-from-left 1s ease-out forwards;
+  }
 }

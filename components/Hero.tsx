@@ -1,6 +1,49 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
+
 export default function Hero() {
+  const [visibleService, setVisibleService] = useState<Set<number>>(new Set())
+  const [visibleTo, setVisibleTo] = useState<Set<number>>(new Set())
+  const [visibleSuccess, setVisibleSuccess] = useState<Set<number>>(new Set())
+
+  useEffect(() => {
+    // Animate letters one at a time
+    const service = 'SERVICE'
+    const to = 'TO'
+    const success = 'SUCCESS'
+    
+    let letterIndex = 0
+    
+    // Animate SERVICE letters
+    service.split('').forEach((_, index) => {
+      setTimeout(() => {
+        setVisibleService(prev => new Set([...prev, index]))
+      }, 100 * letterIndex++)
+    })
+    
+    // Small pause before TO
+    letterIndex += 2
+    
+    // Animate TO letters
+    to.split('').forEach((_, index) => {
+      setTimeout(() => {
+        setVisibleTo(prev => new Set([...prev, index]))
+      }, 100 * letterIndex++)
+    })
+    
+    // Small pause before SUCCESS
+    letterIndex += 2
+    
+    // Animate SUCCESS letters
+    success.split('').forEach((_, index) => {
+      setTimeout(() => {
+        setVisibleSuccess(prev => new Set([...prev, index]))
+      }, 100 * letterIndex++)
+    })
+  }, [])
+
   return (
     <section 
       id="home"
@@ -17,29 +60,32 @@ export default function Hero() {
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left side - Video */}
+          {/* Left side - Logo */}
           <div className="order-2 lg:order-1">
             <div className="relative w-full flex justify-center">
-              <div className="relative rounded-lg overflow-hidden" style={{ width: '85%', minHeight: '600px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <video
-                  autoPlay
-                  muted
-                  playsInline
-                  className="w-full h-auto"
+              <div 
+                className="relative animate-slide-in-from-left"
+                style={{ 
+                  width: '85%', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center',
+                  paddingTop: '2rem',
+                  paddingBottom: '2rem'
+                }}
+              >
+                <Image
+                  src="/CVClogo.png"
+                  alt="Combat Veterans to Careers Foundation Logo"
+                  width={600}
+                  height={600}
+                  className="object-contain w-full h-auto"
                   style={{ 
-                    opacity: 0.4,
-                    mixBlendMode: 'screen',
                     objectFit: 'contain',
-                    objectPosition: 'center',
-                    transform: 'scale(1.3)',
-                    transformOrigin: 'center',
-                    maxHeight: '100%'
+                    objectPosition: 'center'
                   }}
-                  aria-label="Combat Veterans to Careers Foundation logo video"
-                >
-                  <source src="/cvclogovideo2.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -48,9 +94,42 @@ export default function Hero() {
           <div className="order-1 lg:order-2 text-center lg:text-left space-y-8">
             {/* Main Heading - Clean and Professional */}
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-tight">
-              <span className="block lg:inline">SERVICE</span>
-              <span className="block lg:inline lg:ml-4 mt-2 lg:mt-0">TO</span>
-              <span className="block text-red-600 mt-2 lg:mt-2">SUCCESS</span>
+              <span className="block lg:inline">
+                {'SERVICE'.split('').map((letter, index) => (
+                  <span
+                    key={`service-${index}`}
+                    className={`inline-block text-camouflage-bg transition-all duration-300 ${
+                      visibleService.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                    }`}
+                  >
+                    {letter}
+                  </span>
+                ))}
+              </span>
+              <span className="block lg:inline lg:ml-4 mt-2 lg:mt-0">
+                {'TO'.split('').map((letter, index) => (
+                  <span
+                    key={`to-${index}`}
+                    className={`inline-block transition-all duration-300 ${
+                      visibleTo.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                    }`}
+                  >
+                    {letter}
+                  </span>
+                ))}
+              </span>
+              <span className="block text-red-600 mt-2 lg:mt-2">
+                {'SUCCESS'.split('').map((letter, index) => (
+                  <span
+                    key={`success-${index}`}
+                    className={`inline-block transition-all duration-300 ${
+                      visibleSuccess.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                    }`}
+                  >
+                    {letter}
+                  </span>
+                ))}
+              </span>
             </h1>
 
             {/* Poetic subheading */}
