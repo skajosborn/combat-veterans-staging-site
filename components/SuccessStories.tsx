@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function SuccessStories() {
   const stories = [
     {
@@ -5,21 +7,21 @@ export default function SuccessStories() {
       rank: 'Former Army Sergeant',
       role: 'Software Engineer at TechCorp',
       quote: 'The foundation didn\'t just help me find a job—they helped me discover a new purpose. My military leadership skills translated perfectly into tech.',
-      image: '👨‍💼',
+      image: '/army.png',
     },
     {
-      name: 'Sarah Martinez',
+      name: 'Miles Martinez',
       rank: 'Former Marine Captain',
       role: 'Operations Director at Logistics Plus',
       quote: 'I was worried my combat experience wouldn\'t matter in the civilian world. The mentorship program showed me how valuable my skills really are.',
-      image: '👩‍💼',
+      image: '/army2.png',
     },
     {
       name: 'James Wilson',
       rank: 'Former Navy SEAL',
       role: 'Project Manager at Global Solutions',
       quote: 'The career transition program gave me the confidence and tools I needed. I went from uncertain to employed in 90 days.',
-      image: '👨‍💻',
+      image: '/navy.png',
     },
   ]
 
@@ -42,7 +44,16 @@ export default function SuccessStories() {
               key={index}
               className="bg-[#1a1f3a] rounded-lg p-8 border border-gray-800 hover:border-gray-700 transition-all"
             >
-              <div className="text-5xl mb-6 text-center">{story.image}</div>
+              <div className="mb-6 flex justify-center">
+                <div className="relative h-24 w-24 overflow-hidden rounded-full border border-gray-700">
+                  <Image
+                    src={story.image}
+                    alt={`${story.name} testimonial`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
               <div className="text-white font-semibold text-lg mb-1">
                 {story.name}
               </div>
