@@ -23,12 +23,12 @@ export default function Navigation() {
                   priority
                 />
               </div>
-              <div className="hidden sm:block">
+              <div className="hidden sm:block text-center">
                 <h1 className="text-xl font-semibold text-white">
                   Combat Veterans
                 </h1>
-                <p className="text-xs text-gray-400 font-medium">
-                  to Careers Foundation
+                <p className="text-xl text-gray-400 font-medium">
+                  to Careers
                 </p>
               </div>
             </div>
