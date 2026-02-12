@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function Programs() {
   const programs = [
     {
@@ -50,6 +52,7 @@ export default function Programs() {
             Comprehensive support designed specifically for combat veterans ready to build their next chapter
           </p>
         </div>
+
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {programs.map((program, index) => (

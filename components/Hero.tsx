@@ -143,7 +143,7 @@ export default function Hero() {
             {/* Professional CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-6 justify-center lg:justify-start">
               <a
-                href="#apply"
+                href="/veteran-application"
                 className="bg-white text-[#0a0e27] px-8 py-4 rounded-lg font-semibold text-base hover:bg-gray-100 transition-all shadow-lg text-center"
               >
                 Start Your Transition

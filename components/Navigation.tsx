@@ -12,7 +12,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <div className="flex items-center space-x-3">
+            <a href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
               <div className="relative flex-shrink-0">
                 <Image
                   src="/CVClogo.png"
@@ -31,7 +31,7 @@ export default function Navigation() {
                   to Careers
                 </p>
               </div>
-            </div>
+            </a>
           </div>
 
           {/* Desktop Navigation */}
@@ -49,7 +49,7 @@ export default function Navigation() {
               Contact
             </a>
             <a 
-              href="#apply" 
+              href="/veteran-application" 
               className="bg-white text-[#0a0e27] px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
             >
               Apply Now
@@ -90,7 +90,7 @@ export default function Navigation() {
               Contact
             </a>
             <a 
-              href="#apply" 
+              href="/veteran-application" 
               className="block bg-white text-[#0a0e27] px-6 py-2 rounded-lg font-semibold text-center"
             >
               Apply Now
