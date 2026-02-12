@@ -19,13 +19,22 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left side - Video */}
           <div className="order-2 lg:order-1">
-            <div className="relative w-full">
-              <div className="relative rounded-lg overflow-hidden shadow-2xl border border-gray-700/50">
+            <div className="relative w-full flex justify-center">
+              <div className="relative rounded-lg overflow-hidden" style={{ width: '85%', minHeight: '600px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <video
                   autoPlay
                   muted
                   playsInline
                   className="w-full h-auto"
+                  style={{ 
+                    opacity: 0.4,
+                    mixBlendMode: 'screen',
+                    objectFit: 'contain',
+                    objectPosition: 'center',
+                    transform: 'scale(1.3)',
+                    transformOrigin: 'center',
+                    maxHeight: '100%'
+                  }}
                   aria-label="Combat Veterans to Careers Foundation logo video"
                 >
                   <source src="/cvclogovideo2.mp4" type="video/mp4" />
@@ -41,7 +50,7 @@ export default function Hero() {
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-tight">
               <span className="block lg:inline">SERVICE</span>
               <span className="block lg:inline lg:ml-4 mt-2 lg:mt-0">TO</span>
-              <span className="block mt-2 lg:mt-2">SUCCESS</span>
+              <span className="block text-red-600 mt-2 lg:mt-2">SUCCESS</span>
             </h1>
 
             {/* Poetic subheading */}
