@@ -151,14 +151,14 @@ export default function VeteranApplication() {
 
           {/* Application Title */}
           <div className="mb-8 text-center">
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
               Application
             </h2>
           </div>
 
           {/* Information For Veterans Section */}
           <div className="mb-12 bg-white rounded-lg p-8 border border-gray-300">
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
               Information For Veterans
             </h1>
             
@@ -178,7 +178,7 @@ export default function VeteranApplication() {
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Military Background Section */}
             <div className="bg-white rounded-lg p-8 border border-gray-300">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Military Background</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">Military Background</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Left Column */}
@@ -403,7 +403,7 @@ export default function VeteranApplication() {
 
             {/* Military/VA Information Section */}
             <div className="bg-white rounded-lg p-8 border border-gray-300">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Military/VA Information</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Military/VA Information</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -477,7 +477,7 @@ export default function VeteranApplication() {
 
             {/* Personal Information Section */}
             <div className="bg-white rounded-lg p-8 border border-gray-300">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Personal Information</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Personal Information</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -664,7 +664,7 @@ export default function VeteranApplication() {
 
             {/* Employment Section */}
             <div className="bg-white rounded-lg p-8 border border-gray-300">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Employment</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Employment</h2>
               
               <div className="space-y-6">
                 <div>
@@ -784,7 +784,7 @@ export default function VeteranApplication() {
 
             {/* Education Section */}
             <div className="bg-white rounded-lg p-8 border border-gray-300">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Education</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Education</h2>
               
               <div className="space-y-6">
                 <div>
@@ -892,7 +892,7 @@ export default function VeteranApplication() {
 
             {/* Emergency Contact Information Section */}
             <div className="bg-white rounded-lg p-8 border border-gray-300">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Emergency Contact Information</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Emergency Contact Information</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>

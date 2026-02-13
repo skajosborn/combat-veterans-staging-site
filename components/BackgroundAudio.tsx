@@ -9,6 +9,7 @@ declare global {
 }
 
 export default function BackgroundAudio() {
+  const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [volume, setVolume] = useState(0.5)
   const AUDIO_SRC = '/music/Lost%20and%20Found.mp3'
@@ -31,6 +32,7 @@ export default function BackgroundAudio() {
     const audio = getAudio()
 
     // Initialize control state from persistent audio instance.
+    setIsPlaying(!audio.paused)
     setIsMuted(audio.muted)
     setVolume(audio.volume)
 
@@ -48,28 +50,10 @@ export default function BackgroundAudio() {
       audio.addEventListener('loadedmetadata', restoreTime, { once: true })
     }
 
-    const tryPlay = () => {
-      void audio.play().catch(() => {
-        // Browser may block autoplay with sound until first interaction.
-      })
-    }
-
-    tryPlay()
-
-    const unlockAudio = () => {
-      tryPlay()
-    }
-
-    const clearUnlockListeners = () => {
-      window.removeEventListener('pointerdown', unlockAudio)
-      window.removeEventListener('keydown', unlockAudio)
-      window.removeEventListener('touchstart', unlockAudio)
-    }
-
-    window.addEventListener('pointerdown', unlockAudio, { once: true })
-    window.addEventListener('keydown', unlockAudio, { once: true })
-    window.addEventListener('touchstart', unlockAudio, { once: true })
-    audio.addEventListener('playing', clearUnlockListeners, { once: true })
+    const onPlay = () => setIsPlaying(true)
+    const onPause = () => setIsPlaying(false)
+    audio.addEventListener('play', onPlay)
+    audio.addEventListener('pause', onPause)
 
     const saveTime = () => {
       window.localStorage.setItem('cvc-bg-audio-time', String(audio.currentTime))
@@ -79,11 +63,11 @@ export default function BackgroundAudio() {
     window.addEventListener('beforeunload', saveTime)
 
     return () => {
-      clearUnlockListeners()
       audio.removeEventListener('timeupdate', saveTime)
       window.removeEventListener('beforeunload', saveTime)
-      audio.removeEventListener('playing', clearUnlockListeners)
       audio.removeEventListener('loadedmetadata', restoreTime)
+      audio.removeEventListener('play', onPlay)
+      audio.removeEventListener('pause', onPause)
     }
   }, [])
 
@@ -101,11 +85,21 @@ export default function BackgroundAudio() {
           const audio = getAudio()
           if (audio.paused) {
             void audio.play().catch(() => {
-              // Autoplay still blocked.
+              // User interaction should allow playback.
             })
+          } else {
+            audio.pause()
           }
-          setIsMuted((prev) => !prev)
         }}
+        className="rounded-md bg-white px-3 py-1 text-sm font-semibold text-[#0a0e27] hover:bg-gray-100"
+        aria-label={isPlaying ? 'Pause audio' : 'Play audio'}
+      >
+        {isPlaying ? 'Pause' : 'Play'}
+      </button>
+
+      <button
+        type="button"
+        onClick={() => setIsMuted((prev) => !prev)}
         className="rounded-md bg-white px-3 py-1 text-sm font-semibold text-[#0a0e27] hover:bg-gray-100"
         aria-label={isMuted ? 'Unmute audio' : 'Mute audio'}
       >
