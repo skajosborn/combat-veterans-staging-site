@@ -58,20 +58,21 @@ export default function Hero() {
       {/* Lighter overlay for better background visibility */}
       <div className="absolute inset-0 bg-[#0a0e27]/40"></div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left side - Logo */}
           <div className="order-2 lg:order-1">
             <div className="relative w-full flex justify-center">
-              <div 
+              <div
                 className="relative animate-slide-in-from-left"
-                style={{ 
-                  width: '85%', 
-                  display: 'flex', 
-                  alignItems: 'center', 
+                style={{
+                  width: '78%',
+                  maxWidth: '430px',
+                  display: 'flex',
+                  alignItems: 'center',
                   justifyContent: 'center',
-                  paddingTop: '2rem',
-                  paddingBottom: '2rem'
+                  paddingTop: '1.5rem',
+                  paddingBottom: '1.5rem'
                 }}
               >
                 <Image
@@ -91,9 +92,9 @@ export default function Hero() {
           </div>
 
           {/* Right side - Content */}
-          <div className="order-1 lg:order-2 text-center lg:text-left space-y-8">
+          <div className="order-1 lg:order-2 text-center lg:text-left space-y-6 max-w-2xl mx-auto lg:mx-0">
             {/* Main Heading - Clean and Professional */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
               {/* SERVICE on first line */}
               <span className="block pt-4 lg:pt-0 mb-1 text-white">
                 {'SERVICE'.split('').map((letter, index) => (
@@ -138,23 +139,23 @@ export default function Hero() {
             </h1>
 
             {/* Poetic subheading */}
-            <div className="space-y-4 pt-6">
-              <p className="text-lg sm:text-xl text-gray-300 font-light leading-relaxed italic">
+            <div className="space-y-4 pt-4">
+              <p className="text-base sm:text-lg text-gray-300 font-light leading-relaxed italic">
                 As you step from one chapter to the next, we stand beside you—providing the support and guidance to help you find your footing and discover the next stage of your journey.
               </p>
             </div>
 
             {/* Professional CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-6 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 pt-4 justify-center lg:justify-start">
               <a
                 href="/veteran-application"
-                className="bg-white text-[#0a0e27] px-8 py-4 rounded-lg font-semibold text-base hover:bg-gray-100 transition-all shadow-lg text-center"
+                className="bg-white text-[#0a0e27] px-7 py-3 rounded-lg font-semibold text-base hover:bg-gray-100 transition-all shadow-lg text-center"
               >
                 Start Your Transition
               </a>
               <a
                 href="#programs"
-                className="bg-transparent text-white border-2 border-gray-600 px-8 py-4 rounded-lg font-semibold text-base hover:border-gray-400 hover:bg-gray-800/50 transition-all text-center"
+                className="bg-transparent text-white border-2 border-gray-600 px-7 py-3 rounded-lg font-semibold text-base hover:border-gray-400 hover:bg-gray-800/50 transition-all text-center"
               >
                 Learn More
               </a>
