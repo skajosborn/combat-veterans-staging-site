@@ -93,9 +93,13 @@ export default function Hero() {
 
           {/* Right side - Content */}
           <div className="order-1 lg:order-2 text-center lg:text-left space-y-6 max-w-2xl mx-auto lg:mx-0">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-wide">
+              What&apos;s Next?
+            </h2>
+
             {/* Main Heading - Clean and Professional */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
-              {/* SERVICE on first line */}
+              {/* SERVICE TO on first line */}
               <span className="block pt-4 lg:pt-0 mb-1 text-white">
                 {'SERVICE'.split('').map((letter, index) => (
                   <span
@@ -107,10 +111,7 @@ export default function Hero() {
                     {letter}
                   </span>
                 ))}
-              </span>
-
-              {/* TO on second line */}
-              <span className="block text-white mb-1">
+                <span className="inline ml-3 lg:ml-4">
                 {'TO'.split('').map((letter, index) => (
                   <span
                     key={`to-${index}`}
@@ -121,9 +122,10 @@ export default function Hero() {
                     {letter}
                   </span>
                 ))}
+                </span>
               </span>
 
-              {/* SUCCESS on third line */}
+              {/* SUCCESS on second line */}
               <span className="block text-red-600">
                 {'SUCCESS'.split('').map((letter, index) => (
                   <span

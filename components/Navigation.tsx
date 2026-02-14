@@ -39,14 +39,38 @@ export default function Navigation() {
             <a href="#home" className="text-gray-300 font-medium hover:text-white transition-colors">
               Home
             </a>
-            <a href="#programs" className="text-gray-300 font-medium hover:text-white transition-colors">
-              Programs
-            </a>
+            <div className="relative group">
+              <a href="#programs" className="text-gray-300 font-medium hover:text-white transition-colors">
+                Programs
+              </a>
+              <div className="absolute left-0 top-full pt-2 min-w-[220px] opacity-0 invisible translate-y-1 pointer-events-none transition-all duration-150 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
+                <div className="rounded-lg border border-gray-700 bg-[#0a0e27] p-2 shadow-xl">
+                  <a
+                    href="/operation-field-trip"
+                    className="block rounded-md px-3 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors"
+                  >
+                    Operation Field Trip
+                  </a>
+                  <a
+                    href="/whats-next"
+                    className="block rounded-md px-3 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors"
+                  >
+                    What&apos;s Next
+                  </a>
+                </div>
+              </div>
+            </div>
             <a href="#success-stories" className="text-gray-300 font-medium hover:text-white transition-colors">
               Success Stories
             </a>
             <a href="#contact" className="text-gray-300 font-medium hover:text-white transition-colors">
               Contact
+            </a>
+            <a href="/events" className="text-gray-300 font-medium hover:text-white transition-colors">
+              Events
+            </a>
+            <a href="/sponsors" className="text-gray-300 font-medium hover:text-white transition-colors">
+              Sponsors
             </a>
             <a href="/donate" className="text-gray-300 font-medium hover:text-white transition-colors">
               Donate
@@ -83,14 +107,30 @@ export default function Navigation() {
             <a href="#home" className="block text-gray-300 font-medium hover:text-white py-2">
               Home
             </a>
-            <a href="#programs" className="block text-gray-300 font-medium hover:text-white py-2">
-              Programs
-            </a>
+            <div className="py-2">
+              <a href="#programs" className="block text-gray-300 font-medium hover:text-white">
+                Programs
+              </a>
+              <div className="mt-2 ml-4 space-y-2">
+                <a href="/operation-field-trip" className="block text-gray-400 text-sm hover:text-white">
+                  Operation Field Trip
+                </a>
+                <a href="/whats-next" className="block text-gray-400 text-sm hover:text-white">
+                  What&apos;s Next
+                </a>
+              </div>
+            </div>
             <a href="#success-stories" className="block text-gray-300 font-medium hover:text-white py-2">
               Success Stories
             </a>
             <a href="#contact" className="block text-gray-300 font-medium hover:text-white py-2">
               Contact
+            </a>
+            <a href="/events" className="block text-gray-300 font-medium hover:text-white py-2">
+              Events
+            </a>
+            <a href="/sponsors" className="block text-gray-300 font-medium hover:text-white py-2">
+              Sponsors
             </a>
             <a href="/donate" className="block text-gray-300 font-medium hover:text-white py-2">
               Donate

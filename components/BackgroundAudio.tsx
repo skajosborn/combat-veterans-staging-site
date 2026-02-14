@@ -12,7 +12,8 @@ export default function BackgroundAudio() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [volume, setVolume] = useState(0.5)
-  const AUDIO_SRC = '/music/Lost%20and%20Found.mp3'
+  const AUDIO_SRC = '/music/Whats%20Next.mp3'
+  const AUDIO_TIME_KEY = 'cvc-bg-audio-time-whats-next'
 
   const getAudio = () => {
     if (!window.__cvcBgAudio) {
@@ -22,7 +23,7 @@ export default function BackgroundAudio() {
       audio.volume = 0.5
       window.__cvcBgAudio = audio
     }
-    if (!window.__cvcBgAudio.src.includes('Lost%20and%20Found.mp3')) {
+    if (!window.__cvcBgAudio.src.includes('Whats%20Next.mp3')) {
       window.__cvcBgAudio.src = AUDIO_SRC
     }
     return window.__cvcBgAudio
@@ -37,7 +38,7 @@ export default function BackgroundAudio() {
     setVolume(audio.volume)
 
     // Restore playback position after full page reloads.
-    const savedTime = Number(window.localStorage.getItem('cvc-bg-audio-time') ?? '0')
+    const savedTime = Number(window.localStorage.getItem(AUDIO_TIME_KEY) ?? '0')
     const restoreTime = () => {
       if (Number.isFinite(savedTime) && savedTime > 0 && Number.isFinite(audio.duration) && savedTime < audio.duration) {
         audio.currentTime = savedTime
@@ -56,7 +57,7 @@ export default function BackgroundAudio() {
     audio.addEventListener('pause', onPause)
 
     const saveTime = () => {
-      window.localStorage.setItem('cvc-bg-audio-time', String(audio.currentTime))
+      window.localStorage.setItem(AUDIO_TIME_KEY, String(audio.currentTime))
     }
 
     audio.addEventListener('timeupdate', saveTime)
@@ -69,7 +70,7 @@ export default function BackgroundAudio() {
       audio.removeEventListener('play', onPlay)
       audio.removeEventListener('pause', onPause)
     }
-  }, [])
+  }, [AUDIO_TIME_KEY])
 
   useEffect(() => {
     const audio = getAudio()
