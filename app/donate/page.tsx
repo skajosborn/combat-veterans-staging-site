@@ -5,16 +5,8 @@ export default function DonatePage() {
     <main className="min-h-screen bg-[#070d22] pt-24 sm:pt-28 pb-20">
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="overflow-hidden rounded-3xl border border-gray-800 bg-[#0f1733] shadow-2xl">
-          <div className="relative min-h-[320px] sm:min-h-[420px]">
-            <Image
-              src="/service.png"
-              alt="Combat Veterans to Careers community support"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#02081c]/90 via-[#02081c]/70 to-[#02081c]/35" />
-            <div className="relative z-10 max-w-3xl p-8 sm:p-12 lg:p-16">
+          <div className="border-y border-gray-800 bg-[#0b1330] p-8 sm:p-10 lg:p-12">
+            <div className="mx-auto max-w-4xl text-center">
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-gray-300">
                 Support Our Mission
               </p>
@@ -26,6 +18,18 @@ export default function DonatePage() {
                 wellness, and employment transition support to combat veterans and
                 their families. Your donation can save a life.
               </p>
+            </div>
+          </div>
+
+          <div className="relative w-full bg-[#0a0e27]">
+            <div className="relative mx-auto aspect-[16/7] w-full max-w-7xl">
+              <Image
+                src="/flag.jpg"
+                alt="American flag supporting Combat Veterans to Careers mission"
+                fill
+                className="object-contain object-center"
+                priority
+              />
             </div>
           </div>
 

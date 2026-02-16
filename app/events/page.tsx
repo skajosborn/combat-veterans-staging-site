@@ -83,7 +83,7 @@ export default function EventsPage() {
         </div>
 
         <div className="grid grid-cols-1 gap-8">
-          {events.map((event) => (
+          {events.filter((event) => Boolean(event.embedSrc)).map((event) => (
             <div
               key={event.slug}
               className="rounded-2xl border border-gray-800 bg-[#111831] p-4 sm:p-6"
