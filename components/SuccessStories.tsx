@@ -25,6 +25,25 @@ export default function SuccessStories() {
     },
   ]
 
+  const storyVideos = [
+    {
+      title: 'Success Story Video 1',
+      src: 'https://www.youtube.com/embed/bKnr94QYx_c',
+    },
+    {
+      title: 'Success Story Video 2',
+      src: 'https://www.youtube.com/embed/7QSxM7mZMOk',
+    },
+    {
+      title: 'Success Story Video 3',
+      src: 'https://www.youtube.com/embed/jW53a9jJ-XY',
+    },
+    {
+      title: 'Success Story Video 4',
+      src: 'https://www.youtube.com/embed/B3ly2emg9JY',
+    },
+  ]
+
   return (
     <section id="success-stories" className="py-24 bg-[#0a0e27]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,6 +85,27 @@ export default function SuccessStories() {
               <blockquote className="text-gray-400 italic leading-relaxed text-sm">
                 "{story.quote}"
               </blockquote>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {storyVideos.map((video) => (
+            <div
+              key={video.src}
+              className="rounded-2xl border border-gray-800 bg-[#1a1f3a] p-4 sm:p-5"
+            >
+              <h3 className="mb-3 text-lg font-semibold text-white">{video.title}</h3>
+              <div className="aspect-video w-full overflow-hidden rounded-lg border border-gray-700">
+                <iframe
+                  className="h-full w-full"
+                  src={video.src}
+                  title={video.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
             </div>
           ))}
         </div>

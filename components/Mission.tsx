@@ -41,6 +41,22 @@ export default function Mission() {
             into civilian life.
           </p>
         </div>
+
+        <div className="mt-10 rounded-2xl border border-gray-800 bg-[#10162b] p-4 sm:p-6">
+          <h3 className="mb-4 text-xl sm:text-2xl font-semibold text-white">
+            Our Mission Video
+          </h3>
+          <div className="aspect-video w-full overflow-hidden rounded-lg border border-gray-700">
+            <iframe
+              className="h-full w-full"
+              src="https://www.youtube.com/embed/4npHQY_Rer0"
+              title="Our Mission Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+        </div>
       </div>
     </section>
   )

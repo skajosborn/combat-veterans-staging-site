@@ -36,11 +36,11 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:space-x-8 items-center">
-            <a href="#home" className="text-gray-300 font-medium hover:text-white transition-colors">
-              Home
+            <a href="/mission" className="text-gray-300 font-medium hover:text-white transition-colors">
+              Mission
             </a>
             <div className="relative group">
-              <a href="#programs" className="text-gray-300 font-medium hover:text-white transition-colors">
+              <a href="/#programs" className="text-gray-300 font-medium hover:text-white transition-colors">
                 Programs
               </a>
               <div className="absolute left-0 top-full pt-2 min-w-[220px] opacity-0 invisible translate-y-1 pointer-events-none transition-all duration-150 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
@@ -60,10 +60,10 @@ export default function Navigation() {
                 </div>
               </div>
             </div>
-            <a href="#success-stories" className="text-gray-300 font-medium hover:text-white transition-colors">
+            <a href="/#success-stories" className="text-gray-300 font-medium hover:text-white transition-colors">
               Success Stories
             </a>
-            <a href="#contact" className="text-gray-300 font-medium hover:text-white transition-colors">
+            <a href="/#contact" className="text-gray-300 font-medium hover:text-white transition-colors">
               Contact
             </a>
             <a href="/events" className="text-gray-300 font-medium hover:text-white transition-colors">
@@ -104,11 +104,11 @@ export default function Navigation() {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden pb-4 space-y-3 bg-[#0a0e27] border-t border-gray-800 mt-2">
-            <a href="#home" className="block text-gray-300 font-medium hover:text-white py-2">
-              Home
+            <a href="/mission" className="block text-gray-300 font-medium hover:text-white py-2">
+              Mission
             </a>
             <div className="py-2">
-              <a href="#programs" className="block text-gray-300 font-medium hover:text-white">
+              <a href="/#programs" className="block text-gray-300 font-medium hover:text-white">
                 Programs
               </a>
               <div className="mt-2 ml-4 space-y-2">
@@ -120,10 +120,10 @@ export default function Navigation() {
                 </a>
               </div>
             </div>
-            <a href="#success-stories" className="block text-gray-300 font-medium hover:text-white py-2">
+            <a href="/#success-stories" className="block text-gray-300 font-medium hover:text-white py-2">
               Success Stories
             </a>
-            <a href="#contact" className="block text-gray-300 font-medium hover:text-white py-2">
+            <a href="/#contact" className="block text-gray-300 font-medium hover:text-white py-2">
               Contact
             </a>
             <a href="/events" className="block text-gray-300 font-medium hover:text-white py-2">

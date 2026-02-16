@@ -42,15 +42,15 @@ export default function DonatePage() {
 
               <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <div className="rounded-xl border border-gray-700 bg-[#0e1636] p-4">
-                  <p className="text-2xl font-bold text-white">$25</p>
+                  <p className="text-2xl font-bold text-white">$50</p>
                   <p className="mt-1 text-sm text-gray-400">Covers resume and career prep materials</p>
                 </div>
                 <div className="rounded-xl border border-gray-700 bg-[#0e1636] p-4">
-                  <p className="text-2xl font-bold text-white">$50</p>
+                  <p className="text-2xl font-bold text-white">$100</p>
                   <p className="mt-1 text-sm text-gray-400">Supports transportation and appointment access</p>
                 </div>
                 <div className="rounded-xl border border-gray-700 bg-[#0e1636] p-4">
-                  <p className="text-2xl font-bold text-white">$100</p>
+                  <p className="text-2xl font-bold text-white">$500</p>
                   <p className="mt-1 text-sm text-gray-400">Funds expanded transition and wellness resources</p>
                 </div>
               </div>
