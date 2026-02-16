@@ -2,34 +2,40 @@ import Image from 'next/image'
 
 const pillars = [
   {
-    title: 'Learning Center',
+    title: 'Learning Center & Career Counseling',
     description:
-      'Hands-on training where veterans can learn a new trade, gain certifications, and build practical skills for long-term civilian careers.',
-  },
-  {
-    title: 'Career Counseling',
-    description:
-      'Professional career assessment, resume support, and one-on-one guidance to align military experience with the right civilian career path.',
+      'A combined training and career guidance hub where veterans can learn a new trade, gain certifications, assess current skillsets, and receive one-on-one support to choose the civilian career path that fits them best.',
+    image: '/learning-center.png',
   },
   {
     title: 'Medical Treatment Center & Ketamine Clinic',
     description:
       'Integrated medical care and trauma-focused treatment options, including ketamine-assisted care for veterans facing PTSD, depression, and severe stress.',
+    image: '/medicaltreatmentandKC.png',
   },
   {
     title: 'Suicide Prevention & Mental Health Counseling',
     description:
       'Urgent and ongoing behavioral health support designed to address the veteran suicide crisis and provide trusted, immediate intervention.',
+    image: '/suicideprevention.png',
   },
   {
     title: 'Hotel & Restaurant',
     description:
       'Transitional housing and on-site amenities that create a stable, dignified environment while veterans progress through treatment and job preparation.',
+    image: '/restaurantandhotel.png',
   },
   {
     title: 'Thrift Stores',
     description:
       'Donation-driven stores that create community engagement and generate recurring revenue reinvested directly into veteran programs.',
+    image: '/thriftstores.png',
+  },
+  {
+    title: 'Main Office',
+    description:
+      'The central place veterans and families can stop by to learn more, receive information, and get connected to the right services to begin their journey with CVC.',
+    image: '/mainoffice.png',
   },
 ]
 
@@ -38,18 +44,18 @@ export default function FutureGoalPage() {
     <main className="min-h-screen bg-[#0a0e27] pt-24 pb-16">
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="overflow-hidden rounded-2xl border border-gray-800 bg-[#111831] shadow-2xl">
-          <div className="relative min-h-[300px] w-full sm:min-h-[380px] lg:min-h-[460px]">
+          <div className="relative w-full aspect-[3/2] bg-[#0a0e27]">
             <Image
               src="/CVC-compound.png"
               alt="Future Combat Veterans to Careers 1,000-acre campus vision"
               fill
-              className="object-cover object-center"
+              className="object-contain object-center"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e27]/90 via-[#0a0e27]/55 to-[#0a0e27]/15" />
             <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10">
               <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-gray-300">
-                Future Goal
+                Future of CVC
               </p>
               <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
                 The 1,000-Acre CVC Veteran Campus Vision
@@ -93,6 +99,14 @@ export default function FutureGoalPage() {
                     key={pillar.title}
                     className="rounded-xl border border-gray-700 bg-[#0d1533] p-5 transition-colors hover:border-gray-500"
                   >
+                    <div className="relative mb-4 aspect-[16/10] w-full overflow-hidden rounded-lg border border-gray-700 bg-[#0a0e27]">
+                      <Image
+                        src={pillar.image}
+                        alt={pillar.title}
+                        fill
+                        className="object-contain object-center"
+                      />
+                    </div>
                     <h3 className="mb-3 text-xl font-semibold text-white">
                       {pillar.title}
                     </h3>

@@ -52,7 +52,7 @@ export default function Navigation() {
                     href="/future-goal"
                     className="block rounded-md px-3 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors"
                   >
-                    Future Goal
+                    Future of CVC
                   </a>
                 </div>
               </div>
@@ -134,7 +134,7 @@ export default function Navigation() {
                   Mission
                 </a>
                 <a href="/future-goal" className="block text-gray-400 text-sm hover:text-white">
-                  Future Goal
+                  Future of CVC
                 </a>
               </div>
             </div>
