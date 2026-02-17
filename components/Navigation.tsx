@@ -9,7 +9,7 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e27]/95 backdrop-blur-md border-b border-gray-800 shadow-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 sm:h-[4.5rem]">
+        <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <a href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
@@ -19,15 +19,15 @@ export default function Navigation() {
                   alt="Combat Veterans to Careers Foundation Logo"
                   width={64}
                   height={64}
-                    className="object-contain h-10 w-10 sm:h-12 sm:w-12"
+                    className="object-contain h-9 w-9 sm:h-10 sm:w-10"
                   priority
                 />
               </div>
               <div className="hidden sm:block text-center">
-                  <h1 className="text-lg font-semibold text-white">
+                  <h1 className="text-base font-semibold text-white">
                   Combat Veterans
                 </h1>
-                  <p className="text-lg text-gray-400 font-medium">
+                  <p className="text-base text-gray-400 font-medium">
                   to Careers
                 </p>
               </div>
@@ -37,7 +37,7 @@ export default function Navigation() {
           {/* Desktop Navigation */}
             <div className="hidden items-center md:flex md:space-x-6">
             <div className="relative group">
-              <a href="/mission" className="text-gray-300 font-medium hover:text-white transition-colors">
+              <a href="/mission" className="text-sm text-gray-300 font-medium hover:text-white transition-colors">
                 Mission
               </a>
               <div className="absolute left-0 top-full pt-2 min-w-[220px] opacity-0 invisible translate-y-1 pointer-events-none transition-all duration-150 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
@@ -58,7 +58,7 @@ export default function Navigation() {
               </div>
             </div>
             <div className="relative group">
-              <a href="/#programs" className="text-gray-300 font-medium hover:text-white transition-colors">
+              <a href="/#programs" className="text-sm text-gray-300 font-medium hover:text-white transition-colors">
                 Programs
               </a>
               <div className="absolute left-0 top-full pt-2 min-w-[220px] opacity-0 invisible translate-y-1 pointer-events-none transition-all duration-150 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
@@ -84,21 +84,21 @@ export default function Navigation() {
                 </div>
               </div>
             </div>
-            <a href="/#contact" className="text-gray-300 font-medium hover:text-white transition-colors">
+            <a href="/#contact" className="text-sm text-gray-300 font-medium hover:text-white transition-colors">
               Contact
             </a>
-            <a href="/events" className="text-gray-300 font-medium hover:text-white transition-colors">
+            <a href="/events" className="text-sm text-gray-300 font-medium hover:text-white transition-colors">
               Events
             </a>
-            <a href="/sponsors" className="text-gray-300 font-medium hover:text-white transition-colors">
+            <a href="/sponsors" className="text-sm text-gray-300 font-medium hover:text-white transition-colors">
               Sponsors
             </a>
-            <a href="/donate" className="text-gray-300 font-medium hover:text-white transition-colors">
+            <a href="/donate" className="text-sm text-gray-300 font-medium hover:text-white transition-colors">
               Donate
             </a>
             <a
               href="/veteran-application"
-              className="rounded-lg bg-white px-5 py-1.5 text-sm font-semibold text-[#0a0e27] shadow-lg transition-colors hover:bg-gray-100"
+              className="rounded-lg bg-white px-4 py-1 text-xs font-semibold text-[#0a0e27] shadow-lg transition-colors hover:bg-gray-100"
             >
               Apply Now
             </a>
