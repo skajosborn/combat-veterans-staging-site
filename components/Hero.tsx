@@ -49,7 +49,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative mt-16 flex min-h-[calc(100svh-4rem)] items-center overflow-hidden bg-[#0a0e27] sm:min-h-[calc(100svh-4.5rem)]"
+      className="relative flex min-h-[calc(100svh-3.5rem)] items-center overflow-hidden bg-[#0a0e27] pt-14 sm:min-h-[calc(100svh-4rem)] sm:pt-16"
     >
       <video
         ref={heroVideoRef}
