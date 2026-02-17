@@ -47,14 +47,20 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative mt-16 flex min-h-[calc(100svh-4rem)] items-center overflow-hidden bg-hero-responsive bg-no-repeat bg-[#0a0e27] sm:min-h-[calc(100svh-4.5rem)]"
-      style={{
-        backgroundImage: 'url(/hero-bg-smoke.png)',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'contain',
-        backgroundPosition: 'center center',
-      }}
+      className="relative mt-16 flex min-h-[calc(100svh-4rem)] items-center overflow-hidden bg-[#0a0e27] sm:min-h-[calc(100svh-4.5rem)]"
     >
+      <video
+        className="absolute inset-0 h-full w-full object-contain object-center"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+      >
+        <source src="/videos/hero-flag-loop-2s.mp4" type="video/mp4" />
+      </video>
+
       {/* Lighter overlay for better background visibility */}
       <div className="absolute inset-0 bg-[#0a0e27]/40"></div>
 
