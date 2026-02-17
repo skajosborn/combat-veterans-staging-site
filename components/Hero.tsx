@@ -49,11 +49,11 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[calc(100svh-3.5rem)] items-center overflow-hidden bg-[#0a0e27] pt-14 sm:min-h-[calc(100svh-4rem)] sm:pt-16"
+      className="relative mt-14 flex h-[calc(100svh-3.5rem)] items-center overflow-hidden bg-[#0a0e27] sm:mt-16 sm:h-[calc(100svh-4rem)]"
     >
       <video
         ref={heroVideoRef}
-        className="absolute inset-0 h-full w-full object-contain object-center"
+        className="absolute inset-0 h-full w-full object-cover object-right sm:object-center"
         autoPlay
         loop
         muted
@@ -71,7 +71,7 @@ export default function Hero() {
       {/* Lighter overlay for better background visibility */}
       <div className="absolute inset-0 bg-[#0a0e27]/40"></div>
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <div className="relative z-10 mx-auto w-full max-w-5xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-10">
           {/* Left side - Logo */}
           <div className="order-2 lg:order-1">
