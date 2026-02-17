@@ -49,7 +49,7 @@ export default function Hero() {
       id="home"
       className="relative mt-20 flex min-h-[calc(100svh-5rem)] items-center overflow-hidden bg-hero-responsive bg-no-repeat bg-[#0a0e27]"
       style={{
-        backgroundImage: 'url(/flag-manbg.png)',
+        backgroundImage: 'url(/hero-bg-smoke.png)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'contain',
         backgroundPosition: 'center center',
@@ -93,8 +93,9 @@ export default function Hero() {
 
           {/* Right side - Content */}
           <div className="order-1 lg:order-2 text-center lg:text-left space-y-6 max-w-2xl mx-auto lg:mx-0">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-wide">
-              What&apos;s Next?
+            <h2 className="whitespace-nowrap text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wide">
+              <span className="text-white">WHAT&apos;S </span>
+              <span className="text-red-600">NEXT?</span>
             </h2>
 
             {/* Main Heading - Clean and Professional */}
@@ -143,7 +144,7 @@ export default function Hero() {
             {/* Poetic subheading */}
             <div className="space-y-4 pt-4">
               <p className="text-base sm:text-lg text-gray-300 font-light leading-relaxed italic">
-                As you step from one chapter to the next, we stand beside you—providing the support and guidance to help you find your footing and discover the next stage of your journey.
+                As you step from one chapter to the next, we stand beside you—providing 360° of support and guidance to help you find your footing and discover the next stage of your journey.
               </p>
             </div>
 
