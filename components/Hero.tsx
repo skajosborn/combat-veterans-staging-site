@@ -49,7 +49,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative mt-14 flex min-h-[calc(100svh-3.5rem)] items-start overflow-hidden bg-[#0a0e27] sm:mt-16 sm:h-[calc(100svh-4rem)] sm:min-h-0 sm:items-center"
+      className="relative mt-14 flex min-h-[calc(100svh-3.5rem)] items-start overflow-hidden bg-[#0a0e27] sm:mt-16 sm:min-h-[calc(100svh-4rem)] sm:items-start lg:h-[calc(100svh-4rem)] lg:min-h-0 lg:items-center"
     >
       <video
         ref={heroVideoRef}
@@ -106,7 +106,7 @@ export default function Hero() {
 
           {/* Right side - Content */}
           <div className="order-1 mx-auto max-w-xl space-y-4 text-center lg:order-2 lg:mx-0 lg:text-left">
-            <h2 className="whitespace-nowrap text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:whitespace-nowrap font-bold tracking-wide">
               <span className="text-white">WHAT&apos;S </span>
               <span className="text-red-600">NEXT?</span>
             </h2>
