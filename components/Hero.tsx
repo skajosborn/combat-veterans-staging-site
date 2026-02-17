@@ -58,7 +58,7 @@ export default function Hero() {
         preload="auto"
         aria-hidden="true"
       >
-        <source src="/videos/hero-flag-loop-2s.mp4" type="video/mp4" />
+        <source src="/videos/hero-flag-3.mp4" type="video/mp4" />
       </video>
 
       {/* Lighter overlay for better background visibility */}
