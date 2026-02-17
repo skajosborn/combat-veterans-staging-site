@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { useRef } from 'react'
 
 export default function Hero() {
   const [visibleService, setVisibleService] = useState<Set<number>>(new Set())
   const [visibleTo, setVisibleTo] = useState<Set<number>>(new Set())
   const [visibleSuccess, setVisibleSuccess] = useState<Set<number>>(new Set())
+  const heroVideoRef = useRef<HTMLVideoElement | null>(null)
 
   useEffect(() => {
     // Animate letters one at a time
@@ -50,6 +52,7 @@ export default function Hero() {
       className="relative mt-16 flex min-h-[calc(100svh-4rem)] items-center overflow-hidden bg-[#0a0e27] sm:min-h-[calc(100svh-4.5rem)]"
     >
       <video
+        ref={heroVideoRef}
         className="absolute inset-0 h-full w-full object-contain object-center"
         autoPlay
         loop
@@ -57,8 +60,12 @@ export default function Hero() {
         playsInline
         preload="auto"
         aria-hidden="true"
+        onLoadedMetadata={() => {
+          if (!heroVideoRef.current) return
+          heroVideoRef.current.playbackRate = 0.75
+        }}
       >
-        <source src="/videos/hero-flag-3.mp4" type="video/mp4" />
+        <source src="/videos/hero-flag-4-trim-end1s.mp4" type="video/mp4" />
       </video>
 
       {/* Lighter overlay for better background visibility */}
