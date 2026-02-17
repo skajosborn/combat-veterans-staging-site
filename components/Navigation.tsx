@@ -9,7 +9,7 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e27]/95 backdrop-blur-md border-b border-gray-800 shadow-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16 sm:h-[4.5rem]">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <a href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
@@ -19,15 +19,15 @@ export default function Navigation() {
                   alt="Combat Veterans to Careers Foundation Logo"
                   width={64}
                   height={64}
-                  className="object-contain w-12 h-12 sm:w-16 sm:h-16"
+                    className="object-contain h-10 w-10 sm:h-12 sm:w-12"
                   priority
                 />
               </div>
               <div className="hidden sm:block text-center">
-                <h1 className="text-xl font-semibold text-white">
+                  <h1 className="text-lg font-semibold text-white">
                   Combat Veterans
                 </h1>
-                <p className="text-xl text-gray-400 font-medium">
+                  <p className="text-lg text-gray-400 font-medium">
                   to Careers
                 </p>
               </div>
@@ -35,7 +35,7 @@ export default function Navigation() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:space-x-8 items-center">
+            <div className="hidden items-center md:flex md:space-x-6">
             <div className="relative group">
               <a href="/mission" className="text-gray-300 font-medium hover:text-white transition-colors">
                 Mission
@@ -96,9 +96,9 @@ export default function Navigation() {
             <a href="/donate" className="text-gray-300 font-medium hover:text-white transition-colors">
               Donate
             </a>
-            <a 
-              href="/veteran-application" 
-              className="bg-white text-[#0a0e27] px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
+            <a
+              href="/veteran-application"
+              className="rounded-lg bg-white px-5 py-1.5 text-sm font-semibold text-[#0a0e27] shadow-lg transition-colors hover:bg-gray-100"
             >
               Apply Now
             </a>
