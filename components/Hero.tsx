@@ -3,6 +3,17 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useRef } from 'react'
+import NavLinkButton from './NavLinkButton'
+import {
+  FileText,
+  MapPin,
+  ArrowRightCircle,
+  Flag,
+  Calendar,
+  ShoppingBag,
+  Handshake,
+  Heart,
+} from 'lucide-react'
 
 export default function Hero() {
   const [visibleService, setVisibleService] = useState<Set<number>>(new Set())
@@ -49,29 +60,23 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative mt-14 flex min-h-[calc(100svh-3.5rem)] items-start overflow-hidden bg-[#0a0e27] sm:mt-16 sm:min-h-[calc(100svh-4rem)] sm:items-start lg:h-[calc(100svh-4rem)] lg:min-h-0 lg:items-center"
+      className="relative flex min-h-[calc(100svh-10rem)] items-start overflow-hidden bg-[#0a0e27] pt-32 sm:min-h-[calc(100svh-10rem)] sm:items-start lg:h-screen lg:min-h-0 lg:items-center"
     >
-      <video
-        ref={heroVideoRef}
-        className="absolute inset-0 h-full w-full object-cover object-[72%_center] sm:object-center"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-        onLoadedMetadata={() => {
-          if (!heroVideoRef.current) return
-          heroVideoRef.current.playbackRate = 0.75
-        }}
-      >
-        <source src="/videos/hero-flag-4-trim-end1s.mp4" type="video/mp4" />
-      </video>
+      <div className="absolute inset-0 z-0 overflow-hidden pt-20">
+        <Image
+          src="/flagman.png"
+          alt="Combat Veteran with flag background"
+          fill
+          sizes="100vw"
+          style={{ objectFit: 'cover', objectPosition: 'top center' }}
+          className="h-full w-full"
+        />
+      </div>
 
       {/* Lighter overlay for better background visibility */}
       <div className="absolute inset-0 bg-[#0a0e27]/40"></div>
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 lg:px-8 lg:py-8">
+      <div className="relative z-10 mx-auto w-full max-w-full px-4 py-10 sm:px-6 lg:px-8 lg:py-8">
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-10">
           {/* Left side - Logo */}
           <div className="order-2 lg:order-1">
@@ -176,6 +181,67 @@ export default function Hero() {
                 Learn More
               </a>
             </div>
+          </div>
+        </div>
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-8 pt-12 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-4 items-stretch">
+            <NavLinkButton
+              href="/veteran-application"
+              title="VETERAN APPLICATION"
+              subtitle="Apply for Transition Support"
+              icon={<FileText className="w-12 h-12" strokeWidth={1.5} />}
+              className="flex-grow min-w-0"
+            />
+            <NavLinkButton
+              href="/operation-field-trip"
+              title="OPERATION FIELD TRIP"
+              subtitle="Explore Career Paths"
+              icon={<MapPin className="w-12 h-12" strokeWidth={1.5} />}
+              className="flex-grow min-w-0"
+            />
+            <NavLinkButton
+              href="/whats-next"
+              title="WHAT'S NEXT"
+              subtitle="Find Your Next Mission"
+              icon={<ArrowRightCircle className="w-12 h-12" strokeWidth={1.5} />}
+              className="flex-grow min-w-0"
+            />
+            <NavLinkButton
+              href="/about"
+              title="ABOUT"
+              subtitle="Our Story & Mission"
+              icon={<Flag className="w-12 h-12" strokeWidth={1.5} />}
+              className="flex-grow min-w-0"
+            />
+            <NavLinkButton
+              href="/events"
+              title="EVENTS"
+              subtitle="Upcoming Programs"
+              icon={<Calendar className="w-12 h-12" strokeWidth={1.5} />}
+              className="flex-grow min-w-0"
+            />
+            <NavLinkButton
+              href="/thrift-store"
+              title="THRIFT STORE"
+              subtitle="Support Our Store"
+              icon={<ShoppingBag className="w-12 h-12" strokeWidth={1.5} />}
+              className="flex-grow min-w-0"
+            />
+            <NavLinkButton
+              href="/sponsors"
+              title="SPONSORS"
+              subtitle="Partner With Us"
+              icon={<Handshake className="w-12 h-12" strokeWidth={1.5} />}
+              className="flex-grow min-w-0"
+            />
+            <NavLinkButton
+              href="/donate"
+              title="DONATE"
+              subtitle="Help Our Veterans"
+              icon={<Heart className="w-12 h-12" strokeWidth={1.5} />}
+              type="donate"
+              className="flex-grow min-w-0"
+            />
           </div>
         </div>
       </div>
