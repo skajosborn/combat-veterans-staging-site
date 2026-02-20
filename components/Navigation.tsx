@@ -2,7 +2,18 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import NavLinkButton from './NavLinkButton'
+
+const navLinks = [
+  { label: 'Application', href: '/veteran-application' },
+  { label: 'Programs', href: '/#programs' },
+  { label: 'About', href: '/about' },
+  { label: 'Events', href: '/events' },
+  { label: 'Sponsors', href: '/sponsors' },
+  { label: 'Contact', href: '/#contact' },
+  { label: 'Donate', href: '/donate' },
+]
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -35,8 +46,18 @@ export default function Navigation() {
             </a>
           </div>
 
-          {/* Desktop Navigation */} 
-          <div className="hidden md:flex flex-1 justify-end"></div>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex flex-1 justify-end items-center gap-4 lg:gap-6">
+            {navLinks.map(({ label, href }) => (
+              <Link
+                key={href}
+                href={href}
+                className="text-sm font-medium text-gray-300 hover:text-white transition-colors whitespace-nowrap"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -58,7 +79,20 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden pb-4 space-y-3 bg-[#0a0e27] border-t border-gray-800 mt-2">
+          <div className="md:hidden pb-4 bg-[#0a0e27] border-t border-gray-800 mt-2">
+            <div className="pt-3 flex flex-col gap-1">
+              {navLinks.map(({ label, href }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setIsOpen(false)}
+                  className="block py-2 px-4 text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors"
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+            <div className="pt-2 mt-2 border-t border-gray-800 grid grid-cols-2 gap-2 px-4">
             <NavLinkButton
               href="/veteran-application"
               title="VETERAN APPLICATION"
@@ -140,6 +174,7 @@ export default function Navigation() {
               }
               type="donate"
             />
+            </div>
           </div>
         )}
       </div>
