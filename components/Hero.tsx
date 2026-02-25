@@ -77,9 +77,11 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[#0a0e27]/40"></div>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 lg:px-8 lg:py-6">
-        <div className="grid grid-cols-1 items-center gap-4 lg:grid-cols-2 lg:gap-6">
-          {/* Left side - Logo */}
-          <div className="order-2 lg:order-1">
+        <div className="grid grid-cols-1 items-center gap-4 lg:grid-cols-[1fr_auto] lg:gap-8">
+          {/* Left block: logo + content */}
+          <div className="grid grid-cols-1 items-center gap-4 lg:grid-cols-2 lg:gap-6 order-2 lg:order-1">
+          {/* Logo */}
+          <div className="flex justify-center">
             <div className="relative w-full flex justify-center">
               <div
                 className="relative animate-slide-in-from-left"
@@ -182,66 +184,32 @@ export default function Hero() {
               </a>
             </div>
           </div>
+          </div>
+
+          {/* Side menu - desktop */}
+          <div className="hidden lg:flex flex-col gap-1.5 w-48 flex-shrink-0 order-3 lg:order-2">
+            <NavLinkButton href="/veteran-application" title="Application" icon={<FileText className="w-5 h-5" strokeWidth={1.5} />} compact />
+            <NavLinkButton href="/operation-field-trip" title="Field Trip" icon={<MapPin className="w-5 h-5" strokeWidth={1.5} />} compact />
+            <NavLinkButton href="/whats-next" title="What's Next" icon={<ArrowRightCircle className="w-5 h-5" strokeWidth={1.5} />} compact />
+            <NavLinkButton href="/about" title="About" icon={<Flag className="w-5 h-5" strokeWidth={1.5} />} compact />
+            <NavLinkButton href="/events" title="Events" icon={<Calendar className="w-5 h-5" strokeWidth={1.5} />} compact />
+            <NavLinkButton href="/thrift-store" title="Thrift Store" icon={<ShoppingBag className="w-5 h-5" strokeWidth={1.5} />} compact />
+            <NavLinkButton href="/sponsors" title="Sponsors" icon={<Handshake className="w-5 h-5" strokeWidth={1.5} />} compact />
+            <NavLinkButton href="/donate" title="Donate" icon={<Heart className="w-5 h-5" strokeWidth={1.5} />} type="donate" compact />
+          </div>
         </div>
-        <div className="relative z-10 mx-auto w-full max-w-5xl px-4 pb-6 pt-6 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 items-stretch">
-            <NavLinkButton
-              href="/veteran-application"
-              title="VETERAN APPLICATION"
-              subtitle="Apply for Transition Support"
-              icon={<FileText className="w-9 h-9" strokeWidth={1.5} />}
-              className="flex-grow min-w-0"
-            />
-            <NavLinkButton
-              href="/operation-field-trip"
-              title="OPERATION FIELD TRIP"
-              subtitle="Explore Career Paths"
-              icon={<MapPin className="w-9 h-9" strokeWidth={1.5} />}
-              className="flex-grow min-w-0"
-            />
-            <NavLinkButton
-              href="/whats-next"
-              title="WHAT'S NEXT"
-              subtitle="Find Your Next Mission"
-              icon={<ArrowRightCircle className="w-9 h-9" strokeWidth={1.5} />}
-              className="flex-grow min-w-0"
-            />
-            <NavLinkButton
-              href="/about"
-              title="ABOUT"
-              subtitle="Our Story & Mission"
-              icon={<Flag className="w-9 h-9" strokeWidth={1.5} />}
-              className="flex-grow min-w-0"
-            />
-            <NavLinkButton
-              href="/events"
-              title="EVENTS"
-              subtitle="Upcoming Programs"
-              icon={<Calendar className="w-9 h-9" strokeWidth={1.5} />}
-              className="flex-grow min-w-0"
-            />
-            <NavLinkButton
-              href="/thrift-store"
-              title="THRIFT STORE"
-              subtitle="Support Our Store"
-              icon={<ShoppingBag className="w-9 h-9" strokeWidth={1.5} />}
-              className="flex-grow min-w-0"
-            />
-            <NavLinkButton
-              href="/sponsors"
-              title="SPONSORS"
-              subtitle="Partner With Us"
-              icon={<Handshake className="w-9 h-9" strokeWidth={1.5} />}
-              className="flex-grow min-w-0"
-            />
-            <NavLinkButton
-              href="/donate"
-              title="DONATE"
-              subtitle="Help Our Veterans"
-              icon={<Heart className="w-9 h-9" strokeWidth={1.5} />}
-              type="donate"
-              className="flex-grow min-w-0"
-            />
+
+        {/* Mobile: horizontal scroll nav */}
+        <div className="lg:hidden mt-4 pb-2">
+          <div className="flex gap-2 overflow-x-auto -mx-4 px-4 scrollbar-hide">
+            <NavLinkButton href="/veteran-application" title="Application" icon={<FileText className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
+            <NavLinkButton href="/operation-field-trip" title="Field Trip" icon={<MapPin className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
+            <NavLinkButton href="/whats-next" title="What's Next" icon={<ArrowRightCircle className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
+            <NavLinkButton href="/about" title="About" icon={<Flag className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
+            <NavLinkButton href="/events" title="Events" icon={<Calendar className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
+            <NavLinkButton href="/thrift-store" title="Thrift Store" icon={<ShoppingBag className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
+            <NavLinkButton href="/sponsors" title="Sponsors" icon={<Handshake className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
+            <NavLinkButton href="/donate" title="Donate" icon={<Heart className="w-5 h-5" strokeWidth={1.5} />} type="donate" compact className="flex-shrink-0" />
           </div>
         </div>
       </div>
