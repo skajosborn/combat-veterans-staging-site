@@ -62,7 +62,7 @@ export default function Hero() {
       id="home"
       className="relative flex flex-col min-h-[100vh] overflow-hidden bg-[#0a0e27] pt-24"
     >
-      <div className="absolute inset-0 top-0 bottom-0 left-0 right-0 z-0">
+      <div className="absolute top-24 bottom-0 left-0 right-0 z-0">
         <Image
           src="/flagman.png"
           alt="Combat Veteran with flag background"
@@ -74,7 +74,7 @@ export default function Hero() {
       </div>
 
       {/* Lighter overlay for better background visibility */}
-      <div className="absolute inset-0 bg-[#0a0e27]/40"></div>
+      <div className="absolute top-24 bottom-0 left-0 right-0 bg-[#0a0e27]/40"></div>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl flex-1 flex flex-col px-4 py-6 sm:px-6 lg:px-8 lg:py-6 min-h-0">
         <div className="flex-1 min-h-0 grid grid-cols-1 items-center gap-4 lg:grid-cols-[auto_1fr] lg:gap-8 lg:items-stretch">

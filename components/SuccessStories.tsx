@@ -49,7 +49,7 @@ export default function SuccessStories() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
-            Success Stories
+            Thousands Served
           </h2>
           <div className="w-16 h-0.5 bg-gray-600 mx-auto mb-6"></div>
           <p className="text-lg text-gray-400 max-w-3xl mx-auto">
