@@ -49,7 +49,7 @@ export default function SuccessStories() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
-            Thousands Served
+            Meet some of our Veterans
           </h2>
           <div className="w-16 h-0.5 bg-gray-600 mx-auto mb-6"></div>
           <p className="text-lg text-gray-400 max-w-3xl mx-auto">
@@ -95,12 +95,11 @@ export default function SuccessStories() {
               key={video.src}
               className="rounded-2xl border border-gray-800 bg-[#1a1f3a] p-4 sm:p-5"
             >
-              <h3 className="mb-3 text-lg font-semibold text-white">{video.title}</h3>
               <div className="aspect-video w-full overflow-hidden rounded-lg border border-gray-700">
                 <iframe
                   className="h-full w-full"
                   src={video.src}
-                  title={video.title}
+                  title="Veteran story"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
