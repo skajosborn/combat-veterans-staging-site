@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useState } from 'react'
 
 export default function Contact() {
@@ -24,12 +25,21 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 bg-[#0f1422]">
+    <section id="contact" className="py-24 bg-[#363d29]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left side - Info */}
-          <div>
+          <div className="p-8 rounded-lg">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
+          <div className="relative w-48 h-48 mx-auto mb-6 p-4 rounded-lg">
+            <Image
+              src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHVlOG1kb29mdzF4NTQ1Nmw5NG95ajJ6emF3MXY3NHA5NTRsdnF3cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jxGiMbsk7JorVR8wjc/giphy.gif"
+              alt="Veterans transitioning to careers"
+              fill
+              unoptimized
+              className="object-contain"
+            />
+          </div>
               Get In Touch
             </h2>
             <div className="w-16 h-0.5 bg-gray-600 mb-6"></div>
