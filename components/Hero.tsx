@@ -60,34 +60,45 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[calc(100svh-8rem)] items-start overflow-hidden bg-[#0a0e27] pt-24 sm:min-h-[calc(100svh-8rem)] sm:items-start lg:min-h-[calc(100vh-4rem)] lg:items-center"
+      className="relative flex flex-col min-h-[100vh] overflow-hidden bg-[#0a0e27] pt-24"
     >
-      <div className="absolute inset-0 z-0 overflow-hidden pt-20">
+      <div className="absolute inset-0 top-0 bottom-0 left-0 right-0 z-0">
         <Image
           src="/flagman.png"
           alt="Combat Veteran with flag background"
           fill
           sizes="100vw"
-          style={{ objectFit: 'cover', objectPosition: 'top center' }}
-          className="h-full w-full"
+          style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
+          className="h-full w-full object-cover"
         />
       </div>
 
       {/* Lighter overlay for better background visibility */}
       <div className="absolute inset-0 bg-[#0a0e27]/40"></div>
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 lg:px-8 lg:py-6">
-        <div className="grid grid-cols-1 items-center gap-4 lg:grid-cols-[1fr_auto] lg:gap-8">
-          {/* Left block: logo + content */}
-          <div className="grid grid-cols-1 items-center gap-4 lg:grid-cols-2 lg:gap-6 order-2 lg:order-1">
+      <div className="relative z-10 mx-auto w-full max-w-6xl flex-1 flex flex-col px-4 py-6 sm:px-6 lg:px-8 lg:py-6 min-h-0">
+        <div className="flex-1 min-h-0 grid grid-cols-1 items-center gap-4 lg:grid-cols-[auto_1fr] lg:gap-8 lg:items-stretch">
+          {/* Side menu - desktop, left side */}
+          <div className="hidden lg:flex flex-col gap-2 w-48 flex-shrink-0 order-1 self-stretch justify-center py-1">
+            <NavLinkButton href="/veteran-application" title="Application" icon={<FileText className="w-5 h-5" strokeWidth={1.5} />} compact />
+            <NavLinkButton href="/operation-field-trip" title="Operation Field Trip" icon={<MapPin className="w-5 h-5" strokeWidth={1.5} />} compact />
+            <NavLinkButton href="/whats-next" title="What's Next" icon={<ArrowRightCircle className="w-5 h-5" strokeWidth={1.5} />} compact />
+            <NavLinkButton href="/about" title="About" icon={<Flag className="w-5 h-5" strokeWidth={1.5} />} compact />
+            <NavLinkButton href="/events" title="Events" icon={<Calendar className="w-5 h-5" strokeWidth={1.5} />} compact />
+            <NavLinkButton href="/thrift-store" title="Thrift Store" icon={<ShoppingBag className="w-5 h-5" strokeWidth={1.5} />} compact />
+            <NavLinkButton href="/sponsors" title="Sponsors" icon={<Handshake className="w-5 h-5" strokeWidth={1.5} />} compact />
+            <NavLinkButton href="/donate" title="Donate" icon={<Heart className="w-5 h-5" strokeWidth={1.5} />} type="donate" compact />
+          </div>
+          {/* Logo + content block */}
+          <div className="grid grid-cols-1 items-center justify-center gap-4 lg:grid-cols-2 lg:gap-6 order-2 lg:content-center lg:min-h-0">
           {/* Logo */}
           <div className="flex justify-center">
             <div className="relative w-full flex justify-center">
               <div
                 className="relative animate-slide-in-from-left"
                 style={{
-                  width: '55%',
-                  maxWidth: '240px',
+                  width: '68%',
+                  maxWidth: '300px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -184,18 +195,6 @@ export default function Hero() {
               </a>
             </div>
           </div>
-          </div>
-
-          {/* Side menu - desktop */}
-          <div className="hidden lg:flex flex-col gap-1.5 w-48 flex-shrink-0 order-3 lg:order-2">
-            <NavLinkButton href="/veteran-application" title="Application" icon={<FileText className="w-5 h-5" strokeWidth={1.5} />} compact />
-            <NavLinkButton href="/operation-field-trip" title="Operation Field Trip" icon={<MapPin className="w-5 h-5" strokeWidth={1.5} />} compact />
-            <NavLinkButton href="/whats-next" title="What's Next" icon={<ArrowRightCircle className="w-5 h-5" strokeWidth={1.5} />} compact />
-            <NavLinkButton href="/about" title="About" icon={<Flag className="w-5 h-5" strokeWidth={1.5} />} compact />
-            <NavLinkButton href="/events" title="Events" icon={<Calendar className="w-5 h-5" strokeWidth={1.5} />} compact />
-            <NavLinkButton href="/thrift-store" title="Thrift Store" icon={<ShoppingBag className="w-5 h-5" strokeWidth={1.5} />} compact />
-            <NavLinkButton href="/sponsors" title="Sponsors" icon={<Handshake className="w-5 h-5" strokeWidth={1.5} />} compact />
-            <NavLinkButton href="/donate" title="Donate" icon={<Heart className="w-5 h-5" strokeWidth={1.5} />} type="donate" compact />
           </div>
         </div>
 
