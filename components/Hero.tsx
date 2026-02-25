@@ -189,7 +189,7 @@ export default function Hero() {
           {/* Side menu - desktop */}
           <div className="hidden lg:flex flex-col gap-1.5 w-48 flex-shrink-0 order-3 lg:order-2">
             <NavLinkButton href="/veteran-application" title="Application" icon={<FileText className="w-5 h-5" strokeWidth={1.5} />} compact />
-            <NavLinkButton href="/operation-field-trip" title="Field Trip" icon={<MapPin className="w-5 h-5" strokeWidth={1.5} />} compact />
+            <NavLinkButton href="/operation-field-trip" title="Operation Field Trip" icon={<MapPin className="w-5 h-5" strokeWidth={1.5} />} compact />
             <NavLinkButton href="/whats-next" title="What's Next" icon={<ArrowRightCircle className="w-5 h-5" strokeWidth={1.5} />} compact />
             <NavLinkButton href="/about" title="About" icon={<Flag className="w-5 h-5" strokeWidth={1.5} />} compact />
             <NavLinkButton href="/events" title="Events" icon={<Calendar className="w-5 h-5" strokeWidth={1.5} />} compact />
@@ -203,7 +203,7 @@ export default function Hero() {
         <div className="lg:hidden mt-4 pb-2">
           <div className="flex gap-2 overflow-x-auto -mx-4 px-4 scrollbar-hide">
             <NavLinkButton href="/veteran-application" title="Application" icon={<FileText className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
-            <NavLinkButton href="/operation-field-trip" title="Field Trip" icon={<MapPin className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
+            <NavLinkButton href="/operation-field-trip" title="Operation Field Trip" icon={<MapPin className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
             <NavLinkButton href="/whats-next" title="What's Next" icon={<ArrowRightCircle className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
             <NavLinkButton href="/about" title="About" icon={<Flag className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
             <NavLinkButton href="/events" title="Events" icon={<Calendar className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
