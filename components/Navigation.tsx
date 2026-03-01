@@ -8,6 +8,7 @@ import NavLinkButton from './NavLinkButton'
 const navLinks = [
   { label: 'Application', href: '/veteran-application' },
   { label: 'Programs', href: '/#programs' },
+  { label: 'Vision', href: '/#vision' },
   { label: 'About', href: '/about' },
   { label: 'Events', href: '/events' },
   { label: 'Sponsors', href: '/sponsors' },
@@ -100,6 +101,17 @@ export default function Navigation() {
               icon={
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375H12a1.125 1.125 0 0 1-1.125-1.125V10.5M19.5 14.25a2.25 2.25 0 0 0 .985-1.908 4.5 4.5 0 0 0-.663-2.261l-3.14-3.141M19.5 14.25H21m-1.5 0a2.25 2.25 0 0 1-2.25 2.25H15M17.25 21l-4.757-4.757M17.25 21a2.25 2.25 0 0 0 2.25-2.25V15M17.25 21h-3.375C11.125 21 9 18.875 9 16.25V4.75A2.75 2.75 0 0 1 11.75 2h9.5C23 2 23 3.75 23 4.75V16.25c0 2.625-2.125 4.75-4.75 4.75h-3.375" />
+                </svg>
+              }
+            />
+            <NavLinkButton
+              href="/future-goal"
+              title="OUR VISION"
+              subtitle="1,000-Acre Campus"
+              icon={
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                 </svg>
               }
             />
