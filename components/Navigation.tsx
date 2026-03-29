@@ -22,10 +22,10 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e27]/95 backdrop-blur-md border-b border-gray-800 shadow-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap justify-between items-center py-2">
+        <div className="flex flex-nowrap items-center justify-between gap-2 py-2 min-w-0">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center">
-            <a href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+          <div className="flex min-w-0 shrink items-center">
+            <a href="/" className="flex min-w-0 items-center space-x-0 sm:space-x-3 hover:opacity-80 transition-opacity">
               <div className="relative flex-shrink-0">
                 <Image
                   src="/CVClogo.png"
@@ -61,10 +61,12 @@ export default function Navigation() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex-shrink-0">
             <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-300 hover:text-white focus:outline-none"
+              aria-expanded={isOpen}
               aria-label="Toggle menu"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -77,23 +79,25 @@ export default function Navigation() {
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden pb-4 bg-[#0a0e27] border-t border-gray-800 mt-2">
-            <div className="pt-3 flex flex-col gap-1">
+      {/* Mobile Navigation — full viewport width; below bar */}
+      {isOpen && (
+        <div className="md:hidden absolute left-0 right-0 top-full z-50 max-h-[min(80vh,85dvh)] overflow-y-auto border-t border-gray-800 bg-[#0a0e27] shadow-lg">
+          <div className="mx-auto max-w-7xl px-4 pb-4 pt-3 sm:px-6 lg:px-8">
+            <div className="flex flex-col gap-1">
               {navLinks.map(({ label, href }) => (
                 <Link
                   key={href}
                   href={href}
                   onClick={() => setIsOpen(false)}
-                  className="block py-2 px-4 text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors"
+                  className="block rounded-lg py-2.5 px-3 text-sm font-medium text-gray-300 hover:bg-gray-800/50 hover:text-white transition-colors"
                 >
                   {label}
                 </Link>
               ))}
             </div>
-            <div className="pt-2 mt-2 border-t border-gray-800 grid grid-cols-2 gap-2 px-4">
+            <div className="mt-3 grid min-w-0 grid-cols-2 gap-2 border-t border-gray-800 pt-3 [&>a]:min-w-0">
             <NavLinkButton
               href="/veteran-application"
               title="VETERAN APPLICATION"
@@ -188,8 +192,8 @@ export default function Navigation() {
             />
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   )
 }
