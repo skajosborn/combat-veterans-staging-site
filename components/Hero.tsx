@@ -124,14 +124,14 @@ export default function Hero() {
 
           {/* Right side - Content */}
           <div className="order-1 mx-auto max-w-md flex flex-col gap-3 text-center lg:order-2 lg:mx-0 lg:text-left">
-            <div className="flex flex-col gap-1 sm:gap-1.5">
-            <h2 className="m-0 text-xl sm:text-2xl md:text-3xl lg:text-4xl lg:whitespace-nowrap font-bold tracking-wide leading-tight">
+            <div className="flex flex-col gap-2.5 sm:gap-3 lg:gap-2">
+            <h2 className="m-0 text-2xl sm:text-3xl md:text-3xl lg:text-4xl lg:whitespace-nowrap font-bold tracking-wide leading-snug">
               <span className="text-white">WHAT&apos;S </span>
               <span className="text-red-600">NEXT?</span>
             </h2>
 
             {/* Main Heading - Clean and Professional */}
-            <h1 className="m-0 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-none flex flex-col gap-1">
+            <h1 className="m-0 text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold text-white leading-snug flex flex-col gap-2.5 sm:gap-3 lg:gap-2">
               {/* SERVICE TO on first line */}
               <span className="block text-white">
                 {'SERVICE'.split('').map((letter, index) => (
