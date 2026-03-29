@@ -14,7 +14,7 @@ export default function EventsPage() {
             Events
           </h1>
           <p className="text-gray-300 leading-relaxed">
-            Explore recent community events and veteran-focused activities.
+            Explore recent and upcoming events and veteran-focused activities.
           </p>
         </div>
 

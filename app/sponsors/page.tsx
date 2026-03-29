@@ -5,8 +5,16 @@ import Image from 'next/image'
 type SponsorImage = {
   name: string
   src: string
-  website: string
+  website: string | null
 }
+
+/** Filenames with no public website — card is not a link. */
+const sponsorNoWebsiteFilenames = new Set<string>([
+  'Wildlife-Services-and-Maintenance.jpg',
+  'Wildlife-Services-and-Maintenance-Logo.jpg',
+  'wildlife-services-and-maintenance.jpg',
+  'Wildlife-Services-Maintenance.jpg',
+])
 
 const sponsorWebsiteOverrides: Record<string, string> = {
   '4_bank_of_america.jpg': 'https://www.bankofamerica.com/',
@@ -44,17 +52,21 @@ const sponsorWebsiteOverrides: Record<string, string> = {
   'McCrackens-Logo.jpg': 'https://mccrackenspub.com/',
   'McCrackens.jpg': 'https://mccrackenspub.com/',
   'mccrackens.jpg': 'https://mccrackenspub.com/',
-  'Rustic-Roots-Salon.jpg': 'https://www.vagaro.com/rusticrootssalon5',
-  'Rustic-Roots-Logo.jpg': 'https://www.vagaro.com/rusticrootssalon5',
-  'rustic-roots-salon.jpg': 'https://www.vagaro.com/rusticrootssalon5',
+  'Rustic-Roots-Salon.jpg': 'https://www.facebook.com/RusticRoots21/',
+  'Rustic-Roots-Logo.jpg': 'https://www.facebook.com/RusticRoots21/',
+  'rustic-roots-salon.jpg': 'https://www.facebook.com/RusticRoots21/',
   'Sasser-Services.jpg': 'https://nextdoor.com/pages/sasser-services-llc-jacksonville-fl/',
   'Sasser-Services-Logo.jpg': 'https://nextdoor.com/pages/sasser-services-llc-jacksonville-fl/',
   'sasser-services.jpg': 'https://nextdoor.com/pages/sasser-services-llc-jacksonville-fl/',
   'Verteks-Consulting-Logo.jpg': 'https://www.verteks.com/',
-  ' v1.jpg': 'https://www.cabralheatingandair.com/',
+  'v1.jpg': 'https://www.cabralheatingandair.com/',
+  'Cabral-Heating-and-Air-Conditioning.jpg': 'https://www.cabralheatingandair.com/',
+  'Cabral-Heating-and-Air.jpg': 'https://www.cabralheatingandair.com/',
+  'cabral-heating-and-air.jpg': 'https://www.cabralheatingandair.com/',
+  'Cabral-Heating.jpg': 'https://www.cabralheatingandair.com/',
   'v2.jpg': 'https://williejewells.com/',
   'v3.jpg': 'https://mccrackenspub.com/',
-  'v4.jpg': 'https://www.vagaro.com/rusticrootssalon5',
+  'v4.jpg': 'https://www.facebook.com/RusticRoots21/',
   'v5.jpg': 'https://nextdoor.com/pages/sasser-services-llc-jacksonville-fl/',
   'sc2-knights-of-columbus.jpg': 'https://www.floridakofc.org/',
   'sc3-The-Villages-Critters.jpg': 'https://critters.golfclub.net/cm/web/site/page.html?clubId=15823',
@@ -83,8 +95,16 @@ function fileNameToBusinessName(fileName: string) {
     .trim()
 }
 
-function buildSponsorWebsite(fileName: string) {
+function sponsorHasNoWebsite(fileName: string): boolean {
   const trimmed = fileName.trim()
+  if (sponsorNoWebsiteFilenames.has(trimmed)) return true
+  const label = fileNameToBusinessName(trimmed).toLowerCase()
+  return label.includes('wildlife') && label.includes('service') && label.includes('maintenance')
+}
+
+function buildSponsorWebsite(fileName: string): string | null {
+  const trimmed = fileName.trim()
+  if (sponsorHasNoWebsite(trimmed)) return null
   if (sponsorWebsiteOverrides[trimmed]) return sponsorWebsiteOverrides[trimmed]
   const businessName = fileNameToBusinessName(trimmed)
   // Fallback to search results without Google redirect notice pages.
@@ -147,28 +167,48 @@ function getSponsorImages() {
   return { standard, veteranOwned }
 }
 
+const sponsorCardClass =
+  'rounded-xl border border-gray-800 bg-[#111831] p-4 shadow-lg transition-all'
+
 function SponsorGrid({ items }: { items: SponsorImage[] }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-      {items.map((image) => (
-        <a
-          key={image.name}
-          href={image.website}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group rounded-xl border border-gray-800 bg-[#111831] p-4 shadow-lg transition-all hover:border-gray-600 hover:-translate-y-0.5"
-          aria-label={`Visit sponsor website: ${fileNameToBusinessName(image.name)}`}
-        >
+      {items.map((image) => {
+        const label = fileNameToBusinessName(image.name)
+        const inner = (
           <div className="relative h-32 w-full overflow-hidden rounded-lg bg-white">
             <Image
               src={image.src}
-              alt={image.name}
+              alt={label}
               fill
               className="object-contain p-2"
             />
           </div>
-        </a>
-      ))}
+        )
+        if (!image.website) {
+          return (
+            <div
+              key={image.name}
+              className={`${sponsorCardClass} cursor-default`}
+              aria-label={`Sponsor: ${label} (no website listed)`}
+            >
+              {inner}
+            </div>
+          )
+        }
+        return (
+          <a
+            key={image.name}
+            href={image.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`group ${sponsorCardClass} hover:border-gray-600 hover:-translate-y-0.5`}
+            aria-label={`Visit sponsor website: ${label}`}
+          >
+            {inner}
+          </a>
+        )
+      })}
     </div>
   )
 }
@@ -185,8 +225,8 @@ export default function SponsorsPage() {
           </h1>
           <p className="text-gray-300 leading-relaxed">
             We are grateful for the businesses, organizations, and community
-            partners who stand with Combat Veterans to Careers. Click any card
-            to visit the sponsor website.
+            partners who stand with Combat Veterans to Careers. Click a card
+            when a website is available.
           </p>
         </div>
 
