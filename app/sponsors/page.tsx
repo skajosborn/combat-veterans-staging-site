@@ -168,7 +168,7 @@ function getSponsorImages() {
 }
 
 const sponsorCardClass =
-  'rounded-xl border border-gray-800 bg-[#111831] p-4 shadow-lg transition-all'
+  'rounded-xl border border-cvc-border bg-cvc-card p-4 shadow-lg transition-all'
 
 function SponsorGrid({ items }: { items: SponsorImage[] }) {
   return (
@@ -202,7 +202,7 @@ function SponsorGrid({ items }: { items: SponsorImage[] }) {
             href={image.website}
             target="_blank"
             rel="noopener noreferrer"
-            className={`group ${sponsorCardClass} hover:border-gray-600 hover:-translate-y-0.5`}
+            className={`group ${sponsorCardClass} hover:-translate-y-0.5 hover:border-cvc-border-strong`}
             aria-label={`Visit sponsor website: ${label}`}
           >
             {inner}
@@ -217,13 +217,13 @@ export default function SponsorsPage() {
   const { standard, veteranOwned } = getSponsorImages()
 
   return (
-    <main className="min-h-screen bg-[#0a0e27] pt-24 pb-16">
+    <main className="min-h-screen bg-cvc-page pb-16 pt-24">
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 rounded-2xl border border-gray-800 bg-[#111831] p-8 sm:p-10">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+        <div className="mb-10 rounded-2xl border border-cvc-border bg-cvc-card p-8 sm:p-10">
+          <h1 className="mb-4 text-4xl font-bold text-cvc-fg sm:text-5xl">
             Sponsors
           </h1>
-          <p className="text-gray-300 leading-relaxed">
+          <p className="leading-relaxed text-cvc-fg-muted">
             We are grateful for the businesses, organizations, and community
             partners who stand with Combat Veterans to Careers. Click a card
             when a website is available.
@@ -231,14 +231,14 @@ export default function SponsorsPage() {
         </div>
 
         <div className="mb-12">
-          <h2 className="mb-4 text-2xl sm:text-3xl font-semibold text-white">
+          <h2 className="mb-4 text-2xl font-semibold text-cvc-fg sm:text-3xl">
             Community &amp; Corporate Sponsors
           </h2>
           <SponsorGrid items={standard} />
         </div>
 
         <div>
-          <h2 className="mb-4 text-2xl sm:text-3xl font-semibold text-white">
+          <h2 className="mb-4 text-2xl font-semibold text-cvc-fg sm:text-3xl">
             Veteran Owned Sponsors
           </h2>
           <SponsorGrid items={veteranOwned} />

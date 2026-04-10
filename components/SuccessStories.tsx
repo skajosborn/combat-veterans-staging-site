@@ -45,14 +45,14 @@ export default function SuccessStories() {
   ]
 
   return (
-    <section id="success-stories" className="py-24 bg-[#0a0e27]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
+    <section id="success-stories" className="bg-cvc-page py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold text-cvc-fg sm:text-5xl md:text-6xl">
             Meet some of our Veterans
           </h2>
-          <div className="w-16 h-0.5 bg-gray-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+          <div className="mx-auto mb-6 h-0.5 w-16 bg-cvc-border-muted"></div>
+          <p className="mx-auto max-w-3xl text-lg text-cvc-fg-subtle">
             Real veterans. Real careers. Real success.
           </p>
         </div>
@@ -61,10 +61,10 @@ export default function SuccessStories() {
           {stories.map((story, index) => (
             <div
               key={index}
-              className="bg-[#1a1f3a] rounded-lg p-8 border border-gray-800 hover:border-gray-700 transition-all"
+              className="rounded-lg border border-cvc-border bg-cvc-tile p-8 shadow-lg transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(15,23,42,0.22)] dark:hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.55)]"
             >
               <div className="mb-6 flex justify-center">
-                <div className="relative h-24 w-24 overflow-hidden rounded-full border border-gray-700">
+                <div className="relative h-24 w-24 overflow-hidden rounded-full border border-cvc-border-muted">
                   <Image
                     src={story.image}
                     alt={`${story.name} testimonial`}
@@ -73,16 +73,16 @@ export default function SuccessStories() {
                   />
                 </div>
               </div>
-              <div className="text-white font-semibold text-lg mb-1">
+              <div className="mb-1 text-lg font-semibold text-cvc-fg">
                 {story.name}
               </div>
-              <div className="text-gray-400 text-sm mb-2">
+              <div className="mb-2 text-sm text-cvc-fg-subtle">
                 {story.rank}
               </div>
-              <div className="text-gray-300 font-medium mb-4 text-sm">
+              <div className="mb-4 text-sm font-medium text-cvc-fg-muted">
                 {story.role}
               </div>
-              <blockquote className="text-gray-400 italic leading-relaxed text-sm">
+              <blockquote className="text-sm italic leading-relaxed text-cvc-fg-subtle">
                 "{story.quote}"
               </blockquote>
             </div>
@@ -93,9 +93,9 @@ export default function SuccessStories() {
           {storyVideos.map((video) => (
             <div
               key={video.src}
-              className="rounded-2xl border border-gray-800 bg-[#1a1f3a] p-4 sm:p-5"
+              className="rounded-2xl border border-cvc-border bg-cvc-tile p-4 shadow-lg transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(15,23,42,0.22)] dark:hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.55)] sm:p-5"
             >
-              <div className="aspect-video w-full overflow-hidden rounded-lg border border-gray-700">
+              <div className="aspect-video w-full overflow-hidden rounded-lg border border-cvc-border-muted">
                 <iframe
                   className="h-full w-full"
                   src={video.src}

@@ -8,20 +8,20 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-[#0a0e27] pt-24 pb-16">
+    <main className="min-h-screen bg-cvc-page pb-16 pt-24">
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 rounded-2xl border border-gray-800 bg-[#111831] p-8 sm:p-10">
-          <h1 className="mb-4 text-4xl sm:text-5xl font-bold text-white">
+        <div className="mb-10 rounded-2xl border border-cvc-border bg-cvc-card p-8 sm:p-10">
+          <h1 className="mb-4 text-4xl font-bold text-cvc-fg sm:text-5xl">
             About Us
           </h1>
-          <p className="text-gray-300 leading-relaxed max-w-3xl">
+          <p className="max-w-3xl leading-relaxed text-cvc-fg-muted">
             Combat Veterans to Careers Foundation empowers combat veterans to
             transition into successful civilian careers through programs,
             mentorship, and community support.
           </p>
         </div>
 
-        <div className="rounded-2xl border border-gray-800 bg-[#111831] overflow-hidden">
+        <div className="overflow-hidden rounded-2xl border border-cvc-border bg-cvc-card">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
             <div className="relative aspect-[4/5] min-h-[320px] lg:min-h-[480px]">
               <Image
@@ -42,14 +42,14 @@ export default function AboutPage() {
                   height={48}
                   className="flex-shrink-0 object-contain h-10 w-10 sm:h-12 sm:w-12"
                 />
-                <h2 className="text-2xl sm:text-3xl font-bold text-white">
+                <h2 className="text-2xl font-bold text-cvc-fg sm:text-3xl">
                   David Booth
                 </h2>
               </div>
-              <p className="text-gray-400 text-sm font-medium mb-6">
+              <p className="mb-6 text-sm font-medium text-cvc-fg-subtle">
                 Founder, Combat Veterans to Careers
               </p>
-              <p className="text-gray-300 leading-relaxed mb-4">
+              <p className="mb-4 leading-relaxed text-cvc-fg-muted">
                 David Booth is the driving force behind Combat Veterans to
                 Careers. A retired U.S. Army Master Sergeant with 20 years of
                 honorable service, David dedicated his military career to
@@ -58,18 +58,18 @@ export default function AboutPage() {
                 sacrifice — including surviving an IED explosion that ultimately
                 ended his military career.
               </p>
-              <p className="text-gray-300 leading-relaxed mb-4">
+              <p className="mb-4 leading-relaxed text-cvc-fg-muted">
                 Rather than allowing that moment to define him, David chose to
                 let it redirect him.
               </p>
-              <p className="text-gray-300 leading-relaxed mb-4">
+              <p className="mb-4 leading-relaxed text-cvc-fg-muted">
                 After transitioning from active duty, David experienced
                 firsthand the invisible battles many veterans face — the
                 challenges of reintegration, the weight of trauma, and the
                 search for renewed purpose. That experience ignited a mission:
                 to ensure no combat veteran has to navigate civilian life alone.
               </p>
-              <p className="text-gray-300 leading-relaxed mb-4">
+              <p className="mb-4 leading-relaxed text-cvc-fg-muted">
                 Through Combat Veterans to Careers, David has built a
                 community-centered organization focused on restoration,
                 resilience, and real-world support. The organization provides
@@ -77,14 +77,14 @@ export default function AboutPage() {
                 access to innovative therapies for veterans struggling with
                 PTSD, depression, anxiety, and the lasting effects of combat.
               </p>
-              <p className="text-gray-300 leading-relaxed mb-4">
+              <p className="mb-4 leading-relaxed text-cvc-fg-muted">
                 David&apos;s leadership blends battlefield experience with
                 compassionate service. Whether coordinating life-changing
                 programs, hosting community events, or sitting one-on-one with
                 a veteran in crisis, he remains deeply committed to helping
                 others rebuild their lives with dignity and strength.
               </p>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="leading-relaxed text-cvc-fg-muted">
                 For David, this work is more than a nonprofit — it is a
                 continuation of his oath to serve.
               </p>
@@ -92,11 +92,11 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="mt-10 rounded-2xl border border-gray-800 bg-[#111831] p-8 sm:p-10">
-          <h2 className="text-xl sm:text-2xl font-semibold text-white mb-4">
+        <div className="mt-10 rounded-2xl border border-cvc-border bg-cvc-card p-8 sm:p-10">
+          <h2 className="mb-4 text-xl font-semibold text-cvc-fg sm:text-2xl">
             Our Mission
           </h2>
-          <p className="text-gray-300 leading-relaxed">
+          <p className="leading-relaxed text-cvc-fg-muted">
             We connect veterans with opportunities, training, and a supportive
             network so they can thrive beyond their military service. From
             application support and career exploration to community events and

@@ -79,7 +79,7 @@ export default function BackgroundAudio() {
   }, [isMuted, volume])
 
   return (
-    <div className="fixed bottom-4 right-4 z-[60] flex items-center gap-2 rounded-lg border border-gray-700 bg-[#0a0e27]/95 px-3 py-2 shadow-xl backdrop-blur-sm">
+    <div className="fixed bottom-4 right-4 z-[60] flex items-center gap-2 rounded-lg border border-cvc-border bg-cvc-audio-bar px-3 py-2 shadow-xl backdrop-blur-sm">
       <button
         type="button"
         onClick={() => {
@@ -92,7 +92,7 @@ export default function BackgroundAudio() {
             audio.pause()
           }
         }}
-        className="rounded-md bg-white px-3 py-1 text-sm font-semibold text-[#0a0e27] hover:bg-gray-100"
+        className="rounded-md bg-white px-3 py-1 text-sm font-semibold text-cvc-fg-on-light hover:bg-gray-100"
         aria-label={isPlaying ? 'Pause audio' : 'Play audio'}
       >
         {isPlaying ? 'Pause' : 'Play'}
@@ -101,7 +101,7 @@ export default function BackgroundAudio() {
       <button
         type="button"
         onClick={() => setIsMuted((prev) => !prev)}
-        className="rounded-md bg-white px-3 py-1 text-sm font-semibold text-[#0a0e27] hover:bg-gray-100"
+        className="rounded-md bg-white px-3 py-1 text-sm font-semibold text-cvc-fg-on-light hover:bg-gray-100"
         aria-label={isMuted ? 'Unmute audio' : 'Mute audio'}
       >
         {isMuted ? 'Unmute' : 'Mute'}
@@ -114,7 +114,7 @@ export default function BackgroundAudio() {
         step="0.01"
         value={volume}
         onChange={(e) => setVolume(Number(e.target.value))}
-        className="h-1 w-24 cursor-pointer accent-white"
+        className="h-1 w-24 cursor-pointer accent-patriotic-navy"
         aria-label="Audio volume"
       />
     </div>

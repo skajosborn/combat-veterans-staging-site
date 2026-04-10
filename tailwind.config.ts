@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -9,6 +10,35 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        cvc: {
+          page: 'var(--cvc-page)',
+          'page-elevated': 'var(--cvc-page-elevated)',
+          'section-alt': 'var(--cvc-section-alt)',
+          'image-overlay': 'var(--cvc-image-overlay)',
+          card: 'var(--cvc-card)',
+          'card-muted': 'var(--cvc-card-muted)',
+          'card-deep': 'var(--cvc-card-deep)',
+          'card-inner': 'var(--cvc-card-inner)',
+          tile: 'var(--cvc-tile)',
+          border: 'var(--cvc-border)',
+          'border-muted': 'var(--cvc-border-muted)',
+          'border-strong': 'var(--cvc-border-strong)',
+          fg: 'var(--cvc-fg)',
+          'fg-muted': 'var(--cvc-fg-muted)',
+          'fg-subtle': 'var(--cvc-fg-subtle)',
+          'fg-on-light': 'var(--cvc-fg-on-light)',
+          nav: 'var(--cvc-nav)',
+          'nav-border': 'var(--cvc-nav-border)',
+          'hero-shade': 'var(--cvc-hero-shade)',
+          'hero-fg': 'var(--cvc-hero-fg)',
+          'hero-fg-muted': 'var(--cvc-hero-fg-muted)',
+          navlink: 'var(--cvc-navlink-bg)',
+          'navlink-border': 'var(--cvc-navlink-border)',
+          hover: 'var(--cvc-hover)',
+          'hover-strong': 'var(--cvc-hover-strong)',
+          'audio-bar': 'var(--cvc-audio-bar)',
+          'glass-panel': 'var(--cvc-glass-panel)',
+        },
         'patriotic-red': '#B22234',
         'patriotic-blue': '#3C3B6E',
         'patriotic-navy': '#1E3A5F',

@@ -40,10 +40,10 @@ export default function EventsCarousel() {
   }
 
   return (
-    <div className="mb-8 rounded-2xl border border-gray-800 bg-[#111831] p-4 sm:p-6">
-      <h2 className="mb-4 text-2xl font-semibold text-white">Featured Flyers</h2>
+    <div className="mb-8 rounded-2xl border border-cvc-border bg-cvc-card p-4 sm:p-6">
+      <h2 className="mb-4 text-2xl font-semibold text-cvc-fg">Featured Flyers</h2>
 
-      <div className="relative overflow-hidden rounded-xl border border-gray-700 bg-[#0a0e27]">
+      <div className="relative overflow-hidden rounded-xl border border-cvc-border-muted bg-cvc-page">
         <div className="relative h-[340px] w-full sm:h-[460px] lg:h-[520px]">
           {slides.map((slide, index) => {
             const content = (
@@ -78,7 +78,7 @@ export default function EventsCarousel() {
         <button
           type="button"
           onClick={goPrev}
-          className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-gray-500/70 bg-[#0a0e27]/80 px-3 py-2 text-white transition-colors hover:bg-[#151d3f]"
+          className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-cvc-border-muted bg-cvc-card-deep px-3 py-2 text-cvc-fg transition-colors hover:bg-cvc-hover"
           aria-label="Previous slide"
         >
           &#8592;
@@ -86,7 +86,7 @@ export default function EventsCarousel() {
         <button
           type="button"
           onClick={goNext}
-          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-gray-500/70 bg-[#0a0e27]/80 px-3 py-2 text-white transition-colors hover:bg-[#151d3f]"
+          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-cvc-border-muted bg-cvc-card-deep px-3 py-2 text-cvc-fg transition-colors hover:bg-cvc-hover"
           aria-label="Next slide"
         >
           &#8594;
@@ -95,7 +95,7 @@ export default function EventsCarousel() {
         <button
           type="button"
           onClick={() => setIsPaused(!isPaused)}
-          className="absolute left-3 top-3 rounded-full border border-gray-500/70 bg-[#0a0e27]/80 p-2 text-white transition-colors hover:bg-[#151d3f]"
+          className="absolute left-3 top-3 rounded-full border border-cvc-border-muted bg-cvc-card-deep p-2 text-cvc-fg transition-colors hover:bg-cvc-hover"
           aria-label={isPaused ? 'Resume carousel' : 'Pause carousel'}
         >
           {isPaused ? (
@@ -116,7 +116,7 @@ export default function EventsCarousel() {
               type="button"
               onClick={() => setActiveIndex(index)}
               className={`h-2.5 w-2.5 rounded-full transition-colors ${
-                index === activeIndex ? 'bg-white' : 'bg-gray-500'
+                index === activeIndex ? 'bg-cvc-fg' : 'bg-cvc-border-muted'
               }`}
               aria-label={`Go to slide ${index + 1}: ${slide.title}`}
             />

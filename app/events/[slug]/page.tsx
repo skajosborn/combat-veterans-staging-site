@@ -20,19 +20,19 @@ export default async function EventDetailPage({ params }: EventPageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-[#0a0e27] pt-24 pb-16">
+    <main className="min-h-screen bg-cvc-page pb-16 pt-24">
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-gray-800 bg-[#111831] p-6 sm:p-8 lg:p-10">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-gray-400">
+        <div className="rounded-2xl border border-cvc-border bg-cvc-card p-6 sm:p-8 lg:p-10">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-cvc-fg-subtle">
             {event.month} - {event.dateLabel}
           </p>
-          <h1 className="mb-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mb-4 text-3xl font-bold text-cvc-fg sm:text-4xl lg:text-5xl">
             {event.title}
           </h1>
-          <p className="mb-6 text-gray-300 leading-relaxed">{event.teaser}</p>
+          <p className="mb-6 leading-relaxed text-cvc-fg-muted">{event.teaser}</p>
 
           {event.embedSrc ? (
-            <div className="aspect-video w-full overflow-hidden rounded-lg border border-gray-700">
+            <div className="aspect-video w-full overflow-hidden rounded-lg border border-cvc-border-muted">
               <iframe
                 className="h-full w-full"
                 src={event.embedSrc}
@@ -43,7 +43,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
               />
             </div>
           ) : (
-            <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-gray-700 bg-[#0a0e27]">
+            <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-cvc-border-muted bg-cvc-page">
               <Image
                 src={event.imageSrc ?? '/CVC-Future.png'}
                 alt={event.title}
@@ -56,13 +56,13 @@ export default async function EventDetailPage({ params }: EventPageProps) {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/events"
-              className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 font-semibold text-[#0a0e27] transition-colors hover:bg-gray-100"
+              className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 font-semibold text-cvc-fg-on-light transition-colors hover:bg-gray-100"
             >
               Back to Events
             </Link>
             <Link
               href="/donate"
-              className="inline-flex items-center justify-center rounded-lg border border-gray-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-gray-800/50"
+              className="inline-flex items-center justify-center rounded-lg border border-cvc-border-strong px-6 py-3 font-semibold text-cvc-fg transition-colors hover:bg-cvc-hover"
             >
               Support CVC
             </Link>
@@ -71,7 +71,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                 href={event.externalUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-lg border border-gray-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-gray-800/50"
+                className="inline-flex items-center justify-center rounded-lg border border-cvc-border-strong px-6 py-3 font-semibold text-cvc-fg transition-colors hover:bg-cvc-hover"
               >
                 Official Event Page
               </a>

@@ -3,10 +3,10 @@ import { futurePillars } from '@/lib/futureVision'
 
 export default function FutureGoalPage() {
   return (
-    <main className="min-h-screen bg-[#0a0e27] pt-24 pb-16">
+    <main className="min-h-screen bg-cvc-page pb-16 pt-24">
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="overflow-hidden rounded-2xl border border-gray-800 bg-[#111831] shadow-2xl">
-          <div className="relative w-full aspect-[3/2] bg-[#0a0e27]">
+        <div className="overflow-hidden rounded-2xl border border-cvc-border bg-cvc-card shadow-2xl">
+          <div className="relative aspect-[3/2] w-full bg-cvc-page">
             <Image
               src="/CVC-compound.png"
               alt="Future Combat Veterans to Careers 1,000-acre campus vision"
@@ -14,9 +14,9 @@ export default function FutureGoalPage() {
               className="object-contain object-center"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e27]/90 via-[#0a0e27]/55 to-[#0a0e27]/15" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10">
-              <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-gray-300">
+              <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
                 Future of CVC
               </p>
               <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
@@ -26,8 +26,8 @@ export default function FutureGoalPage() {
           </div>
 
           <div className="space-y-10 p-6 sm:p-8 lg:p-10">
-            <div className="rounded-xl border border-gray-700 bg-[#0d1533] p-6">
-              <p className="text-gray-200 leading-relaxed">
+            <div className="rounded-xl border border-cvc-border-muted bg-cvc-card-inner p-6">
+              <p className="leading-relaxed text-cvc-fg-muted">
                 Combat Veterans to Careers is working toward building a full-scale
                 1,000-acre veteran support campus where healing, stability, and
                 career development happen in one connected environment. This vision
@@ -36,32 +36,32 @@ export default function FutureGoalPage() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-red-500/40 bg-[#2a0f1a] p-6">
-              <h2 className="mb-3 text-2xl font-semibold text-white">
+            <div className="rounded-xl border border-red-500/40 bg-red-50 p-6 dark:bg-[#2a0f1a]">
+              <h2 className="mb-3 text-2xl font-semibold text-cvc-fg">
                 Why This Matters Right Now
               </h2>
-              <p className="text-red-200 leading-relaxed">
+              <p className="leading-relaxed text-red-900 dark:text-red-200">
                 Veteran suicide remains a national emergency. With dozens of
                 attempts occurring daily, this campus is designed to provide
                 immediate intervention, sustained counseling, and a path toward
                 renewed purpose before crisis becomes tragedy.
               </p>
-              <p className="mt-3 text-red-300 font-semibold">
+              <p className="mt-3 font-semibold text-red-800 dark:text-red-300">
                 CVC&apos;s mission: intervene early, support consistently, and save lives.
               </p>
             </div>
 
             <div>
-              <h2 className="mb-5 text-2xl font-semibold text-white sm:text-3xl">
+              <h2 className="mb-5 text-2xl font-semibold text-cvc-fg sm:text-3xl">
                 Planned Campus Components
               </h2>
               <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
                 {futurePillars.map((pillar) => (
                   <div
                     key={pillar.title}
-                    className="rounded-xl border border-gray-700 bg-[#0d1533] p-5 transition-colors hover:border-gray-500"
+                    className="rounded-xl border border-cvc-border-muted bg-cvc-card-inner p-5 shadow-md transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(15,23,42,0.22)] dark:hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.55)]"
                   >
-                    <div className="relative mb-4 aspect-[16/10] w-full overflow-hidden rounded-lg border border-gray-700 bg-[#0a0e27]">
+                    <div className="relative mb-4 aspect-[16/10] w-full overflow-hidden rounded-lg border border-cvc-border-muted bg-cvc-page">
                       <Image
                         src={pillar.image}
                         alt={pillar.title}
@@ -69,10 +69,10 @@ export default function FutureGoalPage() {
                         className="object-contain object-center"
                       />
                     </div>
-                    <h3 className="mb-3 text-xl font-semibold text-white">
+                    <h3 className="mb-3 text-xl font-semibold text-cvc-fg">
                       {pillar.title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-gray-300">
+                    <p className="text-sm leading-relaxed text-cvc-fg-muted">
                       {pillar.description}
                     </p>
                   </div>
@@ -80,11 +80,11 @@ export default function FutureGoalPage() {
               </div>
             </div>
 
-            <div className="rounded-xl border border-gray-700 bg-[#0d1533] p-6">
-              <h2 className="mb-3 text-2xl font-semibold text-white">
+            <div className="rounded-xl border border-cvc-border-muted bg-cvc-card-inner p-6">
+              <h2 className="mb-3 text-2xl font-semibold text-cvc-fg">
                 Help Build This Future
               </h2>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="leading-relaxed text-cvc-fg-muted">
                 This vision is funded by donors, sponsors, partners, and community
                 support. Every contribution helps create a campus where veterans can
                 heal, train, work, and rebuild.
@@ -92,13 +92,13 @@ export default function FutureGoalPage() {
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <a
                   href="/donate"
-                  className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 font-semibold text-[#0a0e27] transition-colors hover:bg-gray-100"
+                  className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 font-semibold text-cvc-fg-on-light transition-colors hover:bg-gray-100"
                 >
                   Support the Future Campus
                 </a>
                 <a
                   href="/#contact"
-                  className="inline-flex items-center justify-center rounded-lg border border-gray-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-gray-800/50"
+                  className="inline-flex items-center justify-center rounded-lg border border-cvc-border-strong px-6 py-3 font-semibold text-cvc-fg transition-colors hover:bg-cvc-hover"
                 >
                   Partner With CVC
                 </a>

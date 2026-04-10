@@ -35,24 +35,23 @@ export default function Programs() {
   ]
 
   return (
-    <section id="programs" className="py-24 bg-[#0f1422]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
+    <section id="programs" className="bg-cvc-section-alt py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold text-cvc-fg sm:text-5xl md:text-6xl">
             Our Programs
           </h2>
-          <div className="w-16 h-0.5 bg-gray-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+          <div className="mx-auto mb-6 h-0.5 w-16 bg-cvc-border-muted"></div>
+          <p className="mx-auto max-w-3xl text-lg text-cvc-fg-subtle">
             Comprehensive support designed specifically for combat veterans ready to build their next chapter
           </p>
         </div>
 
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {programs.map((program, index) => (
             <div
               key={index}
-              className="bg-[#1a1f3a] rounded-lg shadow-lg hover:shadow-xl transition-all border border-gray-800 overflow-hidden hover:border-gray-700"
+              className="overflow-hidden rounded-lg border border-cvc-border bg-cvc-tile shadow-lg transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(15,23,42,0.22)] dark:hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.55)]"
             >
               <div className="relative h-48 w-full">
                 <Image
@@ -63,10 +62,10 @@ export default function Programs() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="mb-3 text-xl font-semibold text-cvc-fg">
                   {program.title}
                 </h3>
-                <p className="text-gray-400 leading-relaxed text-sm">
+                <p className="text-sm leading-relaxed text-cvc-fg-subtle">
                   {program.description}
                 </p>
               </div>

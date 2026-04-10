@@ -10,13 +10,13 @@ const galleryImages = [
 
 export default function WhatsNextPage() {
   return (
-    <main className="min-h-screen bg-[#0a0e27] pt-24 pb-16">
+    <main className="min-h-screen bg-cvc-page pb-16 pt-24">
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 rounded-2xl border border-gray-800 bg-[#121735] p-8 sm:p-10">
-          <h1 className="mb-6 text-4xl sm:text-5xl font-bold text-white">
+        <div className="mb-10 rounded-2xl border border-cvc-border bg-cvc-card-muted p-8 sm:p-10">
+          <h1 className="mb-6 text-4xl font-bold text-cvc-fg sm:text-5xl">
             What&apos;s Next
           </h1>
-          <p className="mb-5 text-gray-300 leading-relaxed">
+          <p className="mb-5 leading-relaxed text-cvc-fg-muted">
             Service members are forward thinking, always focused on
             &nbsp;&ldquo;What&apos;s Next&rdquo;, next promotion, next duty station,
             next deployment. CVC&apos;s veteran-centered wellness plan
@@ -25,7 +25,7 @@ export default function WhatsNextPage() {
             next Veteran therapy adventure. Always moving forward, stay in the
             fight &amp; never quit.
           </p>
-          <p className="text-gray-300 leading-relaxed">
+          <p className="leading-relaxed text-cvc-fg-muted">
             Every day 22 veterans lose their battle to post traumatic stress on
             American soil. That is one veteran every 65 minutes. Every suicide
             is a tragedy affecting families, friends and whole communities. But
@@ -35,11 +35,11 @@ export default function WhatsNextPage() {
           </p>
         </div>
 
-        <div className="mb-10 rounded-2xl border border-gray-800 bg-[#121735] p-8 sm:p-10">
-          <h2 className="mb-5 text-2xl sm:text-3xl font-semibold text-white">
+        <div className="mb-10 rounded-2xl border border-cvc-border bg-cvc-card-muted p-8 sm:p-10">
+          <h2 className="mb-5 text-2xl font-semibold text-cvc-fg sm:text-3xl">
             The &ldquo;What&apos;s Next&rdquo; Program Focuses On
           </h2>
-          <ul className="mb-6 list-disc pl-6 space-y-2 text-gray-300">
+          <ul className="mb-6 list-disc space-y-2 pl-6 text-cvc-fg-muted">
             <li>Restoring physical and mental functioning</li>
             <li>
               Facilitating home &amp; community reintegration, undoing the stigma
@@ -51,14 +51,14 @@ export default function WhatsNextPage() {
               supporters
             </li>
           </ul>
-          <p className="mb-5 text-gray-300 leading-relaxed">
+          <p className="mb-5 leading-relaxed text-cvc-fg-muted">
             CVC&apos;s &ldquo;What&apos;s Next&rdquo; Therapeutic Recreation Program
             is another way we connect, lead, and inspire our veterans. Our
             activities in this program give veterans a chance to enjoy the
             outdoors, refocus their passion, and share an adventure with great
             Americans &amp; other veterans and their families.
           </p>
-          <p className="text-gray-300 leading-relaxed">
+          <p className="leading-relaxed text-cvc-fg-muted">
             CVC&apos;s &ldquo;What&apos;s Next&rdquo; Therapeutic Recreation Program
             assists in improving function and ability, but also use interventions
             that are individualized and holistic, incorporating Veterans&apos;
@@ -74,7 +74,7 @@ export default function WhatsNextPage() {
           {galleryImages.map((src, index) => (
             <div
               key={src}
-              className="relative overflow-hidden rounded-xl border border-gray-800 bg-[#121735]"
+              className="relative overflow-hidden rounded-xl border border-cvc-border bg-cvc-card-muted"
             >
               <div className="relative h-64 w-full">
                 <Image
@@ -88,15 +88,15 @@ export default function WhatsNextPage() {
           ))}
         </div>
 
-        <div className="rounded-2xl border border-gray-800 bg-[#121735] p-8 text-center sm:p-10">
-          <p className="mb-6 text-xl sm:text-2xl font-semibold text-white">
+        <div className="rounded-2xl border border-cvc-border bg-cvc-card-muted p-8 text-center sm:p-10">
+          <p className="mb-6 text-xl font-semibold text-cvc-fg sm:text-2xl">
             Help Support Combat Veterans to Careers &ldquo;What&apos;s Next&rdquo;
             Therapeutic Recreation Program. Be &ldquo;What&apos;s Next&rdquo; in a
             Veteran&apos;s life!
           </p>
           <a
             href="/donate"
-            className="inline-flex items-center justify-center rounded-lg bg-white px-7 py-3 font-semibold text-[#0a0e27] hover:bg-gray-100 transition-colors"
+            className="inline-flex items-center justify-center rounded-lg bg-white px-7 py-3 font-semibold text-cvc-fg-on-light transition-colors hover:bg-gray-100"
           >
             Donate to What&apos;s Next
           </a>

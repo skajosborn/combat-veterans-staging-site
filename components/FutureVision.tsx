@@ -4,19 +4,19 @@ import { futurePillars } from '@/lib/futureVision'
 
 export default function FutureVision() {
   return (
-    <section id="vision" className="py-24 bg-[#0a0e27]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
+    <section id="vision" className="bg-cvc-page py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold text-cvc-fg sm:text-5xl md:text-6xl">
             Our Vision
           </h2>
-          <div className="w-16 h-0.5 bg-gray-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-4">
+          <div className="mx-auto mb-6 h-0.5 w-16 bg-cvc-border-muted"></div>
+          <p className="mx-auto mb-4 max-w-3xl text-lg text-cvc-fg-subtle">
             A 1,000-acre veteran support campus where healing, stability, and career development happen in one connected environment.
           </p>
           <Link
             href="/future-goal"
-            className="inline-flex items-center text-sm font-semibold text-white hover:text-gray-300 transition-colors"
+            className="inline-flex items-center text-sm font-semibold text-cvc-fg transition-colors hover:text-cvc-fg-muted"
           >
             Explore the full vision
             <svg className="ml-1 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -29,21 +29,21 @@ export default function FutureVision() {
           {futurePillars.map((pillar) => (
             <div
               key={pillar.title}
-              className="bg-[#111831] rounded-lg shadow-lg hover:shadow-xl transition-all border border-gray-800 overflow-hidden hover:border-gray-700"
+              className="overflow-hidden rounded-lg border border-cvc-border bg-cvc-card shadow-lg transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(15,23,42,0.22)] dark:hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.55)]"
             >
               <div className="relative h-48 w-full">
                 <Image
                   src={pillar.image}
                   alt={pillar.title}
                   fill
-                  className="object-contain object-center bg-[#0a0e27]"
+                  className="bg-cvc-page object-contain object-center"
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="mb-3 text-xl font-semibold text-cvc-fg">
                   {pillar.title}
                 </h3>
-                <p className="text-gray-400 leading-relaxed text-sm">
+                <p className="text-sm leading-relaxed text-cvc-fg-subtle">
                   {pillar.description}
                 </p>
               </div>
@@ -54,7 +54,7 @@ export default function FutureVision() {
         <div className="mt-12 text-center">
           <Link
             href="/future-goal"
-            className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 font-semibold text-[#0a0e27] transition-colors hover:bg-gray-100"
+            className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 font-semibold text-cvc-fg-on-light transition-colors hover:bg-gray-100"
           >
             Learn More About the Campus Vision
           </Link>

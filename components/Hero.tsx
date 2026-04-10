@@ -60,7 +60,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex flex-col min-h-[100vh] overflow-hidden bg-[#0a0e27] pt-24"
+      className="relative flex min-h-[100vh] flex-col overflow-hidden bg-cvc-page pt-24"
     >
       <div className="absolute top-16 bottom-0 left-0 right-0 z-0">
         <Image
@@ -74,20 +74,20 @@ export default function Hero() {
       </div>
 
       {/* Lighter overlay for better background visibility */}
-      <div className="absolute top-16 bottom-0 left-0 right-0 bg-[#0a0e27]/40"></div>
+      <div className="absolute top-16 bottom-0 left-0 right-0 bg-cvc-hero-shade"></div>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl flex-1 flex flex-col px-4 py-6 sm:px-6 lg:px-8 lg:py-6 min-h-0">
         <div className="flex-1 min-h-0 grid grid-cols-1 items-center gap-4 lg:grid-cols-[auto_1fr] lg:gap-8 lg:items-stretch">
           {/* Side menu - desktop, left side */}
           <div className="hidden lg:flex flex-col gap-2 w-48 flex-shrink-0 order-1 self-stretch justify-center py-1">
-            <NavLinkButton href="/veteran-application" title="Application" icon={<FileText className="w-5 h-5" strokeWidth={1.5} />} compact />
-            <NavLinkButton href="/operation-field-trip" title="Operation Field Trip" icon={<MapPin className="w-5 h-5" strokeWidth={1.5} />} compact />
-            <NavLinkButton href="/whats-next" title="What's Next" icon={<ArrowRightCircle className="w-5 h-5" strokeWidth={1.5} />} compact />
-            <NavLinkButton href="/about" title="About" icon={<Flag className="w-5 h-5" strokeWidth={1.5} />} compact />
-            <NavLinkButton href="/events" title="Events" icon={<Calendar className="w-5 h-5" strokeWidth={1.5} />} compact />
-            <NavLinkButton href="/thrift-store" title="Thrift Store" icon={<ShoppingBag className="w-5 h-5" strokeWidth={1.5} />} compact />
-            <NavLinkButton href="/sponsors" title="Sponsors" icon={<Handshake className="w-5 h-5" strokeWidth={1.5} />} compact />
-            <NavLinkButton href="/donate" title="Donate" icon={<Heart className="w-5 h-5" strokeWidth={1.5} />} type="donate" compact />
+            <NavLinkButton href="/veteran-application" title="Application" icon={<FileText className="w-5 h-5" strokeWidth={1.5} />} compact variant="hero" />
+            <NavLinkButton href="/operation-field-trip" title="Operation Field Trip" icon={<MapPin className="w-5 h-5" strokeWidth={1.5} />} compact variant="hero" />
+            <NavLinkButton href="/whats-next" title="What's Next" icon={<ArrowRightCircle className="w-5 h-5" strokeWidth={1.5} />} compact variant="hero" />
+            <NavLinkButton href="/about" title="About" icon={<Flag className="w-5 h-5" strokeWidth={1.5} />} compact variant="hero" />
+            <NavLinkButton href="/events" title="Events" icon={<Calendar className="w-5 h-5" strokeWidth={1.5} />} compact variant="hero" />
+            <NavLinkButton href="/thrift-store" title="Thrift Store" icon={<ShoppingBag className="w-5 h-5" strokeWidth={1.5} />} compact variant="hero" />
+            <NavLinkButton href="/sponsors" title="Sponsors" icon={<Handshake className="w-5 h-5" strokeWidth={1.5} />} compact variant="hero" />
+            <NavLinkButton href="/donate" title="Donate" icon={<Heart className="w-5 h-5" strokeWidth={1.5} />} type="donate" compact variant="hero" />
           </div>
           {/* Logo + content block */}
           <div className="grid grid-cols-1 items-center justify-center gap-4 lg:grid-cols-2 lg:gap-6 order-2 lg:content-center lg:min-h-0">
@@ -125,15 +125,15 @@ export default function Hero() {
           {/* Right side - Content */}
           <div className="order-1 mx-auto max-w-md flex flex-col gap-3 text-center lg:order-2 lg:mx-0 lg:text-left">
             <div className="flex flex-col gap-2.5 sm:gap-3 lg:gap-2">
-            <h2 className="m-0 text-2xl sm:text-3xl md:text-3xl lg:text-4xl lg:whitespace-nowrap font-bold tracking-wide leading-snug">
-              <span className="text-white">WHAT&apos;S </span>
+            <h2 className="m-0 text-2xl font-bold leading-snug tracking-wide sm:text-3xl md:text-3xl lg:text-4xl lg:whitespace-nowrap">
+              <span className="text-cvc-hero-fg">WHAT&apos;S </span>
               <span className="text-red-600">NEXT?</span>
             </h2>
 
             {/* Main Heading - Clean and Professional */}
-            <h1 className="m-0 text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold text-white leading-snug flex flex-col gap-2.5 sm:gap-3 lg:gap-2">
+            <h1 className="m-0 flex flex-col gap-2.5 text-2xl font-bold leading-snug text-cvc-hero-fg sm:gap-3 sm:text-3xl md:text-3xl lg:gap-2 lg:text-4xl">
               {/* SERVICE TO on first line */}
-              <span className="block text-white">
+              <span className="block text-cvc-hero-fg">
                 {'SERVICE'.split('').map((letter, index) => (
                   <span
                     key={`service-${index}`}
@@ -176,7 +176,7 @@ export default function Hero() {
 
             {/* Poetic subheading */}
             <div className="space-y-2 pt-0">
-              <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed italic">
+              <p className="text-xs font-light italic leading-relaxed text-cvc-hero-fg-muted sm:text-sm">
                 As you step from one chapter to the next, we stand beside you—providing 360° of support and guidance to help you find your footing and discover the next stage of your journey.
               </p>
             </div>
@@ -185,13 +185,13 @@ export default function Hero() {
             <div className="flex flex-col justify-center gap-2 pt-2 sm:flex-row lg:justify-start">
               <a
                 href="/veteran-application"
-                className="rounded-lg bg-white px-4 py-2 text-center text-xs font-semibold text-[#0a0e27] shadow-lg transition-all hover:bg-gray-100"
+                className="rounded-lg bg-white px-4 py-2 text-center text-xs font-semibold text-cvc-fg-on-light shadow-lg transition-all hover:bg-gray-100"
               >
                 Start Your Transition
               </a>
               <a
                 href="#programs"
-                className="rounded-lg border-2 border-gray-600 bg-transparent px-4 py-2 text-center text-xs font-semibold text-white transition-all hover:border-gray-400 hover:bg-gray-800/50"
+                className="rounded-lg border border-slate-200/90 bg-white/95 px-4 py-2 text-center text-xs font-semibold text-cvc-fg-on-light shadow-md backdrop-blur-sm transition-all hover:border-slate-300 hover:bg-white"
               >
                 Learn More
               </a>
@@ -203,14 +203,14 @@ export default function Hero() {
         {/* Mobile: horizontal scroll nav */}
         <div className="lg:hidden mt-4 pb-2">
           <div className="flex gap-2 overflow-x-auto -mx-4 px-4 scrollbar-hide">
-            <NavLinkButton href="/veteran-application" title="Application" icon={<FileText className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
-            <NavLinkButton href="/operation-field-trip" title="Operation Field Trip" icon={<MapPin className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
-            <NavLinkButton href="/whats-next" title="What's Next" icon={<ArrowRightCircle className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
-            <NavLinkButton href="/about" title="About" icon={<Flag className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
-            <NavLinkButton href="/events" title="Events" icon={<Calendar className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
-            <NavLinkButton href="/thrift-store" title="Thrift Store" icon={<ShoppingBag className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
-            <NavLinkButton href="/sponsors" title="Sponsors" icon={<Handshake className="w-5 h-5" strokeWidth={1.5} />} compact className="flex-shrink-0" />
-            <NavLinkButton href="/donate" title="Donate" icon={<Heart className="w-5 h-5" strokeWidth={1.5} />} type="donate" compact className="flex-shrink-0" />
+            <NavLinkButton href="/veteran-application" title="Application" icon={<FileText className="w-5 h-5" strokeWidth={1.5} />} compact variant="hero" className="flex-shrink-0" />
+            <NavLinkButton href="/operation-field-trip" title="Operation Field Trip" icon={<MapPin className="w-5 h-5" strokeWidth={1.5} />} compact variant="hero" className="flex-shrink-0" />
+            <NavLinkButton href="/whats-next" title="What's Next" icon={<ArrowRightCircle className="w-5 h-5" strokeWidth={1.5} />} compact variant="hero" className="flex-shrink-0" />
+            <NavLinkButton href="/about" title="About" icon={<Flag className="w-5 h-5" strokeWidth={1.5} />} compact variant="hero" className="flex-shrink-0" />
+            <NavLinkButton href="/events" title="Events" icon={<Calendar className="w-5 h-5" strokeWidth={1.5} />} compact variant="hero" className="flex-shrink-0" />
+            <NavLinkButton href="/thrift-store" title="Thrift Store" icon={<ShoppingBag className="w-5 h-5" strokeWidth={1.5} />} compact variant="hero" className="flex-shrink-0" />
+            <NavLinkButton href="/sponsors" title="Sponsors" icon={<Handshake className="w-5 h-5" strokeWidth={1.5} />} compact variant="hero" className="flex-shrink-0" />
+            <NavLinkButton href="/donate" title="Donate" icon={<Heart className="w-5 h-5" strokeWidth={1.5} />} type="donate" compact variant="hero" className="flex-shrink-0" />
           </div>
         </div>
       </div>

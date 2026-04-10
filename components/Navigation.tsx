@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import NavLinkButton from './NavLinkButton'
+import ThemeToggle from './ThemeToggle'
 
 const navLinks = [
   { label: 'Application', href: '/veteran-application' },
@@ -20,7 +21,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e27]/95 backdrop-blur-md border-b border-gray-800 shadow-xl">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-cvc-nav-border bg-cvc-nav shadow-xl backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-nowrap items-center justify-between gap-2 py-2 min-w-0">
           {/* Logo */}
@@ -37,10 +38,10 @@ export default function Navigation() {
                 />
               </div>
               <div className="hidden sm:block text-center">
-                  <h1 className="text-base font-semibold text-white">
+                  <h1 className="text-base font-semibold text-cvc-fg">
                   Combat Veterans
                 </h1>
-                  <p className="text-base text-gray-400 font-medium">
+                  <p className="text-base font-medium text-cvc-fg-subtle">
                   to Careers
                 </p>
               </div>
@@ -48,24 +49,28 @@ export default function Navigation() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex flex-1 justify-end items-center gap-4 lg:gap-6">
-            {navLinks.map(({ label, href }) => (
-              <Link
-                key={href}
-                href={href}
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors whitespace-nowrap"
-              >
-                {label}
-              </Link>
-            ))}
+          <div className="hidden md:flex flex-1 items-center justify-end gap-3 lg:gap-5">
+            <div className="flex flex-1 flex-wrap items-center justify-end gap-4 lg:gap-6">
+              {navLinks.map(({ label, href }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="whitespace-nowrap text-sm font-medium text-cvc-fg-muted transition-colors hover:text-cvc-fg"
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+            <ThemeToggle className="shrink-0" />
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex-shrink-0">
+          <div className="flex flex-shrink-0 items-center gap-2 md:hidden">
+            <ThemeToggle />
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-white focus:outline-none"
+              className="text-cvc-fg-muted hover:text-cvc-fg focus:outline-none"
               aria-expanded={isOpen}
               aria-label="Toggle menu"
             >
@@ -83,7 +88,7 @@ export default function Navigation() {
 
       {/* Mobile Navigation — full viewport width; below bar */}
       {isOpen && (
-        <div className="md:hidden absolute left-0 right-0 top-full z-50 max-h-[min(80vh,85dvh)] overflow-y-auto border-t border-gray-800 bg-[#0a0e27] shadow-lg">
+        <div className="absolute left-0 right-0 top-full z-50 max-h-[min(80vh,85dvh)] overflow-y-auto border-t border-cvc-border bg-cvc-page shadow-lg md:hidden">
           <div className="mx-auto max-w-7xl px-4 pb-4 pt-3 sm:px-6 lg:px-8">
             <div className="flex flex-col gap-1">
               {navLinks.map(({ label, href }) => (
@@ -91,13 +96,13 @@ export default function Navigation() {
                   key={href}
                   href={href}
                   onClick={() => setIsOpen(false)}
-                  className="block rounded-lg py-2.5 px-3 text-sm font-medium text-gray-300 hover:bg-gray-800/50 hover:text-white transition-colors"
+                  className="block rounded-lg px-3 py-2.5 text-sm font-medium text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg"
                 >
                   {label}
                 </Link>
               ))}
             </div>
-            <div className="mt-3 grid min-w-0 grid-cols-2 gap-2 border-t border-gray-800 pt-3 [&>a]:min-w-0">
+            <div className="mt-3 grid min-w-0 grid-cols-2 gap-2 border-t border-cvc-border pt-3 [&>a]:min-w-0">
             <NavLinkButton
               href="/veteran-application"
               title="VETERAN APPLICATION"

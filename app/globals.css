@@ -3,29 +3,71 @@
 @tailwind utilities;
 
 @layer base {
+  /* Light mode (no .dark on <html>) */
   :root {
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
+    --cvc-page: #eef2f9;
+    --cvc-page-elevated: #e2e8f3;
+    --cvc-section-alt: #e8edf5;
+    --cvc-image-overlay: rgb(15 23 42 / 0.45);
+    --cvc-card: #ffffff;
+    --cvc-card-muted: #f1f5f9;
+    --cvc-card-deep: #e8edf5;
+    --cvc-card-inner: #eef2f7;
+    --cvc-tile: #ffffff;
+    --cvc-border: #cbd5e1;
+    --cvc-border-muted: #94a3b8;
+    --cvc-border-strong: #64748b;
+    --cvc-fg: #0f172a;
+    --cvc-fg-muted: #475569;
+    --cvc-fg-subtle: #64748b;
+    --cvc-fg-on-light: #0f172a;
+    --cvc-nav: rgb(255 255 255 / 0.94);
+    --cvc-nav-border: #e2e8f0;
+    --cvc-hero-shade: rgb(15 23 42 / 0.45);
+    --cvc-hero-fg: #ffffff;
+    --cvc-hero-fg-muted: rgb(255 255 255 / 0.9);
+    --cvc-navlink-bg: rgb(15 23 42 / 0.06);
+    --cvc-navlink-border: #cbd5e1;
+    --cvc-hover: rgb(15 23 42 / 0.06);
+    --cvc-hover-strong: rgb(15 23 42 / 0.1);
+    --cvc-audio-bar: rgb(255 255 255 / 0.96);
+    --cvc-glass-panel: rgb(255 255 255 / 0.92);
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --foreground-rgb: 255, 255, 255;
-      --background-start-rgb: 0, 0, 0;
-      --background-end-rgb: 0, 0, 0;
-    }
+  .dark {
+    --cvc-page: #0a0e27;
+    --cvc-page-elevated: #0d1229;
+    --cvc-section-alt: #0f1422;
+    --cvc-image-overlay: rgb(15 20 34 / 0.55);
+    --cvc-card: #111831;
+    --cvc-card-muted: #121735;
+    --cvc-card-deep: #0a1028;
+    --cvc-card-inner: #0d1533;
+    --cvc-tile: #1a1f3a;
+    --cvc-border: #1f2937;
+    --cvc-border-muted: #374151;
+    --cvc-border-strong: #4b5563;
+    --cvc-fg: #ffffff;
+    --cvc-fg-muted: #cbd5e1;
+    --cvc-fg-subtle: #94a3b8;
+    --cvc-fg-on-light: #0f172a;
+    --cvc-nav: rgb(10 14 39 / 0.95);
+    --cvc-nav-border: #1f2937;
+    --cvc-hero-shade: rgb(10 14 39 / 0.4);
+    --cvc-hero-fg: #ffffff;
+    --cvc-hero-fg-muted: rgb(255 255 255 / 0.88);
+    --cvc-navlink-bg: rgb(0 0 0 / 0.5);
+    --cvc-navlink-border: #374151;
+    --cvc-hover: rgb(255 255 255 / 0.08);
+    --cvc-hover-strong: rgb(255 255 255 / 0.12);
+    --cvc-audio-bar: rgb(10 14 39 / 0.96);
+    --cvc-glass-panel: rgb(30 36 57 / 0.92);
   }
 
   body {
     overflow-x: hidden;
-    color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        rgb(var(--background-end-rgb))
-      )
-      rgb(var(--background-start-rgb));
+    background-color: var(--cvc-page);
+    color: var(--cvc-fg);
   }
 }
 
