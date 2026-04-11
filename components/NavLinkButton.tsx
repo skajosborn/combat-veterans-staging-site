@@ -28,7 +28,7 @@ const NavLinkButton: React.FC<NavLinkButtonProps> = ({
 
   if (compact) {
     const heroCompact =
-      'border border-slate-200/90 bg-white/95 shadow-md backdrop-blur-sm hover:border-slate-900 hover:bg-slate-900 hover:shadow-lg';
+      'border border-slate-200/90 bg-white text-cvc-fg shadow-md hover:border-slate-300 hover:bg-slate-100 hover:shadow-lg dark:border-cvc-border dark:bg-cvc-card dark:hover:border-cvc-border-strong dark:hover:bg-cvc-hover';
     const defaultCompact = `border border-cvc-navlink-border bg-cvc-navlink ${
       isDonate
         ? 'hover:shadow-white-glow'
@@ -43,18 +43,10 @@ const NavLinkButton: React.FC<NavLinkButtonProps> = ({
           ${className ?? ''}
         `}
       >
-        <span
-          className={`relative z-20 flex-shrink-0 transition-colors duration-300 [&>svg]:h-5 [&>svg]:w-5 ${
-            isHero ? 'text-slate-800 group-hover:text-white' : 'text-cvc-fg'
-          }`}
-        >
+        <span className="relative z-20 flex-shrink-0 text-cvc-fg transition-colors duration-300 [&>svg]:h-5 [&>svg]:w-5">
           {icon}
         </span>
-        <span
-          className={`relative z-20 truncate text-xs font-bold uppercase transition-colors duration-300 ${
-            isHero ? 'text-slate-900 group-hover:text-white' : 'text-cvc-fg'
-          }`}
-        >
+        <span className="relative z-20 truncate text-xs font-bold uppercase text-cvc-fg transition-colors duration-300">
           {title}
         </span>
       </Link>
