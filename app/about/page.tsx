@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import SectionTitle from '@/components/SectionTitle'
 
 export const metadata = {
   title: 'About | Combat Veterans to Careers Foundation',
@@ -11,14 +12,18 @@ export default function AboutPage() {
     <main className="min-h-screen bg-cvc-page pb-16 pt-24">
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 rounded-2xl border border-cvc-border bg-cvc-card p-8 sm:p-10">
-          <h1 className="mb-4 text-4xl font-bold text-cvc-fg sm:text-5xl">
-            About Us
-          </h1>
-          <p className="max-w-3xl leading-relaxed text-cvc-fg-muted">
-            Combat Veterans to Careers Foundation empowers combat veterans to
-            transition into successful civilian careers through programs,
-            mentorship, and community support.
-          </p>
+          <SectionTitle
+            as="h1"
+            title="About"
+            size="page"
+            align="center"
+            subtitle={
+              <p className="mx-auto max-w-3xl leading-relaxed text-cvc-fg-muted">
+                Combat Veterans to Careers Foundation empowers combat veterans to transition into successful
+                civilian careers through programs, mentorship, and community support.
+              </p>
+            }
+          />
         </div>
 
         <div className="overflow-hidden rounded-2xl border border-cvc-border bg-cvc-card">
@@ -34,17 +39,23 @@ export default function AboutPage() {
               />
             </div>
             <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12">
-              <div className="flex items-center gap-3 mb-6">
+              <div className="mb-6 flex items-start gap-3">
                 <Image
                   src="/CVClogo.png"
                   alt=""
                   width={48}
                   height={48}
-                  className="flex-shrink-0 object-contain h-10 w-10 sm:h-12 sm:w-12"
+                  className="h-10 w-10 shrink-0 object-contain sm:h-12 sm:w-12"
                 />
-                <h2 className="text-2xl font-bold text-cvc-fg sm:text-3xl">
-                  David Booth
-                </h2>
+                <SectionTitle
+                  as="h2"
+                  title="David Booth"
+                  size="subsection"
+                  align="left"
+                  uppercaseTitle={false}
+                  showBottomRule={false}
+                  className="min-w-0 flex-1 [&_h2]:!mb-0"
+                />
               </div>
               <p className="mb-6 text-sm font-medium text-cvc-fg-subtle">
                 Founder, Combat Veterans to Careers
@@ -93,15 +104,19 @@ export default function AboutPage() {
         </div>
 
         <div className="mt-10 rounded-2xl border border-cvc-border bg-cvc-card p-8 sm:p-10">
-          <h2 className="mb-4 text-xl font-semibold text-cvc-fg sm:text-2xl">
-            Our Mission
-          </h2>
-          <p className="leading-relaxed text-cvc-fg-muted">
+          <SectionTitle
+            title="Our Mission"
+            size="subsection"
+            align="left"
+            subtitle={
+              <p className="leading-relaxed text-cvc-fg-muted">
             We connect veterans with opportunities, training, and a supportive
             network so they can thrive beyond their military service. From
             application support and career exploration to community events and
             partnerships, we are here for the entire journey.
-          </p>
+              </p>
+            }
+          />
         </div>
       </section>
     </main>

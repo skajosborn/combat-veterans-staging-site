@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import SectionTitle from '@/components/SectionTitle'
 import { futurePillars } from '@/lib/futureVision'
 
 export default function FutureGoalPage() {
@@ -16,12 +17,18 @@ export default function FutureGoalPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10">
-              <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
-                Future of CVC
-              </p>
-              <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-                The 1,000-Acre CVC Veteran Campus Vision
-              </h1>
+              <SectionTitle
+                as="h1"
+                title="The 1,000-Acre CVC Veteran Campus Vision"
+                size="page"
+                variant="inverse"
+                align="left"
+                uppercaseTitle={false}
+                showBottomRule={false}
+                prefix={
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/80">Future of CVC</p>
+                }
+              />
             </div>
           </div>
 
@@ -37,9 +44,7 @@ export default function FutureGoalPage() {
             </div>
 
             <div className="rounded-xl border border-red-500/40 bg-red-50 p-6 dark:bg-[#2a0f1a]">
-              <h2 className="mb-3 text-2xl font-semibold text-cvc-fg">
-                Why This Matters Right Now
-              </h2>
+              <SectionTitle title="Why This Matters Right Now" size="subsection" align="left" className="mb-3" />
               <p className="leading-relaxed text-red-900 dark:text-red-200">
                 Veteran suicide remains a national emergency. With dozens of
                 attempts occurring daily, this campus is designed to provide
@@ -52,9 +57,7 @@ export default function FutureGoalPage() {
             </div>
 
             <div>
-              <h2 className="mb-5 text-2xl font-semibold text-cvc-fg sm:text-3xl">
-                Planned Campus Components
-              </h2>
+              <SectionTitle title="Planned Campus Components" size="subsection" align="left" className="mb-5" />
               <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
                 {futurePillars.map((pillar) => (
                   <div
@@ -81,9 +84,7 @@ export default function FutureGoalPage() {
             </div>
 
             <div className="rounded-xl border border-cvc-border-muted bg-cvc-card-inner p-6">
-              <h2 className="mb-3 text-2xl font-semibold text-cvc-fg">
-                Help Build This Future
-              </h2>
+              <SectionTitle title="Help Build This Future" size="subsection" align="left" className="mb-3" />
               <p className="leading-relaxed text-cvc-fg-muted">
                 This vision is funded by donors, sponsors, partners, and community
                 support. Every contribution helps create a campus where veterans can

@@ -32,6 +32,8 @@
     --cvc-hover-strong: rgb(15 23 42 / 0.1);
     --cvc-audio-bar: rgb(255 255 255 / 0.96);
     --cvc-glass-panel: rgb(255 255 255 / 0.92);
+    /* Section headings (SectionTitle default) — army olive on light surfaces */
+    --cvc-section-title: #3d4a2c;
   }
 
   .dark {
@@ -62,6 +64,7 @@
     --cvc-hover-strong: rgb(255 255 255 / 0.12);
     --cvc-audio-bar: rgb(10 14 39 / 0.96);
     --cvc-glass-panel: rgb(30 36 57 / 0.92);
+    --cvc-section-title: #a8b892;
   }
 
   body {

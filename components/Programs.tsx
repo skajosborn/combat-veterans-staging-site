@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import SectionTitle from '@/components/SectionTitle'
 
 export default function Programs() {
   const programs = [
@@ -37,15 +38,15 @@ export default function Programs() {
   return (
     <section id="programs" className="bg-cvc-page-elevated py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-bold text-cvc-fg sm:text-5xl md:text-6xl">
-            Our Programs
-          </h2>
-          <div className="mx-auto mb-6 h-0.5 w-16 bg-cvc-border-muted"></div>
-          <p className="mx-auto max-w-3xl text-lg text-cvc-fg-subtle">
-            Comprehensive support designed specifically for combat veterans ready to build their next chapter
-          </p>
-        </div>
+        <SectionTitle
+          title="Our Programs"
+          className="mb-16"
+          subtitle={
+            <p className="mx-auto max-w-3xl text-lg text-cvc-fg-subtle">
+              Comprehensive support designed specifically for combat veterans ready to build their next chapter
+            </p>
+          }
+        />
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {programs.map((program, index) => (

@@ -38,6 +38,7 @@ const config: Config = {
           'hover-strong': 'var(--cvc-hover-strong)',
           'audio-bar': 'var(--cvc-audio-bar)',
           'glass-panel': 'var(--cvc-glass-panel)',
+          'section-title': 'var(--cvc-section-title)',
         },
         'patriotic-red': '#B22234',
         'patriotic-blue': '#3C3B6E',

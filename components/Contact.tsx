@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { FileText, MapPin, Mail, Phone } from 'lucide-react'
+import SectionTitle from '@/components/SectionTitle'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -42,13 +43,18 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left side - Info */}
           <div>
-            <h2 className="mb-4 text-4xl font-bold text-cvc-hero-fg sm:text-5xl md:text-6xl">
-              Ready to Take the Next Step?
-            </h2>
-            <div className="mb-6 h-0.5 w-16 bg-white/40"></div>
-            <p className="mb-8 text-lg text-cvc-hero-fg-muted">
-              We're here to support you every step of the way.
-            </p>
+            <SectionTitle
+              title="Ready to Take the Next Step?"
+              size="display"
+              variant="inverse"
+              align="left"
+              uppercaseTitle={false}
+              subtitle={
+                <p className="mb-8 text-lg text-cvc-hero-fg-muted">
+                  We&apos;re here to support you every step of the way.
+                </p>
+              }
+            />
 
             <div className="space-y-6">
               <div className="flex items-start space-x-4">

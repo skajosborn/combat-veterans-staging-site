@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import EventsCarousel from '@/components/EventsCarousel'
+import SectionTitle from '@/components/SectionTitle'
 import { events } from '@/lib/events'
 
 export default function EventsPage() {
@@ -10,20 +11,23 @@ export default function EventsPage() {
     <main className="min-h-screen bg-cvc-page pb-16 pt-24">
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 rounded-2xl border border-cvc-border bg-cvc-card p-8 sm:p-10">
-          <h1 className="mb-4 text-4xl font-bold text-cvc-fg sm:text-5xl">
-            Events
-          </h1>
-          <p className="leading-relaxed text-cvc-fg-muted">
-            Explore recent and upcoming events and veteran-focused activities.
-          </p>
+          <SectionTitle
+            as="h1"
+            title="Events"
+            size="page"
+            align="left"
+            subtitle={
+              <p className="leading-relaxed text-cvc-fg-muted">
+                Explore recent and upcoming events and veteran-focused activities.
+              </p>
+            }
+          />
         </div>
 
         <EventsCarousel />
 
         <div className="mb-8 rounded-2xl border border-cvc-border bg-cvc-card p-6 sm:p-8">
-          <h2 className="mb-6 text-2xl font-semibold text-cvc-fg sm:text-3xl">
-            Event Timeline
-          </h2>
+          <SectionTitle title="Event Timeline" size="subsection" align="left" className="mb-6" />
           <div className="relative space-y-5 pl-8">
             <div className="absolute bottom-2 left-2 top-2 w-px bg-cvc-border-muted" />
             {events.map((event) => (
@@ -50,9 +54,7 @@ export default function EventsPage() {
         </div>
 
         <div className="mb-8 rounded-2xl border border-cvc-border bg-cvc-card p-6 sm:p-8">
-          <h2 className="mb-6 text-2xl font-semibold text-cvc-fg sm:text-3xl">
-            Event Calendar
-          </h2>
+          <SectionTitle title="Event Calendar" size="subsection" align="left" className="mb-6" />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {calendarMonths.map((month) => {
               const monthEvents = events.filter((event) => event.month === month)
@@ -88,8 +90,16 @@ export default function EventsPage() {
               key={event.slug}
               className="rounded-2xl border border-cvc-border bg-cvc-card p-4 sm:p-6"
             >
-              <div className="mb-4 flex items-center justify-between gap-4">
-                <h2 className="text-2xl font-semibold text-cvc-fg">{event.title}</h2>
+              <div className="mb-4 flex items-start justify-between gap-4">
+                <SectionTitle
+                  as="h2"
+                  title={event.title}
+                  size="subsection"
+                  align="left"
+                  uppercaseTitle={false}
+                  showBottomRule={false}
+                  className="min-w-0 flex-1 [&_h2]:text-xl [&_h2]:sm:text-2xl"
+                />
                 <Link
                   href={`/events/${event.slug}`}
                   className="shrink-0 rounded-lg border border-cvc-border-strong px-3 py-1.5 text-sm font-semibold text-cvc-fg transition-colors hover:bg-cvc-hover"

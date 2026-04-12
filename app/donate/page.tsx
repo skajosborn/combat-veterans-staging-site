@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import SectionTitle from '@/components/SectionTitle'
 
 export default function DonatePage() {
   return (
@@ -7,17 +8,22 @@ export default function DonatePage() {
         <div className="overflow-hidden rounded-3xl border border-cvc-border bg-cvc-card shadow-2xl">
           <div className="border-y border-cvc-border bg-cvc-page-elevated p-8 sm:p-10 lg:p-12">
             <div className="mx-auto max-w-4xl text-center">
-              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-cvc-fg-muted">
-                Support Our Mission
-              </p>
-              <h1 className="mb-5 text-4xl font-bold text-cvc-fg sm:text-5xl lg:text-6xl">
-                Stand With Our Veterans
-              </h1>
-              <p className="text-base leading-relaxed text-cvc-fg-muted sm:text-lg">
-                Your gift helps Combat Veterans to Careers provide education, housing,
-                wellness, and employment transition support to combat veterans and
-                their families. Your donation can save a life.
-              </p>
+              <SectionTitle
+                as="h1"
+                title="Stand With Our Veterans"
+                size="display"
+                prefix={
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cvc-fg-muted">
+                    Support Our Mission
+                  </p>
+                }
+                subtitle={
+                  <p className="text-base leading-relaxed text-cvc-fg-muted sm:text-lg">
+                    Your gift helps Combat Veterans to Careers provide education, housing, wellness, and employment
+                    transition support to combat veterans and their families. Your donation can save a life.
+                  </p>
+                }
+              />
             </div>
           </div>
 
@@ -35,9 +41,7 @@ export default function DonatePage() {
 
           <div className="grid grid-cols-1 gap-8 p-8 sm:p-10 lg:grid-cols-3 lg:p-12">
             <div className="rounded-2xl border border-cvc-border bg-cvc-card-deep p-6 lg:col-span-2">
-              <h2 className="mb-4 text-2xl font-semibold text-cvc-fg sm:text-3xl">
-                Make A Difference Today
-              </h2>
+              <SectionTitle title="Make a Difference Today" size="subsection" align="left" className="mb-4" />
               <p className="mb-6 leading-relaxed text-cvc-fg-muted">
                 Every donation strengthens our ability to serve veterans with practical
                 resources and long-term support. Whether you choose one-time giving,

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import SectionTitle from '@/components/SectionTitle'
 
 const slides = [
   {
@@ -41,7 +42,7 @@ export default function EventsCarousel() {
 
   return (
     <div className="mb-8 rounded-2xl border border-cvc-border bg-cvc-card p-4 sm:p-6">
-      <h2 className="mb-4 text-2xl font-semibold text-cvc-fg">Featured Flyers</h2>
+      <SectionTitle title="Featured Flyers" size="subsection" align="left" className="mb-4" />
 
       <div className="relative overflow-hidden rounded-xl border border-cvc-border-muted bg-cvc-page">
         <div className="relative h-[340px] w-full sm:h-[460px] lg:h-[520px]">

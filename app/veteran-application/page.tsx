@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import SectionTitle from '@/components/SectionTitle'
 
 export default function VeteranApplication() {
   const [formData, setFormData] = useState({
@@ -149,36 +150,39 @@ export default function VeteranApplication() {
             />
           </div>
 
-          {/* Application Title */}
-          <div className="mb-8 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-cvc-fg">
-              Application
-            </h2>
-          </div>
+          <SectionTitle as="h2" title="Application" size="page" align="center" className="mb-8" />
 
           {/* Information For Veterans Section */}
           <div className="mb-12 rounded-lg border border-cvc-border bg-cvc-card p-8">
-            <h1 className="text-3xl sm:text-4xl font-bold text-cvc-fg mb-6">
-              Information For Veterans
-            </h1>
-            
-            <p className="text-xl font-bold text-cvc-fg mb-4">
-              In War, There Are No Unwounded Soldiers.
-            </p>
-            
-            <p className="text-cvc-fg-muted leading-relaxed mb-4">
-              The transition from military service to civilian life can be challenging, especially for combat veterans who have served in Iraq and Afghanistan. Combat Veterans to Careers (CVC) is dedicated to helping these heroes and their families in Central Florida prepare for successful careers in the civilian workforce.
-            </p>
-            
-            <p className="text-cvc-fg-muted leading-relaxed">
-              If you are interested in learning more about our programs and services, please fill out the form below. We work with veterans who served post-9/11 in Iraq or Afghanistan, require verification of service, and ensure all information is kept confidential.
-            </p>
+            <SectionTitle
+              as="h1"
+              title="Information For Veterans"
+              size="page"
+              align="left"
+              className="mb-6"
+              subtitle={
+                <>
+                  <p className="mb-4 text-xl font-bold text-cvc-fg">In War, There Are No Unwounded Soldiers.</p>
+                  <p className="mb-4 leading-relaxed text-cvc-fg-muted">
+                    The transition from military service to civilian life can be challenging, especially for combat
+                    veterans who have served in Iraq and Afghanistan. Combat Veterans to Careers (CVC) is dedicated to
+                    helping these heroes and their families in Central Florida prepare for successful careers in the
+                    civilian workforce.
+                  </p>
+                  <p className="leading-relaxed text-cvc-fg-muted">
+                    If you are interested in learning more about our programs and services, please fill out the form
+                    below. We work with veterans who served post-9/11 in Iraq or Afghanistan, require verification of
+                    service, and ensure all information is kept confidential.
+                  </p>
+                </>
+              }
+            />
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Military Background Section */}
             <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
-              <h2 className="text-2xl sm:text-3xl font-bold text-cvc-fg mb-8">Military Background</h2>
+              <SectionTitle title="Military Background" size="subsection" align="left" className="mb-8" />
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Left Column */}
@@ -403,7 +407,7 @@ export default function VeteranApplication() {
 
             {/* Military/VA Information Section */}
             <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
-              <h2 className="text-xl sm:text-2xl font-bold text-cvc-fg mb-6">Military/VA Information</h2>
+              <SectionTitle title="Military/VA Information" size="subsection" align="left" className="mb-6" />
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -477,7 +481,7 @@ export default function VeteranApplication() {
 
             {/* Personal Information Section */}
             <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
-              <h2 className="text-xl sm:text-2xl font-bold text-cvc-fg mb-6">Personal Information</h2>
+              <SectionTitle title="Personal Information" size="subsection" align="left" className="mb-6" />
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -664,7 +668,7 @@ export default function VeteranApplication() {
 
             {/* Employment Section */}
             <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
-              <h2 className="text-xl sm:text-2xl font-bold text-cvc-fg mb-6">Employment</h2>
+              <SectionTitle title="Employment" size="subsection" align="left" className="mb-6" />
               
               <div className="space-y-6">
                 <div>
@@ -784,7 +788,7 @@ export default function VeteranApplication() {
 
             {/* Education Section */}
             <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
-              <h2 className="text-xl sm:text-2xl font-bold text-cvc-fg mb-6">Education</h2>
+              <SectionTitle title="Education" size="subsection" align="left" className="mb-6" />
               
               <div className="space-y-6">
                 <div>
@@ -892,7 +896,7 @@ export default function VeteranApplication() {
 
             {/* Emergency Contact Information Section */}
             <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
-              <h2 className="text-xl sm:text-2xl font-bold text-cvc-fg mb-6">Emergency Contact Information</h2>
+              <SectionTitle title="Emergency Contact Information" size="subsection" align="left" className="mb-6" />
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -1002,9 +1006,14 @@ export default function VeteranApplication() {
 
             {/* Additional Documents Section */}
             <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
-              <h2 className="text-xl font-bold text-red-600 mb-4">
-                *Additional Documents (Total documents cannot exceed more than 24MB)
-              </h2>
+              <SectionTitle
+                title="*Additional Documents (Total documents cannot exceed more than 24MB)"
+                size="subsection"
+                align="left"
+                uppercaseTitle={false}
+                titleClassName="!text-red-600 dark:!text-red-500"
+                className="mb-4"
+              />
               
               <div className="space-y-4 mb-6">
                 <div>
@@ -1047,34 +1056,75 @@ export default function VeteranApplication() {
               </div>
 
               <div className="border-t border-cvc-border pt-6">
-                <h3 className="text-lg font-bold text-red-600 mb-4">
-                  *VERY IMPORTANT OPSEC Guidelines:
-                </h3>
+                <SectionTitle
+                  as="h3"
+                  title="*VERY IMPORTANT OPSEC Guidelines:"
+                  size="subsection"
+                  align="left"
+                  showBottomRule={false}
+                  uppercaseTitle={false}
+                  titleClassName="!text-lg !text-red-600 dark:!text-red-500"
+                  className="mb-4"
+                />
                 <p className="text-red-600 mb-6">
                   When creating your biography, please remember to ensure the safety of others overseas and/or still in combat. This is stating the obvious, however, please do not give details concerning the camp where you were stationed, specific routes taken, unit size, procedures, etc. This information may be published world-wide, so please proceed with the obvious measures of precaution and adhere to the military uniformity within OPSEC guidelines.
                 </p>
 
-                <h3 className="text-lg font-bold text-cvc-fg mb-4">
-                  In order for us to process your application, we will need the following documents:
-                </h3>
+                <SectionTitle
+                  as="h3"
+                  title="In order for us to process your application, we will need the following documents:"
+                  size="subsection"
+                  align="left"
+                  showBottomRule={false}
+                  uppercaseTitle={false}
+                  titleClassName="!text-lg !font-bold !normal-case"
+                  className="mb-4"
+                />
 
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-bold text-cvc-fg mb-2">DD214:</h4>
+                    <SectionTitle
+                      as="h4"
+                      title="DD214:"
+                      size="subsection"
+                      align="left"
+                      showBottomRule={false}
+                      uppercaseTitle={false}
+                      titleClassName="!mb-2 !text-base !font-bold"
+                      className="!mb-0"
+                    />
                     <p className="text-cvc-fg-muted">
                       This is documents you have received from the Department of Defense or the Veterans Administration. If you have been discharged from service please provide your DD214 that shows category of discharge as well. If you are still on active duty, a scanned copy of your Military ID will suffice.
                     </p>
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-cvc-fg mb-2">VA Ratings Breakdown:</h4>
+                    <SectionTitle
+                      as="h4"
+                      title="VA Ratings Breakdown:"
+                      size="subsection"
+                      align="left"
+                      showBottomRule={false}
+                      uppercaseTitle={false}
+                      titleClassName="!mb-2 !text-base !font-bold"
+                      className="!mb-0"
+                    />
                     <p className="text-cvc-fg-muted">
                       Your disability rating should be broken down by category of service connected injuries. Not simply a page that shows what your overall rating is. We need to know what your rating(s) is/are in order to best determine how to assist.
                     </p>
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-cvc-fg mb-2">Picture ID:</h4>
+                    <SectionTitle
+                      as="h4"
+                      title="Picture ID:"
+                      size="subsection"
+                      align="left"
+                      showBottomRule={false}
+                      uppercaseTitle={false}
+                      titleClassName="!mb-2 !text-base !font-bold"
+                      className="!mb-0"
+                    />
                     <p className="text-cvc-fg-muted">
                       This can be either a copy of your Military ID, Driver's License, VA Card, Etc.
                     </p>
@@ -1160,7 +1210,7 @@ export default function VeteranApplication() {
                 </div>
 
                 <div className="border-t border-cvc-border pt-6">
-                  <h3 className="text-xl font-bold text-cvc-fg mb-4">More Information</h3>
+                  <SectionTitle title="More Information" size="subsection" align="left" className="mb-4" />
                   <ul className="space-y-2">
                     <li>
                       <a href="/mission" className="font-medium text-sky-600 underline hover:text-sky-500 dark:text-sky-400 dark:hover:text-sky-300">
@@ -1176,7 +1226,7 @@ export default function VeteranApplication() {
                 </div>
 
                 <div className="border-t border-cvc-border pt-6">
-                  <h3 className="text-xl font-bold text-cvc-fg mb-4">Helpful Forms</h3>
+                  <SectionTitle title="Helpful Forms" size="subsection" align="left" className="mb-4" />
                   <ul className="space-y-2">
                     <li>
                       <a href="#" className="font-medium text-sky-600 underline hover:text-sky-500 dark:text-sky-400 dark:hover:text-sky-300">

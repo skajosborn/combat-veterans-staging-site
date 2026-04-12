@@ -1,11 +1,10 @@
+import SectionTitle from '@/components/SectionTitle'
+
 export default function Mission() {
   return (
     <section id="mission" className="bg-cvc-section-alt py-24">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-6 text-center text-4xl font-bold text-cvc-fg sm:text-5xl">
-          Our Mission
-        </h2>
-        <div className="mx-auto mb-8 h-0.5 w-16 bg-cvc-border-muted" />
+        <SectionTitle title="Our Mission" size="page" className="mb-8" />
 
         <div className="space-y-6 text-base leading-relaxed text-cvc-fg-muted sm:text-lg">
           <p>
@@ -43,9 +42,14 @@ export default function Mission() {
         </div>
 
         <div className="mt-10 rounded-2xl border border-cvc-border bg-cvc-card p-4 sm:p-6">
-          <h3 className="mb-4 text-xl font-semibold text-cvc-fg sm:text-2xl">
-            Our Mission Video
-          </h3>
+          <SectionTitle
+            as="h3"
+            title="Our Mission Video"
+            size="subsection"
+            align="left"
+            showBottomRule={false}
+            className="mb-4"
+          />
           <div className="aspect-video w-full overflow-hidden rounded-lg border border-cvc-border-muted">
             <iframe
               className="h-full w-full"

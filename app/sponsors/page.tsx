@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import Image from 'next/image'
+import SectionTitle from '@/components/SectionTitle'
 
 type SponsorImage = {
   name: string
@@ -220,27 +221,27 @@ export default function SponsorsPage() {
     <main className="min-h-screen bg-cvc-page pb-16 pt-24">
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 rounded-2xl border border-cvc-border bg-cvc-card p-8 sm:p-10">
-          <h1 className="mb-4 text-4xl font-bold text-cvc-fg sm:text-5xl">
-            Sponsors
-          </h1>
-          <p className="leading-relaxed text-cvc-fg-muted">
-            We are grateful for the businesses, organizations, and community
-            partners who stand with Combat Veterans to Careers. Click a card
-            when a website is available.
-          </p>
+          <SectionTitle
+            as="h1"
+            title="Sponsors"
+            size="page"
+            align="left"
+            subtitle={
+              <p className="leading-relaxed text-cvc-fg-muted">
+                We are grateful for the businesses, organizations, and community partners who stand with Combat
+                Veterans to Careers. Click a card when a website is available.
+              </p>
+            }
+          />
         </div>
 
         <div className="mb-12">
-          <h2 className="mb-4 text-2xl font-semibold text-cvc-fg sm:text-3xl">
-            Community &amp; Corporate Sponsors
-          </h2>
+          <SectionTitle title="Community & Corporate Sponsors" size="subsection" align="left" className="mb-4" />
           <SponsorGrid items={standard} />
         </div>
 
         <div>
-          <h2 className="mb-4 text-2xl font-semibold text-cvc-fg sm:text-3xl">
-            Veteran Owned Sponsors
-          </h2>
+          <SectionTitle title="Veteran Owned Sponsors" size="subsection" align="left" className="mb-4" />
           <SponsorGrid items={veteranOwned} />
         </div>
       </section>

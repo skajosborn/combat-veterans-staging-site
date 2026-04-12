@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import SectionTitle from '@/components/SectionTitle'
 
 const galleryImages = [
   '/WN-1.jpg',
@@ -13,9 +14,14 @@ export default function WhatsNextPage() {
     <main className="min-h-screen bg-cvc-page pb-16 pt-24">
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 rounded-2xl border border-cvc-border bg-cvc-card-muted p-8 sm:p-10">
-          <h1 className="mb-6 text-4xl font-bold text-cvc-fg sm:text-5xl">
-            What&apos;s Next
-          </h1>
+          <SectionTitle
+            as="h1"
+            title="What's Next"
+            size="page"
+            align="left"
+            uppercaseTitle={false}
+            subtitle={
+              <>
           <p className="mb-5 leading-relaxed text-cvc-fg-muted">
             Service members are forward thinking, always focused on
             &nbsp;&ldquo;What&apos;s Next&rdquo;, next promotion, next duty station,
@@ -33,12 +39,19 @@ export default function WhatsNextPage() {
             preventable. Every American citizen has a valuable role to play in
             preventing service member, veteran, and military family suicide.
           </p>
+              </>
+            }
+          />
         </div>
 
         <div className="mb-10 rounded-2xl border border-cvc-border bg-cvc-card-muted p-8 sm:p-10">
-          <h2 className="mb-5 text-2xl font-semibold text-cvc-fg sm:text-3xl">
-            The &ldquo;What&apos;s Next&rdquo; Program Focuses On
-          </h2>
+          <SectionTitle
+            title={`The \u201cWhat\u2019s Next\u201d Program Focuses On`}
+            size="subsection"
+            align="left"
+            uppercaseTitle={false}
+            className="mb-5"
+          />
           <ul className="mb-6 list-disc space-y-2 pl-6 text-cvc-fg-muted">
             <li>Restoring physical and mental functioning</li>
             <li>

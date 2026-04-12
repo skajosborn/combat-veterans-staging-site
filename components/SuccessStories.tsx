@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import SectionTitle from '@/components/SectionTitle'
 
 export default function SuccessStories() {
   const stories = [
@@ -47,15 +48,15 @@ export default function SuccessStories() {
   return (
     <section id="success-stories" className="bg-cvc-page py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-bold text-cvc-fg sm:text-5xl md:text-6xl">
-            Meet some of our Veterans
-          </h2>
-          <div className="mx-auto mb-6 h-0.5 w-16 bg-cvc-border-muted"></div>
-          <p className="mx-auto max-w-3xl text-lg text-cvc-fg-subtle">
-            Real veterans. Real careers. Real success.
-          </p>
-        </div>
+        <SectionTitle
+          title="Meet Some of Our Veterans"
+          className="mb-16"
+          subtitle={
+            <p className="mx-auto max-w-3xl text-lg text-cvc-fg-subtle">
+              Real veterans. Real careers. Real success.
+            </p>
+          }
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {stories.map((story, index) => (

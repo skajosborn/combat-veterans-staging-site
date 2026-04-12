@@ -1,29 +1,32 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import SectionTitle from '@/components/SectionTitle'
 import { futurePillars } from '@/lib/futureVision'
 
 export default function FutureVision() {
   return (
     <section id="vision" className="border-t border-cvc-border bg-cvc-card py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-bold text-cvc-fg sm:text-5xl md:text-6xl">
-            Our Vision
-          </h2>
-          <div className="mx-auto mb-6 h-0.5 w-16 bg-cvc-border-muted"></div>
-          <p className="mx-auto mb-4 max-w-3xl text-lg text-cvc-fg-subtle">
-            A 1,000-acre veteran support campus where healing, stability, and career development happen in one connected environment.
-          </p>
+        <SectionTitle
+          title="Our Vision"
+          className="mb-16"
+          subtitle={
+            <p className="mx-auto max-w-3xl text-lg font-normal text-cvc-fg-muted">
+              A 1,000-acre veteran support campus where healing, stability, and career development happen
+              in one connected environment.
+            </p>
+          }
+        >
           <Link
             href="/future-goal"
-            className="inline-flex items-center text-sm font-semibold text-cvc-fg transition-colors hover:text-cvc-fg-muted"
+            className="inline-flex items-center text-sm font-bold text-patriotic-navy transition-colors hover:text-patriotic-blue dark:text-cvc-fg dark:hover:text-cvc-fg-muted"
           >
             Explore the full vision
-            <svg className="ml-1 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </Link>
-        </div>
+        </SectionTitle>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {futurePillars.map((pillar) => (
