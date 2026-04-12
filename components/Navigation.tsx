@@ -23,27 +23,23 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-cvc-nav-border bg-cvc-nav shadow-xl backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-nowrap items-center justify-between gap-2 py-2 min-w-0">
+        <div className="flex flex-nowrap items-center justify-between gap-2 py-3 min-w-0">
           {/* Logo */}
           <div className="flex min-w-0 shrink items-center">
             <a href="/" className="flex min-w-0 items-center space-x-0 sm:space-x-3 hover:opacity-80 transition-opacity">
-              <div className="relative flex-shrink-0">
+              <div className="relative h-12 w-12 shrink-0 sm:h-14 sm:w-14">
                 <Image
                   src="/CVClogo.png"
                   alt="Combat Veterans to Careers Foundation Logo"
-                  width={64}
-                  height={64}
-                    className="object-contain h-9 w-9 sm:h-10 sm:w-10"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 640px) 48px, 56px"
                   priority
                 />
               </div>
-              <div className="hidden sm:block text-center">
-                  <h1 className="text-base font-semibold text-cvc-fg">
-                  Combat Veterans
-                </h1>
-                  <p className="text-base font-medium text-cvc-fg-subtle">
-                  to Careers
-                </p>
+              <div className="hidden sm:block text-center leading-tight">
+                <h1 className="text-lg font-semibold text-cvc-fg">Combat Veterans</h1>
+                <p className="text-base font-medium text-cvc-fg-subtle">to Careers</p>
               </div>
             </a>
           </div>
