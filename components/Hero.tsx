@@ -104,7 +104,7 @@ export default function Hero() {
             onClick={() => setHeroMenuOpen(false)}
             className={
               isAccent
-                ? 'flex items-center gap-3 rounded-lg bg-red-600 px-3 py-2.5 text-xs font-semibold leading-snug text-white shadow-md transition hover:bg-red-500'
+                ? 'flex items-center gap-3 rounded-lg bg-cvc-cta-fill px-3 py-2.5 text-xs font-semibold leading-snug text-white shadow-md transition hover:brightness-110'
                 : 'flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-xs font-medium leading-snug text-white/95 transition hover:border-white/15 hover:bg-white/10'
             }
           >
@@ -223,12 +223,18 @@ export default function Hero() {
           {/* Headline + CTAs — shifted right on lg so Explore can open beside the crest */}
           <div className="order-1 mx-auto flex min-w-0 max-w-md flex-col gap-1 text-center sm:max-w-lg lg:order-2 lg:mx-0 lg:max-w-xl lg:justify-self-stretch lg:self-start lg:pl-2 lg:text-left lg:mt-6 xl:max-w-2xl xl:pl-6">
             <div className="flex flex-col gap-0.5 sm:gap-1 lg:gap-0.5">
-              <h2 className="m-0 text-xl font-bold leading-[1.08] tracking-tight text-cvc-hero-fg sm:text-2xl lg:text-3xl xl:text-4xl">
+              <h2
+                className="m-0 text-xl font-black uppercase leading-[1.05] tracking-tight text-cvc-hero-fg sm:text-2xl sm:tracking-tighter lg:text-3xl xl:text-4xl xl:tracking-tighter"
+                style={{ fontStretch: 'condensed' }}
+              >
                 <span className="text-cvc-hero-fg">WHAT&apos;S </span>
-                <span className="text-red-600">NEXT?</span>
+                <span className="text-[#a8b892]">NEXT?</span>
               </h2>
 
-              <h1 className="m-0 flex flex-col gap-0.5 text-xl font-bold leading-[1.08] tracking-tight text-cvc-hero-fg sm:gap-1 sm:text-2xl lg:gap-0.5 lg:text-3xl xl:text-4xl">
+              <h1
+                className="m-0 flex flex-col gap-0.5 text-xl font-black uppercase leading-[1.05] tracking-tight sm:gap-1 sm:text-2xl sm:tracking-tighter lg:gap-0.5 lg:text-3xl xl:text-4xl xl:tracking-tighter"
+                style={{ fontStretch: 'condensed' }}
+              >
                 <span className="block text-cvc-hero-fg">
                   {'SERVICE'.split('').map((letter, index) => (
                     <span
@@ -254,7 +260,7 @@ export default function Hero() {
                   </span>
                 </span>
 
-                <span className="block text-red-600">
+                <span className="block text-2xl text-[#a8b892] sm:text-3xl lg:text-4xl xl:text-5xl">
                   {'SUCCESS'.split('').map((letter, index) => (
                     <span
                       key={`success-${index}`}
@@ -282,7 +288,7 @@ export default function Hero() {
             <div className="flex flex-col justify-center gap-1.5 pt-1 sm:flex-row sm:gap-2 lg:justify-start">
               <a
                 href="/veteran-application"
-                className="rounded-lg bg-gradient-to-b from-red-600 to-patriotic-red px-4 py-2 text-center text-sm font-semibold text-white shadow-[inset_0_1px_0_0_rgb(255_255_255_/_0.22),0_4px_0_0_rgb(100_20_30),0_8px_24px_-6px_rgb(0_0_0_/_0.55)] ring-1 ring-white/15 transition-[filter,transform,box-shadow] hover:brightness-110 hover:shadow-[inset_0_1px_0_0_rgb(255_255_255_/_0.25),0_3px_0_0_rgb(100_20_30),0_10px_28px_-6px_rgb(0_0_0_/_0.5)] active:translate-y-px active:shadow-[inset_0_2px_4px_rgb(0_0_0_/_0.2),0_2px_0_0_rgb(100_20_30)]"
+                className="rounded-lg bg-cvc-cta-fill px-4 py-2 text-center text-sm font-semibold text-white shadow-[inset_0_1px_0_0_rgb(255_255_255_/_0.18),0_4px_0_0_rgb(30_45_25),0_8px_24px_-6px_rgb(0_0_0_/_0.5)] ring-1 ring-white/15 transition-[filter,transform,box-shadow] hover:brightness-110 active:translate-y-px"
               >
                 Start Your Transition
               </a>
