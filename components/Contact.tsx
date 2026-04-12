@@ -26,10 +26,19 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative py-24 overflow-hidden" style={{ backgroundImage: 'url(/flagwithsoldiers.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-      {/* Lighter overlay so the flag remains visible */}
+    <section
+      id="contact"
+      className="relative isolate scroll-mt-[2.5rem] overflow-hidden bg-[#0a0e27] py-14 pb-20 sm:scroll-mt-[2.75rem] sm:py-16 sm:pb-24 lg:min-h-[calc(100svh-2.75rem)] lg:py-20 lg:pb-28"
+      style={{
+        backgroundImage: 'url(/flagwithsoldiers.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Solid base matches dark theme body so there is no light strip above; overlay keeps the flag readable */}
       <div className="absolute inset-0 bg-cvc-image-overlay" />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left side - Info */}
           <div>
@@ -76,14 +85,21 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right side - wide CTA card */}
+          {/* Right side — CTA only; no panel so the gold button reads on the flag */}
           <div className="flex flex-col items-center lg:items-end">
-            <div className="w-full max-w-md rounded-xl border border-cvc-border bg-cvc-glass-panel p-8 text-center shadow-xl backdrop-blur-sm">
-              <a href="/veteran-application" className="block w-full text-center px-6 py-4 rounded-lg font-semibold text-base shadow-lg transition-opacity hover:opacity-95 text-gray-900" style={{ backgroundImage: 'radial-gradient(ellipse 80% 70% at 50% 40%, #f0e68c, #d4af37 35%, #b8860b 100%)' }}>
+            <div className="w-full max-w-md space-y-4 text-center">
+              <a
+                href="/veteran-application"
+                className="block w-full rounded-lg px-6 py-5 text-center text-base font-semibold text-cvc-fg-on-light shadow-[0_12px_40px_-8px_rgba(0,0,0,0.55)] transition-opacity hover:opacity-95"
+                style={{
+                  backgroundImage:
+                    'radial-gradient(ellipse 80% 70% at 50% 40%, #f0e68c, #d4af37 35%, #b8860b 100%)',
+                }}
+              >
                 <span className="block text-lg font-bold">Start Your Transition Today</span>
-                <span className="block text-sm mt-0.5">Apply for Veteran Support →</span>
+                <span className="block mt-0.5 text-sm">Apply for Veteran Support →</span>
               </a>
-              <p className="mt-4 text-xs text-cvc-fg-subtle">
+              <p className="text-xs text-cvc-hero-fg-muted">
                 Confidential. Veteran-led. No one fights alone.
               </p>
             </div>

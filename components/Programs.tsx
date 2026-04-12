@@ -35,7 +35,7 @@ export default function Programs() {
   ]
 
   return (
-    <section id="programs" className="bg-cvc-section-alt py-24">
+    <section id="programs" className="bg-cvc-page-elevated py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-4xl font-bold text-cvc-fg sm:text-5xl md:text-6xl">

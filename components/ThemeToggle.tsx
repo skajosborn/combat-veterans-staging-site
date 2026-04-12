@@ -39,7 +39,7 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
   if (isDark === null) {
     return (
       <span
-        className={`inline-block min-h-[2rem] min-w-[4.5rem] rounded-lg border border-transparent ${className}`}
+        className={`inline-block min-h-[1.75rem] min-w-[4rem] rounded-lg border border-transparent ${className}`}
         aria-hidden
       />
     )
@@ -49,7 +49,7 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
     <button
       type="button"
       onClick={() => applyTheme(!isDark)}
-      className={`rounded-lg border border-cvc-border px-2.5 py-1.5 text-xs font-semibold text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg ${className}`}
+      className={`rounded-lg border border-cvc-border px-2 py-1 text-xs font-semibold text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg ${className}`}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {isDark ? (

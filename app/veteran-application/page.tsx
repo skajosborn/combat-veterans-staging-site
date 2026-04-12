@@ -135,8 +135,8 @@ export default function VeteranApplication() {
   const years = Array.from({ length: 50 }, (_, i) => new Date().getFullYear() - i)
 
   return (
-    <main className="pt-20">
-      <section className="py-16 bg-gray-100 min-h-screen">
+    <main className="min-h-screen bg-cvc-page pt-[2.5rem] text-cvc-fg sm:pt-[2.75rem]">
+      <section className="py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Logo */}
           <div className="mb-8 flex items-center justify-center">
@@ -151,40 +151,40 @@ export default function VeteranApplication() {
 
           {/* Application Title */}
           <div className="mb-8 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+            <h2 className="text-3xl sm:text-4xl font-bold text-cvc-fg">
               Application
             </h2>
           </div>
 
           {/* Information For Veterans Section */}
-          <div className="mb-12 bg-white rounded-lg p-8 border border-gray-300">
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+          <div className="mb-12 rounded-lg border border-cvc-border bg-cvc-card p-8">
+            <h1 className="text-3xl sm:text-4xl font-bold text-cvc-fg mb-6">
               Information For Veterans
             </h1>
             
-            <p className="text-xl font-bold text-gray-900 mb-4">
+            <p className="text-xl font-bold text-cvc-fg mb-4">
               In War, There Are No Unwounded Soldiers.
             </p>
             
-            <p className="text-gray-700 leading-relaxed mb-4">
+            <p className="text-cvc-fg-muted leading-relaxed mb-4">
               The transition from military service to civilian life can be challenging, especially for combat veterans who have served in Iraq and Afghanistan. Combat Veterans to Careers (CVC) is dedicated to helping these heroes and their families in Central Florida prepare for successful careers in the civilian workforce.
             </p>
             
-            <p className="text-gray-700 leading-relaxed">
+            <p className="text-cvc-fg-muted leading-relaxed">
               If you are interested in learning more about our programs and services, please fill out the form below. We work with veterans who served post-9/11 in Iraq or Afghanistan, require verification of service, and ensure all information is kept confidential.
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Military Background Section */}
-            <div className="bg-white rounded-lg p-8 border border-gray-300">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">Military Background</h2>
+            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-cvc-fg mb-8">Military Background</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Left Column */}
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    <label className="block text-sm font-semibold text-cvc-fg mb-2">
                       Veteran Name<span className="text-red-600">*</span>
                     </label>
                     <input
@@ -193,12 +193,12 @@ export default function VeteranApplication() {
                       value={formData.veteranName}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                      className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    <label className="block text-sm font-semibold text-cvc-fg mb-2">
                       Rank<span className="text-red-600">*</span>
                     </label>
                     <input
@@ -207,12 +207,12 @@ export default function VeteranApplication() {
                       value={formData.rank}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                      className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    <label className="block text-sm font-semibold text-cvc-fg mb-2">
                       Date of Birth<span className="text-red-600">*</span>
                     </label>
                     <div className="grid grid-cols-3 gap-2">
@@ -221,7 +221,7 @@ export default function VeteranApplication() {
                         value={formData.dateOfBirthMonth}
                         onChange={handleChange}
                         required
-                        className="px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                        className="border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                       >
                         <option value="">Month</option>
                         {months.map(month => (
@@ -233,7 +233,7 @@ export default function VeteranApplication() {
                         value={formData.dateOfBirthDay}
                         onChange={handleChange}
                         required
-                        className="px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                        className="border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                       >
                         <option value="">Day</option>
                         {days.map(day => (
@@ -245,7 +245,7 @@ export default function VeteranApplication() {
                         value={formData.dateOfBirthYear}
                         onChange={handleChange}
                         required
-                        className="px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                        className="border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                       >
                         <option value="">Year</option>
                         {years.map(year => (
@@ -256,7 +256,7 @@ export default function VeteranApplication() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    <label className="block text-sm font-semibold text-cvc-fg mb-2">
                       MOS/Rate/AFSC<span className="text-red-600">*</span>
                     </label>
                     <input
@@ -265,12 +265,12 @@ export default function VeteranApplication() {
                       value={formData.mosRateAfsc}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                      className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    <label className="block text-sm font-semibold text-cvc-fg mb-2">
                       Type of Discharge (must be honorable)<span className="text-red-600">*</span>
                     </label>
                     <input
@@ -279,12 +279,12 @@ export default function VeteranApplication() {
                       value={formData.typeOfDischarge}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                      className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-3">
+                    <label className="block text-sm font-semibold text-cvc-fg mb-3">
                       Status for Submitted VA Compensation Claim<span className="text-red-600">*</span>
                     </label>
                     <div className="space-y-2">
@@ -297,9 +297,9 @@ export default function VeteranApplication() {
                             checked={formData.vaCompensationClaimStatus === status}
                             onChange={handleRadioChange}
                             required
-                            className="w-5 h-5 text-blue-600"
+                            className="h-5 w-5 text-patriotic-blue"
                           />
-                          <span className="text-gray-700">{status}</span>
+                          <span className="text-cvc-fg-muted">{status}</span>
                         </label>
                       ))}
                     </div>
@@ -309,7 +309,7 @@ export default function VeteranApplication() {
                 {/* Right Column */}
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-3">
+                    <label className="block text-sm font-semibold text-cvc-fg mb-3">
                       Branch of Service<span className="text-red-600">*</span>
                     </label>
                     <div className="space-y-2">
@@ -320,16 +320,16 @@ export default function VeteranApplication() {
                             value={branch}
                             checked={formData.branchOfService.includes(branch)}
                             onChange={(e) => handleCheckboxChange(e, 'branchOfService')}
-                            className="w-5 h-5 text-blue-600 border-gray-300 rounded"
+                            className="h-5 w-5 rounded border-cvc-border text-patriotic-blue"
                           />
-                          <span className="text-gray-700">{branch}</span>
+                          <span className="text-cvc-fg-muted">{branch}</span>
                         </label>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-3">
+                    <label className="block text-sm font-semibold text-cvc-fg mb-3">
                       Conflict Served In<span className="text-red-600">*</span>
                     </label>
                     <div className="space-y-2">
@@ -340,16 +340,16 @@ export default function VeteranApplication() {
                             value={conflict}
                             checked={formData.conflictServed.includes(conflict)}
                             onChange={(e) => handleCheckboxChange(e, 'conflictServed')}
-                            className="w-5 h-5 text-blue-600 border-gray-300 rounded"
+                            className="h-5 w-5 rounded border-cvc-border text-patriotic-blue"
                           />
-                          <span className="text-gray-700">{conflict}</span>
+                          <span className="text-cvc-fg-muted">{conflict}</span>
                         </label>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-3">
+                    <label className="block text-sm font-semibold text-cvc-fg mb-3">
                       Separation Status<span className="text-red-600">*</span>
                     </label>
                     <div className="space-y-2">
@@ -360,16 +360,16 @@ export default function VeteranApplication() {
                             value={status}
                             checked={formData.separationStatus.includes(status)}
                             onChange={(e) => handleCheckboxChange(e, 'separationStatus')}
-                            className="w-5 h-5 text-blue-600 border-gray-300 rounded"
+                            className="h-5 w-5 rounded border-cvc-border text-patriotic-blue"
                           />
-                          <span className="text-gray-700">{status}</span>
+                          <span className="text-cvc-fg-muted">{status}</span>
                         </label>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    <label className="block text-sm font-semibold text-cvc-fg mb-2">
                       Date Separated (if active duty, please provide anticipated date of separation.)
                     </label>
                     <div className="grid grid-cols-2 gap-2">
@@ -377,7 +377,7 @@ export default function VeteranApplication() {
                         name="dateSeparatedMonth"
                         value={formData.dateSeparatedMonth}
                         onChange={handleChange}
-                        className="px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                        className="border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                       >
                         <option value="">Month</option>
                         {months.map(month => (
@@ -388,7 +388,7 @@ export default function VeteranApplication() {
                         name="dateSeparatedDay"
                         value={formData.dateSeparatedDay}
                         onChange={handleChange}
-                        className="px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                        className="border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                       >
                         <option value="">Day</option>
                         {days.map(day => (
@@ -402,12 +402,12 @@ export default function VeteranApplication() {
             </div>
 
             {/* Military/VA Information Section */}
-            <div className="bg-white rounded-lg p-8 border border-gray-300">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Military/VA Information</h2>
+            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+              <h2 className="text-xl sm:text-2xl font-bold text-cvc-fg mb-6">Military/VA Information</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Military Separated Rating:
                   </label>
                   <input
@@ -415,12 +415,12 @@ export default function VeteranApplication() {
                     name="militarySeparatedRating"
                     value={formData.militarySeparatedRating}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     VA Compensation Rating:
                   </label>
                   <input
@@ -428,12 +428,12 @@ export default function VeteranApplication() {
                     name="vaCompensationRating"
                     value={formData.vaCompensationRating}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     (if no rating has been received for VA) Date VA Compensation Claim Submitted:
                   </label>
                   <div className="grid grid-cols-3 gap-2">
@@ -441,7 +441,7 @@ export default function VeteranApplication() {
                       name="vaClaimSubmittedMonth"
                       value={formData.vaClaimSubmittedMonth}
                       onChange={handleChange}
-                      className="px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                      className="border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                     >
                       <option value="">Month</option>
                       {months.map(month => (
@@ -452,7 +452,7 @@ export default function VeteranApplication() {
                       name="vaClaimSubmittedDay"
                       value={formData.vaClaimSubmittedDay}
                       onChange={handleChange}
-                      className="px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                      className="border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                     >
                       <option value="">Day</option>
                       {days.map(day => (
@@ -463,7 +463,7 @@ export default function VeteranApplication() {
                       name="vaClaimSubmittedYear"
                       value={formData.vaClaimSubmittedYear}
                       onChange={handleChange}
-                      className="px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                      className="border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                     >
                       <option value="">Year</option>
                       {years.map(year => (
@@ -476,12 +476,12 @@ export default function VeteranApplication() {
             </div>
 
             {/* Personal Information Section */}
-            <div className="bg-white rounded-lg p-8 border border-gray-300">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Personal Information</h2>
+            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+              <h2 className="text-xl sm:text-2xl font-bold text-cvc-fg mb-6">Personal Information</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-3">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-3">
                     Marital Status<span className="text-red-600">*</span>
                   </label>
                   <div className="space-y-2">
@@ -494,16 +494,16 @@ export default function VeteranApplication() {
                           checked={formData.maritalStatus === status}
                           onChange={handleRadioChange}
                           required
-                          className="w-5 h-5 text-blue-600"
+                          className="h-5 w-5 text-patriotic-blue"
                         />
-                        <span className="text-gray-700">{status}</span>
+                        <span className="text-cvc-fg-muted">{status}</span>
                       </label>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-3">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-3">
                     Ethnicity<span className="text-red-600">*</span>
                   </label>
                   <div className="space-y-2">
@@ -516,16 +516,16 @@ export default function VeteranApplication() {
                           checked={formData.ethnicity === ethnicity}
                           onChange={handleRadioChange}
                           required
-                          className="w-5 h-5 text-blue-600"
+                          className="h-5 w-5 text-patriotic-blue"
                         />
-                        <span className="text-gray-700">{ethnicity}</span>
+                        <span className="text-cvc-fg-muted">{ethnicity}</span>
                       </label>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Home Address<span className="text-red-600">*</span>
                   </label>
                   <input
@@ -534,12 +534,12 @@ export default function VeteranApplication() {
                     value={formData.homeAddress}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Spouse's Name (if married):
                   </label>
                   <input
@@ -547,12 +547,12 @@ export default function VeteranApplication() {
                     name="spouseName"
                     value={formData.spouseName}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     City<span className="text-red-600">*</span>
                   </label>
                   <input
@@ -561,12 +561,12 @@ export default function VeteranApplication() {
                     value={formData.city}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Home Phone Number<span className="text-red-600">*</span>
                   </label>
                   <input
@@ -575,17 +575,17 @@ export default function VeteranApplication() {
                     value={formData.homePhoneNumber}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
               </div>
             </div>
 
             {/* Contact Information Section */}
-            <div className="bg-white rounded-lg p-8 border border-gray-300">
+            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     State<span className="text-red-600">*</span>
                   </label>
                   <input
@@ -594,13 +594,13 @@ export default function VeteranApplication() {
                     value={formData.state}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                     placeholder="AL"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Cell Phone Number:
                   </label>
                   <input
@@ -608,12 +608,12 @@ export default function VeteranApplication() {
                     name="cellPhoneNumber"
                     value={formData.cellPhoneNumber}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     County<span className="text-red-600">*</span>
                   </label>
                   <input
@@ -622,12 +622,12 @@ export default function VeteranApplication() {
                     value={formData.county}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Email Address<span className="text-red-600">*</span>
                   </label>
                   <input
@@ -636,12 +636,12 @@ export default function VeteranApplication() {
                     value={formData.emailAddress}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Zipcode<span className="text-red-600">*</span>
                   </label>
                   <input
@@ -650,7 +650,7 @@ export default function VeteranApplication() {
                     value={formData.zipcode}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
@@ -663,12 +663,12 @@ export default function VeteranApplication() {
             </div>
 
             {/* Employment Section */}
-            <div className="bg-white rounded-lg p-8 border border-gray-300">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Employment</h2>
+            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+              <h2 className="text-xl sm:text-2xl font-bold text-cvc-fg mb-6">Employment</h2>
               
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Desired Career:
                   </label>
                   <input
@@ -676,13 +676,13 @@ export default function VeteranApplication() {
                     name="desiredCareer"
                     value={formData.desiredCareer}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-3">
+                    <label className="block text-sm font-semibold text-cvc-fg mb-3">
                       Full Time<span className="text-red-600">*</span>
                     </label>
                     <div className="space-y-2">
@@ -695,15 +695,15 @@ export default function VeteranApplication() {
                             checked={formData.fullTime === option}
                             onChange={handleRadioChange}
                             required
-                            className="w-5 h-5 text-blue-600"
+                            className="h-5 w-5 text-patriotic-blue"
                           />
-                          <span className="text-gray-700">{option}</span>
+                          <span className="text-cvc-fg-muted">{option}</span>
                         </label>
                       ))}
                     </div>
                     {formData.fullTime === 'No' && (
                       <div className="mt-3">
-                        <label className="block text-sm font-semibold text-gray-900 mb-2">
+                        <label className="block text-sm font-semibold text-cvc-fg mb-2">
                           If no then please specify how many hours per week:
                         </label>
                         <input
@@ -711,14 +711,14 @@ export default function VeteranApplication() {
                           name="hoursPerWeek"
                           value={formData.hoursPerWeek}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                          className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                         />
                       </div>
                     )}
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-3">
+                    <label className="block text-sm font-semibold text-cvc-fg mb-3">
                       Post 9/11 GI Bill Benefits Available<span className="text-red-600">*</span>
                     </label>
                     <div className="space-y-2">
@@ -731,15 +731,15 @@ export default function VeteranApplication() {
                             checked={formData.post911GIBillAvailable === option}
                             onChange={handleRadioChange}
                             required
-                            className="w-5 h-5 text-blue-600"
+                            className="h-5 w-5 text-patriotic-blue"
                           />
-                          <span className="text-gray-700">{option}</span>
+                          <span className="text-cvc-fg-muted">{option}</span>
                         </label>
                       ))}
                     </div>
                     {formData.post911GIBillAvailable === 'Yes' && (
                       <div className="mt-3">
-                        <label className="block text-sm font-semibold text-gray-900 mb-2">
+                        <label className="block text-sm font-semibold text-cvc-fg mb-2">
                           If Yes, how many months:
                         </label>
                         <input
@@ -747,7 +747,7 @@ export default function VeteranApplication() {
                           name="giBillMonths"
                           value={formData.giBillMonths}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                          className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                         />
                       </div>
                     )}
@@ -755,7 +755,7 @@ export default function VeteranApplication() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Current Position:
                   </label>
                   <input
@@ -763,12 +763,12 @@ export default function VeteranApplication() {
                     name="currentPosition"
                     value={formData.currentPosition}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Current Employer:
                   </label>
                   <input
@@ -776,19 +776,19 @@ export default function VeteranApplication() {
                     name="currentEmployer"
                     value={formData.currentEmployer}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
               </div>
             </div>
 
             {/* Education Section */}
-            <div className="bg-white rounded-lg p-8 border border-gray-300">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Education</h2>
+            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+              <h2 className="text-xl sm:text-2xl font-bold text-cvc-fg mb-6">Education</h2>
               
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Certifications / Licenses Held:
                   </label>
                   <input
@@ -796,13 +796,13 @@ export default function VeteranApplication() {
                     name="certificationsLicenses"
                     value={formData.certificationsLicenses}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-3">
+                    <label className="block text-sm font-semibold text-cvc-fg mb-3">
                       Vocational Rehab<span className="text-red-600">*</span>
                     </label>
                     <div className="space-y-2">
@@ -815,15 +815,15 @@ export default function VeteranApplication() {
                             checked={formData.vocationalRehab === option}
                             onChange={handleRadioChange}
                             required
-                            className="w-5 h-5 text-blue-600"
+                            className="h-5 w-5 text-patriotic-blue"
                           />
-                          <span className="text-gray-700">{option}</span>
+                          <span className="text-cvc-fg-muted">{option}</span>
                         </label>
                       ))}
                     </div>
                     {formData.vocationalRehab === 'Yes' && (
                       <div className="mt-3">
-                        <label className="block text-sm font-semibold text-gray-900 mb-2">
+                        <label className="block text-sm font-semibold text-cvc-fg mb-2">
                           If Yes, name of school:
                         </label>
                         <input
@@ -831,14 +831,14 @@ export default function VeteranApplication() {
                           name="vocationalRehabSchool"
                           value={formData.vocationalRehabSchool}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                          className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                         />
                       </div>
                     )}
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-3">
+                    <label className="block text-sm font-semibold text-cvc-fg mb-3">
                       Are you currently enrolled in school?<span className="text-red-600">*</span>
                     </label>
                     <div className="space-y-2">
@@ -851,16 +851,16 @@ export default function VeteranApplication() {
                             checked={formData.currentlyEnrolledInSchool === option}
                             onChange={handleRadioChange}
                             required
-                            className="w-5 h-5 text-blue-600"
+                            className="h-5 w-5 text-patriotic-blue"
                           />
-                          <span className="text-gray-700">{option}</span>
+                          <span className="text-cvc-fg-muted">{option}</span>
                         </label>
                       ))}
                     </div>
                     {formData.currentlyEnrolledInSchool === 'Yes' && (
                       <div className="mt-3 space-y-3">
                         <div>
-                          <label className="block text-sm font-semibold text-gray-900 mb-2">
+                          <label className="block text-sm font-semibold text-cvc-fg mb-2">
                             If Yes, name of school:
                           </label>
                           <input
@@ -868,11 +868,11 @@ export default function VeteranApplication() {
                             name="schoolName"
                             value={formData.schoolName}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                            className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                           />
                         </div>
                         <div>
-                          <label className="block text-sm font-semibold text-gray-900 mb-2">
+                          <label className="block text-sm font-semibold text-cvc-fg mb-2">
                             Course of study:
                           </label>
                           <input
@@ -880,7 +880,7 @@ export default function VeteranApplication() {
                             name="courseOfStudy"
                             value={formData.courseOfStudy}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                            className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                           />
                         </div>
                       </div>
@@ -891,12 +891,12 @@ export default function VeteranApplication() {
             </div>
 
             {/* Emergency Contact Information Section */}
-            <div className="bg-white rounded-lg p-8 border border-gray-300">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Emergency Contact Information</h2>
+            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+              <h2 className="text-xl sm:text-2xl font-bold text-cvc-fg mb-6">Emergency Contact Information</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Emergency Contact Name<span className="text-red-600">*</span>
                   </label>
                   <input
@@ -905,12 +905,12 @@ export default function VeteranApplication() {
                     value={formData.emergencyContactName}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Emergency Contact Email<span className="text-red-600">*</span>
                   </label>
                   <input
@@ -919,12 +919,12 @@ export default function VeteranApplication() {
                     value={formData.emergencyContactEmail}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Emergency Contact Address<span className="text-red-600">*</span>
                   </label>
                   <input
@@ -933,12 +933,12 @@ export default function VeteranApplication() {
                     value={formData.emergencyContactAddress}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Emergency Contact Home Phone<span className="text-red-600">*</span>
                   </label>
                   <input
@@ -947,17 +947,17 @@ export default function VeteranApplication() {
                     value={formData.emergencyContactHomePhone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
               </div>
             </div>
 
             {/* Acknowledgements Section */}
-            <div className="bg-white rounded-lg p-8 border border-gray-300">
+            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
               <div className="space-y-6">
                 <div>
-                  <p className="text-gray-700 mb-4">
+                  <p className="text-cvc-fg-muted mb-4">
                     By checking the following box, you acknowledge completion and understanding of each step and process by which shall operate.
                   </p>
                   <label className="flex items-center space-x-3 cursor-pointer">
@@ -966,9 +966,9 @@ export default function VeteranApplication() {
                       name="acknowledgementComplete"
                       checked={formData.acknowledgementComplete}
                       onChange={handleChange}
-                      className="w-5 h-5 text-blue-600 border-gray-300 rounded"
+                      className="h-5 w-5 rounded border-cvc-border text-patriotic-blue"
                     />
-                    <span className="text-gray-700">Yes, I acknowledge</span>
+                    <span className="text-cvc-fg-muted">Yes, I acknowledge</span>
                   </label>
                   <label className="flex items-center space-x-3 cursor-pointer mt-2">
                     <input
@@ -976,14 +976,14 @@ export default function VeteranApplication() {
                       name="acknowledgementPost911"
                       checked={formData.acknowledgementPost911}
                       onChange={handleChange}
-                      className="w-5 h-5 text-blue-600 border-gray-300 rounded"
+                      className="h-5 w-5 rounded border-cvc-border text-patriotic-blue"
                     />
-                    <span className="text-gray-700">I served in post-9/11 Iraq or Afghanistan.</span>
+                    <span className="text-cvc-fg-muted">I served in post-9/11 Iraq or Afghanistan.</span>
                   </label>
                 </div>
 
-                <div className="border-t border-gray-300 pt-6">
-                  <p className="text-gray-700 mb-4">
+                <div className="border-t border-cvc-border pt-6">
+                  <p className="text-cvc-fg-muted mb-4">
                     By checking the following box, you agree to use your E-signature in place of a physical signature, and that your E-signature will stand as your legal signature in any and all respects of the law.*
                   </p>
                   <label className="flex items-center space-x-3 cursor-pointer">
@@ -992,16 +992,16 @@ export default function VeteranApplication() {
                       name="eSignatureAgreement"
                       checked={formData.eSignatureAgreement}
                       onChange={handleChange}
-                      className="w-5 h-5 text-blue-600 border-gray-300 rounded"
+                      className="h-5 w-5 rounded border-cvc-border text-patriotic-blue"
                     />
-                    <span className="text-gray-700">I agree to use my E-signature</span>
+                    <span className="text-cvc-fg-muted">I agree to use my E-signature</span>
                   </label>
                 </div>
               </div>
             </div>
 
             {/* Additional Documents Section */}
-            <div className="bg-white rounded-lg p-8 border border-gray-300">
+            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
               <h2 className="text-xl font-bold text-red-600 mb-4">
                 *Additional Documents (Total documents cannot exceed more than 24MB)
               </h2>
@@ -1016,7 +1016,7 @@ export default function VeteranApplication() {
                     name="dd214"
                     onChange={handleFileChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-2 text-cvc-fg file:mr-4 file:rounded file:border-0 file:bg-cvc-hover file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
@@ -1028,7 +1028,7 @@ export default function VeteranApplication() {
                     type="file"
                     name="vaRatingsBreakdown"
                     onChange={handleFileChange}
-                    className="w-full px-4 py-2 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-2 text-cvc-fg file:mr-4 file:rounded file:border-0 file:bg-cvc-hover file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
@@ -1041,12 +1041,12 @@ export default function VeteranApplication() {
                     name="pictureID"
                     onChange={handleFileChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-2 text-cvc-fg file:mr-4 file:rounded file:border-0 file:bg-cvc-hover file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
               </div>
 
-              <div className="border-t border-gray-300 pt-6">
+              <div className="border-t border-cvc-border pt-6">
                 <h3 className="text-lg font-bold text-red-600 mb-4">
                   *VERY IMPORTANT OPSEC Guidelines:
                 </h3>
@@ -1054,28 +1054,28 @@ export default function VeteranApplication() {
                   When creating your biography, please remember to ensure the safety of others overseas and/or still in combat. This is stating the obvious, however, please do not give details concerning the camp where you were stationed, specific routes taken, unit size, procedures, etc. This information may be published world-wide, so please proceed with the obvious measures of precaution and adhere to the military uniformity within OPSEC guidelines.
                 </p>
 
-                <h3 className="text-lg font-bold text-gray-900 mb-4">
+                <h3 className="text-lg font-bold text-cvc-fg mb-4">
                   In order for us to process your application, we will need the following documents:
                 </h3>
 
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-2">DD214:</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-bold text-cvc-fg mb-2">DD214:</h4>
+                    <p className="text-cvc-fg-muted">
                       This is documents you have received from the Department of Defense or the Veterans Administration. If you have been discharged from service please provide your DD214 that shows category of discharge as well. If you are still on active duty, a scanned copy of your Military ID will suffice.
                     </p>
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-2">VA Ratings Breakdown:</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-bold text-cvc-fg mb-2">VA Ratings Breakdown:</h4>
+                    <p className="text-cvc-fg-muted">
                       Your disability rating should be broken down by category of service connected injuries. Not simply a page that shows what your overall rating is. We need to know what your rating(s) is/are in order to best determine how to assist.
                     </p>
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-2">Picture ID:</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-bold text-cvc-fg mb-2">Picture ID:</h4>
+                    <p className="text-cvc-fg-muted">
                       This can be either a copy of your Military ID, Driver's License, VA Card, Etc.
                     </p>
                   </div>
@@ -1084,10 +1084,10 @@ export default function VeteranApplication() {
             </div>
 
             {/* E-Signature Section */}
-            <div className="bg-white rounded-lg p-8 border border-gray-300">
+            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     E-Signature<span className="text-red-600">*</span>
                   </label>
                   <input
@@ -1096,12 +1096,12 @@ export default function VeteranApplication() {
                     value={formData.eSignature}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Date<span className="text-red-600">*</span>
                   </label>
                   <input
@@ -1110,28 +1110,28 @@ export default function VeteranApplication() {
                     value={formData.date}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-cvc-fg mb-2">
                     Security Answer - Please Verify<span className="text-red-600">*</span>
                   </label>
-                  <p className="text-gray-700 mb-2">2+3=?</p>
+                  <p className="text-cvc-fg-muted mb-2">2+3=?</p>
                   <input
                     type="text"
                     name="securityAnswer"
                     value={formData.securityAnswer}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 focus:border-blue-600 focus:outline-none"
+                    className="w-full border border-cvc-border bg-cvc-card-inner px-4 py-3 text-cvc-fg focus:border-patriotic-blue focus:outline-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors shadow-lg"
+                  className="rounded-lg bg-patriotic-blue px-8 py-4 text-lg font-semibold text-white shadow-lg transition-colors hover:bg-patriotic-navy"
                 >
                   SEND
                 </button>
@@ -1139,13 +1139,13 @@ export default function VeteranApplication() {
             </div>
 
             {/* Final Information Section */}
-            <div className="bg-white rounded-lg p-8 border border-gray-300">
+            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
               <div className="space-y-6">
-                <p className="font-bold text-gray-900">
+                <p className="font-bold text-cvc-fg">
                   Please provide us with accurate information about yourself so that we can get the assistance you requested to you as soon as possible!
                 </p>
 
-                <p className="font-bold text-gray-900">
+                <p className="font-bold text-cvc-fg">
                   As with all documents of a secure nature, please mark out your social security number, driver's license number, etc.
                 </p>
 
@@ -1153,43 +1153,43 @@ export default function VeteranApplication() {
                   WARNING: If you do not provide us with your complete documentation as requested, we will not be able to accept your application!
                 </p>
 
-                <div className="border-t border-gray-300 pt-6">
-                  <p className="italic text-gray-700 mb-2">
+                <div className="border-t border-cvc-border pt-6">
+                  <p className="italic text-cvc-fg-muted mb-2">
                     <span className="font-semibold">Privacy Note:</span> Combat Veterans to Careers may use your contact information to send you updates about our programs and services. We do not share your information with third parties.
                   </p>
                 </div>
 
-                <div className="border-t border-gray-300 pt-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">More Information</h3>
+                <div className="border-t border-cvc-border pt-6">
+                  <h3 className="text-xl font-bold text-cvc-fg mb-4">More Information</h3>
                   <ul className="space-y-2">
                     <li>
-                      <a href="/mission" className="text-blue-600 hover:text-blue-700 underline">
+                      <a href="/mission" className="font-medium text-sky-600 underline hover:text-sky-500 dark:text-sky-400 dark:hover:text-sky-300">
                         For more details check out our MISSION page
                       </a>
                     </li>
                     <li>
-                      <a href="/success-stories" className="text-blue-600 hover:text-blue-700 underline">
+                      <a href="/success-stories" className="font-medium text-sky-600 underline hover:text-sky-500 dark:text-sky-400 dark:hover:text-sky-300">
                         View our SUCCESS STORIES
                       </a>
                     </li>
                   </ul>
                 </div>
 
-                <div className="border-t border-gray-300 pt-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Helpful Forms</h3>
+                <div className="border-t border-cvc-border pt-6">
+                  <h3 className="text-xl font-bold text-cvc-fg mb-4">Helpful Forms</h3>
                   <ul className="space-y-2">
                     <li>
-                      <a href="#" className="text-blue-600 hover:text-blue-700 underline">
+                      <a href="#" className="font-medium text-sky-600 underline hover:text-sky-500 dark:text-sky-400 dark:hover:text-sky-300">
                         Disclosure and Authorization Form
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-blue-600 hover:text-blue-700 underline">
+                      <a href="#" className="font-medium text-sky-600 underline hover:text-sky-500 dark:text-sky-400 dark:hover:text-sky-300">
                         VHA Medical Release Form
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-blue-600 hover:text-blue-700 underline">
+                      <a href="#" className="font-medium text-sky-600 underline hover:text-sky-500 dark:text-sky-400 dark:hover:text-sky-300">
                         Appointment of Veterans Service Organization as Claimants Representative
                       </a>
                     </li>

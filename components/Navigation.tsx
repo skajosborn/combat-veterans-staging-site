@@ -23,23 +23,23 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-cvc-nav-border bg-cvc-nav shadow-xl backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-nowrap items-center justify-between gap-2 py-3 min-w-0">
-          {/* Logo */}
+        <div className="flex flex-nowrap items-center justify-between gap-2 py-0.5 min-w-0">
+          {/* Logo — small mark; hero carries the large crest */}
           <div className="flex min-w-0 shrink items-center">
-            <a href="/" className="flex min-w-0 items-center space-x-0 sm:space-x-3 hover:opacity-80 transition-opacity">
-              <div className="relative h-12 w-12 shrink-0 sm:h-14 sm:w-14">
+            <a href="/" className="flex min-w-0 items-center space-x-0 sm:space-x-2 hover:opacity-80 transition-opacity">
+              <div className="relative h-9 w-9 shrink-0 sm:h-10 sm:w-10">
                 <Image
                   src="/CVClogo.png"
                   alt="Combat Veterans to Careers Foundation Logo"
                   fill
                   className="object-contain"
-                  sizes="(max-width: 640px) 48px, 56px"
+                  sizes="(max-width: 640px) 36px, 40px"
                   priority
                 />
               </div>
-              <div className="hidden sm:block text-center leading-tight">
-                <h1 className="text-lg font-semibold text-cvc-fg">Combat Veterans</h1>
-                <p className="text-base font-medium text-cvc-fg-subtle">to Careers</p>
+              <div className="hidden sm:block text-left leading-tight">
+                <h1 className="text-xs font-semibold text-cvc-fg sm:text-sm">Combat Veterans</h1>
+                <p className="text-[11px] font-medium text-cvc-fg-subtle sm:text-xs">to Careers</p>
               </div>
             </a>
           </div>

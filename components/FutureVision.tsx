@@ -4,7 +4,7 @@ import { futurePillars } from '@/lib/futureVision'
 
 export default function FutureVision() {
   return (
-    <section id="vision" className="bg-cvc-page py-24">
+    <section id="vision" className="border-t border-cvc-border bg-cvc-card py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-4xl font-bold text-cvc-fg sm:text-5xl md:text-6xl">
@@ -36,7 +36,7 @@ export default function FutureVision() {
                   src={pillar.image}
                   alt={pillar.title}
                   fill
-                  className="bg-cvc-page object-contain object-center"
+                  className="bg-cvc-card-muted object-contain object-center"
                 />
               </div>
               <div className="p-6">
@@ -54,7 +54,7 @@ export default function FutureVision() {
         <div className="mt-12 text-center">
           <Link
             href="/future-goal"
-            className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 font-semibold text-cvc-fg-on-light transition-colors hover:bg-gray-100"
+            className="inline-flex items-center justify-center rounded-lg border border-cvc-border bg-cvc-page-elevated px-6 py-3 font-semibold text-cvc-fg transition-colors hover:bg-cvc-hover"
           >
             Learn More About the Campus Vision
           </Link>
