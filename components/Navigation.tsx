@@ -44,19 +44,22 @@ export default function Navigation() {
             </a>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex flex-1 items-center justify-end gap-3 lg:gap-5">
-            <div className="flex flex-1 flex-wrap items-center justify-end gap-4 lg:gap-6">
+          {/* Tablet/desktop: one row — nowrap + scroll if viewport is tight (avoids wrap under the bar) */}
+          <div className="hidden min-w-0 flex-1 items-center justify-end gap-2 md:flex lg:gap-4">
+            <nav
+              aria-label="Main"
+              className="scrollbar-hide flex min-w-0 max-w-full flex-1 flex-nowrap items-center justify-end gap-x-2 overflow-x-auto overflow-y-visible py-0.5 md:gap-x-2.5 lg:gap-x-4 xl:gap-x-5"
+            >
               {navLinks.map(({ label, href }) => (
                 <Link
                   key={href}
                   href={href}
-                  className="whitespace-nowrap text-sm font-medium text-cvc-fg-muted transition-colors hover:text-cvc-fg"
+                  className="shrink-0 whitespace-nowrap text-xs font-medium text-cvc-fg-muted transition-colors hover:text-cvc-fg lg:text-sm"
                 >
                   {label}
                 </Link>
               ))}
-            </div>
+            </nav>
             <ThemeToggle className="shrink-0" />
           </div>
 

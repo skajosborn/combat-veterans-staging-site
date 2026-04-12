@@ -134,7 +134,7 @@ export default function Hero() {
 
       <div className="pointer-events-none absolute inset-x-0 top-[2.5rem] bottom-0 z-0 bg-cvc-hero-shade sm:top-[2.75rem]"></div>
 
-      <div className="relative z-10 mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col justify-start px-4 pb-3 pt-[2.5rem] sm:px-6 sm:pb-4 sm:pt-[2.75rem] lg:justify-center lg:px-8 lg:pb-6 lg:pt-[2.75rem]">
+      <div className="relative z-10 mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col justify-start px-4 pb-3 pt-[4.125rem] sm:px-6 sm:pb-4 sm:pt-[3.75rem] md:pt-[4.5rem] lg:justify-center lg:px-8 lg:pb-6 lg:pt-[2.75rem]">
         <div className="grid min-h-0 w-full min-w-0 grid-cols-1 content-start items-start gap-1.5 sm:gap-2 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-start lg:gap-8 lg:pt-6 xl:grid-cols-[minmax(0,24rem)_minmax(0,1fr)] xl:gap-10 xl:pt-10">
           {/* Desktop: Explore slides out to the right of the logo (no downward spill into next section) */}
           <div
