@@ -4,7 +4,12 @@ export default function Mission() {
   return (
     <section id="mission" className="bg-cvc-section-alt py-24">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <SectionTitle title="Our Mission" size="page" className="mb-8" />
+        <SectionTitle
+          title="Our Mission"
+          size="page"
+          blueprintStarsBackdropClassName="bg-cvc-section-alt"
+          className="mb-8"
+        />
 
         <div className="space-y-6 text-base leading-relaxed text-cvc-fg-muted sm:text-lg">
           <p>
@@ -48,6 +53,7 @@ export default function Mission() {
             size="subsection"
             align="left"
             showBottomRule={false}
+            blueprintStarsBackdropClassName="bg-cvc-card"
             className="mb-4"
           />
           <div className="aspect-video w-full overflow-hidden rounded-lg border border-cvc-border-muted">

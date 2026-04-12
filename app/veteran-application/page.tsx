@@ -150,14 +150,14 @@ export default function VeteranApplication() {
             />
           </div>
 
-          <SectionTitle as="h2" title="Application" size="page" align="center" className="mb-8" />
+          <SectionTitle as="h1" title="Application" size="page" align="center" className="mb-8" />
 
           {/* Information For Veterans Section */}
           <div className="mb-12 rounded-lg border border-cvc-border bg-cvc-card p-8">
             <SectionTitle
-              as="h1"
+              as="h2"
               title="Information For Veterans"
-              size="page"
+              size="subsection"
               align="left"
               className="mb-6"
               subtitle={
@@ -182,7 +182,13 @@ export default function VeteranApplication() {
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Military Background Section */}
             <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
-              <SectionTitle title="Military Background" size="subsection" align="left" className="mb-8" />
+              <SectionTitle
+                title="Military Background"
+                size="subsection"
+                align="left"
+                blueprintStarsBackdropClassName="bg-cvc-card"
+                className="mb-8"
+              />
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Left Column */}
@@ -407,7 +413,13 @@ export default function VeteranApplication() {
 
             {/* Military/VA Information Section */}
             <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
-              <SectionTitle title="Military/VA Information" size="subsection" align="left" className="mb-6" />
+              <SectionTitle
+                title="Military/VA Information"
+                size="subsection"
+                align="left"
+                blueprintStarsBackdropClassName="bg-cvc-card"
+                className="mb-6"
+              />
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -481,7 +493,13 @@ export default function VeteranApplication() {
 
             {/* Personal Information Section */}
             <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
-              <SectionTitle title="Personal Information" size="subsection" align="left" className="mb-6" />
+              <SectionTitle
+                title="Personal Information"
+                size="subsection"
+                align="left"
+                blueprintStarsBackdropClassName="bg-cvc-card"
+                className="mb-6"
+              />
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -668,7 +686,13 @@ export default function VeteranApplication() {
 
             {/* Employment Section */}
             <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
-              <SectionTitle title="Employment" size="subsection" align="left" className="mb-6" />
+              <SectionTitle
+                title="Employment"
+                size="subsection"
+                align="left"
+                blueprintStarsBackdropClassName="bg-cvc-card"
+                className="mb-6"
+              />
               
               <div className="space-y-6">
                 <div>
@@ -788,7 +812,13 @@ export default function VeteranApplication() {
 
             {/* Education Section */}
             <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
-              <SectionTitle title="Education" size="subsection" align="left" className="mb-6" />
+              <SectionTitle
+                title="Education"
+                size="subsection"
+                align="left"
+                blueprintStarsBackdropClassName="bg-cvc-card"
+                className="mb-6"
+              />
               
               <div className="space-y-6">
                 <div>
@@ -896,7 +926,13 @@ export default function VeteranApplication() {
 
             {/* Emergency Contact Information Section */}
             <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
-              <SectionTitle title="Emergency Contact Information" size="subsection" align="left" className="mb-6" />
+              <SectionTitle
+                title="Emergency Contact Information"
+                size="subsection"
+                align="left"
+                blueprintStarsBackdropClassName="bg-cvc-card"
+                className="mb-6"
+              />
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -1012,6 +1048,7 @@ export default function VeteranApplication() {
                 align="left"
                 uppercaseTitle={false}
                 titleClassName="!text-red-600 dark:!text-red-500"
+                blueprintStarsBackdropClassName="bg-cvc-card"
                 className="mb-4"
               />
               
@@ -1064,6 +1101,7 @@ export default function VeteranApplication() {
                   showBottomRule={false}
                   uppercaseTitle={false}
                   titleClassName="!text-lg !text-red-600 dark:!text-red-500"
+                  blueprintStarsBackdropClassName="bg-cvc-card"
                   className="mb-4"
                 />
                 <p className="text-red-600 mb-6">
@@ -1078,6 +1116,7 @@ export default function VeteranApplication() {
                   showBottomRule={false}
                   uppercaseTitle={false}
                   titleClassName="!text-lg !font-bold !normal-case"
+                  blueprintStarsBackdropClassName="bg-cvc-card"
                   className="mb-4"
                 />
 
@@ -1091,6 +1130,7 @@ export default function VeteranApplication() {
                       showBottomRule={false}
                       uppercaseTitle={false}
                       titleClassName="!mb-2 !text-base !font-bold"
+                      blueprintStarsBackdropClassName="bg-cvc-card"
                       className="!mb-0"
                     />
                     <p className="text-cvc-fg-muted">
@@ -1107,6 +1147,7 @@ export default function VeteranApplication() {
                       showBottomRule={false}
                       uppercaseTitle={false}
                       titleClassName="!mb-2 !text-base !font-bold"
+                      blueprintStarsBackdropClassName="bg-cvc-card"
                       className="!mb-0"
                     />
                     <p className="text-cvc-fg-muted">
@@ -1123,6 +1164,7 @@ export default function VeteranApplication() {
                       showBottomRule={false}
                       uppercaseTitle={false}
                       titleClassName="!mb-2 !text-base !font-bold"
+                      blueprintStarsBackdropClassName="bg-cvc-card"
                       className="!mb-0"
                     />
                     <p className="text-cvc-fg-muted">
@@ -1210,7 +1252,13 @@ export default function VeteranApplication() {
                 </div>
 
                 <div className="border-t border-cvc-border pt-6">
-                  <SectionTitle title="More Information" size="subsection" align="left" className="mb-4" />
+                  <SectionTitle
+                    title="More Information"
+                    size="subsection"
+                    align="left"
+                    blueprintStarsBackdropClassName="bg-cvc-card"
+                    className="mb-4"
+                  />
                   <ul className="space-y-2">
                     <li>
                       <a href="/mission" className="font-medium text-sky-600 underline hover:text-sky-500 dark:text-sky-400 dark:hover:text-sky-300">
@@ -1226,7 +1274,13 @@ export default function VeteranApplication() {
                 </div>
 
                 <div className="border-t border-cvc-border pt-6">
-                  <SectionTitle title="Helpful Forms" size="subsection" align="left" className="mb-4" />
+                  <SectionTitle
+                    title="Helpful Forms"
+                    size="subsection"
+                    align="left"
+                    blueprintStarsBackdropClassName="bg-cvc-card"
+                    className="mb-4"
+                  />
                   <ul className="space-y-2">
                     <li>
                       <a href="#" className="font-medium text-sky-600 underline hover:text-sky-500 dark:text-sky-400 dark:hover:text-sky-300">

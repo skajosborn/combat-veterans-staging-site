@@ -20,6 +20,7 @@ export default function WhatsNextPage() {
             size="page"
             align="left"
             uppercaseTitle={false}
+            blueprintStarsBackdropClassName="bg-cvc-card-muted"
             subtitle={
               <>
           <p className="mb-5 leading-relaxed text-cvc-fg-muted">
@@ -50,6 +51,7 @@ export default function WhatsNextPage() {
             size="subsection"
             align="left"
             uppercaseTitle={false}
+            blueprintStarsBackdropClassName="bg-cvc-card-muted"
             className="mb-5"
           />
           <ul className="mb-6 list-disc space-y-2 pl-6 text-cvc-fg-muted">

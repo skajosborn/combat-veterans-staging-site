@@ -12,6 +12,7 @@ export default function DonatePage() {
                 as="h1"
                 title="Stand With Our Veterans"
                 size="display"
+                blueprintStarsBackdropClassName="bg-cvc-page-elevated"
                 prefix={
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cvc-fg-muted">
                     Support Our Mission
@@ -41,7 +42,13 @@ export default function DonatePage() {
 
           <div className="grid grid-cols-1 gap-8 p-8 sm:p-10 lg:grid-cols-3 lg:p-12">
             <div className="rounded-2xl border border-cvc-border bg-cvc-card-deep p-6 lg:col-span-2">
-              <SectionTitle title="Make a Difference Today" size="subsection" align="left" className="mb-4" />
+              <SectionTitle
+                title="Make a Difference Today"
+                size="subsection"
+                align="left"
+                blueprintStarsBackdropClassName="bg-cvc-card-deep"
+                className="mb-4"
+              />
               <p className="mb-6 leading-relaxed text-cvc-fg-muted">
                 Every donation strengthens our ability to serve veterans with practical
                 resources and long-term support. Whether you choose one-time giving,

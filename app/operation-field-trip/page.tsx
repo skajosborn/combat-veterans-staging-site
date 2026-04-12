@@ -35,7 +35,13 @@ export default function OperationFieldTripPage() {
 
           <div className="space-y-8 p-6 sm:p-8 lg:p-10">
             <div className="rounded-2xl border border-cvc-border bg-cvc-card-muted p-6 sm:p-7">
-              <SectionTitle title="What Is Operation Field Trip?" size="subsection" align="left" className="mb-3" />
+              <SectionTitle
+                title="What Is Operation Field Trip?"
+                size="subsection"
+                align="left"
+                blueprintStarsBackdropClassName="bg-cvc-card-muted"
+                className="mb-3"
+              />
               <p className="leading-relaxed text-cvc-fg-muted">
                 Operation Field Trip is a healing mission-by veterans, for
                 veterans and first responders. In partnership with Take A Knee
@@ -50,6 +56,7 @@ export default function OperationFieldTripPage() {
                 title="Why Ketamine-Assisted Therapy?"
                 size="subsection"
                 align="left"
+                blueprintStarsBackdropClassName="bg-cvc-card-muted"
                 className="mb-3"
               />
               <p className="leading-relaxed text-cvc-fg-muted">
@@ -61,7 +68,13 @@ export default function OperationFieldTripPage() {
             </div>
 
             <div className="rounded-2xl border border-cvc-border bg-cvc-card-muted p-6 sm:p-7">
-              <SectionTitle title="The Cost of Healing" size="subsection" align="left" className="mb-4" />
+              <SectionTitle
+                title="The Cost of Healing"
+                size="subsection"
+                align="left"
+                blueprintStarsBackdropClassName="bg-cvc-card-muted"
+                className="mb-4"
+              />
               <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div className="rounded-xl border border-cvc-border-muted bg-cvc-card-deep p-4">
                   <p className="text-2xl font-bold text-cvc-fg">$625</p>
@@ -84,7 +97,13 @@ export default function OperationFieldTripPage() {
 
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
               <div className="rounded-2xl border border-cvc-border-muted bg-cvc-card-inner p-6 lg:col-span-3">
-                <SectionTitle title="How You Can Help" size="subsection" align="left" className="mb-3" />
+                <SectionTitle
+                  title="How You Can Help"
+                  size="subsection"
+                  align="left"
+                  blueprintStarsBackdropClassName="bg-cvc-card-inner"
+                  className="mb-3"
+                />
                 <ul className="list-disc space-y-2 pl-6 text-cvc-fg-muted">
                   <li>Sponsor a veteran or first responder</li>
                   <li>Share this mission with your community</li>
@@ -106,6 +125,7 @@ export default function OperationFieldTripPage() {
                     showBottomRule={false}
                     uppercaseTitle={false}
                     titleClassName="!text-xl"
+                    blueprintStarsBackdropClassName="bg-cvc-card-inner"
                     className="mb-2"
                   />
                   <p className="mb-5 leading-relaxed text-cvc-fg-muted">
@@ -123,7 +143,13 @@ export default function OperationFieldTripPage() {
             </div>
 
             <div className="rounded-2xl border border-cvc-border-muted bg-cvc-card-inner p-4 sm:p-6">
-              <SectionTitle title="Watch: Operation Field Trip" size="subsection" align="left" className="mb-4" />
+              <SectionTitle
+                title="Watch: Operation Field Trip"
+                size="subsection"
+                align="left"
+                blueprintStarsBackdropClassName="bg-cvc-card-inner"
+                className="mb-4"
+              />
               <div className="aspect-video w-full overflow-hidden rounded-lg border border-cvc-border-muted">
                 <iframe
                   className="h-full w-full"

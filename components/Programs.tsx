@@ -40,6 +40,7 @@ export default function Programs() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="Our Programs"
+          blueprintStarsBackdropClassName="bg-cvc-page-elevated"
           className="mb-16"
           subtitle={
             <p className="mx-auto max-w-3xl text-lg text-cvc-fg-subtle">

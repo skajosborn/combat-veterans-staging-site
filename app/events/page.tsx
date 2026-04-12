@@ -16,6 +16,7 @@ export default function EventsPage() {
             title="Events"
             size="page"
             align="left"
+            blueprintStarsBackdropClassName="bg-cvc-card"
             subtitle={
               <p className="leading-relaxed text-cvc-fg-muted">
                 Explore recent and upcoming events and veteran-focused activities.
@@ -27,7 +28,13 @@ export default function EventsPage() {
         <EventsCarousel />
 
         <div className="mb-8 rounded-2xl border border-cvc-border bg-cvc-card p-6 sm:p-8">
-          <SectionTitle title="Event Timeline" size="subsection" align="left" className="mb-6" />
+          <SectionTitle
+            title="Event Timeline"
+            size="subsection"
+            align="left"
+            blueprintStarsBackdropClassName="bg-cvc-card"
+            className="mb-6"
+          />
           <div className="relative space-y-5 pl-8">
             <div className="absolute bottom-2 left-2 top-2 w-px bg-cvc-border-muted" />
             {events.map((event) => (
@@ -54,7 +61,13 @@ export default function EventsPage() {
         </div>
 
         <div className="mb-8 rounded-2xl border border-cvc-border bg-cvc-card p-6 sm:p-8">
-          <SectionTitle title="Event Calendar" size="subsection" align="left" className="mb-6" />
+          <SectionTitle
+            title="Event Calendar"
+            size="subsection"
+            align="left"
+            blueprintStarsBackdropClassName="bg-cvc-card"
+            className="mb-6"
+          />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {calendarMonths.map((month) => {
               const monthEvents = events.filter((event) => event.month === month)
@@ -90,7 +103,7 @@ export default function EventsPage() {
               key={event.slug}
               className="rounded-2xl border border-cvc-border bg-cvc-card p-4 sm:p-6"
             >
-              <div className="mb-4 flex items-start justify-between gap-4">
+              <div className="mb-4">
                 <SectionTitle
                   as="h2"
                   title={event.title}
@@ -98,14 +111,9 @@ export default function EventsPage() {
                   align="left"
                   uppercaseTitle={false}
                   showBottomRule={false}
-                  className="min-w-0 flex-1 [&_h2]:text-xl [&_h2]:sm:text-2xl"
+                  blueprintStarsBackdropClassName="bg-cvc-card"
+                  className="[&_h2]:text-xl [&_h2]:sm:text-2xl"
                 />
-                <Link
-                  href={`/events/${event.slug}`}
-                  className="shrink-0 rounded-lg border border-cvc-border-strong px-3 py-1.5 text-sm font-semibold text-cvc-fg transition-colors hover:bg-cvc-hover"
-                >
-                  Open page
-                </Link>
               </div>
               {event.embedSrc ? (
                 <div className="aspect-video w-full overflow-hidden rounded-lg border border-cvc-border-muted">

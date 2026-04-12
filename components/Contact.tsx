@@ -1,31 +1,9 @@
 'use client'
 
-import Image from 'next/image'
-import { useState } from 'react'
-import { FileText, MapPin, Mail, Phone } from 'lucide-react'
+import { MapPin, Mail, Phone } from 'lucide-react'
 import SectionTitle from '@/components/SectionTitle'
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-  })
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
-
   return (
     <section
       id="contact"
@@ -37,8 +15,8 @@ export default function Contact() {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* Solid base matches dark theme body so there is no light strip above; overlay keeps the flag readable */}
-      <div className="absolute inset-0 bg-cvc-image-overlay" />
+      {/* Fixed overlay matches dark-mode hero so this block looks the same in site light or dark theme */}
+      <div className="absolute inset-0 bg-[rgb(15_20_34/0.55)]" aria-hidden />
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left side - Info */}
@@ -46,11 +24,13 @@ export default function Contact() {
             <SectionTitle
               title="Ready to Take the Next Step?"
               size="display"
-              variant="inverse"
+              variant="default"
               align="left"
               uppercaseTitle={false}
+              titleClassName="!text-[#a8b892]"
+              blueprintStarsBackdropClassName="rounded-sm bg-black px-2.5 py-1"
               subtitle={
-                <p className="mb-8 text-lg text-cvc-hero-fg-muted">
+                <p className="mb-8 text-lg text-[rgb(255_255_255/0.88)]">
                   We&apos;re here to support you every step of the way.
                 </p>
               }
@@ -58,40 +38,40 @@ export default function Contact() {
 
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="text-[#D4AF37] p-3 rounded-lg">
-                  <MapPin className="w-6 h-6" strokeWidth={1.5} />
+                <div className="p-3 text-[#a8b892]">
+                  <MapPin className="h-6 w-6" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h3 className="mb-1 font-semibold text-cvc-hero-fg">Combat Veterans to Careers</h3>
-                  <p className="text-cvc-hero-fg-muted">400 E Gulf Atlantic Highway</p>
-                  <p className="text-cvc-hero-fg-muted">Wildwood, FL 34785</p>
+                  <h3 className="mb-1 font-semibold text-[#a8b892]">Combat Veterans to Careers</h3>
+                  <p className="text-[rgb(255_255_255/0.88)]">400 E Gulf Atlantic Highway</p>
+                  <p className="text-[rgb(255_255_255/0.88)]">Wildwood, FL 34785</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="text-[#D4AF37] p-3 rounded-lg">
-                  <Mail className="w-6 h-6" strokeWidth={1.5} />
+                <div className="p-3 text-[#a8b892]">
+                  <Mail className="h-6 w-6" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h3 className="mb-1 font-semibold text-cvc-hero-fg">Email</h3>
-                  <p className="text-cvc-hero-fg-muted">CombatVeteranstoCareers@gmail.com</p>
+                  <h3 className="mb-1 font-semibold text-[#a8b892]">Email</h3>
+                  <p className="text-[rgb(255_255_255/0.88)]">CombatVeteranstoCareers@gmail.com</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="text-[#D4AF37] p-3 rounded-lg">
-                  <Phone className="w-6 h-6" strokeWidth={1.5} />
+                <div className="p-3 text-[#a8b892]">
+                  <Phone className="h-6 w-6" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h3 className="mb-1 font-semibold text-cvc-hero-fg">Office</h3>
-                  <p className="text-cvc-hero-fg-muted">352-775-4008</p>
+                  <h3 className="mb-1 font-semibold text-[#a8b892]">Office</h3>
+                  <p className="text-[rgb(255_255_255/0.88)]">352-775-4008</p>
                 </div>
               </div>
 
             </div>
           </div>
 
-          {/* Right side — CTA only; no panel so the gold button reads on the flag */}
+          {/* Right side — CTA only; no panel so the button reads clearly on the flag */}
           <div className="flex flex-col items-center lg:items-end">
             <div className="w-full max-w-md space-y-4 text-center">
               <a
@@ -105,7 +85,7 @@ export default function Contact() {
                 <span className="block text-lg font-bold">Start Your Transition Today</span>
                 <span className="block mt-0.5 text-sm">Apply for Veteran Support →</span>
               </a>
-              <p className="text-xs text-cvc-hero-fg-muted">
+              <p className="text-xs text-[rgb(255_255_255/0.65)]">
                 Confidential. Veteran-led. No one fights alone.
               </p>
             </div>

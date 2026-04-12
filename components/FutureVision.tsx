@@ -9,6 +9,7 @@ export default function FutureVision() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="Our Vision"
+          blueprintStarsBackdropClassName="bg-cvc-card"
           className="mb-16"
           subtitle={
             <p className="mx-auto max-w-3xl text-lg font-normal text-cvc-fg-muted">
@@ -19,7 +20,7 @@ export default function FutureVision() {
         >
           <Link
             href="/future-goal"
-            className="inline-flex items-center text-sm font-bold text-patriotic-navy transition-colors hover:text-patriotic-blue dark:text-cvc-fg dark:hover:text-cvc-fg-muted"
+            className="inline-flex items-center text-sm font-bold text-cvc-cta-fill transition-opacity hover:opacity-80"
           >
             Explore the full vision
             <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
@@ -57,7 +58,7 @@ export default function FutureVision() {
         <div className="mt-12 text-center">
           <Link
             href="/future-goal"
-            className="inline-flex items-center justify-center rounded-lg border border-cvc-border bg-cvc-page-elevated px-6 py-3 font-semibold text-cvc-fg transition-colors hover:bg-cvc-hover"
+            className="inline-flex items-center justify-center rounded-lg bg-cvc-cta-fill px-6 py-3 font-semibold text-white shadow-md transition-[filter,box-shadow] hover:brightness-110"
           >
             Learn More About the Campus Vision
           </Link>

@@ -34,6 +34,8 @@
     --cvc-glass-panel: rgb(255 255 255 / 0.92);
     /* Section headings (SectionTitle default) — army olive on light surfaces */
     --cvc-section-title: #3d4a2c;
+    /* Solid CTA buttons: fixed in both themes (not tied to --cvc-section-title in .dark) */
+    --cvc-cta-fill: #3d4a2c;
   }
 
   .dark {

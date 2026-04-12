@@ -30,6 +30,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
             size="page"
             align="left"
             uppercaseTitle={false}
+            blueprintStarsBackdropClassName="bg-cvc-card"
             prefix={
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cvc-fg-subtle">
                 {event.month} - {event.dateLabel}

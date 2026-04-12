@@ -226,6 +226,7 @@ export default function SponsorsPage() {
             title="Sponsors"
             size="page"
             align="left"
+            blueprintStarsBackdropClassName="bg-cvc-card"
             subtitle={
               <p className="leading-relaxed text-cvc-fg-muted">
                 We are grateful for the businesses, organizations, and community partners who stand with Combat

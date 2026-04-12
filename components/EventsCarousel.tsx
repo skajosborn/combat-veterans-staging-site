@@ -42,7 +42,13 @@ export default function EventsCarousel() {
 
   return (
     <div className="mb-8 rounded-2xl border border-cvc-border bg-cvc-card p-4 sm:p-6">
-      <SectionTitle title="Featured Flyers" size="subsection" align="left" className="mb-4" />
+      <SectionTitle
+        title="Featured Flyers"
+        size="subsection"
+        align="left"
+        blueprintStarsBackdropClassName="bg-cvc-card"
+        className="mb-4"
+      />
 
       <div className="relative overflow-hidden rounded-xl border border-cvc-border-muted bg-cvc-page">
         <div className="relative h-[340px] w-full sm:h-[460px] lg:h-[520px]">

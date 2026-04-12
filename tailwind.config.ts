@@ -39,6 +39,7 @@ const config: Config = {
           'audio-bar': 'var(--cvc-audio-bar)',
           'glass-panel': 'var(--cvc-glass-panel)',
           'section-title': 'var(--cvc-section-title)',
+          'cta-fill': 'var(--cvc-cta-fill)',
         },
         'patriotic-red': '#B22234',
         'patriotic-blue': '#3C3B6E',

@@ -28,7 +28,7 @@ const NavLinkButton: React.FC<NavLinkButtonProps> = ({
 
   if (compact) {
     const heroCompact =
-      'border border-slate-200/90 bg-white text-cvc-fg shadow-md hover:border-slate-300 hover:bg-slate-100 hover:shadow-lg dark:border-cvc-border dark:bg-cvc-card dark:hover:border-cvc-border-strong dark:hover:bg-cvc-hover';
+      'border border-slate-200/90 bg-white text-cvc-fg shadow-md hover:border-slate-300 hover:bg-slate-100 hover:shadow-lg';
     const defaultCompact = `border border-cvc-navlink-border bg-cvc-navlink ${
       isDonate
         ? 'hover:shadow-white-glow'

@@ -44,7 +44,13 @@ export default function FutureGoalPage() {
             </div>
 
             <div className="rounded-xl border border-red-500/40 bg-red-50 p-6 dark:bg-[#2a0f1a]">
-              <SectionTitle title="Why This Matters Right Now" size="subsection" align="left" className="mb-3" />
+              <SectionTitle
+                title="Why This Matters Right Now"
+                size="subsection"
+                align="left"
+                blueprintStarsBackdropClassName="bg-red-50 dark:bg-[#2a0f1a]"
+                className="mb-3"
+              />
               <p className="leading-relaxed text-red-900 dark:text-red-200">
                 Veteran suicide remains a national emergency. With dozens of
                 attempts occurring daily, this campus is designed to provide
@@ -57,7 +63,13 @@ export default function FutureGoalPage() {
             </div>
 
             <div>
-              <SectionTitle title="Planned Campus Components" size="subsection" align="left" className="mb-5" />
+              <SectionTitle
+                title="Planned Campus Components"
+                size="subsection"
+                align="left"
+                blueprintStarsBackdropClassName="bg-cvc-card"
+                className="mb-5"
+              />
               <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
                 {futurePillars.map((pillar) => (
                   <div
@@ -84,7 +96,13 @@ export default function FutureGoalPage() {
             </div>
 
             <div className="rounded-xl border border-cvc-border-muted bg-cvc-card-inner p-6">
-              <SectionTitle title="Help Build This Future" size="subsection" align="left" className="mb-3" />
+              <SectionTitle
+                title="Help Build This Future"
+                size="subsection"
+                align="left"
+                blueprintStarsBackdropClassName="bg-cvc-card-inner"
+                className="mb-3"
+              />
               <p className="leading-relaxed text-cvc-fg-muted">
                 This vision is funded by donors, sponsors, partners, and community
                 support. Every contribution helps create a campus where veterans can

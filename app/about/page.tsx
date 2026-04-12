@@ -17,6 +17,7 @@ export default function AboutPage() {
             title="About"
             size="page"
             align="center"
+            blueprintStarsBackdropClassName="bg-cvc-card"
             subtitle={
               <p className="mx-auto max-w-3xl leading-relaxed text-cvc-fg-muted">
                 Combat Veterans to Careers Foundation empowers combat veterans to transition into successful
@@ -54,6 +55,7 @@ export default function AboutPage() {
                   align="left"
                   uppercaseTitle={false}
                   showBottomRule={false}
+                  blueprintStarsBackdropClassName="bg-cvc-card"
                   className="min-w-0 flex-1 [&_h2]:!mb-0"
                 />
               </div>
@@ -108,6 +110,7 @@ export default function AboutPage() {
             title="Our Mission"
             size="subsection"
             align="left"
+            blueprintStarsBackdropClassName="bg-cvc-card"
             subtitle={
               <p className="leading-relaxed text-cvc-fg-muted">
             We connect veterans with opportunities, training, and a supportive
