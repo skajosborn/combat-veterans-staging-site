@@ -282,13 +282,13 @@ export default function Hero() {
             <div className="flex flex-col justify-center gap-1.5 pt-1 sm:flex-row sm:gap-2 lg:justify-start">
               <a
                 href="/veteran-application"
-                className="rounded-lg bg-white px-4 py-2 text-center text-sm font-semibold text-cvc-fg-on-light shadow-lg transition-all hover:bg-gray-100"
+                className="rounded-lg bg-gradient-to-b from-red-600 to-patriotic-red px-4 py-2 text-center text-sm font-semibold text-white shadow-[inset_0_1px_0_0_rgb(255_255_255_/_0.22),0_4px_0_0_rgb(100_20_30),0_8px_24px_-6px_rgb(0_0_0_/_0.55)] ring-1 ring-white/15 transition-[filter,transform,box-shadow] hover:brightness-110 hover:shadow-[inset_0_1px_0_0_rgb(255_255_255_/_0.25),0_3px_0_0_rgb(100_20_30),0_10px_28px_-6px_rgb(0_0_0_/_0.5)] active:translate-y-px active:shadow-[inset_0_2px_4px_rgb(0_0_0_/_0.2),0_2px_0_0_rgb(100_20_30)]"
               >
                 Start Your Transition
               </a>
               <a
                 href="#programs"
-                className="rounded-lg border border-slate-200/90 bg-white/95 px-4 py-2 text-center text-sm font-semibold text-cvc-fg-on-light shadow-md backdrop-blur-sm transition-all hover:border-slate-300 hover:bg-white"
+                className="rounded-lg border border-white/45 bg-slate-950/40 px-4 py-2 text-center text-sm font-semibold text-white shadow-md backdrop-blur-sm transition-colors hover:border-white/65 hover:bg-slate-950/55"
               >
                 Learn More
               </a>
