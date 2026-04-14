@@ -44,6 +44,7 @@ export default function Mission() {
             a few of the ways we continue to help our veterans transition back
             into civilian life.
           </p>
+
         </div>
 
         <div className="mt-10 rounded-2xl border border-cvc-border bg-cvc-card p-4 sm:p-6">

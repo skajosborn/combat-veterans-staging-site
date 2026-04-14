@@ -30,7 +30,7 @@ export default function Navigation() {
               <div className="relative h-9 w-9 shrink-0 sm:h-10 sm:w-10">
                 <Image
                   src="/CVClogo.png"
-                  alt="Combat Veterans to Careers Foundation Logo"
+                  alt="Combat Veterans to Careers Organization Logo"
                   fill
                   className="object-contain"
                   sizes="(max-width: 640px) 36px, 40px"

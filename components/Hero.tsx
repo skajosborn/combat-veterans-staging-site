@@ -146,7 +146,7 @@ export default function Hero() {
                 <div className="relative flex max-h-[min(38svh,300px)] w-[min(92%,380px)] max-w-full shrink-0 animate-slide-in-from-left items-center justify-center sm:max-h-[min(42svh,340px)] lg:max-h-[min(52svh,420px)] lg:w-full">
                   <Image
                     src="/CVClogo.png"
-                    alt="Combat Veterans to Careers Foundation Logo"
+                    alt="Combat Veterans to Careers Organization Logo"
                     width={640}
                     height={640}
                     className="h-auto max-h-full w-full object-contain drop-shadow-[0_12px_40px_rgba(0,0,0,0.55)]"

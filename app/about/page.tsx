@@ -2,7 +2,7 @@ import Image from 'next/image'
 import SectionTitle from '@/components/SectionTitle'
 
 export const metadata = {
-  title: 'About | Combat Veterans to Careers Foundation',
+  title: 'About | Combat Veterans to Careers Organization',
   description:
     'Learn about Combat Veterans to Careers and meet David Booth, supporting veterans in their transition to civilian careers.',
 }
@@ -14,15 +14,36 @@ export default function AboutPage() {
         <div className="mb-10 rounded-2xl border border-cvc-border bg-cvc-card p-8 sm:p-10">
           <SectionTitle
             as="h1"
-            title="About"
+            title="Our Mission"
             size="page"
             align="center"
             blueprintStarsBackdropClassName="bg-cvc-card"
             subtitle={
-              <p className="mx-auto max-w-3xl leading-relaxed text-cvc-fg-muted">
-                Combat Veterans to Careers Foundation empowers combat veterans to transition into successful
-                civilian careers through programs, mentorship, and community support.
-              </p>
+              <div className="mx-auto max-w-3xl space-y-4 leading-relaxed text-cvc-fg-muted">
+                <p>
+                  Combat Veterans to Careers exists to ensure that no veteran has to
+                  face the transition to civilian life alone. Through 360° of
+                  support, we connect veterans to career development, community
+                  resources, healing-centered programs, and the guidance they need to
+                  rebuild stability and rediscover purpose.
+                </p>
+                <p>
+                  A cornerstone of our mission is Operation Field Trip, a powerful
+                  program that helps veterans and first responders struggling with
+                  PTSD, anxiety, depression, and trauma-related challenges access
+                  medically assisted ketamine therapy paired with integrative
+                  counseling and support. For many participants, it offers renewed
+                  hope and a chance to begin healing when other paths have fallen
+                  short.
+                </p>
+                <Image
+                  src="/360-of-Support.png"
+                  alt="360 degrees of support mission graphic"
+                  width={1600}
+                  height={900}
+                  className="mx-auto h-auto w-full max-w-md rounded-xl"
+                />
+              </div>
             }
           />
         </div>
@@ -105,22 +126,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="mt-10 rounded-2xl border border-cvc-border bg-cvc-card p-8 sm:p-10">
-          <SectionTitle
-            title="Our Mission"
-            size="subsection"
-            align="left"
-            blueprintStarsBackdropClassName="bg-cvc-card"
-            subtitle={
-              <p className="leading-relaxed text-cvc-fg-muted">
-            We connect veterans with opportunities, training, and a supportive
-            network so they can thrive beyond their military service. From
-            application support and career exploration to community events and
-            partnerships, we are here for the entire journey.
-              </p>
-            }
-          />
-        </div>
       </section>
     </main>
   )

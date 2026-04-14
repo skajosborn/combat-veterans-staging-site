@@ -1,4 +1,4 @@
-# Combat Veterans to Careers Foundation
+# Combat Veterans to Careers Organization
 
 A bold, patriotic Next.js application designed to help combat veterans transition into successful civilian careers.
 

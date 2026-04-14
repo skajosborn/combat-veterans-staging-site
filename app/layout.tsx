@@ -7,7 +7,7 @@ import ThemeInitScript from '@/components/ThemeInitScript'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Combat Veterans to Careers Foundation',
+  title: 'Combat Veterans to Careers Organization',
   description: 'Empowering combat veterans to transition into successful civilian careers',
   icons: {
     icon: '/CVClogo.png',
