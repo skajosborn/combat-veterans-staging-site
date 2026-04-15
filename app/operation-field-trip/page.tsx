@@ -8,29 +8,12 @@ export default function OperationFieldTripPage() {
         <div className="overflow-hidden rounded-3xl border border-cvc-border bg-cvc-card shadow-2xl">
           <div className="relative h-72 w-full bg-cvc-page sm:h-96 lg:h-[28rem]">
             <Image
-              src="/OFT.jpg"
+              src="/OFT-Heading.png"
               alt="Operation Field Trip"
               fill
               className="object-contain object-center"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-6 sm:p-8 lg:p-10">
-              <SectionTitle
-                as="h1"
-                title="Operation Field Trip"
-                size="page"
-                variant="inverse"
-                align="left"
-                uppercaseTitle={false}
-                showBottomRule={false}
-                prefix={
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/80 sm:text-sm">
-                    Veteran Healing Mission
-                  </p>
-                }
-              />
-            </div>
           </div>
 
           <div className="space-y-8 p-6 sm:p-8 lg:p-10">
