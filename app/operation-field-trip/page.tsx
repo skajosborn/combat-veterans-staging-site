@@ -50,6 +50,32 @@ export default function OperationFieldTripPage() {
               </p>
             </div>
 
+            <div className="grid grid-cols-1 gap-0 overflow-hidden rounded-2xl border border-cvc-border-muted bg-cvc-card-inner md:grid-cols-2">
+              <div className="relative h-80 w-full bg-cvc-card-deep sm:h-96 md:h-[28rem]">
+                <Image
+                  src="/OFT-bear.png"
+                  alt="Operation Field Trip comfort support bear"
+                  fill
+                  className="object-contain object-center p-2 scale-[1.65] translate-y-5"
+                />
+              </div>
+              <div className="flex flex-col justify-center p-6 sm:p-8">
+                <SectionTitle
+                  title="Comfort Matters Too"
+                  size="subsection"
+                  align="left"
+                  blueprintStarsBackdropClassName="bg-cvc-card-inner"
+                  className="mb-3"
+                />
+                <p className="leading-relaxed text-cvc-fg-muted">
+                  Healing is not only clinical care; it is also connection,
+                  safety, and trust. This symbol represents the supportive
+                  environment Operation Field Trip builds around every veteran
+                  and first responder on their path forward.
+                </p>
+              </div>
+            </div>
+
             <div className="rounded-2xl border border-cvc-border bg-cvc-card-muted p-6 sm:p-7">
               <SectionTitle
                 title="The Cost of Healing"
