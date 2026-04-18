@@ -1,10 +1,19 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import SectionTitle from '@/components/SectionTitle'
 
 export default function VeteranApplication() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitNotice, setSubmitNotice] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
+  const submitNoticeRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!submitNotice) return
+    submitNoticeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, [submitNotice])
+
   const [formData, setFormData] = useState({
     // Military Background
     veteranName: '',
@@ -126,9 +135,37 @@ export default function VeteranApplication() {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
+    const formEl = e.currentTarget
+    if (!formEl.checkValidity()) {
+      formEl.reportValidity()
+      return
+    }
+
+    setSubmitNotice(null)
+    setIsSubmitting(true)
+    try {
+      const fd = new FormData(formEl)
+      const res = await fetch('/api/veteran-application', {
+        method: 'POST',
+        body: fd,
+      })
+      const payload = (await res.json().catch(() => ({}))) as { error?: string }
+      if (!res.ok) {
+        throw new Error(payload.error || 'Submission failed.')
+      }
+      setSubmitNotice({
+        type: 'success',
+        text: 'Your application was submitted successfully. We will be in touch soon.',
+      })
+    } catch (err) {
+      const text =
+        err instanceof Error ? err.message : 'Something went wrong. Please try again.'
+      setSubmitNotice({ type: 'error', text })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -179,7 +216,54 @@ export default function VeteranApplication() {
             />
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-8">
+          {submitNotice && (
+            <div
+              ref={submitNoticeRef}
+              role={submitNotice.type === 'error' ? 'alert' : 'status'}
+              aria-live={submitNotice.type === 'error' ? 'assertive' : 'polite'}
+              className={
+                submitNotice.type === 'success'
+                  ? 'mb-8 rounded-lg border border-green-600/50 bg-green-50 px-5 py-4 text-base font-semibold text-green-900 shadow-sm dark:border-green-500/40 dark:bg-green-950/50 dark:text-green-100'
+                  : 'mb-8 rounded-lg border border-red-600/50 bg-red-50 px-5 py-4 text-base font-medium text-red-900 shadow-sm dark:border-red-500/40 dark:bg-red-950/50 dark:text-red-100'
+              }
+            >
+              {submitNotice.type === 'success' ? (
+                <div className="flex flex-col gap-2">
+                  <span className="flex items-start gap-3">
+                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-600 text-sm text-white dark:bg-green-500">
+                      ✓
+                    </span>
+                    <span>{submitNotice.text}</span>
+                  </span>
+                  <details className="border-t border-green-600/30 pt-2 text-sm font-normal text-green-900/90 dark:border-green-500/30 dark:text-green-100/90">
+                    <summary className="cursor-pointer select-none text-green-800 underline decoration-green-600/50 hover:decoration-green-700 dark:text-green-200">
+                      Email not showing up? (troubleshooting)
+                    </summary>
+                    <ul className="mt-2 list-disc space-y-1 pl-5">
+                      <li>Check spam or promotions for the staff inbox.</li>
+                      <li>
+                        Applications are sent with <strong className="font-semibold">Resend</strong> from the server. In
+                        the Resend dashboard, confirm the message was delivered or see any provider errors.
+                      </li>
+                      <li>
+                        Production needs <code className="rounded bg-green-900/10 px-1 dark:bg-green-100/10">RESEND_API_KEY</code>,{' '}
+                        <code className="rounded bg-green-900/10 px-1 dark:bg-green-100/10">RESEND_FROM_EMAIL</code> (verified
+                        sender), and optionally <code className="rounded bg-green-900/10 px-1 dark:bg-green-100/10">VETERAN_APPLICATION_NOTIFY_TO</code>.
+                      </li>
+                    </ul>
+                  </details>
+                </div>
+              ) : (
+                submitNotice.text
+              )}
+            </div>
+          )}
+
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-8"
+            encType="multipart/form-data"
+          >
             {/* Military Background Section */}
             <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
               <SectionTitle
@@ -327,6 +411,7 @@ export default function VeteranApplication() {
                         <label key={branch} className="flex items-center space-x-3 cursor-pointer">
                           <input
                             type="checkbox"
+                            name="branchOfService"
                             value={branch}
                             checked={formData.branchOfService.includes(branch)}
                             onChange={(e) => handleCheckboxChange(e, 'branchOfService')}
@@ -347,6 +432,7 @@ export default function VeteranApplication() {
                         <label key={conflict} className="flex items-center space-x-3 cursor-pointer">
                           <input
                             type="checkbox"
+                            name="conflictServed"
                             value={conflict}
                             checked={formData.conflictServed.includes(conflict)}
                             onChange={(e) => handleCheckboxChange(e, 'conflictServed')}
@@ -367,6 +453,7 @@ export default function VeteranApplication() {
                         <label key={status} className="flex items-center space-x-3 cursor-pointer">
                           <input
                             type="checkbox"
+                            name="separationStatus"
                             value={status}
                             checked={formData.separationStatus.includes(status)}
                             onChange={(e) => handleCheckboxChange(e, 'separationStatus')}
@@ -1223,9 +1310,10 @@ export default function VeteranApplication() {
 
                 <button
                   type="submit"
-                  className="rounded-lg bg-patriotic-blue px-8 py-4 text-lg font-semibold text-white shadow-lg transition-colors hover:bg-patriotic-navy"
+                  disabled={isSubmitting}
+                  className="rounded-lg bg-patriotic-blue px-8 py-4 text-lg font-semibold text-white shadow-lg transition-colors hover:bg-patriotic-navy disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  SEND
+                  {isSubmitting ? 'Sending…' : 'SEND'}
                 </button>
               </div>
             </div>
