@@ -770,21 +770,28 @@ img {
   }
 }
 
-.cvc-btn--hero-primary {
-  padding: 0.5rem 1rem;
+.cvc-btn--hero-primary,
+.cvc-btn--hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: 0 1rem;
   font-size: 0.875rem;
+  line-height: 1;
+}
+
+.cvc-btn--hero-primary {
   background: var(--cvc-cta-fill);
   color: #fff;
   border: 1px solid rgb(255 255 255 / 0.15);
   box-shadow:
     inset 0 1px 0 0 rgb(255 255 255 / 0.18),
-    0 4px 0 0 rgb(30 45 25),
+    0 3px 0 0 rgb(30 45 25),
     0 8px 24px -6px rgb(0 0 0 / 0.5);
 }
 
 .cvc-btn--hero-secondary {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
   color: #fff;
   background: rgb(2 6 23 / 0.4);
   border: 1px solid rgb(255 255 255 / 0.45);
