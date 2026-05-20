@@ -3,11 +3,19 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import SectionTitle from '@/components/SectionTitle'
+import VeteranApplicationWizardControls from '@/components/VeteranApplicationWizardControls'
+import {
+  APPLICATION_STEPS,
+  validateApplicationStep,
+} from '@/lib/veteranApplicationSteps'
 
 export default function VeteranApplication() {
+  const [currentStep, setCurrentStep] = useState(0)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitNotice, setSubmitNotice] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
   const submitNoticeRef = useRef<HTMLDivElement>(null)
+  const formRef = useRef<HTMLFormElement>(null)
+  const formStepAnchorRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!submitNotice) return
@@ -135,13 +143,29 @@ export default function VeteranApplication() {
     }))
   }
 
+  const scrollToFormStep = () => {
+    formStepAnchorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  const goNext = () => {
+    const step = APPLICATION_STEPS[currentStep]
+    const panel = formRef.current?.querySelector<HTMLElement>(`[data-form-step="${step.id}"]`)
+    if (!panel || !validateApplicationStep(step.id, panel, formData)) return
+    setCurrentStep((s) => Math.min(s + 1, APPLICATION_STEPS.length - 1))
+    scrollToFormStep()
+  }
+
+  const goBack = () => {
+    setCurrentStep((s) => Math.max(s - 1, 0))
+    scrollToFormStep()
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const formEl = e.currentTarget
-    if (!formEl.checkValidity()) {
-      formEl.reportValidity()
-      return
-    }
+    const formEl = formRef.current ?? e.currentTarget
+    const lastStep = APPLICATION_STEPS[APPLICATION_STEPS.length - 1]
+    const panel = formEl.querySelector<HTMLElement>(`[data-form-step="${lastStep.id}"]`)
+    if (panel && !validateApplicationStep(lastStep.id, panel, formData)) return
 
     setSubmitNotice(null)
     setIsSubmitting(true)
@@ -159,6 +183,7 @@ export default function VeteranApplication() {
         type: 'success',
         text: 'Your application was submitted successfully. We will be in touch soon.',
       })
+      setCurrentStep(0)
     } catch (err) {
       const text =
         err instanceof Error ? err.message : 'Something went wrong. Please try again.'
@@ -259,13 +284,27 @@ export default function VeteranApplication() {
             </div>
           )}
 
+          <div ref={formStepAnchorRef} className="scroll-mt-24" aria-hidden />
+
           <form
+            ref={formRef}
             onSubmit={handleSubmit}
+            onKeyDown={(e) => {
+              if (e.key !== 'Enter' || currentStep === APPLICATION_STEPS.length - 1) return
+              const target = e.target
+              if (target instanceof HTMLTextAreaElement) return
+              e.preventDefault()
+              goNext()
+            }}
             className="space-y-8"
             encType="multipart/form-data"
           >
             {/* Military Background Section */}
-            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+            <div
+              data-form-step="military-background"
+              hidden={currentStep !== 0}
+              className="rounded-lg border border-cvc-border bg-cvc-card p-8"
+            >
               <SectionTitle
                 title="Military Background"
                 size="subsection"
@@ -499,7 +538,11 @@ export default function VeteranApplication() {
             </div>
 
             {/* Military/VA Information Section */}
-            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+            <div
+              data-form-step="military-va"
+              hidden={currentStep !== 1}
+              className="rounded-lg border border-cvc-border bg-cvc-card p-8"
+            >
               <SectionTitle
                 title="Military/VA Information"
                 size="subsection"
@@ -579,7 +622,11 @@ export default function VeteranApplication() {
             </div>
 
             {/* Personal Information Section */}
-            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+            <div
+              data-form-step="personal"
+              hidden={currentStep !== 2}
+              className="rounded-lg border border-cvc-border bg-cvc-card p-8"
+            >
               <SectionTitle
                 title="Personal Information"
                 size="subsection"
@@ -691,7 +738,18 @@ export default function VeteranApplication() {
             </div>
 
             {/* Contact Information Section */}
-            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+            <div
+              data-form-step="contact"
+              hidden={currentStep !== 3}
+              className="rounded-lg border border-cvc-border bg-cvc-card p-8"
+            >
+              <SectionTitle
+                title="Contact Information"
+                size="subsection"
+                align="left"
+                blueprintStarsBackdropClassName="bg-cvc-card"
+                className="mb-8"
+              />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-semibold text-cvc-fg mb-2">
@@ -772,7 +830,11 @@ export default function VeteranApplication() {
             </div>
 
             {/* Employment Section */}
-            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+            <div
+              data-form-step="employment"
+              hidden={currentStep !== 4}
+              className="rounded-lg border border-cvc-border bg-cvc-card p-8"
+            >
               <SectionTitle
                 title="Employment"
                 size="subsection"
@@ -898,7 +960,11 @@ export default function VeteranApplication() {
             </div>
 
             {/* Education Section */}
-            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+            <div
+              data-form-step="education"
+              hidden={currentStep !== 5}
+              className="rounded-lg border border-cvc-border bg-cvc-card p-8"
+            >
               <SectionTitle
                 title="Education"
                 size="subsection"
@@ -1012,7 +1078,11 @@ export default function VeteranApplication() {
             </div>
 
             {/* Emergency Contact Information Section */}
-            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+            <div
+              data-form-step="emergency"
+              hidden={currentStep !== 6}
+              className="rounded-lg border border-cvc-border bg-cvc-card p-8"
+            >
               <SectionTitle
                 title="Emergency Contact Information"
                 size="subsection"
@@ -1081,7 +1151,11 @@ export default function VeteranApplication() {
             </div>
 
             {/* Acknowledgements Section */}
-            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+            <div
+              data-form-step="acknowledgements"
+              hidden={currentStep !== 7}
+              className="rounded-lg border border-cvc-border bg-cvc-card p-8"
+            >
               <div className="space-y-6">
                 <div>
                   <p className="text-cvc-fg-muted mb-4">
@@ -1128,7 +1202,11 @@ export default function VeteranApplication() {
             </div>
 
             {/* Additional Documents Section */}
-            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+            <div
+              data-form-step="documents"
+              hidden={currentStep !== 8}
+              className="rounded-lg border border-cvc-border bg-cvc-card p-8"
+            >
               <SectionTitle
                 title="*Additional Documents (Total documents cannot exceed more than 24MB)"
                 size="subsection"
@@ -1263,7 +1341,18 @@ export default function VeteranApplication() {
             </div>
 
             {/* E-Signature Section */}
-            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+            <div
+              data-form-step="signature"
+              hidden={currentStep !== 9}
+              className="rounded-lg border border-cvc-border bg-cvc-card p-8"
+            >
+              <SectionTitle
+                title="E-Signature"
+                size="subsection"
+                align="left"
+                blueprintStarsBackdropClassName="bg-cvc-card"
+                className="mb-8"
+              />
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-semibold text-cvc-fg mb-2">
@@ -1308,18 +1397,11 @@ export default function VeteranApplication() {
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="rounded-lg bg-patriotic-blue px-8 py-4 text-lg font-semibold text-white shadow-lg transition-colors hover:bg-patriotic-navy disabled:cursor-not-allowed disabled:opacity-60"
-                >
-                  {isSubmitting ? 'Sending…' : 'SEND'}
-                </button>
               </div>
             </div>
 
             {/* Final Information Section */}
-            <div className="rounded-lg border border-cvc-border bg-cvc-card p-8">
+            <div hidden={currentStep !== 9} className="rounded-lg border border-cvc-border bg-cvc-card p-8">
               <div className="space-y-6">
                 <p className="font-bold text-cvc-fg">
                   Please provide us with accurate information about yourself so that we can get the assistance you requested to you as soon as possible!
@@ -1389,6 +1471,13 @@ export default function VeteranApplication() {
                 </div>
               </div>
             </div>
+
+            <VeteranApplicationWizardControls
+              currentStep={currentStep}
+              onBack={goBack}
+              onNext={goNext}
+              isSubmitting={isSubmitting}
+            />
           </form>
         </div>
       </section>
