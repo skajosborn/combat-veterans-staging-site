@@ -174,7 +174,7 @@ export default function SponsorsPage() {
             as="h1"
             title="Sponsors"
             size="page"
-            align="left"
+            align="center"
             blueprintStarsBackdropClassName="bg-cvc-card"
             subtitle={
               <p className="leading-relaxed text-cvc-fg-muted">

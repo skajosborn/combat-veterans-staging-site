@@ -305,15 +305,25 @@ img {
   justify-content: center;
 }
 
+.cvc-section-title--left .cvc-section-title__blueprint-row {
+  justify-content: flex-start;
+}
+
 .cvc-section-title__rule {
   flex: 1;
   max-width: 8rem;
   height: 2px;
   background: var(--cvc-border);
+  box-shadow: 0 2px 0 var(--cvc-border);
+}
+
+.cvc-section-title--left .cvc-section-title__rule {
+  max-width: none;
 }
 
 .cvc-section-title__heading {
   margin: 0;
+  flex-shrink: 0;
   font-weight: 900;
   letter-spacing: -0.02em;
   text-transform: uppercase;
@@ -333,12 +343,32 @@ img {
 }
 
 .cvc-section-title__stars {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.35rem;
+  width: 100%;
   margin-bottom: 1rem;
   color: var(--patriotic-red);
+}
+
+.cvc-section-title__stars::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--cvc-border);
+  z-index: 0;
+}
+
+.cvc-section-title__stars .cvc-star {
+  position: relative;
+  z-index: 1;
+  padding: 0 0.35rem;
+  background: var(--cvc-card, var(--cvc-page));
 }
 
 .cvc-star--lg {
