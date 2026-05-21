@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import Image from 'next/image'
 import SectionTitle from '@/components/SectionTitle'
+import { ALLOWED_SPONSOR_FILES, SPONSOR_SECTIONS } from '@/lib/sponsors'
 
 type SponsorImage = {
   name: string
@@ -9,66 +10,30 @@ type SponsorImage = {
   website: string | null
 }
 
-/** Filenames with no public website — card is not a link. */
-const sponsorNoWebsiteFilenames = new Set<string>([
-  'Wildlife-Services-and-Maintenance.jpg',
-  'Wildlife-Services-and-Maintenance-Logo.jpg',
-  'wildlife-services-and-maintenance.jpg',
-  'Wildlife-Services-Maintenance.jpg',
-])
-
 const sponsorWebsiteOverrides: Record<string, string> = {
   '4_bank_of_america.jpg': 'https://www.bankofamerica.com/',
   '5_walmart.jpg': 'https://www.walmart.com/',
-  '2_jersey_mikes.jpg': 'https://www.jerseymikes.com/',
   '3_tee_it_up.jpg': 'https://teeitupgolfoviedo.wordpress.com/',
-  '6_prima_logo.jpg': 'https://www.primaitaliansteakhouse.com/',
   '7_city_fire_logo.jpg': 'https://www.cityfirethevillages.com/',
-  '8-zoom_drain.jpg': 'https://www.zoomdrain.com/',
-  '9-jenkins-acura.jpg': 'https://www.jenkinsacura.com/',
   '10-eco-coolers.jpg': 'https://eco-outfitters.com/',
+  '11-lake-county-sheriffs-office.jpg': 'https://www.lcso.org/',
+  '12-holiday-inn-express.jpg': 'https://www.ihg.com/holidayinnexpress/hotels/us/en/reservation',
   '13-Hunter-Signs.jpg': 'https://www.huntersigns.com/',
   '15-Ford-Press-logo.jpg': 'https://www.fordpress.com/',
-  '16-ms-air-logo.jpg': 'https://www.msaccfl.com/',
+  '17-style-magazine-logo.jpg': 'https://www.stylemagazines.com/lake-sumter/',
+  '18-vann-gannaway.jpg': 'https://www.vanngannawaychevrolet.com/',
+  '19-gourmet-today-logo.jpg': 'https://www.gourmettodaymagazine.com/',
+  '20-eagle-buick-gmc-logo.jpg': 'https://www.eaglebuickgmc.com/',
+  '21-pats-pawn-and-gun-shop-logo.jpg': 'https://www.patspawnandgun.com/',
   '22-realty-executives.jpg': 'https://www.buysellthevillages.com/',
-  'Team-Koller-Logo.jpg': 'https://www.buysellthevillages.com/',
   '23-wildwood_tire_co.jpg': 'https://www.wildwoodtireco.com/',
-  '24-doral-equipment.jpg': 'https://doralequipmentrental.com/?gad_source=1&gad_campaignid=13874663976',
   '25-bayou-signs-outdoor.jpg': 'https://www.bayousignsoutdoor.com/',
-  '26-mcleod-general-trades.jpg': 'https://members.bancf.com/list/member/mcleod-general-trades-llc-6571',
   'Aquatic-Logo.jpg': 'https://aquaticbath.com/',
-  'Falletta-Engineering-Logo.jpg': 'https://www.linkedin.com/in/anthony-falletta-ab6713/',
   'FBC-Mortage-Logo.jpg': 'https://fbchomeloans.loanadministration.com/fbchomeloans/#/login',
-  'Geo-Tech-Logo.jpg': 'https://geotechfl.com/',
-  'Graffiti-Seafood-Logo.jpg': 'https://graffitiseafood.com/',
-  'Healing_Hometown_Heroes-Logo.jpg': 'https://www.h3adventures.com/',
-  'Medi-Solutions-Logo.jpg': 'https://www.medi-solutions.org/',
   'Parady-Logo.jpg': 'https://paradyfinancial.com/',
   'Phillips-Logo.jpg': 'https://www.phillipscjdr.com/',
-  'RMBarrineau-logo.jpg': 'https://rmbarrineau.com/index.html',
-  'Willie-Jewells-Logo.jpg': 'https://williejewells.com/',
-  'Willie-Jewells.jpg': 'https://williejewells.com/',
-  'willie-jewells.jpg': 'https://williejewells.com/',
-  'williejewells.jpg': 'https://williejewells.com/',
-  'McCrackens-Logo.jpg': 'https://mccrackenspub.com/',
-  'McCrackens.jpg': 'https://mccrackenspub.com/',
-  'mccrackens.jpg': 'https://mccrackenspub.com/',
-  'Rustic-Roots-Salon.jpg': 'https://www.facebook.com/RusticRoots21/',
-  'Rustic-Roots-Logo.jpg': 'https://www.facebook.com/RusticRoots21/',
-  'rustic-roots-salon.jpg': 'https://www.facebook.com/RusticRoots21/',
-  'Sasser-Services.jpg': 'https://nextdoor.com/pages/sasser-services-llc-jacksonville-fl/',
-  'Sasser-Services-Logo.jpg': 'https://nextdoor.com/pages/sasser-services-llc-jacksonville-fl/',
-  'sasser-services.jpg': 'https://nextdoor.com/pages/sasser-services-llc-jacksonville-fl/',
-  'Verteks-Consulting-Logo.jpg': 'https://www.verteks.com/',
-  'v1.jpg': 'https://www.cabralheatingandair.com/',
-  'Cabral-Heating-and-Air-Conditioning.jpg': 'https://www.cabralheatingandair.com/',
-  'Cabral-Heating-and-Air.jpg': 'https://www.cabralheatingandair.com/',
-  'cabral-heating-and-air.jpg': 'https://www.cabralheatingandair.com/',
-  'Cabral-Heating.jpg': 'https://www.cabralheatingandair.com/',
-  'v2.jpg': 'https://williejewells.com/',
-  'v3.jpg': 'https://mccrackenspub.com/',
-  'v4.jpg': 'https://www.facebook.com/RusticRoots21/',
-  'v5.jpg': 'https://nextdoor.com/pages/sasser-services-llc-jacksonville-fl/',
+  '27-liquid-lights.jpg': 'https://www.liquidlightsleds.com/',
+  '28-Lake-Glass-and-Mirror-Logo.jpg': 'https://www.lakeglassandmirror.com/',
   'sc2-knights-of-columbus.jpg': 'https://www.floridakofc.org/',
   'sc3-The-Villages-Critters.jpg': 'https://critters.golfclub.net/cm/web/site/page.html?clubId=15823',
   'sc4-Band-of-Brothers-Logo.jpg': 'http://www.bobintv.com/',
@@ -77,13 +42,12 @@ const sponsorWebsiteOverrides: Record<string, string> = {
   'sc10-marine-corp-league.jpg': 'https://www.mcleaguelibrary.org/',
   'sc11-jewish-war-veterans.jpg': 'https://www.jwv.org/',
   'sc13-sons-of-the-american-legion.jpg': 'https://floridasons.org/',
-  'sc15-starlight-players.jpg': 'https://www.thestarlightplayers.com/',
-  'sc16-the-leesburg-partnership-inc.jpg': 'https://leesburgpartnership.com/',
-  'sc17-Southern-Heat-Dragon-Boat.jpg': 'https://www.cabralheatingandair.com/',
-  'sc19-wounded-war-heroes-copy.jpg': 'https://www.woundedwarheroes.org/author/wwh_4dm1n/',
+  'sc17-Southern-Heat-Dragon-Boat.jpg': 'https://www.southernheatdragonboat.com/',
+  'sc19-wounded-war-heroes-copy.jpg': 'https://www.woundedwarheroes.org/',
   'sc20-MOAA.jpg': 'https://www.moaa.org/',
-  '12-holiday-inn-express.jpg': 'https://www.ihg.com/holidayinnexpress/hotels/us/en/reservation',
-  '11-lake-county-sheriffs-office.jpg': 'https://www.lcso.org/',
+  'v1.jpg': 'https://www.cabralheatingandair.com/',
+  'v2.jpg': 'https://williejewells.com/',
+  'v3.jpg': 'https://mccrackenspub.com/',
 }
 
 function fileNameToBusinessName(fileName: string) {
@@ -96,19 +60,10 @@ function fileNameToBusinessName(fileName: string) {
     .trim()
 }
 
-function sponsorHasNoWebsite(fileName: string): boolean {
-  const trimmed = fileName.trim()
-  if (sponsorNoWebsiteFilenames.has(trimmed)) return true
-  const label = fileNameToBusinessName(trimmed).toLowerCase()
-  return label.includes('wildlife') && label.includes('service') && label.includes('maintenance')
-}
-
 function buildSponsorWebsite(fileName: string): string | null {
   const trimmed = fileName.trim()
-  if (sponsorHasNoWebsite(trimmed)) return null
   if (sponsorWebsiteOverrides[trimmed]) return sponsorWebsiteOverrides[trimmed]
   const businessName = fileNameToBusinessName(trimmed)
-  // Fallback to search results without Google redirect notice pages.
   return `https://www.google.com/search?q=${encodeURIComponent(businessName)}`
 }
 
@@ -136,36 +91,35 @@ function resolveSponsorsDirectory() {
   return null
 }
 
-function getSponsorImages() {
+function sponsorImage(fileName: string, publicDir: string): SponsorImage | null {
+  if (!ALLOWED_SPONSOR_FILES.has(fileName)) return null
+  return {
+    name: fileName,
+    src: `/images/${publicDir}/${encodeURIComponent(fileName)}`,
+    website: buildSponsorWebsite(fileName),
+  }
+}
+
+function getSponsorSections() {
   const resolved = resolveSponsorsDirectory()
   if (!resolved) {
-    return { standard: [] as SponsorImage[], veteranOwned: [] as SponsorImage[] }
+    return SPONSOR_SECTIONS.map((section) => ({ ...section, items: [] as SponsorImage[] }))
   }
 
-  const files = fs
-    .readdirSync(resolved.absDir)
-    .filter((file) => /\.(jpg|jpeg|png|webp)$/i.test(file))
-    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+  const onDisk = new Set(
+    fs
+      .readdirSync(resolved.absDir)
+      .filter((file) => /\.(jpg|jpeg|png|webp)$/i.test(file) && ALLOWED_SPONSOR_FILES.has(file))
+  )
 
-  const all = files.map((file) => ({
-    name: file,
-    src: `/images/${resolved.publicDir}/${encodeURIComponent(file)}`,
-    website: buildSponsorWebsite(file),
-  }))
-
-  const veteranOwned: SponsorImage[] = []
-  const standard: SponsorImage[] = []
-
-  for (const image of all) {
-    const trimmed = image.name.trim().toLowerCase()
-    if (trimmed.startsWith('v')) {
-      veteranOwned.push(image)
-    } else {
-      standard.push(image)
-    }
-  }
-
-  return { standard, veteranOwned }
+  return SPONSOR_SECTIONS.map((section) => ({
+    id: section.id,
+    title: section.title,
+    items: section.files
+      .filter((file) => onDisk.has(file))
+      .map((file) => sponsorImage(file, resolved.publicDir))
+      .filter((item): item is SponsorImage => item !== null),
+  })).filter((section) => section.items.length > 0)
 }
 
 const sponsorCardClass =
@@ -178,12 +132,7 @@ function SponsorGrid({ items }: { items: SponsorImage[] }) {
         const label = fileNameToBusinessName(image.name)
         const inner = (
           <div className="relative h-32 w-full overflow-hidden rounded-lg bg-white">
-            <Image
-              src={image.src}
-              alt={label}
-              fill
-              className="object-contain p-2"
-            />
+            <Image src={image.src} alt={label} fill className="object-contain p-2" />
           </div>
         )
         if (!image.website) {
@@ -215,7 +164,7 @@ function SponsorGrid({ items }: { items: SponsorImage[] }) {
 }
 
 export default function SponsorsPage() {
-  const { standard, veteranOwned } = getSponsorImages()
+  const sections = getSponsorSections()
 
   return (
     <main className="min-h-screen bg-cvc-page pb-16 pt-24">
@@ -236,15 +185,12 @@ export default function SponsorsPage() {
           />
         </div>
 
-        <div className="mb-12">
-          <SectionTitle title="Community & Corporate Sponsors" size="subsection" align="left" className="mb-4" />
-          <SponsorGrid items={standard} />
-        </div>
-
-        <div>
-          <SectionTitle title="Veteran Owned Sponsors" size="subsection" align="left" className="mb-4" />
-          <SponsorGrid items={veteranOwned} />
-        </div>
+        {sections.map((section) => (
+          <div key={section.id} className="mb-12 last:mb-0">
+            <SectionTitle title={section.title} size="subsection" align="left" className="mb-4" />
+            <SponsorGrid items={section.items} />
+          </div>
+        ))}
       </section>
     </main>
   )
