@@ -87,8 +87,9 @@ function cvc_create_primary_menu( $force = false ) {
 		set_theme_mod( 'nav_menu_locations', $locations );
 	}
 
-	$existing = wp_get_nav_menu_items( $menu_id );
-	if ( ! $force && $existing && count( $existing ) >= count( cvc_get_nav_items() ) ) {
+	$expected_count = cvc_count_nav_menu_items();
+	$existing       = wp_get_nav_menu_items( $menu_id );
+	if ( ! $force && $existing && count( $existing ) >= $expected_count ) {
 		return;
 	}
 
@@ -100,40 +101,76 @@ function cvc_create_primary_menu( $force = false ) {
 
 	$order = 0;
 	foreach ( cvc_get_nav_items() as $item ) {
-		++$order;
-		$url = cvc_nav_item_url( $item );
-
-		if ( ! empty( $item['slug'] ) ) {
-			$page = get_page_by_path( $item['slug'] );
-			if ( $page ) {
-				wp_update_nav_menu_item(
-					$menu_id,
-					0,
-					array(
-						'menu-item-title'     => $item['label'],
-						'menu-item-object'    => 'page',
-						'menu-item-object-id' => $page->ID,
-						'menu-item-type'      => 'post_type',
-						'menu-item-status'    => 'publish',
-						'menu-item-position'  => $order,
-					)
-				);
+		if ( ! empty( $item['children'] ) ) {
+			++$order;
+			$parent_id = wp_update_nav_menu_item(
+				$menu_id,
+				0,
+				array(
+					'menu-item-title'    => $item['label'],
+					'menu-item-url'      => '#',
+					'menu-item-type'     => 'custom',
+					'menu-item-status'   => 'publish',
+					'menu-item-position' => $order,
+				)
+			);
+			if ( is_wp_error( $parent_id ) ) {
 				continue;
 			}
+			foreach ( $item['children'] as $child ) {
+				++$order;
+				cvc_insert_nav_menu_item( $menu_id, $child, $order, (int) $parent_id );
+			}
+			continue;
 		}
 
-		wp_update_nav_menu_item(
-			$menu_id,
-			0,
-			array(
-				'menu-item-title'    => $item['label'],
-				'menu-item-url'      => $url,
-				'menu-item-type'     => 'custom',
-				'menu-item-status'   => 'publish',
-				'menu-item-position' => $order,
-			)
-		);
+		++$order;
+		cvc_insert_nav_menu_item( $menu_id, $item, $order, 0 );
 	}
+}
+
+/**
+ * @param int    $menu_id   Menu term ID.
+ * @param array  $item      Nav item (label, slug, or anchor).
+ * @param int    $order     Position.
+ * @param int    $parent_id Parent menu item ID.
+ */
+function cvc_insert_nav_menu_item( $menu_id, $item, $order, $parent_id = 0 ) {
+	$args = array(
+		'menu-item-title'     => $item['label'],
+		'menu-item-status'    => 'publish',
+		'menu-item-position'  => $order,
+		'menu-item-parent-id' => $parent_id,
+	);
+
+	if ( ! empty( $item['slug'] ) ) {
+		$page = get_page_by_path( $item['slug'] );
+		if ( $page ) {
+			$args['menu-item-object']    = 'page';
+			$args['menu-item-object-id'] = $page->ID;
+			$args['menu-item-type']      = 'post_type';
+			wp_update_nav_menu_item( $menu_id, 0, $args );
+			return;
+		}
+	}
+
+	$args['menu-item-url']  = cvc_nav_item_url( $item );
+	$args['menu-item-type'] = 'custom';
+	wp_update_nav_menu_item( $menu_id, 0, $args );
+}
+
+/**
+ * Expected primary menu item count (parents + children).
+ */
+function cvc_count_nav_menu_items() {
+	$count = 0;
+	foreach ( cvc_get_nav_items() as $item ) {
+		++$count;
+		if ( ! empty( $item['children'] ) ) {
+			$count += count( $item['children'] );
+		}
+	}
+	return $count;
 }
 
 add_action( 'after_switch_theme', 'cvc_run_theme_setup' );

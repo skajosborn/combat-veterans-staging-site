@@ -32,7 +32,9 @@ function cvc_get_default_pages() {
 		'operation-field-trip' => __( 'Operation Field Trip', 'cvc-theme' ),
 		'whats-next'           => __( "What's Next", 'cvc-theme' ),
 		'mission'              => __( 'Mission', 'cvc-theme' ),
-		'thrift-store'         => __( 'Thrift Store', 'cvc-theme' ),
+		'thrift-store'                        => __( 'Thrift Store', 'cvc-theme' ),
+		'restoring-hope-thrift-store'         => __( 'Restoring Hope Thrift Store', 'cvc-theme' ),
+		'restoring-hope-clothing-boutique'    => __( 'Restoring Hope Clothing Boutique', 'cvc-theme' ),
 	);
 }
 
@@ -46,6 +48,19 @@ function cvc_get_nav_items() {
 		array( 'label' => __( 'Vision', 'cvc-theme' ), 'anchor' => 'vision' ),
 		array( 'label' => __( 'About', 'cvc-theme' ), 'slug' => 'about' ),
 		array( 'label' => __( 'Events', 'cvc-theme' ), 'slug' => 'events' ),
+		array(
+			'label'    => __( 'Our Stores', 'cvc-theme' ),
+			'children' => array(
+				array(
+					'label' => __( 'Restoring Hope Thrift Store', 'cvc-theme' ),
+					'slug'  => 'restoring-hope-thrift-store',
+				),
+				array(
+					'label' => __( 'Restoring Hope Clothing Boutique', 'cvc-theme' ),
+					'slug'  => 'restoring-hope-clothing-boutique',
+				),
+			),
+		),
 		array( 'label' => __( 'Sponsors', 'cvc-theme' ), 'slug' => 'sponsors' ),
 		array( 'label' => __( 'Contact', 'cvc-theme' ), 'anchor' => 'contact' ),
 		array( 'label' => __( 'Donate', 'cvc-theme' ), 'slug' => 'donate' ),
@@ -75,7 +90,7 @@ function cvc_get_quick_links() {
 		array( 'label' => __( "What's Next", 'cvc-theme' ), 'slug' => 'whats-next' ),
 		array( 'label' => __( 'About', 'cvc-theme' ), 'slug' => 'about' ),
 		array( 'label' => __( 'Events', 'cvc-theme' ), 'slug' => 'events' ),
-		array( 'label' => __( 'Thrift Store', 'cvc-theme' ), 'slug' => 'thrift-store' ),
+		array( 'label' => __( 'Thrift Store', 'cvc-theme' ), 'slug' => 'restoring-hope-thrift-store' ),
 		array( 'label' => __( 'Sponsors', 'cvc-theme' ), 'slug' => 'sponsors' ),
 		array( 'label' => __( 'Donate', 'cvc-theme' ), 'slug' => 'donate', 'accent' => true ),
 	);

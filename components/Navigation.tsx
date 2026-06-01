@@ -4,34 +4,22 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import NavLinkButton from './NavLinkButton'
+import NavStoresDropdown from './NavStoresDropdown'
 import ThemeToggle from './ThemeToggle'
+import { getNavItems, ourStoresLinks } from '@/lib/navItems'
 import { showVision } from '@/lib/siteConfig'
-
-const allNavLinks = [
-  { label: 'Application', href: '/veteran-application' },
-  { label: 'Programs', href: '/#programs' },
-  { label: 'Vision', href: '/#vision' },
-  { label: 'About', href: '/about' },
-  { label: 'Events', href: '/events' },
-  { label: 'Sponsors', href: '/sponsors' },
-  { label: 'Contact', href: '/#contact' },
-  { label: 'Donate', href: '/donate' },
-]
-
-const navLinks = showVision
-  ? allNavLinks
-  : allNavLinks.filter((link) => link.label !== 'Vision')
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const navItems = getNavItems()
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-cvc-nav-border bg-cvc-nav shadow-xl backdrop-blur-md">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-200 bg-white shadow-sm backdrop-blur-md max-md:dark:border-slate-200 max-md:dark:bg-white md:border-cvc-nav-border md:bg-cvc-nav md:shadow-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-nowrap items-center justify-between gap-2 py-0.5 min-w-0">
+        <div className="flex flex-nowrap items-center justify-between gap-2 py-2 min-w-0 md:py-0.5">
           {/* Logo — small mark; hero carries the large crest */}
           <div className="flex min-w-0 shrink items-center">
-            <a href="/" className="flex min-w-0 items-center space-x-0 sm:space-x-2 hover:opacity-80 transition-opacity">
+            <a href="/" className="flex min-w-0 items-center gap-2 hover:opacity-80 transition-opacity">
               <div className="relative h-9 w-9 shrink-0 sm:h-10 sm:w-10">
                 <Image
                   src="/CVClogo.png"
@@ -42,9 +30,13 @@ export default function Navigation() {
                   priority
                 />
               </div>
-              <div className="hidden sm:block text-left leading-tight">
-                <h1 className="text-xs font-semibold text-cvc-fg sm:text-sm">Combat Veterans</h1>
-                <p className="text-[11px] font-medium text-cvc-fg-subtle sm:text-xs">to Careers</p>
+              <div className="min-w-0 text-left leading-tight md:block">
+                <p className="text-[9px] font-bold uppercase tracking-wide text-patriotic-navy sm:text-[10px] md:text-xs md:font-semibold md:normal-case md:tracking-normal md:text-cvc-fg">
+                  Combat Veterans
+                </p>
+                <p className="text-[9px] font-bold uppercase tracking-wide text-patriotic-navy sm:text-[10px] md:text-[11px] md:font-medium md:normal-case md:tracking-normal md:text-cvc-fg-subtle">
+                  to Careers
+                </p>
               </div>
             </a>
           </div>
@@ -55,26 +47,30 @@ export default function Navigation() {
               aria-label="Main"
               className="scrollbar-hide flex min-w-0 max-w-full flex-1 flex-nowrap items-center justify-end gap-x-2 overflow-x-auto overflow-y-visible py-0.5 md:gap-x-2.5 lg:gap-x-4 xl:gap-x-5"
             >
-              {navLinks.map(({ label, href }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className="shrink-0 whitespace-nowrap text-xs font-medium text-cvc-fg-muted transition-colors hover:text-cvc-fg lg:text-sm"
-                >
-                  {label}
-                </Link>
-              ))}
+              {navItems.map((item) =>
+                item.type === 'dropdown' ? (
+                  <NavStoresDropdown key={item.label} />
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="shrink-0 whitespace-nowrap text-xs font-medium text-cvc-fg-muted transition-colors hover:text-cvc-fg lg:text-sm"
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
             </nav>
             <ThemeToggle className="shrink-0" />
           </div>
 
           {/* Mobile menu button */}
           <div className="flex flex-shrink-0 items-center gap-2 md:hidden">
-            <ThemeToggle />
+            <ThemeToggle className="border-slate-300 text-slate-700 hover:bg-slate-100 hover:text-slate-900" />
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-cvc-fg-muted hover:text-cvc-fg focus:outline-none"
+              className="text-slate-700 hover:text-slate-900 focus:outline-none"
               aria-expanded={isOpen}
               aria-label="Toggle menu"
             >
@@ -95,16 +91,34 @@ export default function Navigation() {
         <div className="absolute left-0 right-0 top-full z-50 max-h-[min(80vh,85dvh)] overflow-y-auto border-t border-cvc-border bg-cvc-page shadow-lg md:hidden">
           <div className="mx-auto max-w-7xl px-4 pb-4 pt-3 sm:px-6 lg:px-8">
             <div className="flex flex-col gap-1">
-              {navLinks.map(({ label, href }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  onClick={() => setIsOpen(false)}
-                  className="block rounded-lg px-3 py-2.5 text-sm font-medium text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg"
-                >
-                  {label}
-                </Link>
-              ))}
+              {navItems.map((item) =>
+                item.type === 'dropdown' ? (
+                  <div key={item.label} className="py-1">
+                    <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-cvc-fg-subtle">
+                      {item.label}
+                    </p>
+                    {ourStoresLinks.map(({ label, href }) => (
+                      <Link
+                        key={href}
+                        href={href}
+                        onClick={() => setIsOpen(false)}
+                        className="block rounded-lg py-2 pl-5 pr-3 text-sm font-medium text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg"
+                      >
+                        {label}
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block rounded-lg px-3 py-2.5 text-sm font-medium text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg"
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
             </div>
             <div className="mt-3 grid min-w-0 grid-cols-2 gap-2 border-t border-cvc-border pt-3 [&>a]:min-w-0">
             <NavLinkButton
@@ -171,9 +185,9 @@ export default function Navigation() {
               }
             />
             <NavLinkButton
-              href="/thrift-store"
+              href="/restoring-hope-thrift-store"
               title="THRIFT STORE"
-              subtitle="Support Our Store"
+              subtitle="Restoring Hope"
               icon={
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.252c-.67 0-1.189-.578-1.119-1.243l1.263-12c.07-.665.698-1.119 1.399-1.119h7.146c.7 0 1.329.454 1.399 1.119Z" />

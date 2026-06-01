@@ -61,6 +61,23 @@ function cvc_section_title( $args ) {
 function cvc_primary_nav_fallback() {
 	echo '<ul class="menu cvc-nav__list">';
 	foreach ( cvc_get_nav_items() as $item ) {
+		if ( ! empty( $item['children'] ) ) {
+			echo '<li class="menu-item menu-item-has-children">';
+			printf(
+				'<span class="cvc-nav__parent">%s</span>',
+				esc_html( $item['label'] )
+			);
+			echo '<ul class="sub-menu">';
+			foreach ( $item['children'] as $child ) {
+				printf(
+					'<li><a href="%s">%s</a></li>',
+					esc_url( cvc_nav_item_url( $child ) ),
+					esc_html( $child['label'] )
+				);
+			}
+			echo '</ul></li>';
+			continue;
+		}
 		printf(
 			'<li><a href="%s">%s</a></li>',
 			esc_url( cvc_nav_item_url( $item ) ),
@@ -91,7 +108,8 @@ function cvc_render_primary_nav_menu() {
 				'container'      => false,
 				'menu_class'     => 'menu',
 				'fallback_cb'    => false,
-				'depth'          => 1,
+				'depth'          => 2,
+				'sub_menu_class' => 'sub-menu',
 			)
 		);
 	} else {
