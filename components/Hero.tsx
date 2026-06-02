@@ -23,6 +23,8 @@ import {
 } from '@/components/HeroMobileExtras'
 
 const HERO_ACCENT = '#a8b892'
+const HERO_BG_DESKTOP = '/cvc hero bg medium.png'
+const HERO_BG_MOBILE = '/cvc hero bg 1.png'
 
 const HERO_MENU_LINKS = [
   { href: '/veteran-application', title: 'Application', Icon: FileText },
@@ -36,12 +38,8 @@ const HERO_MENU_LINKS = [
 ] as const
 
 export default function Hero() {
-  const [visibleService, setVisibleService] = useState<Set<number>>(new Set())
-  const [visibleTo, setVisibleTo] = useState<Set<number>>(new Set())
-  const [visibleSuccess, setVisibleSuccess] = useState<Set<number>>(new Set())
   const [heroMenuOpen, setHeroMenuOpen] = useState(false)
   const [isNarrowViewport, setIsNarrowViewport] = useState(false)
-  const hubRef = useRef<HTMLDivElement>(null)
   const mobileHubRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -57,7 +55,7 @@ export default function Hero() {
     const close = () => setHeroMenuOpen(false)
     const onDoc = (e: MouseEvent) => {
       const target = e.target as Node
-      if (hubRef.current?.contains(target) || mobileHubRef.current?.contains(target)) return
+      if (mobileHubRef.current?.contains(target)) return
       close()
     }
     const onKey = (e: KeyboardEvent) => {
@@ -70,36 +68,6 @@ export default function Hero() {
       document.removeEventListener('keydown', onKey)
     }
   }, [heroMenuOpen])
-
-  useEffect(() => {
-    const service = 'SERVICE'
-    const to = 'TO'
-    const success = 'SUCCESS'
-
-    let letterIndex = 0
-
-    service.split('').forEach((_, index) => {
-      setTimeout(() => {
-        setVisibleService((prev) => new Set([...prev, index]))
-      }, 100 * letterIndex++)
-    })
-
-    letterIndex += 2
-
-    to.split('').forEach((_, index) => {
-      setTimeout(() => {
-        setVisibleTo((prev) => new Set([...prev, index]))
-      }, 100 * letterIndex++)
-    })
-
-    letterIndex += 2
-
-    success.split('').forEach((_, index) => {
-      setTimeout(() => {
-        setVisibleSuccess((prev) => new Set([...prev, index]))
-      }, 100 * letterIndex++)
-    })
-  }, [])
 
   const mobilePanelOpen = isNarrowViewport && heroMenuOpen
   const panelHiddenA11y = !heroMenuOpen && isNarrowViewport
@@ -166,108 +134,91 @@ export default function Hero() {
     </div>
   )
 
-  const renderMobileHeadlines = () => (
-    <div className="flex flex-col gap-2 text-left">
+  const renderHeroHeadlines = (large = false) => (
+    <div className={`flex flex-col text-left ${large ? 'gap-2.5 xl:gap-3' : 'gap-2'}`}>
       <h2
-        className="m-0 text-[1.5rem] font-black uppercase leading-snug tracking-tight text-cvc-hero-fg sm:text-[1.75rem]"
+        className={
+          large
+            ? 'm-0 text-[2rem] font-black uppercase leading-[1.05] tracking-tight text-cvc-hero-fg xl:text-[2.75rem]'
+            : 'm-0 text-[1.5rem] font-black uppercase leading-snug tracking-tight text-cvc-hero-fg sm:text-[1.75rem]'
+        }
         style={{ fontStretch: 'condensed' }}
       >
         WHAT&apos;S <span style={{ color: HERO_ACCENT }}>NEXT?</span>
       </h2>
       <h1
-        className="m-0 flex flex-col gap-1.5 font-black uppercase leading-snug tracking-tight sm:gap-2"
+        className={`m-0 flex flex-col font-black uppercase leading-[1.05] tracking-tight ${large ? 'gap-2' : 'gap-1.5 sm:gap-2'}`}
         style={{ fontStretch: 'condensed' }}
       >
-        <span className="text-[1.5rem] text-cvc-hero-fg sm:text-[1.75rem]">
+        <span
+          className={
+            large
+              ? 'text-[2rem] text-cvc-hero-fg xl:text-[2.75rem]'
+              : 'text-[1.5rem] text-cvc-hero-fg sm:text-[1.75rem]'
+          }
+        >
           SERVICE <span className="text-cvc-hero-fg">TO</span>
         </span>
-        <span className="text-[1.625rem] sm:text-[1.875rem]" style={{ color: HERO_ACCENT }}>
+        <span
+          className={large ? 'text-[2.125rem] xl:text-[2.875rem]' : 'text-[1.625rem] sm:text-[1.875rem]'}
+          style={{ color: HERO_ACCENT }}
+        >
           SUCCESS
         </span>
       </h1>
     </div>
   )
 
-  const renderDesktopHeadlines = () => (
-    <div className="flex flex-col gap-1 sm:gap-1.5">
-      <h2
-        className="m-0 text-2xl font-black uppercase leading-[1.08] tracking-tight text-cvc-hero-fg sm:text-3xl lg:text-[2rem] xl:text-4xl xl:tracking-tighter"
-        style={{ fontStretch: 'condensed' }}
+  const renderHeroCtas = (layout: 'stack' | 'row') => (
+    <div
+      className={
+        layout === 'row'
+          ? 'flex flex-col gap-3 pt-0.5 sm:flex-row sm:items-stretch lg:max-w-2xl'
+          : 'flex flex-col gap-3 pt-1'
+      }
+    >
+      <HeroMobileCta
+        href="/veteran-application"
+        variant="primary"
+        className={layout === 'row' ? 'sm:min-w-0 sm:flex-1' : undefined}
       >
-        <span className="text-cvc-hero-fg">WHAT&apos;S </span>
-        <span style={{ color: HERO_ACCENT }}>NEXT?</span>
-      </h2>
-      <h1
-        className="m-0 flex flex-col gap-1 font-black uppercase leading-[1.08] tracking-tight sm:gap-1.5 sm:tracking-tighter lg:tracking-tighter"
-        style={{ fontStretch: 'condensed' }}
+        Start Your Transition
+      </HeroMobileCta>
+      <HeroMobileCta
+        href="#programs"
+        variant="secondary"
+        className={layout === 'row' ? 'sm:min-w-0 sm:flex-1' : undefined}
       >
-        <span className="block text-2xl text-cvc-hero-fg sm:text-3xl lg:text-[2rem] xl:text-4xl">
-          {'SERVICE'.split('').map((letter, index) => (
-            <span
-              key={`service-${index}`}
-              className={`inline-block transition-all duration-300 ${
-                visibleService.has(index) ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-              }`}
-            >
-              {letter}
-            </span>
-          ))}
-          <span className="ml-2 inline sm:ml-3">
-            {'TO'.split('').map((letter, index) => (
-              <span
-                key={`to-${index}`}
-                className={`inline-block transition-all duration-300 ${
-                  visibleTo.has(index) ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-                }`}
-              >
-                {letter}
-              </span>
-            ))}
-          </span>
-        </span>
-        <span
-          className="block text-[1.65rem] sm:text-4xl lg:text-[2.25rem] xl:text-[2.75rem]"
-          style={{ color: HERO_ACCENT }}
-        >
-          {'SUCCESS'.split('').map((letter, index) => (
-            <span
-              key={`success-${index}`}
-              className={`inline-block transition-all duration-300 ${
-                visibleSuccess.has(index) ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-              }`}
-            >
-              {letter}
-            </span>
-          ))}
-        </span>
-      </h1>
+        Learn More
+      </HeroMobileCta>
     </div>
   )
 
   return (
     <section
       id="home"
-      className="relative flex flex-col overflow-x-hidden bg-cvc-page lg:overflow-y-visible"
+      className="relative flex flex-col overflow-x-hidden bg-cvc-page lg:min-h-[100dvh] lg:overflow-y-visible"
     >
-      {/* Desktop background only — mobile bg is scoped to hero content block */}
-      <div className="pointer-events-none absolute inset-x-0 top-[2.5rem] bottom-0 z-0 hidden overflow-hidden sm:top-[2.75rem] lg:block">
+      {/* Desktop background — full bleed under transparent nav */}
+      <div className="pointer-events-none absolute inset-0 z-0 hidden overflow-hidden lg:block">
         <Image
-          src="/flagman.png"
+          src={HERO_BG_DESKTOP}
           alt=""
           fill
           sizes="100vw"
-          style={{ objectFit: 'cover', objectPosition: 'center 28%' }}
+          style={{ objectFit: 'cover', objectPosition: 'center center' }}
           className="object-cover"
+          priority
         />
       </div>
-      <div className="pointer-events-none absolute inset-x-0 top-[2.5rem] bottom-0 z-0 hidden bg-cvc-hero-shade sm:top-[2.75rem] lg:block" />
+      <div className="pointer-events-none absolute inset-0 z-0 hidden bg-gradient-to-r from-slate-950/75 via-slate-950/35 to-slate-950/10 lg:block" />
 
       {/* —— Mobile layout —— */}
       <div className="flex w-full flex-col lg:hidden">
         <div className="relative overflow-visible">
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-none">
             <Image
-              src="/flagman.png"
+              src={HERO_BG_MOBILE}
               alt=""
               fill
               sizes="100vw"
@@ -293,89 +244,45 @@ export default function Hero() {
             <div className="mb-6 w-full sm:mb-7">{renderMobileQuickLinks()}</div>
 
             <div className="flex w-full flex-col gap-5 sm:gap-6">
-              {renderMobileHeadlines()}
+              {renderHeroHeadlines(false)}
               <HeroStarSeparator />
               <HeroLeadParagraph />
-              <div className="flex flex-col gap-3 pt-1">
-                <HeroMobileCta href="/veteran-application" variant="primary">
-                  Start Your Transition
-                </HeroMobileCta>
-                <HeroMobileCta href="#programs" variant="secondary">
-                  Learn More
-                </HeroMobileCta>
-              </div>
+              {renderHeroCtas('stack')}
             </div>
           </div>
         </div>
       </div>
 
-      {/* —— Desktop layout —— */}
-      <div className="relative z-10 mx-auto hidden w-full max-w-6xl flex-col px-8 pt-[2.75rem] lg:flex">
-        <div className="grid min-h-0 w-full min-w-0 grid-cols-[minmax(0,22rem)_minmax(0,1fr)] content-start items-start gap-8 pb-8 pt-6 xl:grid-cols-[minmax(0,24rem)_minmax(0,1fr)] xl:gap-10 xl:pb-10 xl:pt-10">
-          <div
-            ref={hubRef}
-            className="hero-quicklinks-hub group relative z-40 w-full min-w-0 overflow-visible justify-self-start self-start"
-          >
-            <div className="flex flex-col items-center gap-4">
-              <div className="relative flex w-full min-w-0 shrink justify-center max-w-[min(100%,24rem)]">
-                <div className="relative flex max-h-[min(48svh,380px)] w-full shrink-0 animate-slide-in-from-left items-center justify-center">
-                  <Image
-                    src="/CVClogo.png"
-                    alt="Combat Veterans to Careers Organization Logo"
-                    width={640}
-                    height={640}
-                    className="h-auto max-h-full w-full object-contain drop-shadow-[0_12px_40px_rgba(0,0,0,0.55)]"
-                    priority
-                  />
-                </div>
-                <div className="absolute left-full top-1/2 z-50 -translate-y-1/2 pl-2 xl:pl-3">
-                  <nav
-                    id="hero-quick-links-menu-desktop"
-                    role="navigation"
-                    aria-label="Quick links"
-                    className="pointer-events-none max-w-0 translate-x-[-10px] overflow-hidden rounded-xl border border-white/20 bg-white/[0.07] opacity-0 shadow-[0_16px_48px_-12px_rgba(0,0,0,0.45)] backdrop-blur-xl ring-1 ring-white/10 transition-[max-width,opacity,transform] duration-300 ease-out motion-reduce:transition-none lg:group-hover:pointer-events-auto lg:group-hover:max-w-[min(18rem,calc(100vw-14rem))] lg:group-hover:translate-x-0 lg:group-hover:opacity-100 lg:group-focus-within:pointer-events-auto lg:group-focus-within:max-w-[min(18rem,calc(100vw-14rem))] lg:group-focus-within:translate-x-0 lg:group-focus-within:opacity-100"
-                  >
-                    <div className="w-[min(18rem,calc(100vw-14rem))] shrink-0 px-3 py-3">
-                      <p className="mb-2 border-b border-white/10 pb-2 text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-white/45">
-                        Explore
-                      </p>
-                      <ul className="flex max-h-[min(70svh,20rem)] flex-col gap-1 overflow-y-auto overscroll-contain">
-                        {renderMenuLinks(false)}
-                      </ul>
-                    </div>
-                  </nav>
-                </div>
-              </div>
+      {/* —— Desktop layout — logo left, copy right —— */}
+      <div className="relative z-10 mx-auto hidden min-h-0 w-full max-w-7xl flex-1 flex-col justify-center px-8 pb-2 pt-24 lg:flex xl:px-14 xl:pt-28">
+        <div className="grid w-full min-w-0 grid-cols-[minmax(0,16rem)_minmax(0,1fr)] items-center gap-6 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-8 xl:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] xl:gap-10">
+          <div className="flex min-w-0 justify-center self-center">
+            <div className="relative flex w-full max-w-[min(100%,20rem)] max-h-[min(46vh,360px)] items-center justify-center xl:max-h-[min(50vh,400px)]">
+              <Image
+                src="/CVClogo.png"
+                alt="Combat Veterans to Careers Organization Logo"
+                width={640}
+                height={640}
+                className="h-auto max-h-full w-full object-contain drop-shadow-[0_12px_40px_rgba(0,0,0,0.55)]"
+                priority
+              />
             </div>
           </div>
 
-          <div className="flex min-w-0 max-w-xl flex-col gap-3 self-center pl-2 text-left xl:max-w-2xl xl:pl-6">
-            {renderDesktopHeadlines()}
-            <p className="max-w-prose text-sm font-light italic leading-relaxed text-cvc-hero-fg-muted sm:text-base">
-              As you step from one chapter to the next, we stand beside you—providing 360° of support and
-              guidance to help you find your footing and discover the next stage of your journey.
-            </p>
-            <div className="flex flex-row gap-3 pt-0.5">
-              <a
-                href="/veteran-application"
-                className="inline-flex min-h-10 items-center justify-center rounded-lg bg-cvc-cta-fill px-4 text-sm font-semibold leading-none text-white shadow-[inset_0_1px_0_0_rgb(255_255_255_/_0.18),0_3px_0_0_rgb(30_45_25),0_8px_24px_-6px_rgb(0_0_0_/_0.5)] ring-1 ring-white/15 transition-[filter,transform,box-shadow] hover:brightness-110 active:translate-y-px"
-              >
-                Start Your Transition
-              </a>
-              <a
-                href="#programs"
-                className="inline-flex min-h-10 items-center justify-center rounded-lg border border-white/45 bg-slate-950/40 px-4 text-sm font-semibold leading-none text-white shadow-md backdrop-blur-sm transition-colors hover:border-white/65 hover:bg-slate-950/55"
-              >
-                Learn More
-              </a>
-            </div>
+          <div className="flex min-w-0 max-w-xl flex-col gap-4 xl:max-w-2xl xl:gap-5">
+            {renderHeroHeadlines(true)}
+            <HeroStarSeparator className="!my-2 xl:!my-3" />
+            <HeroLeadParagraph />
+            {renderHeroCtas('row')}
           </div>
         </div>
       </div>
 
-      {/* Pillars + honor bar — all breakpoints, bottom of hero */}
-      <HeroPillarsGrid />
-      <HeroHonorBar />
+      {/* Pillars + honor bar — pinned to viewport bottom on desktop */}
+      <div className="w-full lg:mt-auto">
+        <HeroPillarsGrid />
+        <HeroHonorBar />
+      </div>
     </section>
   )
 }

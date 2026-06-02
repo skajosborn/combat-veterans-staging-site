@@ -20,17 +20,19 @@ type HeroMobileCtaProps = {
   href: string
   children: ReactNode
   variant: 'primary' | 'secondary'
+  className?: string
 }
 
-export function HeroMobileCta({ href, children, variant }: HeroMobileCtaProps) {
+export function HeroMobileCta({ href, children, variant, className = '' }: HeroMobileCtaProps) {
   const isPrimary = variant === 'primary'
   return (
     <Link
       href={href}
       className={
-        isPrimary
+        (isPrimary
           ? 'flex w-full min-h-12 items-stretch overflow-hidden rounded-lg bg-cvc-cta-fill text-left shadow-[inset_0_1px_0_0_rgb(255_255_255_/_0.15),0_4px_14px_-4px_rgb(0_0_0_/_0.45)] ring-1 ring-white/10 transition-[filter] hover:brightness-110'
-          : 'flex w-full min-h-12 items-stretch overflow-hidden rounded-lg border border-white/50 bg-slate-950/35 text-left backdrop-blur-sm transition-colors hover:border-white/70 hover:bg-slate-950/50'
+          : 'flex w-full min-h-12 items-stretch overflow-hidden rounded-lg border border-white/50 bg-slate-950/35 text-left backdrop-blur-sm transition-colors hover:border-white/70 hover:bg-slate-950/50') +
+        (className ? ` ${className}` : '')
       }
     >
       <span
@@ -70,17 +72,17 @@ export function HeroPillarsGrid() {
           {HERO_PILLARS.map(({ title, description, Icon }) => (
             <div
               key={title}
-              className="flex flex-col items-center px-3 py-6 text-center sm:px-4 sm:py-7 lg:px-6 lg:py-8"
+              className="flex flex-col items-center px-3 py-6 text-center sm:px-4 sm:py-7 lg:px-3 lg:py-2 xl:px-4 xl:py-2.5"
             >
               <Icon
-                className="mb-3 h-8 w-8 text-[#a8b892] sm:h-9 sm:w-9 lg:mb-4 lg:h-10 lg:w-10"
+                className="mb-3 h-8 w-8 text-[#a8b892] sm:h-9 sm:w-9 lg:mb-1.5 lg:h-7 lg:w-7 xl:h-8 xl:w-8"
                 strokeWidth={1.5}
                 aria-hidden
               />
-              <p className="text-[11px] font-bold uppercase leading-snug tracking-wide text-white sm:text-xs lg:text-sm">
+              <p className="text-[11px] font-bold uppercase leading-snug tracking-wide text-white sm:text-xs lg:text-[11px] xl:text-xs">
                 {title}
               </p>
-              <p className="mt-2 max-w-[11rem] text-[10px] leading-relaxed text-white/80 sm:text-[11px] lg:mt-3 lg:max-w-[14rem] lg:text-xs">
+              <p className="mt-2 max-w-[11rem] text-[10px] leading-relaxed text-white/80 sm:text-[11px] lg:mt-1 lg:max-w-[12rem] lg:text-[10px] xl:max-w-[13rem]">
                 {description}
               </p>
             </div>
@@ -93,7 +95,7 @@ export function HeroPillarsGrid() {
 
 export function HeroHonorBar() {
   return (
-    <div className="relative z-20 flex w-full items-center justify-center gap-3 bg-cvc-cta-fill px-4 py-4 sm:py-5 lg:py-5">
+    <div className="relative z-20 flex w-full shrink-0 items-center justify-center gap-3 bg-cvc-cta-fill px-4 py-4 sm:py-5 lg:gap-2 lg:py-2">
       <Star className="h-2.5 w-2.5 shrink-0 fill-white text-white" strokeWidth={0} aria-hidden />
       <p className="text-center text-[11px] font-bold uppercase tracking-[0.12em] text-white sm:text-xs">
         Honor. Purpose. Transition. Together.

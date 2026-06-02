@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import NavLinkButton from './NavLinkButton'
 import NavStoresDropdown from './NavStoresDropdown'
 import ThemeToggle from './ThemeToggle'
@@ -11,10 +12,21 @@ import { showVision } from '@/lib/siteConfig'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
+  const isHomeHero = pathname === '/'
   const navItems = getNavItems()
+  const mainNavItems = navItems.filter(
+    (item) => !(isHomeHero && item.type === 'link' && item.label === 'Donate')
+  )
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-200 bg-white shadow-sm backdrop-blur-md max-md:dark:border-slate-200 max-md:dark:bg-white md:border-cvc-nav-border md:bg-cvc-nav md:shadow-xl">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 border-b border-cvc-nav-border bg-cvc-nav shadow-sm backdrop-blur-md ${
+        isHomeHero
+          ? 'md:dark:border-white/15 md:dark:bg-transparent md:dark:shadow-none'
+          : 'md:shadow-xl'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-nowrap items-center justify-between gap-2 py-2 min-w-0 md:py-0.5">
           {/* Logo — small mark; hero carries the large crest */}
@@ -31,46 +43,76 @@ export default function Navigation() {
                 />
               </div>
               <div className="min-w-0 text-left leading-tight md:block">
-                <p className="text-[9px] font-bold uppercase tracking-wide text-patriotic-navy sm:text-[10px] md:text-xs md:font-semibold md:normal-case md:tracking-normal md:text-cvc-fg">
+                <p
+                  className={
+                    isHomeHero
+                      ? 'text-[9px] font-bold uppercase tracking-wide text-patriotic-navy sm:text-[10px] md:text-[10px] md:font-bold md:tracking-[0.12em] md:text-cvc-fg md:dark:text-white lg:text-[11px]'
+                      : 'text-[9px] font-bold uppercase tracking-wide text-patriotic-navy sm:text-[10px] md:text-xs md:font-semibold md:normal-case md:tracking-normal md:text-cvc-fg'
+                  }
+                >
                   Combat Veterans
                 </p>
-                <p className="text-[9px] font-bold uppercase tracking-wide text-patriotic-navy sm:text-[10px] md:text-[11px] md:font-medium md:normal-case md:tracking-normal md:text-cvc-fg-subtle">
+                <p
+                  className={
+                    isHomeHero
+                      ? 'text-[9px] font-bold uppercase tracking-wide text-patriotic-navy sm:text-[10px] md:text-[10px] md:font-bold md:tracking-[0.12em] md:text-cvc-fg md:dark:text-white/90 lg:text-[11px]'
+                      : 'text-[9px] font-bold uppercase tracking-wide text-patriotic-navy sm:text-[10px] md:text-[11px] md:font-medium md:normal-case md:tracking-normal md:text-cvc-fg-subtle'
+                  }
+                >
                   to Careers
                 </p>
               </div>
             </a>
           </div>
 
-          {/* Tablet/desktop: one row — nowrap + scroll if viewport is tight (avoids wrap under the bar) */}
+          {/* Tablet/desktop — scrollable links; stores menu sits outside overflow so dropdown is clickable */}
           <div className="hidden min-w-0 flex-1 items-center justify-end gap-2 md:flex lg:gap-4">
-            <nav
-              aria-label="Main"
-              className="scrollbar-hide flex min-w-0 max-w-full flex-1 flex-nowrap items-center justify-end gap-x-2 overflow-x-auto overflow-y-visible py-0.5 md:gap-x-2.5 lg:gap-x-4 xl:gap-x-5"
-            >
-              {navItems.map((item) =>
-                item.type === 'dropdown' ? (
-                  <NavStoresDropdown key={item.label} />
-                ) : (
+            <div className="scrollbar-hide flex min-w-0 max-w-full flex-1 flex-nowrap items-center justify-end gap-x-2 overflow-x-auto py-0.5 md:gap-x-2.5 lg:gap-x-4 xl:gap-x-5">
+              {mainNavItems.map((item) => {
+                if (item.type === 'dropdown') {
+                  return (
+                    <NavStoresDropdown key={item.label} overlay={isHomeHero} className="shrink-0" />
+                  )
+                }
+                return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="shrink-0 whitespace-nowrap text-xs font-medium text-cvc-fg-muted transition-colors hover:text-cvc-fg lg:text-sm"
+                    className={
+                      isHomeHero
+                        ? 'shrink-0 whitespace-nowrap text-xs font-medium text-cvc-fg transition-colors hover:text-cvc-fg md:dark:text-white/90 md:dark:hover:text-white lg:text-sm'
+                        : 'shrink-0 whitespace-nowrap text-xs font-medium text-cvc-fg transition-colors hover:opacity-80 lg:text-sm'
+                    }
                   >
                     {item.label}
                   </Link>
                 )
-              )}
-            </nav>
-            <ThemeToggle className="shrink-0" />
+              })}
+            </div>
+            {isHomeHero && (
+              <Link
+                href="/donate"
+                className="hidden shrink-0 rounded-lg bg-cvc-cta-fill px-3 py-1.5 text-xs font-semibold text-white shadow-md transition-[filter] hover:brightness-110 md:inline-flex lg:px-4 lg:py-2 lg:text-sm"
+              >
+                Donate
+              </Link>
+            )}
+            <ThemeToggle
+              className={
+                isHomeHero
+                  ? 'hidden shrink-0 md:inline-flex md:dark:border-white/40 md:dark:text-white md:dark:hover:bg-white/10 md:dark:hover:text-white'
+                  : 'shrink-0'
+              }
+            />
           </div>
 
           {/* Mobile menu button */}
           <div className="flex flex-shrink-0 items-center gap-2 md:hidden">
-            <ThemeToggle className="border-slate-300 text-slate-700 hover:bg-slate-100 hover:text-slate-900" />
+            <ThemeToggle className="border-cvc-border text-cvc-fg hover:bg-cvc-hover hover:text-cvc-fg dark:border-cvc-border dark:text-cvc-fg-muted dark:hover:bg-cvc-hover dark:hover:text-cvc-fg" />
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-slate-700 hover:text-slate-900 focus:outline-none"
+              className="text-cvc-fg hover:text-cvc-fg focus:outline-none dark:text-cvc-fg dark:hover:text-cvc-fg"
               aria-expanded={isOpen}
               aria-label="Toggle menu"
             >
