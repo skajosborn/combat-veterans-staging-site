@@ -22,7 +22,6 @@ import {
   HeroStarSeparator,
 } from '@/components/HeroMobileExtras'
 
-const HERO_ACCENT = '#a8b892'
 const HERO_BG_DESKTOP = '/cvc hero bg medium.png'
 const HERO_BG_MOBILE = '/cvc hero bg 1.png'
 
@@ -85,10 +84,10 @@ export default function Hero() {
             className={
               isAccent
                 ? 'flex items-center gap-3 rounded-lg bg-cvc-cta-fill px-3 py-2.5 text-xs font-semibold leading-snug text-white shadow-md transition hover:brightness-110'
-                : 'flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-xs font-medium leading-snug text-white/95 transition hover:border-white/15 hover:bg-white/10'
+                : 'flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-xs font-medium leading-snug text-cvc-fg transition hover:border-slate-200 hover:bg-slate-100 dark:text-white/95 dark:hover:border-white/15 dark:hover:bg-white/10'
             }
           >
-            <Icon className="h-4 w-4 shrink-0 text-white/90" strokeWidth={1.5} aria-hidden />
+            <Icon className="h-4 w-4 shrink-0 text-cvc-fg/80 dark:text-white/90" strokeWidth={1.5} aria-hidden />
             <span className="min-w-0 leading-snug">{item.title}</span>
           </Link>
         </li>
@@ -97,18 +96,18 @@ export default function Hero() {
 
   const renderMobileQuickLinks = () => (
     <div ref={mobileHubRef} className="w-full">
-      <div className="w-full overflow-hidden rounded-lg border border-white/25 bg-slate-950/40 shadow-lg backdrop-blur-md">
+      <div className="w-full overflow-hidden rounded-lg border border-slate-300/80 bg-white/90 shadow-lg backdrop-blur-md dark:border-white/25 dark:bg-slate-950/40">
         <button
           type="button"
           aria-expanded={heroMenuOpen}
           aria-controls="hero-quick-links-menu-mobile"
           aria-haspopup="true"
           onClick={() => setHeroMenuOpen((o) => !o)}
-          className="flex w-full items-center justify-between gap-2 px-4 py-3.5 text-left text-[11px] font-bold uppercase tracking-[0.14em] text-white transition hover:bg-white/[0.06] focus-visible:outline focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-inset"
+          className="flex w-full items-center justify-between gap-2 px-4 py-3.5 text-left text-[11px] font-bold uppercase tracking-[0.14em] text-cvc-fg transition hover:bg-black/[0.04] focus-visible:outline focus-visible:ring-2 focus-visible:ring-slate-400/40 focus-visible:ring-inset dark:text-white dark:hover:bg-white/[0.06] dark:focus-visible:ring-white/40"
         >
           Quick links
           <ChevronDown
-            className={`h-4 w-4 shrink-0 text-white/85 transition-transform duration-200 ${heroMenuOpen ? 'rotate-180' : ''}`}
+            className={`h-4 w-4 shrink-0 text-cvc-fg/80 transition-transform duration-200 dark:text-white/85 ${heroMenuOpen ? 'rotate-180' : ''}`}
             strokeWidth={2}
             aria-hidden
           />
@@ -118,7 +117,7 @@ export default function Hero() {
           role="navigation"
           aria-label="Quick links"
           aria-hidden={panelHiddenA11y}
-          className={`overflow-hidden border-t border-white/15 transition-[max-height,opacity] duration-300 ease-out motion-reduce:transition-none ${
+          className={`overflow-hidden border-t border-slate-200 transition-[max-height,opacity] duration-300 ease-out motion-reduce:transition-none dark:border-white/15 ${
             mobilePanelOpen
               ? 'max-h-[min(52svh,22rem)] opacity-100 pointer-events-auto'
               : 'max-h-0 opacity-0 pointer-events-none'
@@ -144,24 +143,17 @@ export default function Hero() {
         }
         style={{ fontStretch: 'condensed' }}
       >
-        WHAT&apos;S <span style={{ color: HERO_ACCENT }}>NEXT?</span>
+        WHAT&apos;S <span className="text-cvc-hero-accent">NEXT?</span>
       </h2>
       <h1
-        className={`m-0 flex flex-col font-black uppercase leading-[1.05] tracking-tight ${large ? 'gap-2' : 'gap-1.5 sm:gap-2'}`}
+        className={`m-0 flex flex-col font-black uppercase leading-[1.05] tracking-tight text-cvc-hero-fg ${large ? 'gap-2' : 'gap-1.5 sm:gap-2'}`}
         style={{ fontStretch: 'condensed' }}
       >
-        <span
-          className={
-            large
-              ? 'text-[2rem] text-cvc-hero-fg xl:text-[2.75rem]'
-              : 'text-[1.5rem] text-cvc-hero-fg sm:text-[1.75rem]'
-          }
-        >
-          SERVICE <span className="text-cvc-hero-fg">TO</span>
+        <span className={large ? 'text-[2rem] xl:text-[2.75rem]' : 'text-[1.5rem] sm:text-[1.75rem]'}>
+          SERVICE TO
         </span>
         <span
-          className={large ? 'text-[2.125rem] xl:text-[2.875rem]' : 'text-[1.625rem] sm:text-[1.875rem]'}
-          style={{ color: HERO_ACCENT }}
+          className={`${large ? 'text-[2.125rem] xl:text-[2.875rem]' : 'text-[1.625rem] sm:text-[1.875rem]'} text-cvc-hero-accent`}
         >
           SUCCESS
         </span>
@@ -211,7 +203,7 @@ export default function Hero() {
           priority
         />
       </div>
-      <div className="pointer-events-none absolute inset-0 z-0 hidden bg-gradient-to-r from-slate-950/75 via-slate-950/35 to-slate-950/10 lg:block" />
+      <div className="pointer-events-none absolute inset-0 z-0 hidden bg-gradient-to-r from-white/70 via-white/25 to-transparent dark:from-slate-950/75 dark:via-slate-950/35 dark:to-slate-950/10 lg:block" />
 
       {/* —— Mobile layout —— */}
       <div className="flex w-full flex-col lg:hidden">
@@ -235,7 +227,7 @@ export default function Hero() {
                 alt="Combat Veterans to Careers Organization Logo"
                 width={480}
                 height={480}
-                className="h-auto w-full max-h-[165px] object-contain object-center drop-shadow-[0_12px_40px_rgba(0,0,0,0.55)] sm:max-h-[180px]"
+                className="h-auto w-full max-h-[165px] object-contain object-center drop-shadow-[0_8px_24px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_12px_40px_rgba(0,0,0,0.55)] sm:max-h-[180px]"
                 sizes="(max-width: 640px) 220px, 240px"
                 priority
               />
@@ -263,7 +255,7 @@ export default function Hero() {
                 alt="Combat Veterans to Careers Organization Logo"
                 width={640}
                 height={640}
-                className="h-auto max-h-full w-full object-contain drop-shadow-[0_12px_40px_rgba(0,0,0,0.55)]"
+                className="h-auto max-h-full w-full object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.18)] dark:drop-shadow-[0_12px_40px_rgba(0,0,0,0.55)]"
                 priority
               />
             </div>
@@ -278,9 +270,11 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Pillars + honor bar — pinned to viewport bottom on desktop */}
-      <div className="w-full lg:mt-auto">
-        <HeroPillarsGrid />
+      {/* Pillars + honor bar — separated at bottom of hero */}
+      <div className="relative z-20 mt-auto flex w-full flex-col gap-4 pb-4 lg:gap-5 lg:pb-5">
+        <div className="lg:-mt-2">
+          <HeroPillarsGrid />
+        </div>
         <HeroHonorBar />
       </div>
     </section>

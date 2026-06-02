@@ -23,9 +23,13 @@
     --cvc-fg-on-light: #0f172a;
     --cvc-nav: #e5e7eb;
     --cvc-nav-border: #d1d5db;
-    --cvc-hero-shade: rgb(15 23 42 / 0.45);
-    --cvc-hero-fg: #ffffff;
-    --cvc-hero-fg-muted: rgb(255 255 255 / 0.9);
+    --cvc-hero-shade: rgb(255 255 255 / 0.25);
+    --cvc-hero-fg: #1a2b3c;
+    --cvc-hero-fg-muted: #4a5568;
+    --cvc-hero-pillars: rgb(255 255 255 / 0.9);
+    --cvc-hero-pillars-border: rgb(255 255 255 / 0.75);
+    --cvc-hero-pillars-divide: rgb(148 163 184 / 0.35);
+    --cvc-hero-accent: #3d4a2c;
     --cvc-navlink-bg: rgb(15 23 42 / 0.06);
     --cvc-navlink-border: #cbd5e1;
     --cvc-hover: rgb(15 23 42 / 0.06);
@@ -60,6 +64,10 @@
     --cvc-hero-shade: rgb(10 14 39 / 0.4);
     --cvc-hero-fg: #ffffff;
     --cvc-hero-fg-muted: rgb(255 255 255 / 0.88);
+    --cvc-hero-pillars: rgb(13 21 51 / 0.78);
+    --cvc-hero-pillars-border: rgb(168 184 146 / 0.22);
+    --cvc-hero-pillars-divide: rgb(255 255 255 / 0.08);
+    --cvc-hero-accent: #a8b892;
     --cvc-navlink-bg: rgb(0 0 0 / 0.5);
     --cvc-navlink-border: #374151;
     --cvc-hover: rgb(255 255 255 / 0.08);
