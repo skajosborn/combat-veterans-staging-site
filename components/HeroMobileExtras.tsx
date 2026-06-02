@@ -76,8 +76,8 @@ export function HeroPillarsGrid() {
               key={title}
               className="flex flex-col items-center px-3 py-5 text-center transition-colors hover:bg-black/[0.02] dark:hover:bg-white/[0.03] sm:px-4 sm:py-6 lg:px-4 lg:py-4 xl:py-4"
             >
-              <div className="mb-2.5 flex h-11 w-11 items-center justify-center rounded-full border-2 border-cvc-hero-accent bg-white shadow-[0_1px_4px_rgb(15_23_42_/_0.1)] dark:border-cvc-hero-accent/40 dark:bg-cvc-hero-accent/[0.12] dark:shadow-[inset_0_1px_0_0_rgb(255_255_255_/_0.35)] sm:mb-3 sm:h-12 sm:w-12">
-                <Icon className="h-5 w-5 text-cvc-hero-accent sm:h-[1.35rem] sm:w-[1.35rem]" strokeWidth={1.5} aria-hidden />
+              <div className="mb-2.5 flex h-11 w-11 items-center justify-center rounded-full border-2 border-cvc-hero-accent bg-white shadow-[0_1px_4px_rgb(15_23_42_/_0.1)] dark:border-[#a8b892]/45 dark:bg-[#0a1028] dark:shadow-none sm:mb-3 sm:h-12 sm:w-12">
+                <Icon className="h-5 w-5 text-cvc-hero-accent dark:text-[#8f9d78] sm:h-[1.35rem] sm:w-[1.35rem]" strokeWidth={1.5} aria-hidden />
               </div>
               <p className="text-[11px] font-bold uppercase leading-snug tracking-wide text-cvc-fg sm:text-xs dark:text-white">
                 {title}
