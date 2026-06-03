@@ -46,8 +46,8 @@ export default function Navigation() {
                 <p
                   className={
                     isHomeHero
-                      ? 'text-[9px] font-bold uppercase tracking-wide text-patriotic-navy sm:text-[10px] md:text-[10px] md:font-bold md:tracking-[0.12em] md:text-cvc-fg md:dark:text-white lg:text-[11px]'
-                      : 'text-[9px] font-bold uppercase tracking-wide text-patriotic-navy sm:text-[10px] md:text-xs md:font-semibold md:normal-case md:tracking-normal md:text-cvc-fg'
+                      ? 'text-[9px] font-bold uppercase tracking-wide text-patriotic-navy dark:text-white sm:text-[10px] md:text-[10px] md:font-bold md:tracking-[0.12em] md:text-cvc-fg md:dark:text-white lg:text-[11px]'
+                      : 'text-[9px] font-bold uppercase tracking-wide text-patriotic-navy dark:text-white sm:text-[10px] md:text-xs md:font-semibold md:normal-case md:tracking-normal md:text-cvc-fg'
                   }
                 >
                   Combat Veterans
@@ -55,8 +55,8 @@ export default function Navigation() {
                 <p
                   className={
                     isHomeHero
-                      ? 'text-[9px] font-bold uppercase tracking-wide text-patriotic-navy sm:text-[10px] md:text-[10px] md:font-bold md:tracking-[0.12em] md:text-cvc-fg md:dark:text-white/90 lg:text-[11px]'
-                      : 'text-[9px] font-bold uppercase tracking-wide text-patriotic-navy sm:text-[10px] md:text-[11px] md:font-medium md:normal-case md:tracking-normal md:text-cvc-fg-subtle'
+                      ? 'text-[9px] font-bold uppercase tracking-wide text-patriotic-navy dark:text-white/90 sm:text-[10px] md:text-[10px] md:font-bold md:tracking-[0.12em] md:text-cvc-fg md:dark:text-white/90 lg:text-[11px]'
+                      : 'text-[9px] font-bold uppercase tracking-wide text-patriotic-navy dark:text-white/90 sm:text-[10px] md:text-[11px] md:font-medium md:normal-case md:tracking-normal md:text-cvc-fg-subtle'
                   }
                 >
                   to Careers
@@ -108,11 +108,11 @@ export default function Navigation() {
 
           {/* Mobile menu button */}
           <div className="flex flex-shrink-0 items-center gap-2 md:hidden">
-            <ThemeToggle className="border-cvc-border text-cvc-fg hover:bg-cvc-hover hover:text-cvc-fg dark:border-cvc-border dark:text-cvc-fg-muted dark:hover:bg-cvc-hover dark:hover:text-cvc-fg" />
+            <ThemeToggle className="border-cvc-border text-cvc-fg hover:bg-cvc-hover hover:text-cvc-fg dark:border-white/40 dark:text-white dark:hover:bg-white/10 dark:hover:text-white" />
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-cvc-fg hover:text-cvc-fg focus:outline-none dark:text-cvc-fg dark:hover:text-cvc-fg"
+              className="text-cvc-fg hover:text-cvc-fg focus:outline-none dark:text-white dark:hover:text-white/90"
               aria-expanded={isOpen}
               aria-label="Toggle menu"
             >
