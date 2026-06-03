@@ -56,7 +56,7 @@ export function HeroMobileCta({ href, children, variant, className = '' }: HeroM
 
 export function HeroLeadParagraph() {
   return (
-    <p className="text-left text-[0.9375rem] font-light italic leading-[1.65] text-cvc-hero-fg-muted sm:text-base sm:leading-relaxed">
+    <p className="text-left text-[0.9375rem] font-light italic leading-[1.65] text-cvc-hero-fg dark:text-cvc-hero-fg-muted sm:text-base sm:leading-relaxed">
       As you step from one chapter to the next, we stand beside you—providing{' '}
       <strong className="font-semibold not-italic text-cvc-hero-accent">
         360°

@@ -11,6 +11,6 @@ export const socialLinks: SocialLink[] = [
   { label: 'Facebook', href: 'https://www.facebook.com/combatveteranstocareers' },
   { label: 'X (Twitter)', href: 'https://twitter.com/CVCToCareers' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/combat-veterans-to-careers' },
-  { label: 'YouTube', href: 'https://www.youtube.com/@CombatVeteranstoCareers' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@combatvets2careers' },
   { label: 'Instagram', href: 'https://www.instagram.com/combatveteranstocareers' },
 ]
