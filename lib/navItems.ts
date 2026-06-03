@@ -6,15 +6,20 @@ export type NavLinkItem = {
   href: string
 }
 
+export type NavDropdownLink = {
+  label: string
+  href: string
+}
+
 export type NavDropdownItem = {
   type: 'dropdown'
   label: string
-  items: { label: string; href: string }[]
+  items: NavDropdownLink[]
 }
 
 export type NavItem = NavLinkItem | NavDropdownItem
 
-export const ourStoresLinks = [
+export const ourStoresLinks: NavDropdownLink[] = [
   {
     label: 'Restoring Hope Thrift Store',
     href: '/restoring-hope-thrift-store',
@@ -23,13 +28,23 @@ export const ourStoresLinks = [
     label: 'Restoring Hope Clothing Boutique',
     href: '/restoring-hope-clothing-boutique',
   },
-] as const
+]
+
+export const aboutLinks: NavDropdownLink[] = [
+  { label: 'Veterans Path', href: '/whats-next' },
+  { label: 'History', href: '/about#history' },
+  { label: 'Mission', href: '/mission' },
+  { label: 'Get Involved', href: '/get-involved' },
+  { label: 'Board Members', href: '/board-members' },
+  { label: 'Financials', href: '/financials' },
+  { label: 'News Blog', href: '/news-blog' },
+]
 
 const allNavItems: NavItem[] = [
   { type: 'link', label: 'Application', href: '/veteran-application' },
   { type: 'link', label: 'Programs', href: '/#programs' },
   { type: 'link', label: 'Vision', href: '/#vision' },
-  { type: 'link', label: 'About', href: '/about' },
+  { type: 'dropdown', label: 'About', items: [...aboutLinks] },
   { type: 'link', label: 'Events', href: '/events' },
   { type: 'dropdown', label: 'Our Stores', items: [...ourStoresLinks] },
   { type: 'link', label: 'Sponsors', href: '/sponsors' },
@@ -40,4 +55,9 @@ const allNavItems: NavItem[] = [
 export function getNavItems(): NavItem[] {
   if (showVision) return allNavItems
   return allNavItems.filter((item) => item.type !== 'link' || item.label !== 'Vision')
+}
+
+export function getDropdownLinks(label: string): NavDropdownLink[] {
+  const item = allNavItems.find((i) => i.type === 'dropdown' && i.label === label)
+  return item?.type === 'dropdown' ? item.items : []
 }

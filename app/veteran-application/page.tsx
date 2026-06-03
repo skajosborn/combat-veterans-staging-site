@@ -198,7 +198,7 @@ export default function VeteranApplication() {
   const years = Array.from({ length: 50 }, (_, i) => new Date().getFullYear() - i)
 
   return (
-    <main className="min-h-screen bg-cvc-page pt-[2.5rem] text-cvc-fg sm:pt-[2.75rem]">
+    <main className="min-h-screen bg-cvc-page pt-[calc(var(--cvc-nav-utility-height)+var(--cvc-nav-main-height))] text-cvc-fg">
       <section className="py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Logo */}

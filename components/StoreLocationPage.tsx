@@ -19,7 +19,7 @@ export default function StoreLocationPage({
   const phoneHref = `tel:${phone.replace(/\D/g, '')}`
 
   return (
-    <main className="min-h-screen bg-cvc-page pb-16 pt-24">
+    <main className="min-h-screen bg-cvc-page pb-16 pt-28">
       <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <article className="rounded-2xl border border-cvc-border bg-cvc-card p-8 sm:p-10">
           <SectionTitle

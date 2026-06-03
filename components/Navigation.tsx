@@ -5,9 +5,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import NavLinkButton from './NavLinkButton'
-import NavStoresDropdown from './NavStoresDropdown'
+import NavDropdown from './NavDropdown'
+import NavUtilityBar from './NavUtilityBar'
 import ThemeToggle from './ThemeToggle'
-import { getNavItems, ourStoresLinks } from '@/lib/navItems'
+import { getNavItems } from '@/lib/navItems'
 import { showVision } from '@/lib/siteConfig'
 
 export default function Navigation() {
@@ -20,13 +21,15 @@ export default function Navigation() {
   )
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 border-b border-cvc-nav-border bg-cvc-nav shadow-sm backdrop-blur-md ${
-        isHomeHero
-          ? 'md:dark:border-white/15 md:dark:bg-transparent md:dark:shadow-none'
-          : 'md:shadow-xl'
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <NavUtilityBar />
+      <nav
+        className={`relative border-b border-cvc-nav-border bg-cvc-nav shadow-sm backdrop-blur-md ${
+          isHomeHero
+            ? 'md:dark:border-white/15 md:dark:bg-transparent md:dark:shadow-none'
+            : 'md:shadow-xl'
+        }`}
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-nowrap items-center justify-between gap-2 py-2 min-w-0 md:py-0.5">
           {/* Logo — small mark; hero carries the large crest */}
@@ -71,7 +74,13 @@ export default function Navigation() {
               {mainNavItems.map((item) => {
                 if (item.type === 'dropdown') {
                   return (
-                    <NavStoresDropdown key={item.label} overlay={isHomeHero} className="shrink-0" />
+                    <NavDropdown
+                      key={item.label}
+                      label={item.label}
+                      links={item.items}
+                      overlay={isHomeHero}
+                      className="shrink-0"
+                    />
                   )
                 }
                 return (
@@ -139,14 +148,14 @@ export default function Navigation() {
                     <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-cvc-fg-subtle">
                       {item.label}
                     </p>
-                    {ourStoresLinks.map(({ label, href }) => (
+                    {item.items.map(({ label: linkLabel, href }) => (
                       <Link
                         key={href}
                         href={href}
                         onClick={() => setIsOpen(false)}
                         className="block rounded-lg py-2 pl-5 pr-3 text-sm font-medium text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg"
                       >
-                        {label}
+                        {linkLabel}
                       </Link>
                     ))}
                   </div>
@@ -261,6 +270,7 @@ export default function Navigation() {
           </div>
         </div>
       )}
-    </nav>
+      </nav>
+    </header>
   )
 }

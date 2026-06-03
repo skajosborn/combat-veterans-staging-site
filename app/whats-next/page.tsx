@@ -11,7 +11,7 @@ const galleryImages = [
 
 export default function WhatsNextPage() {
   return (
-    <main className="min-h-screen bg-cvc-page pb-16 pt-24">
+    <main className="min-h-screen bg-cvc-page pb-16 pt-28">
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 rounded-2xl border border-cvc-border bg-cvc-card-muted p-8 sm:p-10">
           <SectionTitle

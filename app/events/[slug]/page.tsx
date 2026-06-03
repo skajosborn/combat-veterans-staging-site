@@ -21,7 +21,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-cvc-page pb-16 pt-24">
+    <main className="min-h-screen bg-cvc-page pb-16 pt-28">
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-2xl border border-cvc-border bg-cvc-card p-6 sm:p-8 lg:p-10">
           <SectionTitle

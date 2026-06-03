@@ -3,14 +3,16 @@
 import Link from 'next/link'
 import { createPortal } from 'react-dom'
 import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
-import { ourStoresLinks } from '@/lib/navItems'
+import type { NavDropdownLink } from '@/lib/navItems'
 
 type Props = {
+  label: string
+  links: NavDropdownLink[]
   className?: string
   overlay?: boolean
 }
 
-export default function NavStoresDropdown({ className = '', overlay = false }: Props) {
+export default function NavDropdown({ label, links, className = '', overlay = false }: Props) {
   const [open, setOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0, minWidth: 256 })
@@ -23,7 +25,7 @@ export default function NavStoresDropdown({ className = '', overlay = false }: P
     if (!button) return
     const rect = button.getBoundingClientRect()
     const minWidth = Math.max(256, rect.width)
-    let left = rect.right - minWidth
+    let left = rect.left
     left = Math.max(8, Math.min(left, window.innerWidth - minWidth - 8))
     setMenuPosition({
       top: rect.bottom + 8,
@@ -81,20 +83,23 @@ export default function NavStoresDropdown({ className = '', overlay = false }: P
           minWidth: menuPosition.minWidth,
           zIndex: 200,
         }}
-        className="rounded-lg border border-cvc-border bg-cvc-card py-1 shadow-xl"
+        className="overflow-hidden rounded-lg border border-cvc-border bg-cvc-card py-1 shadow-xl"
         onMouseDown={(e) => e.stopPropagation()}
       >
-        {ourStoresLinks.map(({ label, href }) => (
-          <Link
-            key={href}
-            href={href}
-            role="menuitem"
-            className="block px-4 py-2.5 text-sm text-cvc-fg transition-colors hover:bg-cvc-hover"
-            onClick={() => setOpen(false)}
-          >
-            {label}
-          </Link>
-        ))}
+        <ul className="divide-y divide-cvc-border">
+          {links.map(({ label: linkLabel, href }) => (
+            <li key={href}>
+              <Link
+                href={href}
+                role="menuitem"
+                className="block px-4 py-2.5 text-sm text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg"
+                onClick={() => setOpen(false)}
+              >
+                {linkLabel}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     ) : null
 
@@ -113,7 +118,7 @@ export default function NavStoresDropdown({ className = '', overlay = false }: P
             setOpen((v) => !v)
           }}
         >
-          Our Stores
+          {label}
           <svg
             className={`h-3.5 w-3.5 transition-transform ${open ? 'rotate-180' : ''}`}
             viewBox="0 0 20 20"

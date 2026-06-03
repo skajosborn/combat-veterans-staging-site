@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-cvc-page pb-16 pt-24">
+    <main className="min-h-screen bg-cvc-page pb-16 pt-28">
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 rounded-2xl border border-cvc-border bg-cvc-card p-8 sm:p-10">
           <SectionTitle
@@ -48,7 +48,7 @@ export default function AboutPage() {
           />
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-cvc-border bg-cvc-card">
+        <div id="history" className="scroll-mt-28 overflow-hidden rounded-2xl border border-cvc-border bg-cvc-card">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
             <div className="relative aspect-[4/5] min-h-[320px] lg:min-h-[480px]">
               <Image

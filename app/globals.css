@@ -23,6 +23,8 @@
     --cvc-fg-on-light: #0f172a;
     --cvc-nav: #e5e7eb;
     --cvc-nav-border: #d1d5db;
+    --cvc-nav-utility-height: 2rem;
+    --cvc-nav-main-height: 2.75rem;
     --cvc-hero-shade: rgb(255 255 255 / 0.25);
     --cvc-hero-fg: #1a2b3c;
     --cvc-hero-fg-muted: #4a5568;
@@ -61,6 +63,8 @@
     --cvc-fg-on-light: #0f172a;
     --cvc-nav: rgb(10 14 39 / 0.95);
     --cvc-nav-border: #1f2937;
+    --cvc-nav-utility-height: 2.25rem;
+    --cvc-nav-main-height: 2.75rem;
     --cvc-hero-shade: rgb(10 14 39 / 0.4);
     --cvc-hero-fg: #ffffff;
     --cvc-hero-fg-muted: rgb(255 255 255 / 0.88);

@@ -3,7 +3,7 @@ import SectionTitle from '@/components/SectionTitle'
 
 export default function DonatePage() {
   return (
-    <main className="min-h-screen bg-cvc-page pb-20 pt-24 sm:pt-28">
+    <main className="min-h-screen bg-cvc-page pb-20 pt-28 sm:pt-32">
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="overflow-hidden rounded-3xl border border-cvc-border bg-cvc-card shadow-2xl">
           <div className="border-y border-cvc-border bg-cvc-page-elevated p-8 sm:p-10 lg:p-12">

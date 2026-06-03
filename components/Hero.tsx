@@ -220,7 +220,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-cvc-hero-shade" />
           </div>
 
-          <div className="relative z-10 mx-auto flex w-full max-w-lg flex-col items-center px-4 pb-10 pt-[4.75rem] sm:px-6 sm:pb-12 sm:pt-[5rem]">
+          <div className="relative z-10 mx-auto flex w-full max-w-lg flex-col items-center px-4 pb-10 pt-[6.75rem] sm:px-6 sm:pb-12 sm:pt-[7rem]">
             <div className="mb-2 flex w-full max-w-[220px] shrink-0 justify-center overflow-visible px-1 pt-2 sm:max-w-[240px]">
               <Image
                 src="/CVClogo.png"
@@ -246,7 +246,7 @@ export default function Hero() {
       </div>
 
       {/* —— Desktop layout — logo left, copy right —— */}
-      <div className="relative z-10 mx-auto hidden min-h-0 w-full max-w-7xl flex-1 flex-col justify-center px-8 pb-2 pt-24 lg:flex xl:px-14 xl:pt-28">
+      <div className="relative z-10 mx-auto hidden min-h-0 w-full max-w-7xl flex-1 flex-col justify-center px-8 pb-2 pt-28 lg:flex xl:px-14 xl:pt-32">
         <div className="grid w-full min-w-0 grid-cols-[minmax(0,16rem)_minmax(0,1fr)] items-center gap-6 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-8 xl:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] xl:gap-10">
           <div className="flex min-w-0 justify-center self-center">
             <div className="relative flex w-full max-w-[min(100%,20rem)] max-h-[min(46vh,360px)] items-center justify-center xl:max-h-[min(50vh,400px)]">

@@ -8,7 +8,7 @@ export default function EventsPage() {
   const calendarMonths = ['February', 'March', 'April', 'May', 'June']
 
   return (
-    <main className="min-h-screen bg-cvc-page pb-16 pt-24">
+    <main className="min-h-screen bg-cvc-page pb-16 pt-28">
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 rounded-2xl border border-cvc-border bg-cvc-card p-8 sm:p-10">
           <SectionTitle

@@ -3,7 +3,7 @@ import SectionTitle from '@/components/SectionTitle'
 
 export default function OperationFieldTripPage() {
   return (
-    <main className="min-h-screen bg-cvc-page pb-20 pt-24">
+    <main className="min-h-screen bg-cvc-page pb-20 pt-28">
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="overflow-hidden rounded-3xl border border-cvc-border bg-cvc-card shadow-2xl">
           <div className="relative h-72 w-full bg-cvc-page sm:h-96 lg:h-[28rem]">

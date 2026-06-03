@@ -4,7 +4,7 @@ import { futurePillars } from '@/lib/futureVision'
 
 export default function FutureGoalPage() {
   return (
-    <main className="min-h-screen bg-cvc-page pb-16 pt-24">
+    <main className="min-h-screen bg-cvc-page pb-16 pt-28">
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="overflow-hidden rounded-2xl border border-cvc-border bg-cvc-card shadow-2xl">
           <div className="relative aspect-[3/2] w-full bg-cvc-page">
