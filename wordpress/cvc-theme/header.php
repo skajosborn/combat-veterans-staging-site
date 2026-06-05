@@ -25,7 +25,9 @@ if ( has_custom_logo() ) {
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<header class="cvc-nav" role="banner">
+<header class="cvc-nav-shell" role="banner">
+	<?php get_template_part( 'template-parts/nav', 'utility-bar' ); ?>
+	<div class="cvc-nav">
 	<div class="cvc-nav__inner">
 		<a class="cvc-nav__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 			<img src="<?php echo esc_url( $logo_url ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="40" height="40" />
@@ -56,6 +58,7 @@ if ( has_custom_logo() ) {
 
 	<div class="cvc-nav__mobile-panel" id="cvc-nav-mobile">
 		<?php cvc_render_primary_nav_menu(); ?>
+	</div>
 	</div>
 </header>
 

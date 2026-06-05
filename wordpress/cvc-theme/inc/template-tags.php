@@ -43,8 +43,11 @@ function cvc_section_title( $args ) {
 			</<?php echo esc_attr( $tag ); ?>>
 			<span class="cvc-section-title__rule" aria-hidden="true"></span>
 		</div>
-		<div class="cvc-section-title__stars" aria-hidden="true">
-			<span class="cvc-star">★</span><span class="cvc-star cvc-star--lg">★</span><span class="cvc-star">★</span>
+		<div class="cvc-section-title__blueprint-rule" aria-hidden="true">
+			<div class="cvc-section-title__blueprint-rule-line"></div>
+			<div class="cvc-section-title__blueprint-stars">
+				<span class="cvc-star">★</span><span class="cvc-star cvc-star--lg">★</span><span class="cvc-star">★</span>
+			</div>
 		</div>
 		<?php if ( ! empty( $args['subtitle'] ) ) : ?>
 			<div class="cvc-section-title__subtitle">

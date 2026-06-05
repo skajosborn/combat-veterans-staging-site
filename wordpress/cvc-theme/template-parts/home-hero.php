@@ -81,18 +81,17 @@ $quick_links = cvc_get_quick_links();
 			</div>
 
 			<div class="cvc-hero-copy">
-				<div class="cvc-hero-copy__headlines">
-					<h2 class="cvc-hero-copy__whats-next">
-						<?php esc_html_e( "WHAT'S", 'cvc-theme' ); ?>
-						<span class="cvc-hero-copy__accent"><?php esc_html_e( 'NEXT?', 'cvc-theme' ); ?></span>
-					</h2>
-					<h1 class="cvc-hero-copy__title">
-						<span class="cvc-hero-copy__service">
-							<?php esc_html_e( 'SERVICE', 'cvc-theme' ); ?>
-							<span class="cvc-hero-copy__to"><?php esc_html_e( 'TO', 'cvc-theme' ); ?></span>
-						</span>
-						<span class="cvc-hero-copy__success"><?php esc_html_e( 'SUCCESS', 'cvc-theme' ); ?></span>
-					</h1>
+				<div class="cvc-hero-copy__headlines" aria-label="<?php esc_attr_e( "WHAT'S NEXT? SERVICE TO SUCCESS", 'cvc-theme' ); ?>">
+					<p class="cvc-hero-copy__line cvc-hero-copy__line--1" data-typewriter-line="1" aria-hidden="true">
+						<span class="js-typewriter-segment" data-text="<?php echo esc_attr( __( "WHAT'S ", 'cvc-theme' ) ); ?>"></span><span class="cvc-hero-copy__accent js-typewriter-segment" data-text="<?php echo esc_attr( __( 'NEXT?', 'cvc-theme' ) ); ?>"></span>
+					</p>
+					<p class="cvc-hero-copy__line cvc-hero-copy__line--2" data-typewriter-line="2" aria-hidden="true">
+						<span class="js-typewriter-segment" data-text="<?php echo esc_attr( __( 'SERVICE TO', 'cvc-theme' ) ); ?>"></span>
+					</p>
+					<p class="cvc-hero-copy__line cvc-hero-copy__line--3 cvc-hero-copy__line--accent" data-typewriter-line="3" aria-hidden="true">
+						<span class="js-typewriter-segment" data-text="<?php echo esc_attr( __( 'SUCCESS', 'cvc-theme' ) ); ?>"></span>
+					</p>
+					<span class="cvc-typewriter-cursor" aria-hidden="true" hidden>|</span>
 				</div>
 
 				<p class="cvc-hero-copy__lead">

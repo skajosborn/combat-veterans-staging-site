@@ -21,6 +21,7 @@ import {
   HeroPillarsGrid,
   HeroStarSeparator,
 } from '@/components/HeroMobileExtras'
+import HeroTypewriterHeadlines from '@/components/HeroTypewriterHeadlines'
 
 const HERO_BG_DESKTOP = '/cvc hero bg medium.png'
 const HERO_BG_MOBILE = '/cvc hero bg 1.png'
@@ -133,33 +134,7 @@ export default function Hero() {
     </div>
   )
 
-  const renderHeroHeadlines = (large = false) => (
-    <div className={`flex flex-col text-left ${large ? 'gap-2.5 xl:gap-3' : 'gap-2'}`}>
-      <h2
-        className={
-          large
-            ? 'm-0 text-[2rem] font-black uppercase leading-[1.05] tracking-tight text-cvc-hero-fg xl:text-[2.75rem]'
-            : 'm-0 text-[1.5rem] font-black uppercase leading-snug tracking-tight text-cvc-hero-fg sm:text-[1.75rem]'
-        }
-        style={{ fontStretch: 'condensed' }}
-      >
-        WHAT&apos;S <span className="text-cvc-hero-accent">NEXT?</span>
-      </h2>
-      <h1
-        className={`m-0 flex flex-col font-black uppercase leading-[1.05] tracking-tight text-cvc-hero-fg ${large ? 'gap-2' : 'gap-1.5 sm:gap-2'}`}
-        style={{ fontStretch: 'condensed' }}
-      >
-        <span className={large ? 'text-[2rem] xl:text-[2.75rem]' : 'text-[1.5rem] sm:text-[1.75rem]'}>
-          SERVICE TO
-        </span>
-        <span
-          className={`${large ? 'text-[2.125rem] xl:text-[2.875rem]' : 'text-[1.625rem] sm:text-[1.875rem]'} text-cvc-hero-accent`}
-        >
-          SUCCESS
-        </span>
-      </h1>
-    </div>
-  )
+  const renderHeroHeadlines = (large = false) => <HeroTypewriterHeadlines large={large} />
 
   const renderHeroCtas = (layout: 'stack' | 'row') => (
     <div
@@ -203,7 +178,7 @@ export default function Hero() {
           priority
         />
       </div>
-      <div className="pointer-events-none absolute inset-0 z-0 hidden bg-gradient-to-r from-white/70 via-white/25 to-transparent dark:from-slate-950/75 dark:via-slate-950/35 dark:to-slate-950/10 lg:block" />
+      <div className="pointer-events-none absolute inset-0 z-0 hidden bg-gradient-to-r from-white/88 via-white/60 to-white/25 dark:from-slate-950/75 dark:via-slate-950/35 dark:to-slate-950/10 lg:block" />
 
       {/* —— Mobile layout —— */}
       <div className="flex w-full flex-col lg:hidden">

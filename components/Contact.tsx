@@ -21,7 +21,7 @@ export default function Contact() {
       <div className="absolute inset-0 bg-[rgb(15_20_34/0.55)]" aria-hidden />
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:grid-rows-[auto_auto] lg:items-start lg:gap-x-12 lg:gap-y-10">
-          <div className="min-w-0 lg:col-start-1 lg:row-start-1">
+          <div className="min-w-0 w-full lg:col-start-1 lg:row-start-1">
             <SectionTitle
               title="Ready to Take the Next Step?"
               size="display"
