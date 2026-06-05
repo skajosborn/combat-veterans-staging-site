@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import SimpleContentPage from '@/components/SimpleContentPage'
+import WordPressPage from '@/components/WordPressPage'
 
 export const metadata = {
   title: 'Get Involved | Combat Veterans to Careers',
@@ -8,9 +8,10 @@ export const metadata = {
 
 export default function GetInvolvedPage() {
   return (
-    <SimpleContentPage
-      title="Get Involved"
-      description="There are many ways to stand with combat veterans and their families."
+    <WordPressPage
+      slug="get-involved"
+      fallbackTitle="Get Involved"
+      fallbackDescription="There are many ways to stand with combat veterans and their families."
     >
       <ul className="mx-auto max-w-md space-y-3 text-center">
         <li>
@@ -38,6 +39,6 @@ export default function GetInvolvedPage() {
           </Link>
         </li>
       </ul>
-    </SimpleContentPage>
+    </WordPressPage>
   )
 }

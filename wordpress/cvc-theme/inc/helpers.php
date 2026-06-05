@@ -40,6 +40,15 @@ function cvc_home_url( $anchor ) {
 	return home_url( '/#' . ltrim( $anchor, '#' ) );
 }
 
+/** Contact details (matches lib/siteContact.ts). */
+function cvc_phone_display() {
+	return '352-775-4008';
+}
+
+function cvc_phone_href() {
+	return 'tel:+13527754008';
+}
+
 /**
  * Check theme image exists on disk.
  */

@@ -1,4 +1,5 @@
-import SimpleContentPage from '@/components/SimpleContentPage'
+import Link from 'next/link'
+import WordPressPage from '@/components/WordPressPage'
 
 export const metadata = {
   title: 'Board Members | Combat Veterans to Careers',
@@ -7,9 +8,10 @@ export const metadata = {
 
 export default function BoardMembersPage() {
   return (
-    <SimpleContentPage
-      title="Board Members"
-      description="Leadership committed to serving combat veterans and their families."
+    <WordPressPage
+      slug="board-members"
+      fallbackTitle="Board Members"
+      fallbackDescription="Leadership committed to serving combat veterans and their families."
     />
   )
 }

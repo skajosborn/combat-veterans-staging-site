@@ -70,7 +70,7 @@ export default function SuccessStories() {
                     src={story.image}
                     alt={`${story.name} testimonial`}
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                   />
                 </div>
               </div>

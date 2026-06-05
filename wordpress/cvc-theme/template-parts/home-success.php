@@ -15,7 +15,12 @@
 				<article class="cvc-tile cvc-tile--media">
 					<?php if ( cvc_img_exists( $story['image'] ) ) : ?>
 						<div class="cvc-tile__media">
-							<img src="<?php echo esc_url( cvc_img( $story['image'] ) ); ?>" alt="" loading="lazy" />
+							<img
+								src="<?php echo esc_url( cvc_img( $story['image'] ) ); ?>"
+								alt=""
+								loading="lazy"
+								style="object-position: <?php echo esc_attr( $story['image_position'] ?? 'top center' ); ?>;"
+							/>
 						</div>
 					<?php endif; ?>
 					<div class="cvc-tile__body">

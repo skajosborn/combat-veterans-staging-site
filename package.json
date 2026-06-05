@@ -4,13 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:local": "npm run wordpress:up && next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "wordpress:up": "docker compose -f wordpress/docker-compose.yml up -d",
+    "wordpress:down": "docker compose -f wordpress/docker-compose.yml down",
+    "wordpress:logs": "docker compose -f wordpress/docker-compose.yml logs -f wordpress"
   },
   "dependencies": {
     "lucide-react": "^0.575.0",
-    "next": "^14.2.5",
+    "next": "^16.2.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "resend": "^4.8.0"
