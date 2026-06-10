@@ -7,6 +7,7 @@ import { HandHeart } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import NavLinkButton from './NavLinkButton'
 import NavDropdown from './NavDropdown'
+import NavStackedLabel from './NavStackedLabel'
 import NavUtilityBar from './NavUtilityBar'
 import ThemeToggle from './ThemeToggle'
 import { getMainNavItems, getNavDisplayLabel, type NavDropdownLink } from '@/lib/navItems'
@@ -106,7 +107,9 @@ export default function Navigation() {
   const mainNavItems = getMainNavItems()
 
   const desktopNavLinkClass =
-    'shrink-0 whitespace-nowrap px-1.5 text-[10px] font-bold uppercase tracking-[0.05em] text-cvc-fg transition-colors hover:opacity-80 xl:px-2 xl:text-[11px] xl:tracking-[0.07em] 2xl:px-2.5 2xl:tracking-[0.08em] md:dark:text-white/90 md:dark:hover:text-white'
+    'shrink-0 px-1.5 text-[10px] font-bold uppercase tracking-[0.05em] text-cvc-fg transition-colors hover:opacity-80 xl:px-2 xl:text-[11px] xl:tracking-[0.07em] 2xl:px-2.5 2xl:tracking-[0.08em] md:dark:text-white/90 md:dark:hover:text-white'
+
+  const desktopNavLinkInlineClass = `${desktopNavLinkClass} whitespace-nowrap`
 
   const mobileNavLinkClass =
     'block rounded-lg px-3 py-2.5 text-sm font-medium text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg'
@@ -163,10 +166,9 @@ export default function Navigation() {
           </div>
 
           {/* Desktop inline nav — xl+; below xl uses mobile drawer */}
-          <div className="hidden min-w-0 flex-1 items-center xl:flex">
-            <div className="flex min-w-0 flex-1 justify-center px-1 2xl:px-2">
-              <div className="scrollbar-hide max-w-full overflow-x-auto overscroll-x-contain [-webkit-overflow-scrolling:touch]">
-                <div className="mx-auto flex w-max flex-nowrap items-center justify-center gap-x-5 py-0.5 xl:gap-x-6 2xl:gap-x-8">
+          <div className="hidden min-w-0 flex-1 items-center overflow-visible xl:flex">
+            <div className="flex min-w-0 flex-1 justify-center overflow-visible px-1 2xl:px-2">
+              <div className="mx-auto flex w-max max-w-full flex-nowrap items-center justify-center gap-x-5 overflow-visible py-0.5 xl:gap-x-6 2xl:gap-x-8">
                   {mainNavItems.map((item) => {
                     const displayLabel = getNavDisplayLabel(item, { compact: compactNavLabels })
                     if (item.type === 'dropdown') {
@@ -176,22 +178,29 @@ export default function Navigation() {
                           label={displayLabel}
                           links={item.items}
                           overlay={isHomeHero}
-                          className="shrink-0"
-                          linkClassName={desktopNavLinkClass}
+                          className="relative z-20 shrink-0"
+                          linkClassName={desktopNavLinkInlineClass}
                         />
                       )
                     }
+                    const stackedLines =
+                      item.type === 'link' && item.navLabelLines
+                        ? item.navLabelLines
+                        : null
                     return (
                       <Link
                         key={item.href}
                         href={item.href}
-                        className={desktopNavLinkClass}
+                        className={stackedLines ? desktopNavLinkClass : desktopNavLinkInlineClass}
                       >
-                        {displayLabel}
+                        {stackedLines ? (
+                          <NavStackedLabel lines={stackedLines} />
+                        ) : (
+                          displayLabel
+                        )}
                       </Link>
                     )
                   })}
-                </div>
               </div>
             </div>
             <div className="ml-1 flex shrink-0 items-center gap-2 2xl:ml-2 2xl:gap-3">

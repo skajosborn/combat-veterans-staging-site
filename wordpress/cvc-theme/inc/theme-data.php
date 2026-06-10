@@ -43,7 +43,7 @@ function cvc_get_default_pages() {
 /**
  * Bump when primary nav structure changes (triggers menu rebuild).
  */
-define( 'CVC_NAV_MENU_VERSION', 7 );
+define( 'CVC_NAV_MENU_VERSION', 8 );
 
 /**
  * Primary nav (label, url callback key or raw path).
@@ -72,9 +72,9 @@ function cvc_get_our_team_nav_children() {
 
 function cvc_get_nav_items() {
 	return array(
-		array( 'label' => __( 'PROGRAMS', 'cvc-theme' ), 'anchor' => 'programs' ),
+		array( 'anchor' => 'programs', 'stack' => array( 'OUR', 'PROGRAMS' ) ),
 		array( 'label' => __( 'VETERAN APP', 'cvc-theme' ), 'slug' => 'veteran-application' ),
-		array( 'label' => __( 'FIELD TRIP', 'cvc-theme' ), 'slug' => 'operation-field-trip' ),
+		array( 'slug' => 'operation-field-trip', 'stack' => array( 'OPERATION', 'FIELD TRIP' ) ),
 		array( 'label' => __( "WHAT'S NEXT", 'cvc-theme' ), 'slug' => 'whats-next' ),
 		array(
 			'label'    => __( 'ABOUT', 'cvc-theme' ),

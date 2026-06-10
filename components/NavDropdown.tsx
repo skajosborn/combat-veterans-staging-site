@@ -171,6 +171,9 @@ export default function NavDropdown({
             e.stopPropagation()
             setOpen((v) => !v)
           }}
+          onMouseDown={(e) => {
+            e.preventDefault()
+          }}
         >
           {label}
           <svg

@@ -3,6 +3,8 @@ export type NavLinkItem = {
   label: string
   /** Compact uppercase label for desktop nav bar */
   navLabel?: string
+  /** Two-line stacked label for desktop nav bar */
+  navLabelLines?: [string, string]
   /** Shorter label for mid-width desktop nav (1280px–1535px) */
   compactNavLabel?: string
   href: string
@@ -51,9 +53,9 @@ export const aboutLinks: NavDropdownLink[] = [
 ]
 
 const allNavItems: NavItem[] = [
-  { type: 'link', label: 'CVC Programs', navLabel: 'PROGRAMS', href: '/#programs' },
+  { type: 'link', label: 'CVC Programs', navLabelLines: ['OUR', 'PROGRAMS'], href: '/#programs' },
   { type: 'link', label: 'Veteran Application', navLabel: 'VETERAN APPLICATION', compactNavLabel: 'VETERAN APP', href: '/veteran-application' },
-  { type: 'link', label: 'Operation Field Trip', navLabel: 'OPERATION FIELD TRIP', compactNavLabel: 'FIELD TRIP', href: '/operation-field-trip' },
+  { type: 'link', label: 'Operation Field Trip', navLabelLines: ['OPERATION', 'FIELD TRIP'], href: '/operation-field-trip' },
   { type: 'link', label: "What's Next?", navLabel: "WHAT'S NEXT", href: '/whats-next' },
   { type: 'dropdown', label: 'About', navLabel: 'ABOUT', items: [...aboutLinks] },
   { type: 'link', label: 'Events', navLabel: 'EVENTS', href: '/events' },

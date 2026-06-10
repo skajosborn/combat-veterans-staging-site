@@ -122,3 +122,58 @@ function cvc_filter_primary_nav_menu_objects( $items, $args ) {
 	return array_values( $items );
 }
 add_filter( 'wp_nav_menu_objects', 'cvc_filter_primary_nav_menu_objects', 10, 2 );
+
+/**
+ * Two-line stacked labels in primary nav (OUR / PROGRAMS, etc.).
+ *
+ * @param string   $title Menu item title.
+ * @param WP_Post  $item  Menu item object.
+ * @param stdClass $args  Menu args.
+ * @param int      $depth Menu depth.
+ */
+function cvc_filter_nav_menu_item_title( $title, $item, $args, $depth ) {
+	$is_primary = is_object( $args )
+		&& ! empty( $args->theme_location )
+		&& 'primary' === $args->theme_location;
+
+	if ( ! $is_primary ) {
+		return $title;
+	}
+
+	$stack = get_post_meta( $item->ID, '_cvc_nav_stack', true );
+	if ( is_array( $stack ) && 2 === count( $stack ) ) {
+		return sprintf(
+			'<span class="cvc-nav__stacked-line">%1$s</span><span class="cvc-nav__stacked-line">%2$s</span>',
+			esc_html( $stack[0] ),
+			esc_html( $stack[1] )
+		);
+	}
+
+	return $title;
+}
+add_filter( 'nav_menu_item_title', 'cvc_filter_nav_menu_item_title', 10, 4 );
+
+/**
+ * Add stacked-link class for two-line nav labels.
+ *
+ * @param array    $atts Link attributes.
+ * @param WP_Post  $item Menu item object.
+ * @param stdClass $args Menu args.
+ * @param int      $depth Menu depth.
+ */
+function cvc_filter_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
+	$is_primary = is_object( $args )
+		&& ! empty( $args->theme_location )
+		&& 'primary' === $args->theme_location;
+
+	if ( ! $is_primary ) {
+		return $atts;
+	}
+
+	if ( get_post_meta( $item->ID, '_cvc_nav_stack', true ) ) {
+		$atts['class'] = trim( ( $atts['class'] ?? '' ) . ' cvc-nav__stacked' );
+	}
+
+	return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'cvc_filter_nav_menu_link_attributes', 10, 4 );

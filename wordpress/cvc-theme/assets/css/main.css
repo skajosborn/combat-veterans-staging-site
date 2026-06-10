@@ -319,22 +319,8 @@ html.dark .cvc-nav-utility {
   flex: 1;
   justify-content: center;
   min-width: 0;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scrollbar-width: none;
+  overflow: visible;
   padding: 0 0.5rem;
-  -webkit-overflow-scrolling: touch;
-}
-
-@media (min-width: 1536px) {
-  .cvc-nav__menu-wrap {
-    overflow: visible;
-    padding: 0 1rem;
-  }
-}
-
-.cvc-nav__menu-wrap::-webkit-scrollbar {
-  display: none;
 }
 
 .cvc-nav__list,
@@ -348,6 +334,7 @@ html.dark .cvc-nav-utility {
   margin: 0 auto;
   list-style: none;
   padding: 0.125rem 0.5rem;
+  overflow: visible;
 }
 
 @media (min-width: 1536px) {
@@ -361,6 +348,17 @@ html.dark .cvc-nav-utility {
 .cvc-nav__desktop .menu li {
   display: block;
   flex-shrink: 0;
+}
+
+.cvc-nav__list a.cvc-nav__stacked,
+.cvc-nav__desktop .menu a.cvc-nav__stacked {
+  white-space: normal;
+  line-height: 1.05;
+  text-align: center;
+}
+
+.cvc-nav__stacked-line {
+  display: block;
 }
 
 .cvc-nav__list a,
@@ -402,6 +400,11 @@ html.dark .cvc-nav-utility {
 /* Our Stores dropdown */
 .cvc-nav__desktop .menu-item-has-children {
   position: relative;
+  z-index: 30;
+}
+
+.cvc-nav__desktop .menu-item-has-children.is-submenu-open {
+  z-index: 40;
 }
 
 .cvc-nav__desktop .menu-item-has-children > a,
@@ -413,7 +416,8 @@ html.dark .cvc-nav-utility {
 .cvc-nav__desktop .menu-item-has-children > .sub-menu {
   position: absolute;
   top: 100%;
-  right: 0;
+  left: 50%;
+  right: auto;
   z-index: 100010;
   min-width: 16rem;
   margin: 0;
@@ -424,7 +428,7 @@ html.dark .cvc-nav-utility {
   box-shadow: none;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-4px);
+  transform: translate(-50%, -4px);
   transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
   pointer-events: none;
 }
@@ -456,7 +460,7 @@ html.dark .cvc-nav-utility {
 .cvc-nav__desktop .menu-item-has-children.is-submenu-open > .sub-menu {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translate(-50%, 0);
   pointer-events: auto;
 }
 
@@ -472,6 +476,13 @@ html.dark .cvc-nav-utility {
   right: auto;
   left: 100%;
   padding: 0 0 0 0.25rem;
+  transform: translate(4px, 0);
+}
+
+.cvc-nav__desktop .sub-menu .menu-item-has-children:hover > .sub-menu,
+.cvc-nav__desktop .sub-menu .menu-item-has-children:focus-within > .sub-menu,
+.cvc-nav__desktop .sub-menu .menu-item-has-children.is-submenu-open > .sub-menu {
+  transform: translate(0, 0);
 }
 
 .cvc-nav__desktop .sub-menu .menu-item-has-children > .sub-menu::before {

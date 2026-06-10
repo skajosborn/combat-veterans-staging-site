@@ -48,7 +48,7 @@
     });
   }
 
-  document.querySelectorAll('.cvc-nav__desktop .menu-item-has-children > a').forEach(function (link) {
+  document.querySelectorAll('.cvc-nav__desktop .cvc-nav__menu-wrap > .menu > .menu-item-has-children > a').forEach(function (link) {
     link.addEventListener('click', function (e) {
       if (window.matchMedia('(min-width: 1280px)').matches) {
         e.preventDefault();
@@ -58,6 +58,17 @@
         closeDesktopSubmenus(parent);
         parent.classList.toggle('is-submenu-open', willOpen);
       }
+    });
+  });
+
+  document.querySelectorAll('.cvc-nav__desktop .sub-menu > .menu-item-has-children > a').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      if (!window.matchMedia('(min-width: 1280px)').matches) return;
+      e.preventDefault();
+      e.stopPropagation();
+      var parent = link.parentElement;
+      if (!parent) return;
+      parent.classList.toggle('is-submenu-open');
     });
   });
 
