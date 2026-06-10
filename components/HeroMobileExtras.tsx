@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { Star, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { HERO_PILLARS } from '@/lib/heroPillars'
 
@@ -76,7 +77,7 @@ export function HeroPillarsGrid({ compact = false }: { compact?: boolean }) {
       className={`cvc-hero-pillars-clear relative w-full ${compact ? 'px-0' : 'px-3 sm:px-4 lg:px-6 xl:px-8'}`}
     >
       <div className="mx-auto grid max-w-7xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        {HERO_PILLARS.map(({ title, description, Icon }, index) => (
+        {HERO_PILLARS.map(({ title, description, Icon, iconSrc }, index) => (
           <div
             key={title}
             className={`flex items-center gap-2.5 sm:gap-3 ${
@@ -86,7 +87,18 @@ export function HeroPillarsGrid({ compact = false }: { compact?: boolean }) {
             } ${index > 0 ? 'lg:border-l lg:border-white/55 dark:lg:border-white/35' : ''}`}
           >
             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-500/60 bg-white text-cvc-hero-accent shadow-[0_1px_3px_rgb(0_0_0_/_0.08)] sm:h-9 sm:w-9 dark:border-white/55 dark:bg-white/95 dark:text-[#3d4a2c]">
-              <Icon className="h-4 w-4 sm:h-[1.125rem] sm:w-[1.125rem]" strokeWidth={2} aria-hidden />
+              {iconSrc ? (
+                <Image
+                  src={iconSrc}
+                  alt=""
+                  width={18}
+                  height={18}
+                  className="h-4 w-4 object-contain sm:h-[1.125rem] sm:w-[1.125rem]"
+                  aria-hidden
+                />
+              ) : Icon ? (
+                <Icon className="h-4 w-4 sm:h-[1.125rem] sm:w-[1.125rem]" strokeWidth={2} aria-hidden />
+              ) : null}
             </div>
             <div className="min-w-0 flex-1 text-left">
               <p className="text-[11px] font-bold leading-tight text-cvc-fg sm:text-xs dark:text-white">

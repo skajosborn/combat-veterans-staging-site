@@ -45,7 +45,7 @@ const config: Config = {
           'section-title': 'var(--cvc-section-title)',
           'cta-fill': 'var(--cvc-cta-fill)',
         },
-        'patriotic-red': '#B22234',
+        'patriotic-red': '#CE2029',
         'patriotic-blue': '#3C3B6E',
         'patriotic-navy': '#1E3A5F',
         'patriotic-gold': '#FFD700',

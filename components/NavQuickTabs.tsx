@@ -2,22 +2,29 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { navQuickTabs } from '@/lib/navItems'
+import { navQuickTabs, type NavQuickTabTone } from '@/lib/navItems'
 
 function isTabActive(pathname: string, href: string) {
   if (href === '/') return pathname === '/'
   return pathname === href || pathname.startsWith(`${href}/`)
 }
 
+const toneClasses: Record<NavQuickTabTone, string> = {
+  red: 'bg-patriotic-red text-white hover:brightness-110',
+  white:
+    'border border-slate-300/80 bg-white text-patriotic-navy hover:bg-slate-50 dark:border-slate-400/50 dark:bg-white dark:text-patriotic-navy',
+  blue: 'bg-patriotic-blue text-white hover:brightness-110',
+}
+
 export default function NavQuickTabs() {
   const pathname = usePathname()
 
   return (
-    <nav
-      aria-label="Quick program links"
-      className="border-b border-cvc-nav-border bg-cvc-page-elevated"
-    >
-      <div className="mx-auto grid w-full max-w-[96rem] grid-cols-3">
+    <nav aria-label="Quick program links" className="relative z-10 bg-transparent px-3 sm:px-4">
+      <div
+        className="mx-auto flex max-w-[96rem] gap-2 sm:gap-3"
+        style={{ minHeight: 'var(--cvc-nav-tabs-height)' }}
+      >
         {navQuickTabs.map((tab) => {
           const active = isTabActive(pathname, tab.href)
 
@@ -26,10 +33,8 @@ export default function NavQuickTabs() {
               key={tab.href}
               href={tab.href}
               aria-current={active ? 'page' : undefined}
-              className={`relative flex min-h-[var(--cvc-nav-tabs-height)] items-center justify-center border-r border-cvc-border px-2 py-1.5 text-center text-[10px] font-bold uppercase tracking-[0.05em] transition-colors last:border-r-0 sm:text-[11px] sm:tracking-[0.07em] ${
-                active
-                  ? 'bg-cvc-card text-cvc-cta-fill after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-cvc-cta-fill'
-                  : 'text-cvc-fg-muted hover:bg-cvc-hover hover:text-cvc-fg'
+              className={`flex min-h-[2.5rem] flex-1 items-center justify-center rounded-b-lg px-2 text-center text-[10px] font-bold uppercase tracking-[0.08em] transition-[filter,box-shadow,background-color] sm:text-[11px] sm:tracking-[0.1em] ${toneClasses[tab.tone]} ${
+                active ? 'shadow-[inset_0_-3px_0_0_var(--cvc-hero-pillars-gold)]' : ''
               }`}
             >
               <span className="leading-tight sm:hidden">{tab.shortLabel}</span>

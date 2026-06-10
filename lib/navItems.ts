@@ -27,16 +27,19 @@ export type NavDropdownItem = {
 
 export type NavItem = NavLinkItem | NavDropdownItem
 
+export type NavQuickTabTone = 'red' | 'white' | 'blue'
+
 export type NavQuickTab = {
   label: string
   shortLabel: string
   href: string
+  tone: NavQuickTabTone
 }
 
 export const navQuickTabs: NavQuickTab[] = [
-  { label: 'Veteran Application', shortLabel: 'Veteran App', href: '/veteran-application' },
-  { label: 'Operation Field Trip', shortLabel: 'Field Trip', href: '/operation-field-trip' },
-  { label: "What's Next?", shortLabel: "What's Next", href: '/whats-next' },
+  { label: 'Veteran Application', shortLabel: 'Veteran App', href: '/veteran-application', tone: 'red' },
+  { label: 'Operation Field Trip', shortLabel: 'Field Trip', href: '/operation-field-trip', tone: 'white' },
+  { label: "What's Next?", shortLabel: "What's Next", href: '/whats-next', tone: 'blue' },
 ]
 
 export const ourProgramsLinks: NavDropdownLink[] = [

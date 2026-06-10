@@ -131,16 +131,19 @@ function cvc_get_nav_quick_tabs() {
 			'label' => __( 'Veteran Application', 'cvc-theme' ),
 			'short' => __( 'Veteran App', 'cvc-theme' ),
 			'slug'  => 'veteran-application',
+			'tone'  => 'red',
 		),
 		array(
 			'label' => __( 'Operation Field Trip', 'cvc-theme' ),
 			'short' => __( 'Field Trip', 'cvc-theme' ),
 			'slug'  => 'operation-field-trip',
+			'tone'  => 'white',
 		),
 		array(
 			'label' => __( "What's Next?", 'cvc-theme' ),
 			'short' => __( "What's Next", 'cvc-theme' ),
 			'slug'  => 'whats-next',
+			'tone'  => 'blue',
 		),
 	);
 }
@@ -231,7 +234,7 @@ function cvc_get_hero_pillars() {
 		array(
 			'title'       => __( 'Personalized Support', 'cvc-theme' ),
 			'description' => __( 'Guidance every step of the way.', 'cvc-theme' ),
-			'icon'        => 'users',
+			'icon'        => 'user',
 		),
 		array(
 			'title'       => __( 'Career Navigation', 'cvc-theme' ),
@@ -241,12 +244,12 @@ function cvc_get_hero_pillars() {
 		array(
 			'title'       => __( 'Community', 'cvc-theme' ),
 			'description' => __( 'Connect with those who understand.', 'cvc-theme' ),
-			'icon'        => 'handshake',
+			'icon'        => 'group',
 		),
 		array(
 			'title'       => __( 'Proven Impact', 'cvc-theme' ),
 			'description' => __( 'Empowering veterans to succeed.', 'cvc-theme' ),
-			'icon'        => 'star',
+			'icon'        => 'graph',
 		),
 	);
 }

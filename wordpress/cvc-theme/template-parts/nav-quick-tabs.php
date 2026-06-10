@@ -19,7 +19,7 @@ $current_slug = is_page() ? get_post_field( 'post_name', get_queried_object_id()
 			$active = $current_slug === $tab['slug'];
 			?>
 			<a
-				class="cvc-nav-tabs__link<?php echo $active ? ' is-active' : ''; ?>"
+				class="cvc-nav-tabs__link cvc-nav-tabs__link--<?php echo esc_attr( $tab['tone'] ?? 'red' ); ?><?php echo $active ? ' is-active' : ''; ?>"
 				href="<?php echo esc_url( $url ); ?>"
 				<?php echo $active ? ' aria-current="page"' : ''; ?>
 			>
