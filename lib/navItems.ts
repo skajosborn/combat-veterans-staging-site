@@ -5,7 +5,7 @@ export type NavLinkItem = {
   navLabel?: string
   /** Two-line stacked label for desktop nav bar */
   navLabelLines?: [string, string]
-  /** Shorter label for mid-width desktop nav (1280px–1535px) */
+  /** Shorter label for mid-width desktop nav (1024px–1535px) */
   compactNavLabel?: string
   href: string
 }
@@ -54,7 +54,7 @@ export const navQuickTabs: NavQuickTab[] = [
     shortLabel: 'Field Trip',
     subtitle: 'Upcoming events & details',
     href: '/operation-field-trip',
-    tone: 'green',
+    tone: 'red',
     icon: 'calendar',
   },
   {
@@ -62,7 +62,7 @@ export const navQuickTabs: NavQuickTab[] = [
     shortLabel: "What's Next",
     subtitle: 'Guidance for your future',
     href: '/whats-next',
-    tone: 'blue',
+    tone: 'red',
     icon: 'compass',
   },
 ]

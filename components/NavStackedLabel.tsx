@@ -6,7 +6,7 @@ type NavStackedLabelProps = {
 export default function NavStackedLabel({ lines, className = '' }: NavStackedLabelProps) {
   return (
     <span
-      className={`inline-flex flex-col whitespace-normal leading-[1.05] ${className || 'items-center text-center'}`}
+      className={`inline-flex flex-row items-baseline gap-1 whitespace-nowrap leading-none ${className || ''}`}
     >
       <span>{lines[0]}</span>
       <span>{lines[1]}</span>

@@ -133,7 +133,7 @@ function cvc_nav_quick_tab_icon( $icon ) {
  * Chevron for quick-tab links.
  */
 function cvc_nav_quick_tab_chevron() {
-	return '<svg class="cvc-nav-tabs__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>';
+	return '<span class="cvc-nav-tabs__arrow-btn" aria-hidden="true"><svg class="cvc-nav-tabs__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>';
 }
 
 /**

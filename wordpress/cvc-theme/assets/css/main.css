@@ -20,9 +20,11 @@
   --patriotic-green: #4a5d23;
   --patriotic-navy: #1e3a5f;
   --patriotic-gold: #ffd700;
+  --cvc-nav-tab-gradient: linear-gradient(145deg, #5a6169 0%, #434a54 42%, #2d3239 100%);
+  --cvc-nav-tab-shadow: inset 0 1px 0 rgb(255 255 255 / 0.1), 0 4px 14px rgb(15 18 22 / 0.28);
   --cvc-nav-utility-height: 2rem;
   --cvc-nav-main-height: 2.75rem;
-  --cvc-nav-tabs-height: 4.5rem;
+  --cvc-nav-tabs-height: 5.5rem;
   --cvc-nav-height: calc(var(--cvc-nav-utility-height) + var(--cvc-nav-main-height) + var(--cvc-nav-tabs-height));
   --cvc-hero-pillars: #1a2114;
   --cvc-hero-pillars-border: #5c6b3a;
@@ -273,71 +275,60 @@ html.dark .cvc-nav-utility {
   display: flex;
   flex: 1;
   align-items: center;
-  gap: 0.625rem;
+  gap: 0.75rem;
   min-width: 0;
-  min-height: 2.75rem;
-  padding: 0.625rem 0.75rem;
+  min-height: 3.75rem;
+  padding: 0.75rem 0.875rem;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.875rem;
   text-decoration: none;
   color: #fff;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.08);
-  transition: filter 0.15s ease, box-shadow 0.15s ease;
+  background: var(--cvc-nav-tab-gradient);
+  box-shadow: var(--cvc-nav-tab-shadow);
+  transition: filter 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 @media (min-width: 640px) {
   .cvc-nav-tabs__link {
-    gap: 0.75rem;
-    min-height: 3.25rem;
-    padding: 0.75rem 1rem;
+    gap: 1rem;
+    min-height: 4.25rem;
+    padding: 0.875rem 1rem;
   }
 }
 
-.cvc-nav-tabs__link--red {
-  background: var(--patriotic-red);
-}
-
-.cvc-nav-tabs__link--green {
-  background: var(--patriotic-green);
-}
-
-/* Legacy tone key — map to green card style */
+.cvc-nav-tabs__link--red,
+.cvc-nav-tabs__link--green,
+.cvc-nav-tabs__link--blue,
 .cvc-nav-tabs__link--white {
   color: #fff;
-  background: var(--patriotic-green);
+  background: var(--cvc-nav-tab-gradient);
   border: none;
 }
 
-.cvc-nav-tabs__link--blue {
-  background: var(--patriotic-blue);
-}
-
-.cvc-nav-tabs__link--red:hover,
-.cvc-nav-tabs__link--green:hover,
-.cvc-nav-tabs__link--blue:hover {
-  filter: brightness(1.1);
+.cvc-nav-tabs__link:hover {
+  filter: brightness(1.04);
 }
 
 .cvc-nav-tabs__link.is-active {
-  box-shadow: 0 0 0 2px var(--cvc-hero-pillars-gold);
+  box-shadow: var(--cvc-nav-tab-shadow), 0 0 0 2px var(--cvc-hero-pillars-gold);
 }
 
 .cvc-nav-tabs__icon-wrap {
   display: flex;
   flex-shrink: 0;
-  opacity: 0.95;
+  color: rgb(255 255 255 / 0.95);
   line-height: 0;
 }
 
 .cvc-nav-tabs__icon {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
 @media (min-width: 640px) {
   .cvc-nav-tabs__icon {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2.25rem;
+    height: 2.25rem;
   }
 }
 
@@ -364,36 +355,54 @@ html.dark .cvc-nav-utility {
 
 @media (min-width: 640px) {
   .cvc-nav-tabs__title {
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     letter-spacing: 0.08em;
   }
 }
 
 .cvc-nav-tabs__subtitle {
-  display: none;
+  display: block;
   overflow: hidden;
   margin-top: 0.125rem;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 0.625rem;
+  font-size: 0.5625rem;
   font-weight: 400;
   letter-spacing: normal;
   text-transform: none;
-  color: rgb(255 255 255 / 0.9);
+  color: rgb(255 255 255 / 0.88);
 }
 
 @media (min-width: 640px) {
   .cvc-nav-tabs__subtitle {
-    display: block;
+    font-size: 0.625rem;
+  }
+}
+
+.cvc-nav-tabs__arrow-btn {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background: #fff;
+  color: #2d3239;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.08);
+  transition: transform 0.15s ease;
+}
+
+@media (min-width: 640px) {
+  .cvc-nav-tabs__arrow-btn {
+    width: 2.25rem;
+    height: 2.25rem;
   }
 }
 
 .cvc-nav-tabs__chevron {
-  flex-shrink: 0;
   width: 1rem;
   height: 1rem;
-  opacity: 0.8;
-  transition: transform 0.15s ease;
 }
 
 @media (min-width: 640px) {
@@ -403,8 +412,8 @@ html.dark .cvc-nav-utility {
   }
 }
 
-.cvc-nav-tabs__link:hover .cvc-nav-tabs__chevron {
-  transform: translateX(2px);
+.cvc-nav-tabs__link:hover .cvc-nav-tabs__arrow-btn {
+  transform: scale(1.05);
 }
 
 .cvc-nav-tabs__label--full {
@@ -483,13 +492,13 @@ html.dark .cvc-nav-utility {
   min-width: 0;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
   .cvc-nav__desktop {
     gap: 1rem;
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
   .cvc-nav__desktop {
     display: flex;
   }
@@ -536,19 +545,21 @@ html.dark .cvc-nav-utility {
 
 .cvc-nav__list a.cvc-nav__stacked,
 .cvc-nav__desktop .menu a.cvc-nav__stacked {
-  white-space: normal;
-  line-height: 1.05;
+  white-space: nowrap;
+  line-height: 1;
   text-align: center;
 }
 
 .cvc-nav__stacked-line {
-  display: block;
+  display: inline;
 }
 
 .cvc-nav__stacked-inner {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.25em;
+  line-height: 1;
 }
 
 .cvc-nav__list a,
@@ -573,7 +584,7 @@ html.dark .cvc-nav-utility {
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
   .cvc-nav__list a,
   .cvc-nav__desktop .menu a,
   .cvc-nav__desktop .cvc-nav__parent {
@@ -741,6 +752,7 @@ html.dark .cvc-nav-utility {
 .cvc-nav__mobile-panel .menu-item-has-children > a .cvc-nav__stacked-inner {
   flex: 1;
   min-width: 0;
+  flex-direction: row;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -768,10 +780,6 @@ html.dark .cvc-nav-utility {
 
 .cvc-nav__mobile-panel .menu-item-has-children.is-submenu-open > a::after {
   transform: rotate(180deg);
-}
-
-.cvc-nav__mobile-panel.is-open .menu > .menu-item-has-children > .sub-menu {
-  display: block;
 }
 
 .cvc-nav__mobile-panel .menu-item-has-children > .sub-menu {
@@ -827,7 +835,7 @@ html.dark .cvc-nav-utility {
   flex-shrink: 0;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
   .cvc-nav__donate {
     font-size: 0.6875rem;
     padding: 0.5rem 1rem;
@@ -894,7 +902,7 @@ html:not(.dark) .cvc-theme-toggle__icon--moon {
   gap: 0.5rem;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
   .cvc-nav__mobile-tools {
     display: none;
   }

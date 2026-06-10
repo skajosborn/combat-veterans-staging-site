@@ -140,7 +140,7 @@ function cvc_get_nav_quick_tabs() {
 			'short'    => __( 'Field Trip', 'cvc-theme' ),
 			'subtitle' => __( 'Upcoming events & details', 'cvc-theme' ),
 			'slug'     => 'operation-field-trip',
-			'tone'     => 'green',
+			'tone'     => 'red',
 			'icon'     => 'calendar',
 		),
 		array(
@@ -148,7 +148,7 @@ function cvc_get_nav_quick_tabs() {
 			'short'    => __( "What's Next", 'cvc-theme' ),
 			'subtitle' => __( 'Guidance for your future', 'cvc-theme' ),
 			'slug'     => 'whats-next',
-			'tone'     => 'blue',
+			'tone'     => 'red',
 			'icon'     => 'compass',
 		),
 	);

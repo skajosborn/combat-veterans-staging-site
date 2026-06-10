@@ -14,6 +14,23 @@ import ThemeToggle from './ThemeToggle'
 import { getMainNavItems, getNavDisplayLabel, type NavDropdownLink } from '@/lib/navItems'
 import { showVision } from '@/lib/siteConfig'
 
+function MobileNavChevron({ open }: { open: boolean }) {
+  return (
+    <svg
+      className={`h-4 w-4 shrink-0 text-cvc-fg-subtle transition-transform ${open ? 'rotate-180' : ''}`}
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      aria-hidden
+    >
+      <path
+        fillRule="evenodd"
+        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+        clipRule="evenodd"
+      />
+    </svg>
+  )
+}
+
 function MobileDropdownLinks({
   links,
   sectionKey,
@@ -45,18 +62,7 @@ function MobileDropdownLinks({
             onClick={() => toggleMobileSection(nestedKey)}
           >
             <span className="min-w-0 flex-1">{item.label}</span>
-            <svg
-              className={`h-4 w-4 shrink-0 text-cvc-fg-subtle transition-transform ${openMobileSections[nestedKey] ? 'rotate-180' : ''}`}
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                clipRule="evenodd"
-              />
-            </svg>
+            <MobileNavChevron open={!!openMobileSections[nestedKey]} />
           </button>
           {openMobileSections[nestedKey] ? (
             <div className="mb-1 ml-3 flex flex-col gap-0.5 border-l-2 border-cvc-border pl-3">
@@ -96,7 +102,7 @@ export default function Navigation() {
   const pathname = usePathname()
 
   useEffect(() => {
-    const media = window.matchMedia('(min-width: 1280px) and (max-width: 1535px)')
+    const media = window.matchMedia('(min-width: 1024px) and (max-width: 1535px)')
     const update = () => setCompactNavLabels(media.matches)
     update()
     media.addEventListener('change', update)
@@ -106,16 +112,7 @@ export default function Navigation() {
   useEffect(() => {
     if (!isOpen) {
       setOpenMobileSections({})
-      return
     }
-
-    const defaults: Record<string, boolean> = {}
-    for (const item of getMainNavItems()) {
-      if (item.type === 'dropdown') {
-        defaults[item.label] = true
-      }
-    }
-    setOpenMobileSections(defaults)
   }, [isOpen])
 
   useEffect(() => {
@@ -130,7 +127,7 @@ export default function Navigation() {
   const mainNavItems = getMainNavItems()
 
   const desktopNavLinkClass =
-    'shrink-0 px-1.5 text-[10px] font-bold uppercase tracking-[0.05em] text-cvc-fg transition-colors hover:opacity-80 xl:px-2 xl:text-[11px] xl:tracking-[0.07em] 2xl:px-2.5 2xl:tracking-[0.08em] md:dark:text-white/90 md:dark:hover:text-white'
+    'shrink-0 px-1.5 text-[10px] font-bold uppercase tracking-[0.05em] text-cvc-fg transition-colors hover:opacity-80 lg:px-2 lg:text-[11px] lg:tracking-[0.07em] 2xl:px-2.5 2xl:tracking-[0.08em] md:dark:text-white/90 md:dark:hover:text-white'
 
   const desktopNavLinkInlineClass = `${desktopNavLinkClass} whitespace-nowrap`
 
@@ -188,10 +185,10 @@ export default function Navigation() {
             </a>
           </div>
 
-          {/* Desktop inline nav — xl+; below xl uses mobile drawer */}
-          <div className="hidden min-w-0 flex-1 items-center overflow-visible xl:flex">
+          {/* Desktop inline nav — lg+; below lg uses mobile drawer */}
+          <div className="hidden min-w-0 flex-1 items-center overflow-visible lg:flex">
             <div className="flex min-w-0 flex-1 justify-center overflow-visible px-1 2xl:px-2">
-              <div className="mx-auto flex w-max max-w-full flex-nowrap items-center justify-center gap-x-5 overflow-visible py-0.5 xl:gap-x-6 2xl:gap-x-8">
+              <div className="mx-auto flex w-max max-w-full flex-nowrap items-center justify-center gap-x-3 overflow-visible py-0.5 lg:gap-x-4 xl:gap-x-6 2xl:gap-x-8">
                   {mainNavItems.map((item) => {
                     const displayLabel = getNavDisplayLabel(item, { compact: compactNavLabels })
                     if (item.type === 'dropdown') {
@@ -231,13 +228,13 @@ export default function Navigation() {
             <ThemeToggle
               className={
                 isHomeHero
-                  ? 'hidden shrink-0 xl:inline-flex xl:dark:border-white/40 xl:dark:text-white xl:dark:hover:bg-white/10 xl:dark:hover:text-white'
+                  ? 'hidden shrink-0 lg:inline-flex lg:dark:border-white/40 lg:dark:text-white lg:dark:hover:bg-white/10 lg:dark:hover:text-white'
                   : 'shrink-0'
               }
             />
             <Link
               href="/donate"
-              className="hidden shrink-0 items-center gap-2 rounded-md bg-cvc-cta-fill px-3 py-2 text-[10px] font-bold uppercase tracking-[0.1em] text-white shadow-md transition-[filter] hover:brightness-110 xl:inline-flex 2xl:px-4 2xl:py-2.5 2xl:text-[11px]"
+              className="hidden shrink-0 items-center gap-2 rounded-md bg-cvc-cta-fill px-3 py-2 text-[10px] font-bold uppercase tracking-[0.1em] text-white shadow-md transition-[filter] hover:brightness-110 lg:inline-flex 2xl:px-4 2xl:py-2.5 2xl:text-[11px]"
             >
               <HandHeart className="h-4 w-4 shrink-0" strokeWidth={2} aria-hidden />
               DONATE
@@ -246,7 +243,7 @@ export default function Navigation() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex flex-shrink-0 items-center gap-2 xl:hidden">
+          <div className="flex flex-shrink-0 items-center gap-2 lg:hidden">
             <ThemeToggle className="border-cvc-border text-cvc-fg hover:bg-cvc-hover hover:text-cvc-fg dark:border-white/40 dark:text-white dark:hover:bg-white/10 dark:hover:text-white" />
             <button
               type="button"
@@ -271,7 +268,7 @@ export default function Navigation() {
 
       {/* Mobile drawer — below full header (incl. quick tabs) so sublinks aren't hidden */}
       {isOpen && (
-        <div className="absolute left-0 right-0 top-full z-[60] max-h-[calc(100dvh-var(--cvc-nav-height))] overflow-y-auto overscroll-contain border-t border-cvc-border bg-cvc-page shadow-lg isolate xl:hidden">
+        <div className="absolute left-0 right-0 top-full z-[60] max-h-[calc(100dvh-var(--cvc-nav-height))] overflow-y-auto overscroll-contain border-t border-cvc-border bg-cvc-page shadow-lg isolate lg:hidden">
           <div className="mx-auto max-w-7xl px-4 pb-4 pt-3 sm:px-6 lg:px-8">
             <div className="flex flex-col gap-1">
               {mainNavItems.map((item) =>
@@ -293,18 +290,7 @@ export default function Navigation() {
                           getNavDisplayLabel(item)
                         )}
                       </span>
-                      <svg
-                        className={`h-4 w-4 shrink-0 text-cvc-fg-subtle transition-transform ${openMobileSections[item.label] ? 'rotate-180' : ''}`}
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
+                      <MobileNavChevron open={!!openMobileSections[item.label]} />
                     </button>
                     {openMobileSections[item.label] ? (
                       <div className="mb-1 ml-3 flex flex-col gap-0.5 border-l-2 border-cvc-border pl-3">
