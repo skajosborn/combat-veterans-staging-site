@@ -94,19 +94,31 @@ function cvc_theme_content_width() {
 add_action( 'after_setup_theme', 'cvc_theme_content_width', 0 );
 
 /**
- * Hide Vision nav item when cvc_show_vision() is false (existing WP menus).
+ * Strip legacy items from primary nav (Vision, Donate — donate is a separate button).
  */
-function cvc_filter_nav_menu_remove_vision( $items, $menu, $args ) {
-	if ( cvc_show_vision() || empty( $args->theme_location ) || 'primary' !== $args->theme_location ) {
+function cvc_filter_primary_nav_menu_objects( $items, $args ) {
+	$is_primary = is_object( $args )
+		&& ! empty( $args->theme_location )
+		&& 'primary' === $args->theme_location;
+
+	if ( ! $is_primary ) {
 		return $items;
 	}
 
 	foreach ( $items as $key => $item ) {
-		if ( false !== strpos( (string) $item->url, '#vision' ) ) {
+		$title = strtolower( trim( (string) $item->title ) );
+		$url   = (string) $item->url;
+
+		if ( ! cvc_show_vision() && false !== strpos( $url, '#vision' ) ) {
+			unset( $items[ $key ] );
+			continue;
+		}
+
+		if ( 'donate' === $title || false !== strpos( $url, '/donate' ) ) {
 			unset( $items[ $key ] );
 		}
 	}
 
 	return array_values( $items );
 }
-add_filter( 'wp_nav_menu_objects', 'cvc_filter_nav_menu_remove_vision', 10, 3 );
+add_filter( 'wp_nav_menu_objects', 'cvc_filter_primary_nav_menu_objects', 10, 2 );

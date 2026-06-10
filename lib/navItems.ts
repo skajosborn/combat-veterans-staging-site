@@ -1,8 +1,8 @@
-import { showVision } from '@/lib/siteConfig'
-
 export type NavLinkItem = {
   type: 'link'
   label: string
+  /** Compact uppercase label for desktop nav bar */
+  navLabel?: string
   href: string
 }
 
@@ -14,12 +14,13 @@ export type NavDropdownLink = {
 export type NavDropdownItem = {
   type: 'dropdown'
   label: string
+  navLabel?: string
   items: NavDropdownLink[]
 }
 
 export type NavItem = NavLinkItem | NavDropdownItem
 
-export const ourStoresLinks: NavDropdownLink[] = [
+export const ourThriftStoresLinks: NavDropdownLink[] = [
   {
     label: 'Restoring Hope Thrift Store',
     href: '/restoring-hope-thrift-store',
@@ -41,23 +42,34 @@ export const aboutLinks: NavDropdownLink[] = [
 ]
 
 const allNavItems: NavItem[] = [
-  { type: 'link', label: 'Application', href: '/veteran-application' },
-  { type: 'link', label: 'Programs', href: '/#programs' },
-  { type: 'link', label: 'Vision', href: '/#vision' },
-  { type: 'dropdown', label: 'About', items: [...aboutLinks] },
-  { type: 'link', label: 'Events', href: '/events' },
-  { type: 'dropdown', label: 'Our Stores', items: [...ourStoresLinks] },
-  { type: 'link', label: 'Sponsors', href: '/sponsors' },
-  { type: 'link', label: 'Contact', href: '/#contact' },
+  { type: 'link', label: 'CVC Programs', navLabel: 'PROGRAMS', href: '/#programs' },
+  { type: 'link', label: 'Veteran Application', navLabel: 'VETERAN APPLICATION', href: '/veteran-application' },
+  { type: 'link', label: 'Operation Field Trip', navLabel: 'OPERATION FIELD TRIP', href: '/operation-field-trip' },
+  { type: 'link', label: "What's Next?", navLabel: "WHAT'S NEXT", href: '/whats-next' },
+  { type: 'dropdown', label: 'About', navLabel: 'ABOUT', items: [...aboutLinks] },
+  { type: 'link', label: 'Events', navLabel: 'EVENTS', href: '/events' },
+  { type: 'link', label: 'Sponsors', navLabel: 'SPONSORS', href: '/sponsors' },
+  { type: 'link', label: 'Contact', navLabel: 'CONTACT', href: '/#contact' },
+  { type: 'dropdown', label: 'Our Thrift Stores', navLabel: 'THRIFT STORES', items: [...ourThriftStoresLinks] },
   { type: 'link', label: 'Donate', href: '/donate' },
 ]
 
+export function getNavDisplayLabel(item: { label: string; navLabel?: string }): string {
+  return item.navLabel ?? item.label
+}
+
 export function getNavItems(): NavItem[] {
-  if (showVision) return allNavItems
-  return allNavItems.filter((item) => item.type !== 'link' || item.label !== 'Vision')
+  return allNavItems
+}
+
+export function getMainNavItems(): NavItem[] {
+  return allNavItems.filter((item) => !(item.type === 'link' && item.label === 'Donate'))
 }
 
 export function getDropdownLinks(label: string): NavDropdownLink[] {
   const item = allNavItems.find((i) => i.type === 'dropdown' && i.label === label)
   return item?.type === 'dropdown' ? item.items : []
 }
+
+/** @deprecated Use ourThriftStoresLinks */
+export const ourStoresLinks = ourThriftStoresLinks

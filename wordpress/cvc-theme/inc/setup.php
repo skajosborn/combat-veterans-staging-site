@@ -89,7 +89,13 @@ function cvc_create_primary_menu( $force = false ) {
 
 	$expected_count = cvc_count_nav_menu_items();
 	$existing       = wp_get_nav_menu_items( $menu_id );
-	if ( ! $force && $existing && count( $existing ) >= $expected_count ) {
+	$menu_version   = (int) get_option( 'cvc_nav_menu_version', 0 );
+	if (
+		! $force
+		&& $menu_version >= CVC_NAV_MENU_VERSION
+		&& $existing
+		&& count( $existing ) >= $expected_count
+	) {
 		return;
 	}
 
@@ -127,6 +133,8 @@ function cvc_create_primary_menu( $force = false ) {
 		++$order;
 		cvc_insert_nav_menu_item( $menu_id, $item, $order, 0 );
 	}
+
+	update_option( 'cvc_nav_menu_version', CVC_NAV_MENU_VERSION );
 }
 
 /**
@@ -174,6 +182,17 @@ function cvc_count_nav_menu_items() {
 }
 
 add_action( 'after_switch_theme', 'cvc_run_theme_setup' );
+
+/**
+ * Rebuild primary menu when nav structure version changes.
+ */
+function cvc_maybe_rebuild_primary_menu() {
+	if ( (int) get_option( 'cvc_nav_menu_version', 0 ) >= CVC_NAV_MENU_VERSION ) {
+		return;
+	}
+	cvc_create_primary_menu( true );
+}
+add_action( 'after_setup_theme', 'cvc_maybe_rebuild_primary_menu', 20 );
 
 /**
  * Admin: one-click setup if pages missing.

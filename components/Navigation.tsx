@@ -8,7 +8,7 @@ import NavLinkButton from './NavLinkButton'
 import NavDropdown from './NavDropdown'
 import NavUtilityBar from './NavUtilityBar'
 import ThemeToggle from './ThemeToggle'
-import { getNavItems } from '@/lib/navItems'
+import { getMainNavItems, getNavDisplayLabel, getNavItems } from '@/lib/navItems'
 import { showVision } from '@/lib/siteConfig'
 
 export default function Navigation() {
@@ -16,9 +16,16 @@ export default function Navigation() {
   const pathname = usePathname()
   const isHomeHero = pathname === '/'
   const navItems = getNavItems()
-  const mainNavItems = navItems.filter(
-    (item) => !(isHomeHero && item.type === 'link' && item.label === 'Donate')
-  )
+  const mainNavItems = getMainNavItems()
+
+  const desktopNavLinkClass =
+    'shrink-0 whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.06em] text-cvc-fg transition-colors hover:opacity-80 xl:text-[11px] xl:tracking-[0.08em] md:dark:text-white/90 md:dark:hover:text-white'
+
+  const mobileNavLinkClass =
+    'block rounded-lg px-3 py-2.5 text-sm font-medium text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg'
+
+  const mobileNavSubLinkClass =
+    'block rounded-lg py-2 pl-9 pr-3 text-xs font-medium text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg'
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
@@ -30,10 +37,10 @@ export default function Navigation() {
             : 'md:shadow-xl'
         }`}
       >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-nowrap items-center justify-between gap-2 py-2 min-w-0 md:py-0.5">
+      <div className="mx-auto w-full max-w-[96rem] px-3 sm:px-4 lg:px-5">
+        <div className="flex flex-nowrap items-center justify-between gap-1.5 py-2 min-w-0 md:gap-2 md:py-0.5">
           {/* Logo — small mark; hero carries the large crest */}
-          <div className="flex min-w-0 shrink items-center">
+          <div className="flex min-w-0 shrink-0 items-center">
             <a href="/" className="flex min-w-0 items-center gap-2 hover:opacity-80 transition-opacity">
               <div className="relative h-9 w-9 shrink-0 sm:h-10 sm:w-10">
                 <Image
@@ -45,7 +52,7 @@ export default function Navigation() {
                   priority
                 />
               </div>
-              <div className="min-w-0 text-left leading-tight md:block">
+              <div className="hidden min-w-0 text-left leading-tight 2xl:block">
                 <p
                   className={
                     isHomeHero
@@ -69,17 +76,18 @@ export default function Navigation() {
           </div>
 
           {/* Tablet/desktop — scrollable links; stores menu sits outside overflow so dropdown is clickable */}
-          <div className="hidden min-w-0 flex-1 items-center justify-end gap-2 md:flex lg:gap-4">
-            <div className="scrollbar-hide flex min-w-0 max-w-full flex-1 flex-nowrap items-center justify-end gap-x-2 overflow-x-auto py-0.5 md:gap-x-2.5 lg:gap-x-4 xl:gap-x-5">
+          <div className="hidden min-w-0 flex-1 items-center gap-3 md:flex lg:gap-4">
+            <div className="scrollbar-hide flex min-w-0 flex-1 flex-nowrap items-center justify-between overflow-x-auto px-2 py-0.5 md:px-4 lg:px-6 xl:px-8">
               {mainNavItems.map((item) => {
                 if (item.type === 'dropdown') {
                   return (
                     <NavDropdown
                       key={item.label}
-                      label={item.label}
+                      label={getNavDisplayLabel(item)}
                       links={item.items}
                       overlay={isHomeHero}
                       className="shrink-0"
+                      linkClassName={desktopNavLinkClass}
                     />
                   )
                 }
@@ -87,25 +95,19 @@ export default function Navigation() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={
-                      isHomeHero
-                        ? 'shrink-0 whitespace-nowrap text-xs font-medium text-cvc-fg transition-colors hover:text-cvc-fg md:dark:text-white/90 md:dark:hover:text-white lg:text-sm'
-                        : 'shrink-0 whitespace-nowrap text-xs font-medium text-cvc-fg transition-colors hover:opacity-80 lg:text-sm'
-                    }
+                    className={desktopNavLinkClass}
                   >
-                    {item.label}
+                    {getNavDisplayLabel(item)}
                   </Link>
                 )
               })}
             </div>
-            {isHomeHero && (
-              <Link
-                href="/donate"
-                className="hidden shrink-0 rounded-lg bg-cvc-cta-fill px-3 py-1.5 text-xs font-semibold text-white shadow-md transition-[filter] hover:brightness-110 md:inline-flex lg:px-4 lg:py-2 lg:text-sm"
-              >
-                Donate
-              </Link>
-            )}
+            <Link
+              href="/donate"
+              className="hidden shrink-0 rounded-md bg-cvc-cta-fill px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow-md transition-[filter] hover:brightness-110 md:inline-flex xl:px-3 xl:py-1.5 xl:text-[11px]"
+            >
+              DONATE
+            </Link>
             <ThemeToggle
               className={
                 isHomeHero
@@ -145,15 +147,15 @@ export default function Navigation() {
               {navItems.map((item) =>
                 item.type === 'dropdown' ? (
                   <div key={item.label} className="py-1">
-                    <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-cvc-fg-subtle">
-                      {item.label}
+                    <p className={mobileNavLinkClass}>
+                      {getNavDisplayLabel(item)}
                     </p>
                     {item.items.map(({ label: linkLabel, href }) => (
                       <Link
                         key={href}
                         href={href}
                         onClick={() => setIsOpen(false)}
-                        className="block rounded-lg py-2 pl-5 pr-3 text-sm font-medium text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg"
+                        className={mobileNavSubLinkClass}
                       >
                         {linkLabel}
                       </Link>
@@ -164,9 +166,9 @@ export default function Navigation() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="block rounded-lg px-3 py-2.5 text-sm font-medium text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg"
+                    className={mobileNavLinkClass}
                   >
-                    {item.label}
+                    {getNavDisplayLabel(item)}
                   </Link>
                 )
               )}
@@ -237,7 +239,7 @@ export default function Navigation() {
             />
             <NavLinkButton
               href="/restoring-hope-thrift-store"
-              title="THRIFT STORE"
+              title="THRIFT STORES"
               subtitle="Restoring Hope"
               icon={
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">

@@ -39,17 +39,40 @@ function cvc_get_default_pages() {
 }
 
 /**
+ * Bump when primary nav structure changes (triggers menu rebuild).
+ */
+define( 'CVC_NAV_MENU_VERSION', 4 );
+
+/**
  * Primary nav (label, url callback key or raw path).
  */
+function cvc_get_about_nav_children() {
+	return array(
+		array( 'label' => __( 'Veterans Path', 'cvc-theme' ), 'slug' => 'whats-next' ),
+		array( 'label' => __( 'History', 'cvc-theme' ), 'slug' => 'about', 'hash' => 'history' ),
+		array( 'label' => __( 'Mission', 'cvc-theme' ), 'slug' => 'mission' ),
+		array( 'label' => __( 'Get Involved', 'cvc-theme' ), 'slug' => 'get-involved' ),
+		array( 'label' => __( 'Board Members', 'cvc-theme' ), 'slug' => 'board-members' ),
+		array( 'label' => __( 'Financials', 'cvc-theme' ), 'slug' => 'financials' ),
+		array( 'label' => __( 'News Blog', 'cvc-theme' ), 'slug' => 'news-blog' ),
+	);
+}
+
 function cvc_get_nav_items() {
-	$items = array(
-		array( 'label' => __( 'Application', 'cvc-theme' ), 'slug' => 'veteran-application' ),
-		array( 'label' => __( 'Programs', 'cvc-theme' ), 'anchor' => 'programs' ),
-		array( 'label' => __( 'Vision', 'cvc-theme' ), 'anchor' => 'vision' ),
-		array( 'label' => __( 'About', 'cvc-theme' ), 'slug' => 'about' ),
-		array( 'label' => __( 'Events', 'cvc-theme' ), 'slug' => 'events' ),
+	return array(
+		array( 'label' => __( 'PROGRAMS', 'cvc-theme' ), 'anchor' => 'programs' ),
+		array( 'label' => __( 'VETERAN APPLICATION', 'cvc-theme' ), 'slug' => 'veteran-application' ),
+		array( 'label' => __( 'OPERATION FIELD TRIP', 'cvc-theme' ), 'slug' => 'operation-field-trip' ),
+		array( 'label' => __( "WHAT'S NEXT", 'cvc-theme' ), 'slug' => 'whats-next' ),
 		array(
-			'label'    => __( 'Our Stores', 'cvc-theme' ),
+			'label'    => __( 'ABOUT', 'cvc-theme' ),
+			'children' => cvc_get_about_nav_children(),
+		),
+		array( 'label' => __( 'EVENTS', 'cvc-theme' ), 'slug' => 'events' ),
+		array( 'label' => __( 'SPONSORS', 'cvc-theme' ), 'slug' => 'sponsors' ),
+		array( 'label' => __( 'CONTACT', 'cvc-theme' ), 'anchor' => 'contact' ),
+		array(
+			'label'    => __( 'THRIFT STORES', 'cvc-theme' ),
 			'children' => array(
 				array(
 					'label' => __( 'Restoring Hope Thrift Store', 'cvc-theme' ),
@@ -61,23 +84,7 @@ function cvc_get_nav_items() {
 				),
 			),
 		),
-		array( 'label' => __( 'Sponsors', 'cvc-theme' ), 'slug' => 'sponsors' ),
-		array( 'label' => __( 'Contact', 'cvc-theme' ), 'anchor' => 'contact' ),
-		array( 'label' => __( 'Donate', 'cvc-theme' ), 'slug' => 'donate' ),
 	);
-
-	if ( ! cvc_show_vision() ) {
-		$items = array_values(
-			array_filter(
-				$items,
-				static function ( $item ) {
-					return empty( $item['anchor'] ) || 'vision' !== $item['anchor'];
-				}
-			)
-		);
-	}
-
-	return $items;
 }
 
 /**
@@ -196,11 +203,15 @@ function cvc_get_success_stories() {
  * Resolve nav item to URL.
  */
 function cvc_nav_item_url( $item ) {
-	if ( ! empty( $item['anchor'] ) ) {
+	if ( ! empty( $item['anchor'] ) && empty( $item['slug'] ) ) {
 		return cvc_home_url( $item['anchor'] );
 	}
 	if ( ! empty( $item['slug'] ) ) {
-		return cvc_page_url( $item['slug'] );
+		$url = cvc_page_url( $item['slug'] );
+		if ( ! empty( $item['hash'] ) ) {
+			$url .= '#' . ltrim( (string) $item['hash'], '#' );
+		}
+		return $url;
 	}
 	return home_url( '/' );
 }

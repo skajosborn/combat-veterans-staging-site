@@ -1,11 +1,19 @@
 (function () {
   var html = document.documentElement;
 
+  function syncThemeToggleLabels() {
+    var dark = html.classList.contains('dark');
+    document.querySelectorAll('#cvc-theme-toggle, #cvc-theme-toggle-mobile').forEach(function (btn) {
+      btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    });
+  }
+
   function toggleTheme() {
     html.classList.toggle('dark');
     try {
       localStorage.setItem('cvc-theme-dark', html.classList.contains('dark') ? '1' : '0');
     } catch (e) {}
+    syncThemeToggleLabels();
   }
 
   try {
@@ -16,6 +24,8 @@
       html.classList.add('dark');
     }
   } catch (e) {}
+
+  syncThemeToggleLabels();
 
   document.querySelectorAll('#cvc-theme-toggle, #cvc-theme-toggle-mobile').forEach(function (btn) {
     btn.addEventListener('click', toggleTheme);

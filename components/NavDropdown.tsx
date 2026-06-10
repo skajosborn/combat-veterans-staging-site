@@ -10,9 +10,16 @@ type Props = {
   links: NavDropdownLink[]
   className?: string
   overlay?: boolean
+  linkClassName?: string
 }
 
-export default function NavDropdown({ label, links, className = '', overlay = false }: Props) {
+export default function NavDropdown({
+  label,
+  links,
+  className = '',
+  overlay = false,
+  linkClassName,
+}: Props) {
   const [open, setOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0, minWidth: 256 })
@@ -65,10 +72,11 @@ export default function NavDropdown({ label, links, className = '', overlay = fa
     }
   }, [open])
 
-  const buttonClass =
-    overlay
-      ? 'inline-flex items-center gap-1 whitespace-nowrap text-xs font-medium text-cvc-fg transition-colors hover:text-cvc-fg md:dark:text-white/90 md:dark:hover:text-white lg:text-sm'
-      : 'inline-flex items-center gap-1 whitespace-nowrap text-xs font-medium text-cvc-fg transition-colors hover:opacity-80 lg:text-sm'
+  const buttonClass = linkClassName
+    ? `inline-flex items-center gap-0.5 ${linkClassName}`
+    : overlay
+      ? 'inline-flex items-center gap-0.5 whitespace-nowrap text-xs font-medium text-cvc-fg transition-colors hover:text-cvc-fg md:dark:text-white/90 md:dark:hover:text-white lg:text-sm'
+      : 'inline-flex items-center gap-0.5 whitespace-nowrap text-xs font-medium text-cvc-fg transition-colors hover:opacity-80 lg:text-sm'
 
   const menu =
     open && mounted ? (
