@@ -28,9 +28,18 @@ function cvc_get_default_pages() {
 		'events'               => __( 'Events', 'cvc-theme' ),
 		'sponsors'             => __( 'Sponsors', 'cvc-theme' ),
 		'donate'               => __( 'Donate', 'cvc-theme' ),
+		'get-involved'         => __( 'Get Involved', 'cvc-theme' ),
+		'donate-your-car'      => __( 'Donate Your Car', 'cvc-theme' ),
+		'donate-your-laptop'   => __( 'Donate Your Laptop', 'cvc-theme' ),
+		'volunteer'            => __( 'Volunteer', 'cvc-theme' ),
+		'planned-giving'       => __( 'Planned Giving', 'cvc-theme' ),
+		'support-a-veteran'    => __( 'Support a Veteran', 'cvc-theme' ),
+		'become-a-partner'     => __( 'Become a Partner', 'cvc-theme' ),
 		'future-goal'          => __( 'Our Vision', 'cvc-theme' ),
 		'operation-field-trip' => __( 'Operation Field Trip', 'cvc-theme' ),
 		'whats-next'           => __( "What's Next", 'cvc-theme' ),
+		'save-a-veteran'       => __( 'Save a Veteran', 'cvc-theme' ),
+		'battle-buddy'         => __( 'Battle Buddy', 'cvc-theme' ),
 		'mission'              => __( 'Mission', 'cvc-theme' ),
 		'staff'                => __( 'Staff', 'cvc-theme' ),
 		'board-members'        => __( 'Board Members', 'cvc-theme' ),
@@ -43,7 +52,7 @@ function cvc_get_default_pages() {
 /**
  * Bump when primary nav structure changes (triggers menu rebuild).
  */
-define( 'CVC_NAV_MENU_VERSION', 8 );
+define( 'CVC_NAV_MENU_VERSION', 13 );
 
 /**
  * Primary nav (label, url callback key or raw path).
@@ -53,13 +62,50 @@ function cvc_get_about_nav_children() {
 		array( 'label' => __( 'Veterans Path', 'cvc-theme' ), 'slug' => 'whats-next' ),
 		array( 'label' => __( 'History', 'cvc-theme' ), 'slug' => 'about', 'hash' => 'history' ),
 		array( 'label' => __( 'Mission', 'cvc-theme' ), 'slug' => 'mission' ),
-		array( 'label' => __( 'Get Involved', 'cvc-theme' ), 'slug' => 'get-involved' ),
+		array(
+			'label'    => __( 'Get Involved', 'cvc-theme' ),
+			'slug'     => 'get-involved',
+			'children' => cvc_get_get_involved_nav_children(),
+		),
 		array(
 			'label'    => __( 'Our Team', 'cvc-theme' ),
 			'children' => cvc_get_our_team_nav_children(),
 		),
 		array( 'label' => __( 'Financials', 'cvc-theme' ), 'slug' => 'financials' ),
 		array( 'label' => __( 'News Blog', 'cvc-theme' ), 'slug' => 'news-blog' ),
+	);
+}
+
+function cvc_get_get_involved_nav_children() {
+	return array(
+		array(
+			'label' => __( 'Donate', 'cvc-theme' ),
+			'url'   => 'https://combatveteranstocareers.org/donate/',
+		),
+		array(
+			'label' => __( 'Donate Your Car', 'cvc-theme' ),
+			'url'   => 'https://combatveteranstocareers.org/car-donation/',
+		),
+		array(
+			'label' => __( 'Donate Your Laptop', 'cvc-theme' ),
+			'url'   => 'https://combatveteranstocareers.org/laptop-donation/',
+		),
+		array(
+			'label' => __( 'Volunteer', 'cvc-theme' ),
+			'url'   => 'https://combatveteranstocareers.org/volunteer/',
+		),
+		array(
+			'label' => __( 'Planned Giving', 'cvc-theme' ),
+			'url'   => 'https://combatveteranstocareers.plannedgiving.org/index.php?r=1',
+		),
+		array(
+			'label' => __( 'Support a Veteran', 'cvc-theme' ),
+			'url'   => 'https://combatveteranstocareers.org/support-a-veteran/',
+		),
+		array(
+			'label' => __( 'Become a Partner', 'cvc-theme' ),
+			'url'   => 'https://combatveteranstocareers.org/become-a-partner/',
+		),
 	);
 }
 
@@ -70,12 +116,42 @@ function cvc_get_our_team_nav_children() {
 	);
 }
 
+function cvc_get_our_programs_nav_children() {
+	return array(
+		array( 'label' => __( 'Operation Field Trip', 'cvc-theme' ), 'slug' => 'operation-field-trip' ),
+		array( 'label' => __( 'Save a Veteran', 'cvc-theme' ), 'slug' => 'save-a-veteran' ),
+		array( 'label' => __( "What's Next?", 'cvc-theme' ), 'slug' => 'whats-next' ),
+		array( 'label' => __( 'Battle Buddy', 'cvc-theme' ), 'slug' => 'battle-buddy' ),
+	);
+}
+
+function cvc_get_nav_quick_tabs() {
+	return array(
+		array(
+			'label' => __( 'Veteran Application', 'cvc-theme' ),
+			'short' => __( 'Veteran App', 'cvc-theme' ),
+			'slug'  => 'veteran-application',
+		),
+		array(
+			'label' => __( 'Operation Field Trip', 'cvc-theme' ),
+			'short' => __( 'Field Trip', 'cvc-theme' ),
+			'slug'  => 'operation-field-trip',
+		),
+		array(
+			'label' => __( "What's Next?", 'cvc-theme' ),
+			'short' => __( "What's Next", 'cvc-theme' ),
+			'slug'  => 'whats-next',
+		),
+	);
+}
+
 function cvc_get_nav_items() {
 	return array(
-		array( 'anchor' => 'programs', 'stack' => array( 'OUR', 'PROGRAMS' ) ),
-		array( 'label' => __( 'VETERAN APP', 'cvc-theme' ), 'slug' => 'veteran-application' ),
-		array( 'slug' => 'operation-field-trip', 'stack' => array( 'OPERATION', 'FIELD TRIP' ) ),
-		array( 'label' => __( "WHAT'S NEXT", 'cvc-theme' ), 'slug' => 'whats-next' ),
+		array(
+			'stack'    => array( 'OUR', 'PROGRAMS' ),
+			'anchor'   => 'programs',
+			'children' => cvc_get_our_programs_nav_children(),
+		),
 		array(
 			'label'    => __( 'ABOUT', 'cvc-theme' ),
 			'children' => cvc_get_about_nav_children(),
@@ -88,11 +164,11 @@ function cvc_get_nav_items() {
 			'children' => array(
 				array(
 					'label' => __( 'Restoring Hope Thrift Store', 'cvc-theme' ),
-					'slug'  => 'restoring-hope-thrift-store',
+					'url'   => 'https://restoringhopethrift.org/',
 				),
 				array(
 					'label' => __( 'Restoring Hope Clothing Boutique', 'cvc-theme' ),
-					'slug'  => 'restoring-hope-clothing-boutique',
+					'url'   => 'https://restoringhopethrift.org/',
 				),
 			),
 		),
@@ -240,6 +316,9 @@ function cvc_get_success_stories() {
  * Resolve nav item to URL.
  */
 function cvc_nav_item_url( $item ) {
+	if ( ! empty( $item['url'] ) ) {
+		return (string) $item['url'];
+	}
 	if ( ! empty( $item['anchor'] ) && empty( $item['slug'] ) ) {
 		return cvc_home_url( $item['anchor'] );
 	}

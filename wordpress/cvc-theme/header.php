@@ -66,6 +66,7 @@ if ( has_custom_logo() ) {
 		</div>
 	</div>
 	</div>
+	<?php get_template_part( 'template-parts/nav', 'quick-tabs' ); ?>
 </header>
 
 <div class="cvc-site">

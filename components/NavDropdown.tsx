@@ -4,53 +4,94 @@ import Link from 'next/link'
 import { createPortal } from 'react-dom'
 import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
 import type { NavDropdownLink } from '@/lib/navItems'
+import NavStackedLabel from './NavStackedLabel'
 
 type Props = {
-  label: string
+  label?: string
+  labelLines?: [string, string]
   links: NavDropdownLink[]
   className?: string
   overlay?: boolean
   linkClassName?: string
 }
 
+const submenuLinkClass =
+  'block px-4 py-2.5 text-sm text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg'
+
+function SubmenuChevron() {
+  return (
+    <svg className="h-3.5 w-3.5 shrink-0 text-cvc-fg-subtle" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+      <path
+        fillRule="evenodd"
+        d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+        clipRule="evenodd"
+      />
+    </svg>
+  )
+}
+
+function DropdownFlyoutItem({
+  item,
+  onNavigate,
+}: {
+  item: NavDropdownLink
+  onNavigate: () => void
+}) {
+  const rowClass =
+    'group/submenu relative flex w-full items-center justify-between gap-2 text-left transition-colors hover:bg-cvc-hover'
+
+  return (
+    <li className="list-none">
+      <div className={rowClass}>
+        {item.href ? (
+          <Link
+            href={item.href}
+            role="menuitem"
+            className={`flex-1 ${submenuLinkClass}`}
+            onClick={onNavigate}
+          >
+            {item.label}
+          </Link>
+        ) : (
+          <span className={`flex-1 ${submenuLinkClass} cursor-default`}>{item.label}</span>
+        )}
+        <span className="pointer-events-none pr-3" aria-hidden>
+          <SubmenuChevron />
+        </span>
+        <ul
+          role="menu"
+          className="invisible absolute left-full top-0 z-10 ml-1 min-w-[16rem] overflow-hidden rounded-lg border border-cvc-border bg-cvc-card py-1 opacity-0 shadow-xl transition-[opacity,visibility] duration-150 group-hover/submenu:visible group-hover/submenu:opacity-100 group-focus-within/submenu:visible group-focus-within/submenu:opacity-100"
+        >
+          {item.children?.map((child) => (
+            <li key={child.href ?? child.label}>
+              <Link
+                href={child.href ?? '#'}
+                role="menuitem"
+                className={submenuLinkClass}
+                onClick={onNavigate}
+              >
+                {child.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </li>
+  )
+}
+
 function DropdownMenuItems({
   links,
   onNavigate,
-  nested = false,
 }: {
   links: NavDropdownLink[]
   onNavigate: () => void
-  nested?: boolean
 }) {
   return (
     <>
       {links.map((item) => {
         if (item.children?.length) {
-          return (
-            <li key={item.label} className="list-none">
-              <div
-                className={`px-4 py-2 text-xs font-semibold uppercase tracking-wide text-cvc-fg-subtle ${
-                  nested ? 'pl-6' : ''
-                }`}
-              >
-                {item.label}
-              </div>
-              <ul className="divide-y divide-cvc-border border-t border-cvc-border">
-                {item.children.map((child) => (
-                  <li key={child.href ?? child.label}>
-                    <Link
-                      href={child.href ?? '#'}
-                      role="menuitem"
-                      className="block py-2.5 pl-8 pr-4 text-sm text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg"
-                      onClick={onNavigate}
-                    >
-                      {child.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          )
+          return <DropdownFlyoutItem key={item.label} item={item} onNavigate={onNavigate} />
         }
 
         return (
@@ -58,7 +99,7 @@ function DropdownMenuItems({
             <Link
               href={item.href ?? '#'}
               role="menuitem"
-              className="block px-4 py-2.5 text-sm text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg"
+              className={submenuLinkClass}
               onClick={onNavigate}
             >
               {item.label}
@@ -72,6 +113,7 @@ function DropdownMenuItems({
 
 export default function NavDropdown({
   label,
+  labelLines,
   links,
   className = '',
   overlay = false,
@@ -148,7 +190,7 @@ export default function NavDropdown({
           minWidth: menuPosition.minWidth,
           zIndex: 100010,
         }}
-        className="overflow-hidden rounded-lg border border-cvc-border bg-cvc-card py-1 shadow-xl"
+        className="overflow-visible rounded-lg border border-cvc-border bg-cvc-card py-1 shadow-xl"
         onMouseDown={(e) => e.stopPropagation()}
       >
         <ul className="divide-y divide-cvc-border">
@@ -175,7 +217,7 @@ export default function NavDropdown({
             e.preventDefault()
           }}
         >
-          {label}
+          {labelLines ? <NavStackedLabel lines={labelLines} /> : label}
           <svg
             className={`h-3.5 w-3.5 transition-transform ${open ? 'rotate-180' : ''}`}
             viewBox="0 0 20 20"

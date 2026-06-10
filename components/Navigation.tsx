@@ -9,6 +9,7 @@ import NavLinkButton from './NavLinkButton'
 import NavDropdown from './NavDropdown'
 import NavStackedLabel from './NavStackedLabel'
 import NavUtilityBar from './NavUtilityBar'
+import NavQuickTabs from './NavQuickTabs'
 import ThemeToggle from './ThemeToggle'
 import { getMainNavItems, getNavDisplayLabel, type NavDropdownLink } from '@/lib/navItems'
 import { showVision } from '@/lib/siteConfig'
@@ -175,7 +176,8 @@ export default function Navigation() {
                       return (
                         <NavDropdown
                           key={item.label}
-                          label={displayLabel}
+                          label={item.navLabelLines ? undefined : displayLabel}
+                          labelLines={item.navLabelLines}
                           links={item.items}
                           overlay={isHomeHero}
                           className="relative z-20 shrink-0"
@@ -257,7 +259,11 @@ export default function Navigation() {
                       aria-expanded={!!openMobileSections[item.label]}
                       onClick={() => toggleMobileSection(item.label)}
                     >
-                      {getNavDisplayLabel(item)}
+                      {item.navLabelLines ? (
+                        <NavStackedLabel lines={item.navLabelLines} />
+                      ) : (
+                        getNavDisplayLabel(item)
+                      )}
                       <svg
                         className={`h-4 w-4 shrink-0 transition-transform ${openMobileSections[item.label] ? 'rotate-180' : ''}`}
                         viewBox="0 0 20 20"
@@ -394,6 +400,7 @@ export default function Navigation() {
         </div>
       )}
       </nav>
+      <NavQuickTabs />
     </header>
   )
 }

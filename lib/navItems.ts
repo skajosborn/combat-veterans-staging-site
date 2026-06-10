@@ -20,20 +20,40 @@ export type NavDropdownItem = {
   type: 'dropdown'
   label: string
   navLabel?: string
+  navLabelLines?: [string, string]
   compactNavLabel?: string
   items: NavDropdownLink[]
 }
 
 export type NavItem = NavLinkItem | NavDropdownItem
 
+export type NavQuickTab = {
+  label: string
+  shortLabel: string
+  href: string
+}
+
+export const navQuickTabs: NavQuickTab[] = [
+  { label: 'Veteran Application', shortLabel: 'Veteran App', href: '/veteran-application' },
+  { label: 'Operation Field Trip', shortLabel: 'Field Trip', href: '/operation-field-trip' },
+  { label: "What's Next?", shortLabel: "What's Next", href: '/whats-next' },
+]
+
+export const ourProgramsLinks: NavDropdownLink[] = [
+  { label: 'Operation Field Trip', href: '/operation-field-trip' },
+  { label: 'Save a Veteran', href: '/save-a-veteran' },
+  { label: "What's Next?", href: '/whats-next' },
+  { label: 'Battle Buddy', href: '/battle-buddy' },
+]
+
 export const ourThriftStoresLinks: NavDropdownLink[] = [
   {
     label: 'Restoring Hope Thrift Store',
-    href: '/restoring-hope-thrift-store',
+    href: 'https://restoringhopethrift.org/',
   },
   {
     label: 'Restoring Hope Clothing Boutique',
-    href: '/restoring-hope-clothing-boutique',
+    href: 'https://restoringhopethrift.org/',
   },
 ]
 
@@ -42,21 +62,36 @@ export const ourTeamLinks: NavDropdownLink[] = [
   { label: 'Board Members', href: '/board-members' },
 ]
 
+export const getInvolvedLinks: NavDropdownLink[] = [
+  { label: 'Donate', href: 'https://combatveteranstocareers.org/donate/' },
+  { label: 'Donate Your Car', href: 'https://combatveteranstocareers.org/car-donation/' },
+  { label: 'Donate Your Laptop', href: 'https://combatveteranstocareers.org/laptop-donation/' },
+  { label: 'Volunteer', href: 'https://combatveteranstocareers.org/volunteer/' },
+  {
+    label: 'Planned Giving',
+    href: 'https://combatveteranstocareers.plannedgiving.org/index.php?r=1',
+  },
+  { label: 'Support a Veteran', href: 'https://combatveteranstocareers.org/support-a-veteran/' },
+  { label: 'Become a Partner', href: 'https://combatveteranstocareers.org/become-a-partner/' },
+]
+
 export const aboutLinks: NavDropdownLink[] = [
   { label: 'Veterans Path', href: '/whats-next' },
   { label: 'History', href: '/about#history' },
   { label: 'Mission', href: '/mission' },
-  { label: 'Get Involved', href: '/get-involved' },
+  { label: 'Get Involved', href: '/get-involved', children: [...getInvolvedLinks] },
   { label: 'Our Team', children: [...ourTeamLinks] },
   { label: 'Financials', href: '/financials' },
   { label: 'News Blog', href: '/news-blog' },
 ]
 
 const allNavItems: NavItem[] = [
-  { type: 'link', label: 'CVC Programs', navLabelLines: ['OUR', 'PROGRAMS'], href: '/#programs' },
-  { type: 'link', label: 'Veteran Application', navLabel: 'VETERAN APPLICATION', compactNavLabel: 'VETERAN APP', href: '/veteran-application' },
-  { type: 'link', label: 'Operation Field Trip', navLabelLines: ['OPERATION', 'FIELD TRIP'], href: '/operation-field-trip' },
-  { type: 'link', label: "What's Next?", navLabel: "WHAT'S NEXT", href: '/whats-next' },
+  {
+    type: 'dropdown',
+    label: 'CVC Programs',
+    navLabelLines: ['OUR', 'PROGRAMS'],
+    items: [...ourProgramsLinks],
+  },
   { type: 'dropdown', label: 'About', navLabel: 'ABOUT', items: [...aboutLinks] },
   { type: 'link', label: 'Events', navLabel: 'EVENTS', href: '/events' },
   { type: 'link', label: 'Sponsors', navLabel: 'SPONSORS', href: '/sponsors' },

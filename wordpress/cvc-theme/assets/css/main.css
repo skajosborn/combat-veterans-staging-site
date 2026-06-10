@@ -21,7 +21,8 @@
   --patriotic-gold: #ffd700;
   --cvc-nav-utility-height: 2rem;
   --cvc-nav-main-height: 2.75rem;
-  --cvc-nav-height: calc(var(--cvc-nav-utility-height) + var(--cvc-nav-main-height));
+  --cvc-nav-tabs-height: 2.25rem;
+  --cvc-nav-height: calc(var(--cvc-nav-utility-height) + var(--cvc-nav-main-height) + var(--cvc-nav-tabs-height));
   --cvc-hero-pillars: #1a2114;
   --cvc-hero-pillars-border: #5c6b3a;
   --cvc-hero-pillars-divide: rgb(197 160 40 / 0.35);
@@ -235,6 +236,83 @@ html.dark .cvc-nav-utility {
   backdrop-filter: blur(12px);
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
   overflow: visible;
+}
+
+.cvc-nav-tabs {
+  border-bottom: 1px solid var(--cvc-nav-border);
+  background: var(--cvc-page-elevated);
+}
+
+.cvc-nav-tabs__inner {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 96rem;
+  margin: 0 auto;
+}
+
+.cvc-nav-tabs__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--cvc-nav-tabs-height);
+  padding: 0.375rem 0.5rem;
+  border-right: 1px solid var(--cvc-nav-border);
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cvc-fg-subtle);
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.cvc-nav-tabs__link:last-child {
+  border-right: none;
+}
+
+.cvc-nav-tabs__link:hover {
+  background: var(--cvc-hover);
+  color: var(--cvc-fg);
+}
+
+.cvc-nav-tabs__link.is-active {
+  background: var(--cvc-card);
+  color: var(--cvc-cta-fill);
+}
+
+.cvc-nav-tabs__link.is-active::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--cvc-cta-fill);
+}
+
+.cvc-nav-tabs__label {
+  line-height: 1.15;
+}
+
+.cvc-nav-tabs__label--full {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .cvc-nav-tabs__link {
+    font-size: 0.6875rem;
+    letter-spacing: 0.07em;
+  }
+
+  .cvc-nav-tabs__label--short {
+    display: none;
+  }
+
+  .cvc-nav-tabs__label--full {
+    display: inline;
+  }
 }
 
 .cvc-nav__inner {
