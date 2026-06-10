@@ -70,68 +70,34 @@ export function HeroLeadParagraph({ compact = false }: { compact?: boolean }) {
   )
 }
 
-/** Irregular terrain edge — short strip only, not a full-panel clip. */
-const PILLARS_EDGE_CLIP =
-  'polygon(0% 100%, 0% 35%, 4% 10%, 9% 55%, 14% 15%, 20% 70%, 26% 20%, 33% 80%, 40% 25%, 47% 65%, 54% 12%, 61% 75%, 68% 18%, 75% 60%, 82% 8%, 89% 72%, 95% 22%, 100% 50%, 100% 100%)'
-
 export function HeroPillarsGrid({ compact = false }: { compact?: boolean }) {
   return (
-    <div className={`relative w-full ${compact ? 'px-0' : 'px-3 sm:px-4 lg:px-6 xl:px-8'}`}>
-      <div className="cvc-hero-pillars-panel mx-auto max-w-7xl">
-        <div
-          className="relative h-2.5 w-full bg-[#252f1c] sm:h-3"
-          style={{ clipPath: PILLARS_EDGE_CLIP }}
-          aria-hidden
-        />
-        <div className="cvc-hero-pillars-military relative overflow-hidden border border-t-0 border-[var(--cvc-hero-pillars-border)] bg-gradient-to-b from-[#252f1c] to-[var(--cvc-hero-pillars)] shadow-[0_8px_32px_-8px_rgb(0_0_0_/_0.45)]">
+    <div
+      className={`cvc-hero-pillars-clear relative w-full ${compact ? 'px-0' : 'px-3 sm:px-4 lg:px-6 xl:px-8'}`}
+    >
+      <div className="mx-auto grid max-w-7xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        {HERO_PILLARS.map(({ title, description, Icon }, index) => (
           <div
-            className="pointer-events-none absolute inset-0 opacity-[0.12] mix-blend-overlay"
-            style={{
-              backgroundImage: "url('/camouflage.jpg')",
-              backgroundSize: '300px',
-            }}
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--cvc-hero-pillars-gold)] to-transparent opacity-70"
-            aria-hidden
-          />
-          <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {HERO_PILLARS.map(({ title, description, Icon }, index) => (
-              <div
-                key={title}
-                className={`cvc-hero-pillar-cell group relative z-[1] flex items-start gap-3 ${
-                  compact ? 'px-4 py-3.5 lg:px-5 lg:py-4' : 'px-4 py-4 sm:px-5 sm:py-5'
-                } ${index % 2 === 1 ? 'sm:border-l sm:border-[var(--cvc-hero-pillars-divide)]/60' : ''} ${
-                  index >= 2 ? 'sm:border-t sm:border-[var(--cvc-hero-pillars-divide)]/60 lg:border-t-0' : ''
-                } ${
-                  index > 0
-                    ? 'lg:border-l-0 lg:before:absolute lg:before:bottom-[14%] lg:before:left-0 lg:before:top-[14%] lg:before:w-px lg:before:-skew-x-[10deg] lg:before:bg-[var(--cvc-hero-pillars-divide)]'
-                    : ''
-                }`}
-              >
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center text-[var(--cvc-hero-pillars-gold)] sm:h-10 sm:w-10">
-                  <Icon className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={1.25} aria-hidden />
-                </div>
-                <div className="min-w-0 flex-1 text-left">
-                  <p className="text-[10px] font-bold uppercase leading-tight tracking-[0.12em] text-[var(--cvc-hero-pillars-gold)] sm:text-[11px]">
-                    {title}
-                  </p>
-                  <p className="mt-1 text-[11px] font-medium leading-snug text-[var(--cvc-hero-pillars-muted)] sm:text-xs">
-                    {description}
-                  </p>
-                  <div className="mt-2 flex justify-center sm:justify-start">
-                    <Star
-                      className="h-2 w-2 fill-[var(--cvc-hero-pillars-gold)] text-[var(--cvc-hero-pillars-gold)] opacity-75"
-                      strokeWidth={0}
-                      aria-hidden
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
+            key={title}
+            className={`flex items-center gap-2.5 sm:gap-3 ${
+              compact ? 'px-3 py-2.5 sm:px-4 lg:px-5 lg:py-3' : 'px-4 py-3 sm:px-5 sm:py-3.5'
+            } ${index % 2 === 1 ? 'sm:border-l sm:border-white/55 dark:sm:border-white/35' : ''} ${
+              index >= 2 ? 'sm:border-t sm:border-white/45 dark:sm:border-white/25 lg:border-t-0' : ''
+            } ${index > 0 ? 'lg:border-l lg:border-white/55 dark:lg:border-white/35' : ''}`}
+          >
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-500/60 bg-white text-cvc-hero-accent shadow-[0_1px_3px_rgb(0_0_0_/_0.08)] sm:h-9 sm:w-9 dark:border-white/55 dark:bg-white/95 dark:text-[#3d4a2c]">
+              <Icon className="h-4 w-4 sm:h-[1.125rem] sm:w-[1.125rem]" strokeWidth={2} aria-hidden />
+            </div>
+            <div className="min-w-0 flex-1 text-left">
+              <p className="text-[11px] font-bold leading-tight text-cvc-fg sm:text-xs dark:text-white">
+                {title}
+              </p>
+              <p className="mt-0.5 text-[10px] leading-snug text-cvc-fg-muted sm:text-[11px] dark:text-white/80">
+                {description}
+              </p>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   )

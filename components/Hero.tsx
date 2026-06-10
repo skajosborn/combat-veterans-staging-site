@@ -102,8 +102,8 @@ export default function Hero() {
       </div>
 
       {/* —— Desktop — single viewport column: main row + pillars —— */}
-      <div className="relative z-10 mx-auto hidden h-full min-h-0 w-full max-w-7xl flex-1 flex-col justify-center px-6 py-4 pt-[var(--cvc-nav-height)] lg:flex xl:px-10">
-        <div className="flex w-full flex-col gap-5 xl:gap-6">
+      <div className="relative z-10 mx-auto hidden h-full min-h-0 w-full max-w-7xl flex-1 flex-col px-6 pt-[var(--cvc-nav-height)] lg:flex xl:px-10">
+        <div className="flex min-h-0 flex-1 flex-col justify-center py-4">
           <div className="grid grid-cols-[minmax(0,19rem)_minmax(0,1fr)] items-center gap-4 xl:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] xl:gap-5">
             <div className="flex min-w-0 justify-center self-center">
               <div className="relative flex max-h-[min(38svh,340px)] w-full max-w-[19rem] items-center justify-center xl:max-h-[min(40svh,360px)] xl:max-w-[22rem]">
@@ -125,7 +125,9 @@ export default function Hero() {
               {renderHeroCtas('row')}
             </div>
           </div>
+        </div>
 
+        <div className="shrink-0 pb-4 pt-1 xl:pb-5">
           <HeroPillarsGrid compact />
         </div>
       </div>
