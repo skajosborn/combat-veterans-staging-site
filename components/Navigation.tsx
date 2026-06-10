@@ -118,6 +118,11 @@ export default function Navigation() {
     setOpenMobileSections(defaults)
   }, [isOpen])
 
+  useEffect(() => {
+    document.documentElement.classList.toggle('nav-menu-open', isOpen)
+    return () => document.documentElement.classList.remove('nav-menu-open')
+  }, [isOpen])
+
   const toggleMobileSection = useCallback((label: string) => {
     setOpenMobileSections((prev) => ({ ...prev, [label]: !prev[label] }))
   }, [])
@@ -141,7 +146,7 @@ export default function Navigation() {
       <nav
         className={`relative border-b border-cvc-nav-border shadow-sm backdrop-blur-md ${
           isHomeHero
-            ? 'bg-white/95 dark:bg-cvc-nav md:dark:border-white/15 md:dark:bg-transparent md:dark:shadow-none'
+            ? 'bg-white/90 dark:bg-cvc-nav md:border-transparent md:bg-transparent md:shadow-none'
             : 'bg-cvc-nav md:shadow-xl'
         }`}
       >
@@ -266,7 +271,7 @@ export default function Navigation() {
 
       {/* Mobile drawer — below full header (incl. quick tabs) so sublinks aren't hidden */}
       {isOpen && (
-        <div className="absolute left-0 right-0 top-full z-[60] max-h-[calc(100dvh-var(--cvc-nav-height))] overflow-y-auto border-t border-cvc-border bg-cvc-page shadow-lg xl:hidden">
+        <div className="absolute left-0 right-0 top-full z-[60] max-h-[calc(100dvh-var(--cvc-nav-height))] overflow-y-auto overscroll-contain border-t border-cvc-border bg-cvc-page shadow-lg isolate xl:hidden">
           <div className="mx-auto max-w-7xl px-4 pb-4 pt-3 sm:px-6 lg:px-8">
             <div className="flex flex-col gap-1">
               {mainNavItems.map((item) =>

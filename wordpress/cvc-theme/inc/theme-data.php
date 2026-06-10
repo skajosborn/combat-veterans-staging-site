@@ -128,22 +128,28 @@ function cvc_get_our_programs_nav_children() {
 function cvc_get_nav_quick_tabs() {
 	return array(
 		array(
-			'label' => __( 'Veteran Application', 'cvc-theme' ),
-			'short' => __( 'Veteran App', 'cvc-theme' ),
-			'slug'  => 'veteran-application',
-			'tone'  => 'red',
+			'label'    => __( 'Veteran Application', 'cvc-theme' ),
+			'short'    => __( 'Veteran App', 'cvc-theme' ),
+			'subtitle' => __( 'Start your next chapter', 'cvc-theme' ),
+			'slug'     => 'veteran-application',
+			'tone'     => 'red',
+			'icon'     => 'application',
 		),
 		array(
-			'label' => __( 'Operation Field Trip', 'cvc-theme' ),
-			'short' => __( 'Field Trip', 'cvc-theme' ),
-			'slug'  => 'operation-field-trip',
-			'tone'  => 'white',
+			'label'    => __( 'Operation Field Trip', 'cvc-theme' ),
+			'short'    => __( 'Field Trip', 'cvc-theme' ),
+			'subtitle' => __( 'Upcoming events & details', 'cvc-theme' ),
+			'slug'     => 'operation-field-trip',
+			'tone'     => 'green',
+			'icon'     => 'calendar',
 		),
 		array(
-			'label' => __( "What's Next?", 'cvc-theme' ),
-			'short' => __( "What's Next", 'cvc-theme' ),
-			'slug'  => 'whats-next',
-			'tone'  => 'blue',
+			'label'    => __( "What's Next?", 'cvc-theme' ),
+			'short'    => __( "What's Next", 'cvc-theme' ),
+			'subtitle' => __( 'Guidance for your future', 'cvc-theme' ),
+			'slug'     => 'whats-next',
+			'tone'     => 'blue',
+			'icon'     => 'compass',
 		),
 	);
 }

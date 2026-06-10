@@ -25,7 +25,7 @@
     --cvc-nav-border: #d1d5db;
     --cvc-nav-utility-height: 2rem;
     --cvc-nav-main-height: 2.75rem;
-    --cvc-nav-tabs-height: 2.5rem;
+    --cvc-nav-tabs-height: 4.5rem;
     --cvc-nav-height: calc(var(--cvc-nav-utility-height) + var(--cvc-nav-main-height) + var(--cvc-nav-tabs-height));
     --cvc-hero-shade: rgb(255 255 255 / 0.52);
     --cvc-hero-fg: #1a2b3c;
@@ -70,7 +70,7 @@
     --cvc-nav-border: #1f2937;
     --cvc-nav-utility-height: 2.25rem;
     --cvc-nav-main-height: 2.75rem;
-    --cvc-nav-tabs-height: 2.5rem;
+    --cvc-nav-tabs-height: 4.5rem;
     --cvc-nav-height: calc(var(--cvc-nav-utility-height) + var(--cvc-nav-main-height) + var(--cvc-nav-tabs-height));
     --cvc-hero-shade: rgb(10 14 39 / 0.4);
     --cvc-hero-fg: #ffffff;
@@ -142,5 +142,11 @@
   .hero-typewriter-cursor {
     animation: none;
   }
+}
+
+html.nav-menu-open .hero-typewriter-cursor,
+html.nav-menu-open .cvc-typewriter-cursor,
+html.nav-menu-open [data-hero-headlines] {
+  visibility: hidden !important;
 }
 

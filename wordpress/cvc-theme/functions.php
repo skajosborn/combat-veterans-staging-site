@@ -143,7 +143,7 @@ function cvc_filter_nav_menu_item_title( $title, $item, $args, $depth ) {
 	$stack = get_post_meta( $item->ID, '_cvc_nav_stack', true );
 	if ( is_array( $stack ) && 2 === count( $stack ) ) {
 		return sprintf(
-			'<span class="cvc-nav__stacked-line">%1$s</span><span class="cvc-nav__stacked-line">%2$s</span>',
+			'<span class="cvc-nav__stacked-inner"><span class="cvc-nav__stacked-line">%1$s</span><span class="cvc-nav__stacked-line">%2$s</span></span>',
 			esc_html( $stack[0] ),
 			esc_html( $stack[1] )
 		);

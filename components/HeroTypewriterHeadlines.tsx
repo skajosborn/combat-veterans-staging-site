@@ -51,6 +51,7 @@ export default function HeroTypewriterHeadlines({ large = false }: { large?: boo
 
   return (
     <div
+      data-hero-headlines
       className={`flex flex-col text-left ${large ? 'gap-0.5 xl:gap-1' : 'gap-2 sm:gap-2.5'}`}
       aria-label="WHAT'S NEXT? SERVICE TO SUCCESS"
     >

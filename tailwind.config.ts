@@ -47,6 +47,7 @@ const config: Config = {
         },
         'patriotic-red': '#CE2029',
         'patriotic-blue': '#3C3B6E',
+        'patriotic-green': '#4A5D23',
         'patriotic-navy': '#1E3A5F',
         'patriotic-gold': '#FFD700',
       },

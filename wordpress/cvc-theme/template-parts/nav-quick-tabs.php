@@ -23,8 +23,19 @@ $current_slug = is_page() ? get_post_field( 'post_name', get_queried_object_id()
 				href="<?php echo esc_url( $url ); ?>"
 				<?php echo $active ? ' aria-current="page"' : ''; ?>
 			>
-				<span class="cvc-nav-tabs__label cvc-nav-tabs__label--short"><?php echo esc_html( $tab['short'] ?? $tab['label'] ); ?></span>
-				<span class="cvc-nav-tabs__label cvc-nav-tabs__label--full"><?php echo esc_html( $tab['label'] ); ?></span>
+				<span class="cvc-nav-tabs__icon-wrap" aria-hidden="true">
+					<?php echo cvc_nav_quick_tab_icon( $tab['icon'] ?? 'application' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				</span>
+				<span class="cvc-nav-tabs__copy">
+					<span class="cvc-nav-tabs__title">
+						<span class="cvc-nav-tabs__label cvc-nav-tabs__label--short"><?php echo esc_html( $tab['short'] ?? $tab['label'] ); ?></span>
+						<span class="cvc-nav-tabs__label cvc-nav-tabs__label--full"><?php echo esc_html( $tab['label'] ); ?></span>
+					</span>
+					<?php if ( ! empty( $tab['subtitle'] ) ) : ?>
+						<span class="cvc-nav-tabs__subtitle"><?php echo esc_html( $tab['subtitle'] ); ?></span>
+					<?php endif; ?>
+				</span>
+				<?php echo cvc_nav_quick_tab_chevron(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</a>
 		<?php endforeach; ?>
 	</div>

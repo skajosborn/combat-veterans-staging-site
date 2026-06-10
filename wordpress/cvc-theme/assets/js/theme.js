@@ -37,10 +37,15 @@
     navToggle.addEventListener('click', function () {
       var open = navPanel.classList.toggle('is-open');
       navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.documentElement.classList.toggle('nav-menu-open', open);
       if (open) {
         navPanel.querySelectorAll('.menu > .menu-item-has-children').forEach(function (item) {
           item.classList.add('is-submenu-open');
         });
+        var cursor = document.querySelector('.cvc-typewriter-cursor');
+        if (cursor) {
+          cursor.hidden = true;
+        }
       } else {
         navPanel.querySelectorAll('.menu-item-has-children').forEach(function (item) {
           item.classList.remove('is-submenu-open');
@@ -146,7 +151,7 @@
     }
 
     function placeCursor(segment) {
-      if (!cursor || !segment) {
+      if (!cursor || !segment || document.documentElement.classList.contains('nav-menu-open')) {
         hideCursor();
         return;
       }
@@ -166,6 +171,11 @@
       var timer;
 
       function tick() {
+        if (document.documentElement.classList.contains('nav-menu-open')) {
+          hideCursor();
+          return;
+        }
+
         var segment = typewriterSegments[segmentIndex];
         if (!segment) {
           hideCursor();

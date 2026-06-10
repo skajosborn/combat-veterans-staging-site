@@ -2,7 +2,8 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { navQuickTabs, type NavQuickTabTone } from '@/lib/navItems'
+import { Calendar, ChevronRight, ClipboardList, Compass } from 'lucide-react'
+import { navQuickTabs, type NavQuickTabIcon, type NavQuickTabTone } from '@/lib/navItems'
 
 function isTabActive(pathname: string, href: string) {
   if (href === '/') return pathname === '/'
@@ -10,35 +11,53 @@ function isTabActive(pathname: string, href: string) {
 }
 
 const toneClasses: Record<NavQuickTabTone, string> = {
-  red: 'bg-patriotic-red text-white hover:brightness-110',
-  white:
-    'border border-slate-300/80 bg-white text-patriotic-navy hover:bg-slate-50 dark:border-slate-400/50 dark:bg-white dark:text-patriotic-navy',
-  blue: 'bg-patriotic-blue text-white hover:brightness-110',
+  red: 'bg-patriotic-red hover:brightness-110',
+  green: 'bg-patriotic-green hover:brightness-110',
+  blue: 'bg-patriotic-blue hover:brightness-110',
+}
+
+const tabIcons: Record<NavQuickTabIcon, typeof ClipboardList> = {
+  application: ClipboardList,
+  calendar: Calendar,
+  compass: Compass,
 }
 
 export default function NavQuickTabs() {
   const pathname = usePathname()
 
   return (
-    <nav aria-label="Quick program links" className="relative z-10 bg-transparent px-3 sm:px-4">
-      <div
-        className="mx-auto flex max-w-[96rem] gap-2 sm:gap-3"
-        style={{ minHeight: 'var(--cvc-nav-tabs-height)' }}
-      >
+    <nav aria-label="Quick program links" className="relative z-30 bg-transparent px-3 py-2 sm:px-4 sm:py-2.5">
+      <div className="mx-auto flex max-w-[96rem] gap-2 sm:gap-3">
         {navQuickTabs.map((tab) => {
           const active = isTabActive(pathname, tab.href)
+          const Icon = tabIcons[tab.icon]
 
           return (
             <Link
               key={tab.href}
               href={tab.href}
               aria-current={active ? 'page' : undefined}
-              className={`flex min-h-[2.5rem] flex-1 items-center justify-center rounded-b-lg px-2 text-center text-[10px] font-bold uppercase tracking-[0.08em] transition-[filter,box-shadow,background-color] sm:text-[11px] sm:tracking-[0.1em] ${toneClasses[tab.tone]} ${
-                active ? 'shadow-[inset_0_-3px_0_0_var(--cvc-hero-pillars-gold)]' : ''
+              className={`group flex min-h-[2.75rem] min-w-0 flex-1 items-center gap-2.5 rounded-lg px-3 py-2.5 text-white shadow-sm transition-[filter,box-shadow] sm:min-h-[3.25rem] sm:gap-3 sm:px-4 sm:py-3 ${toneClasses[tab.tone]} ${
+                active ? 'ring-2 ring-[var(--cvc-hero-pillars-gold)] ring-offset-1 ring-offset-transparent' : ''
               }`}
             >
-              <span className="leading-tight sm:hidden">{tab.shortLabel}</span>
-              <span className="hidden leading-tight sm:inline">{tab.label}</span>
+              <span className="shrink-0 opacity-95" aria-hidden="true">
+                <Icon className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={1.75} />
+              </span>
+              <span className="min-w-0 flex-1 text-left leading-tight">
+                <span className="block truncate text-[10px] font-bold uppercase tracking-[0.06em] sm:text-[11px] sm:tracking-[0.08em]">
+                  <span className="sm:hidden">{tab.shortLabel}</span>
+                  <span className="hidden sm:inline">{tab.label}</span>
+                </span>
+                <span className="mt-0.5 hidden truncate text-[10px] font-normal normal-case tracking-normal text-white/90 sm:block">
+                  {tab.subtitle}
+                </span>
+              </span>
+              <ChevronRight
+                className="h-4 w-4 shrink-0 opacity-80 transition-transform group-hover:translate-x-0.5 sm:h-[1.125rem] sm:w-[1.125rem]"
+                strokeWidth={2}
+                aria-hidden="true"
+              />
             </Link>
           )
         })}
