@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { HandHeart } from 'lucide-react'
@@ -9,13 +9,95 @@ import NavLinkButton from './NavLinkButton'
 import NavDropdown from './NavDropdown'
 import NavUtilityBar from './NavUtilityBar'
 import ThemeToggle from './ThemeToggle'
-import { getMainNavItems, getNavDisplayLabel } from '@/lib/navItems'
+import { getMainNavItems, getNavDisplayLabel, type NavDropdownLink } from '@/lib/navItems'
 import { showVision } from '@/lib/siteConfig'
+
+function MobileDropdownLinks({
+  links,
+  sectionKey,
+  depth = 0,
+  openMobileSections,
+  toggleMobileSection,
+  onNavigate,
+  linkClassName,
+  subLinkClassName,
+}: {
+  links: NavDropdownLink[]
+  sectionKey: string
+  depth?: number
+  openMobileSections: Record<string, boolean>
+  toggleMobileSection: (key: string) => void
+  onNavigate: () => void
+  linkClassName: string
+  subLinkClassName: string
+}) {
+  return links.map((item) => {
+    if (item.children?.length) {
+      const nestedKey = `${sectionKey}:${item.label}`
+      return (
+        <div key={nestedKey} className={depth > 0 ? 'pl-4' : ''}>
+          <button
+            type="button"
+            className={`${linkClassName} flex w-full items-center justify-between text-left`}
+            aria-expanded={!!openMobileSections[nestedKey]}
+            onClick={() => toggleMobileSection(nestedKey)}
+          >
+            {item.label}
+            <svg
+              className={`h-4 w-4 shrink-0 transition-transform ${openMobileSections[nestedKey] ? 'rotate-180' : ''}`}
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden
+            >
+              <path
+                fillRule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+          {openMobileSections[nestedKey] ? (
+            <MobileDropdownLinks
+              links={item.children}
+              sectionKey={nestedKey}
+              depth={depth + 1}
+              openMobileSections={openMobileSections}
+              toggleMobileSection={toggleMobileSection}
+              onNavigate={onNavigate}
+              linkClassName={linkClassName}
+              subLinkClassName={subLinkClassName}
+            />
+          ) : null}
+        </div>
+      )
+    }
+
+    return (
+      <Link
+        key={item.href ?? `${sectionKey}-${item.label}`}
+        href={item.href ?? '#'}
+        onClick={onNavigate}
+        className={depth > 0 ? `${subLinkClassName} ${depth > 1 ? 'pl-12' : ''}` : subLinkClassName}
+      >
+        {item.label}
+      </Link>
+    )
+  })
+}
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [openMobileSections, setOpenMobileSections] = useState<Record<string, boolean>>({})
+  const [compactNavLabels, setCompactNavLabels] = useState(false)
   const pathname = usePathname()
+
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 1280px) and (max-width: 1535px)')
+    const update = () => setCompactNavLabels(media.matches)
+    update()
+    media.addEventListener('change', update)
+    return () => media.removeEventListener('change', update)
+  }, [])
 
   const toggleMobileSection = useCallback((label: string) => {
     setOpenMobileSections((prev) => ({ ...prev, [label]: !prev[label] }))
@@ -24,7 +106,7 @@ export default function Navigation() {
   const mainNavItems = getMainNavItems()
 
   const desktopNavLinkClass =
-    'shrink-0 whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.06em] text-cvc-fg transition-colors hover:opacity-80 xl:text-[11px] xl:tracking-[0.08em] md:dark:text-white/90 md:dark:hover:text-white'
+    'shrink-0 whitespace-nowrap px-1.5 text-[10px] font-bold uppercase tracking-[0.05em] text-cvc-fg transition-colors hover:opacity-80 xl:px-2 xl:text-[11px] xl:tracking-[0.07em] 2xl:px-2.5 2xl:tracking-[0.08em] md:dark:text-white/90 md:dark:hover:text-white'
 
   const mobileNavLinkClass =
     'block rounded-lg px-3 py-2.5 text-sm font-medium text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg'
@@ -80,51 +162,58 @@ export default function Navigation() {
             </a>
           </div>
 
-          {/* Tablet/desktop — scrollable links; stores menu sits outside overflow so dropdown is clickable */}
-          <div className="hidden min-w-0 flex-1 items-center gap-3 md:flex lg:gap-4">
-            <div className="scrollbar-hide flex min-w-0 flex-1 flex-nowrap items-center justify-between overflow-x-auto px-2 py-0.5 md:overflow-visible md:px-4 lg:px-6 xl:px-8">
-              {mainNavItems.map((item) => {
-                if (item.type === 'dropdown') {
-                  return (
-                    <NavDropdown
-                      key={item.label}
-                      label={getNavDisplayLabel(item)}
-                      links={item.items}
-                      overlay={isHomeHero}
-                      className="shrink-0"
-                      linkClassName={desktopNavLinkClass}
-                    />
-                  )
-                }
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={desktopNavLinkClass}
-                  >
-                    {getNavDisplayLabel(item)}
-                  </Link>
-                )
-              })}
+          {/* Desktop inline nav — xl+; below xl uses mobile drawer */}
+          <div className="hidden min-w-0 flex-1 items-center xl:flex">
+            <div className="flex min-w-0 flex-1 justify-center px-1 2xl:px-2">
+              <div className="scrollbar-hide max-w-full overflow-x-auto overscroll-x-contain [-webkit-overflow-scrolling:touch]">
+                <div className="mx-auto flex w-max flex-nowrap items-center justify-center gap-x-5 py-0.5 xl:gap-x-6 2xl:gap-x-8">
+                  {mainNavItems.map((item) => {
+                    const displayLabel = getNavDisplayLabel(item, { compact: compactNavLabels })
+                    if (item.type === 'dropdown') {
+                      return (
+                        <NavDropdown
+                          key={item.label}
+                          label={displayLabel}
+                          links={item.items}
+                          overlay={isHomeHero}
+                          className="shrink-0"
+                          linkClassName={desktopNavLinkClass}
+                        />
+                      )
+                    }
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={desktopNavLinkClass}
+                      >
+                        {displayLabel}
+                      </Link>
+                    )
+                  })}
+                </div>
+              </div>
             </div>
+            <div className="ml-1 flex shrink-0 items-center gap-2 2xl:ml-2 2xl:gap-3">
             <ThemeToggle
               className={
                 isHomeHero
-                  ? 'hidden shrink-0 md:inline-flex md:dark:border-white/40 md:dark:text-white md:dark:hover:bg-white/10 md:dark:hover:text-white'
+                  ? 'hidden shrink-0 xl:inline-flex xl:dark:border-white/40 xl:dark:text-white xl:dark:hover:bg-white/10 xl:dark:hover:text-white'
                   : 'shrink-0'
               }
             />
             <Link
               href="/donate"
-              className="hidden shrink-0 items-center gap-2 rounded-md bg-cvc-cta-fill px-3 py-2 text-[10px] font-bold uppercase tracking-[0.1em] text-white shadow-md transition-[filter] hover:brightness-110 md:inline-flex xl:px-4 xl:py-2.5 xl:text-[11px]"
+              className="hidden shrink-0 items-center gap-2 rounded-md bg-cvc-cta-fill px-3 py-2 text-[10px] font-bold uppercase tracking-[0.1em] text-white shadow-md transition-[filter] hover:brightness-110 xl:inline-flex 2xl:px-4 2xl:py-2.5 2xl:text-[11px]"
             >
               <HandHeart className="h-4 w-4 shrink-0" strokeWidth={2} aria-hidden />
               DONATE
             </Link>
+            </div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex flex-shrink-0 items-center gap-2 md:hidden">
+          <div className="flex flex-shrink-0 items-center gap-2 xl:hidden">
             <ThemeToggle className="border-cvc-border text-cvc-fg hover:bg-cvc-hover hover:text-cvc-fg dark:border-white/40 dark:text-white dark:hover:bg-white/10 dark:hover:text-white" />
             <button
               type="button"
@@ -147,7 +236,7 @@ export default function Navigation() {
 
       {/* Mobile Navigation — full viewport width; below bar */}
       {isOpen && (
-        <div className="absolute left-0 right-0 top-full z-50 max-h-[min(80vh,85dvh)] overflow-y-auto border-t border-cvc-border bg-cvc-page shadow-lg md:hidden">
+        <div className="absolute left-0 right-0 top-full z-50 max-h-[min(80vh,85dvh)] overflow-y-auto border-t border-cvc-border bg-cvc-page shadow-lg xl:hidden">
           <div className="mx-auto max-w-7xl px-4 pb-4 pt-3 sm:px-6 lg:px-8">
             <div className="flex flex-col gap-1">
               {mainNavItems.map((item) =>
@@ -173,18 +262,17 @@ export default function Navigation() {
                         />
                       </svg>
                     </button>
-                    {openMobileSections[item.label]
-                      ? item.items.map(({ label: linkLabel, href }) => (
-                          <Link
-                            key={href}
-                            href={href}
-                            onClick={() => setIsOpen(false)}
-                            className={mobileNavSubLinkClass}
-                          >
-                            {linkLabel}
-                          </Link>
-                        ))
-                      : null}
+                    {openMobileSections[item.label] ? (
+                      <MobileDropdownLinks
+                        links={item.items}
+                        sectionKey={item.label}
+                        openMobileSections={openMobileSections}
+                        toggleMobileSection={toggleMobileSection}
+                        onNavigate={() => setIsOpen(false)}
+                        linkClassName={mobileNavLinkClass}
+                        subLinkClassName={mobileNavSubLinkClass}
+                      />
+                    ) : null}
                   </div>
                 ) : (
                   <Link

@@ -50,7 +50,7 @@
 
   document.querySelectorAll('.cvc-nav__desktop .menu-item-has-children > a').forEach(function (link) {
     link.addEventListener('click', function (e) {
-      if (window.matchMedia('(min-width: 768px)').matches) {
+      if (window.matchMedia('(min-width: 1280px)').matches) {
         e.preventDefault();
         var parent = link.parentElement;
         if (!parent) return;
@@ -63,7 +63,7 @@
 
   document.querySelectorAll('.cvc-nav__mobile-panel .menu-item-has-children > a').forEach(function (link) {
     link.addEventListener('click', function (e) {
-      if (!window.matchMedia('(max-width: 767px)').matches) return;
+      if (!window.matchMedia('(max-width: 1279px)').matches) return;
       e.preventDefault();
       var parent = link.parentElement;
       if (!parent) return;

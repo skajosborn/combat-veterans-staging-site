@@ -107,34 +107,48 @@ function cvc_create_primary_menu( $force = false ) {
 
 	$order = 0;
 	foreach ( cvc_get_nav_items() as $item ) {
-		if ( ! empty( $item['children'] ) ) {
-			++$order;
-			$parent_id = wp_update_nav_menu_item(
-				$menu_id,
-				0,
-				array(
-					'menu-item-title'    => $item['label'],
-					'menu-item-url'      => '#',
-					'menu-item-type'     => 'custom',
-					'menu-item-status'   => 'publish',
-					'menu-item-position' => $order,
-				)
-			);
-			if ( is_wp_error( $parent_id ) ) {
-				continue;
-			}
-			foreach ( $item['children'] as $child ) {
-				++$order;
-				cvc_insert_nav_menu_item( $menu_id, $child, $order, (int) $parent_id );
-			}
-			continue;
-		}
-
-		++$order;
-		cvc_insert_nav_menu_item( $menu_id, $item, $order, 0 );
+		$order = cvc_insert_nav_menu_branch( $menu_id, $item, $order, 0 );
 	}
 
 	update_option( 'cvc_nav_menu_version', CVC_NAV_MENU_VERSION );
+}
+
+/**
+ * Insert a nav branch (item plus optional nested children).
+ *
+ * @param int   $menu_id   Menu term ID.
+ * @param array $item      Nav item (label, slug, anchor, or children).
+ * @param int   $order     Position.
+ * @param int   $parent_id Parent menu item ID.
+ * @return int Next menu position.
+ */
+function cvc_insert_nav_menu_branch( $menu_id, $item, $order, $parent_id = 0 ) {
+	if ( ! empty( $item['children'] ) ) {
+		++$order;
+		$branch_id = wp_update_nav_menu_item(
+			$menu_id,
+			0,
+			array(
+				'menu-item-title'     => $item['label'],
+				'menu-item-url'       => '#',
+				'menu-item-type'      => 'custom',
+				'menu-item-status'    => 'publish',
+				'menu-item-position'  => $order,
+				'menu-item-parent-id' => $parent_id,
+			)
+		);
+		if ( is_wp_error( $branch_id ) ) {
+			return $order;
+		}
+		foreach ( $item['children'] as $child ) {
+			$order = cvc_insert_nav_menu_branch( $menu_id, $child, $order, (int) $branch_id );
+		}
+		return $order;
+	}
+
+	++$order;
+	cvc_insert_nav_menu_item( $menu_id, $item, $order, $parent_id );
+	return $order;
 }
 
 /**
@@ -170,15 +184,19 @@ function cvc_insert_nav_menu_item( $menu_id, $item, $order, $parent_id = 0 ) {
 /**
  * Expected primary menu item count (parents + children).
  */
-function cvc_count_nav_menu_items() {
+function cvc_count_nav_menu_branch( $items ) {
 	$count = 0;
-	foreach ( cvc_get_nav_items() as $item ) {
+	foreach ( $items as $item ) {
 		++$count;
 		if ( ! empty( $item['children'] ) ) {
-			$count += count( $item['children'] );
+			$count += cvc_count_nav_menu_branch( $item['children'] );
 		}
 	}
 	return $count;
+}
+
+function cvc_count_nav_menu_items() {
+	return cvc_count_nav_menu_branch( cvc_get_nav_items() );
 }
 
 add_action( 'after_switch_theme', 'cvc_run_theme_setup' );

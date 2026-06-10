@@ -13,6 +13,63 @@ type Props = {
   linkClassName?: string
 }
 
+function DropdownMenuItems({
+  links,
+  onNavigate,
+  nested = false,
+}: {
+  links: NavDropdownLink[]
+  onNavigate: () => void
+  nested?: boolean
+}) {
+  return (
+    <>
+      {links.map((item) => {
+        if (item.children?.length) {
+          return (
+            <li key={item.label} className="list-none">
+              <div
+                className={`px-4 py-2 text-xs font-semibold uppercase tracking-wide text-cvc-fg-subtle ${
+                  nested ? 'pl-6' : ''
+                }`}
+              >
+                {item.label}
+              </div>
+              <ul className="divide-y divide-cvc-border border-t border-cvc-border">
+                {item.children.map((child) => (
+                  <li key={child.href ?? child.label}>
+                    <Link
+                      href={child.href ?? '#'}
+                      role="menuitem"
+                      className="block py-2.5 pl-8 pr-4 text-sm text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg"
+                      onClick={onNavigate}
+                    >
+                      {child.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          )
+        }
+
+        return (
+          <li key={item.href ?? item.label}>
+            <Link
+              href={item.href ?? '#'}
+              role="menuitem"
+              className="block px-4 py-2.5 text-sm text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg"
+              onClick={onNavigate}
+            >
+              {item.label}
+            </Link>
+          </li>
+        )
+      })}
+    </>
+  )
+}
+
 export default function NavDropdown({
   label,
   links,
@@ -95,18 +152,7 @@ export default function NavDropdown({
         onMouseDown={(e) => e.stopPropagation()}
       >
         <ul className="divide-y divide-cvc-border">
-          {links.map(({ label: linkLabel, href }) => (
-            <li key={href}>
-              <Link
-                href={href}
-                role="menuitem"
-                className="block px-4 py-2.5 text-sm text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg"
-                onClick={() => setOpen(false)}
-              >
-                {linkLabel}
-              </Link>
-            </li>
-          ))}
+          <DropdownMenuItems links={links} onNavigate={() => setOpen(false)} />
         </ul>
       </div>
     ) : null

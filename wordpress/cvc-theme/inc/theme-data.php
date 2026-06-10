@@ -32,6 +32,8 @@ function cvc_get_default_pages() {
 		'operation-field-trip' => __( 'Operation Field Trip', 'cvc-theme' ),
 		'whats-next'           => __( "What's Next", 'cvc-theme' ),
 		'mission'              => __( 'Mission', 'cvc-theme' ),
+		'staff'                => __( 'Staff', 'cvc-theme' ),
+		'board-members'        => __( 'Board Members', 'cvc-theme' ),
 		'thrift-store'                        => __( 'Thrift Store', 'cvc-theme' ),
 		'restoring-hope-thrift-store'         => __( 'Restoring Hope Thrift Store', 'cvc-theme' ),
 		'restoring-hope-clothing-boutique'    => __( 'Restoring Hope Clothing Boutique', 'cvc-theme' ),
@@ -41,7 +43,7 @@ function cvc_get_default_pages() {
 /**
  * Bump when primary nav structure changes (triggers menu rebuild).
  */
-define( 'CVC_NAV_MENU_VERSION', 4 );
+define( 'CVC_NAV_MENU_VERSION', 7 );
 
 /**
  * Primary nav (label, url callback key or raw path).
@@ -52,17 +54,27 @@ function cvc_get_about_nav_children() {
 		array( 'label' => __( 'History', 'cvc-theme' ), 'slug' => 'about', 'hash' => 'history' ),
 		array( 'label' => __( 'Mission', 'cvc-theme' ), 'slug' => 'mission' ),
 		array( 'label' => __( 'Get Involved', 'cvc-theme' ), 'slug' => 'get-involved' ),
-		array( 'label' => __( 'Board Members', 'cvc-theme' ), 'slug' => 'board-members' ),
+		array(
+			'label'    => __( 'Our Team', 'cvc-theme' ),
+			'children' => cvc_get_our_team_nav_children(),
+		),
 		array( 'label' => __( 'Financials', 'cvc-theme' ), 'slug' => 'financials' ),
 		array( 'label' => __( 'News Blog', 'cvc-theme' ), 'slug' => 'news-blog' ),
+	);
+}
+
+function cvc_get_our_team_nav_children() {
+	return array(
+		array( 'label' => __( 'Staff', 'cvc-theme' ), 'slug' => 'staff' ),
+		array( 'label' => __( 'Board Members', 'cvc-theme' ), 'slug' => 'board-members' ),
 	);
 }
 
 function cvc_get_nav_items() {
 	return array(
 		array( 'label' => __( 'PROGRAMS', 'cvc-theme' ), 'anchor' => 'programs' ),
-		array( 'label' => __( 'VETERAN APPLICATION', 'cvc-theme' ), 'slug' => 'veteran-application' ),
-		array( 'label' => __( 'OPERATION FIELD TRIP', 'cvc-theme' ), 'slug' => 'operation-field-trip' ),
+		array( 'label' => __( 'VETERAN APP', 'cvc-theme' ), 'slug' => 'veteran-application' ),
+		array( 'label' => __( 'FIELD TRIP', 'cvc-theme' ), 'slug' => 'operation-field-trip' ),
 		array( 'label' => __( "WHAT'S NEXT", 'cvc-theme' ), 'slug' => 'whats-next' ),
 		array(
 			'label'    => __( 'ABOUT', 'cvc-theme' ),

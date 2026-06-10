@@ -3,18 +3,22 @@ export type NavLinkItem = {
   label: string
   /** Compact uppercase label for desktop nav bar */
   navLabel?: string
+  /** Shorter label for mid-width desktop nav (1280px–1535px) */
+  compactNavLabel?: string
   href: string
 }
 
 export type NavDropdownLink = {
   label: string
-  href: string
+  href?: string
+  children?: NavDropdownLink[]
 }
 
 export type NavDropdownItem = {
   type: 'dropdown'
   label: string
   navLabel?: string
+  compactNavLabel?: string
   items: NavDropdownLink[]
 }
 
@@ -31,20 +35,25 @@ export const ourThriftStoresLinks: NavDropdownLink[] = [
   },
 ]
 
+export const ourTeamLinks: NavDropdownLink[] = [
+  { label: 'Staff', href: '/staff' },
+  { label: 'Board Members', href: '/board-members' },
+]
+
 export const aboutLinks: NavDropdownLink[] = [
   { label: 'Veterans Path', href: '/whats-next' },
   { label: 'History', href: '/about#history' },
   { label: 'Mission', href: '/mission' },
   { label: 'Get Involved', href: '/get-involved' },
-  { label: 'Board Members', href: '/board-members' },
+  { label: 'Our Team', children: [...ourTeamLinks] },
   { label: 'Financials', href: '/financials' },
   { label: 'News Blog', href: '/news-blog' },
 ]
 
 const allNavItems: NavItem[] = [
   { type: 'link', label: 'CVC Programs', navLabel: 'PROGRAMS', href: '/#programs' },
-  { type: 'link', label: 'Veteran Application', navLabel: 'VETERAN APPLICATION', href: '/veteran-application' },
-  { type: 'link', label: 'Operation Field Trip', navLabel: 'OPERATION FIELD TRIP', href: '/operation-field-trip' },
+  { type: 'link', label: 'Veteran Application', navLabel: 'VETERAN APPLICATION', compactNavLabel: 'VETERAN APP', href: '/veteran-application' },
+  { type: 'link', label: 'Operation Field Trip', navLabel: 'OPERATION FIELD TRIP', compactNavLabel: 'FIELD TRIP', href: '/operation-field-trip' },
   { type: 'link', label: "What's Next?", navLabel: "WHAT'S NEXT", href: '/whats-next' },
   { type: 'dropdown', label: 'About', navLabel: 'ABOUT', items: [...aboutLinks] },
   { type: 'link', label: 'Events', navLabel: 'EVENTS', href: '/events' },
@@ -54,7 +63,11 @@ const allNavItems: NavItem[] = [
   { type: 'link', label: 'Donate', href: '/donate' },
 ]
 
-export function getNavDisplayLabel(item: { label: string; navLabel?: string }): string {
+export function getNavDisplayLabel(
+  item: { label: string; navLabel?: string; compactNavLabel?: string },
+  options?: { compact?: boolean }
+): string {
+  if (options?.compact && item.compactNavLabel) return item.compactNavLabel
   return item.navLabel ?? item.label
 }
 
