@@ -5,7 +5,7 @@ import { useTypewriter } from '@/lib/useTypewriter'
 const SEGMENTS = [
   { id: 'whats', text: "WHAT'S " },
   { id: 'next', text: 'NEXT?' },
-  { id: 'service', text: 'SERVICE TO' },
+  { id: 'service', text: 'SERVICE TO ' },
   { id: 'success', text: 'SUCCESS' },
 ] as const
 
@@ -36,8 +36,8 @@ function TypewriterCursor() {
 
 function lineClass(started: boolean, large: boolean) {
   return [
-    'm-0 min-h-[1.15em] font-black uppercase leading-[1.15] tracking-tight text-cvc-hero-fg transition-opacity duration-500 ease-out',
-    large ? 'text-[2rem] xl:text-[2.75rem]' : 'text-[1.5rem] sm:text-[1.75rem]',
+    'm-0 min-h-[1.15em] font-black uppercase leading-[1.12] tracking-tight text-cvc-hero-fg transition-opacity duration-500 ease-out',
+    large ? 'text-[1.625rem] xl:text-[2rem]' : 'text-[1.5rem] sm:text-[1.75rem]',
     started ? 'opacity-100' : 'opacity-0',
   ].join(' ')
 }
@@ -47,12 +47,11 @@ export default function HeroTypewriterHeadlines({ large = false }: { large?: boo
 
   const showCursor = (id: string) => !isComplete && activeSegmentId === id
   const line1Started = lineStarted(counts, ['whats', 'next'])
-  const line2Started = lineStarted(counts, ['service'])
-  const line3Started = lineStarted(counts, ['success'])
+  const line2Started = lineStarted(counts, ['service', 'success'])
 
   return (
     <div
-      className={`flex flex-col text-left ${large ? 'gap-3.5 xl:gap-4' : 'gap-3 sm:gap-3.5'}`}
+      className={`flex flex-col text-left ${large ? 'gap-0.5 xl:gap-1' : 'gap-2 sm:gap-2.5'}`}
       aria-label="WHAT'S NEXT? SERVICE TO SUCCESS"
     >
       <p
@@ -72,16 +71,12 @@ export default function HeroTypewriterHeadlines({ large = false }: { large?: boo
         style={{ fontStretch: 'condensed' }}
         aria-hidden="true"
       >
-        {slice(counts, 'service', 'SERVICE TO')}
+        {slice(counts, 'service', 'SERVICE TO ')}
         {showCursor('service') ? <TypewriterCursor /> : null}
-      </p>
-      <p
-        className={`${lineClass(line3Started, large)} text-cvc-hero-accent`}
-        style={{ fontStretch: 'condensed' }}
-        aria-hidden="true"
-      >
-        {slice(counts, 'success', 'SUCCESS')}
-        {showCursor('success') ? <TypewriterCursor /> : null}
+        <span className="text-cvc-hero-accent">
+          {slice(counts, 'success', 'SUCCESS')}
+          {showCursor('success') ? <TypewriterCursor /> : null}
+        </span>
       </p>
     </div>
   )

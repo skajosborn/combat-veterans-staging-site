@@ -102,6 +102,30 @@ function cvc_social_icon_svg( $label ) {
 }
 
 /**
+ * Hand-heart icon for the nav donate button.
+ */
+function cvc_donate_nav_icon() {
+	return '<svg class="cvc-nav__donate-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path stroke-linecap="round" stroke-linejoin="round" d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path stroke-linecap="round" stroke-linejoin="round" d="m2 15 6 6"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z"/></svg>';
+}
+
+/**
+ * Inline SVG for hero pillar icons.
+ */
+function cvc_hero_pillar_icon( $name ) {
+	$common = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"';
+	switch ( $name ) {
+		case 'compass':
+			return '<svg ' . $common . '><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg>';
+		case 'handshake':
+			return '<svg ' . $common . '><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l.88-.88a5 5 0 0 1 7.08 0l.88.88Z"/><path d="m2 14 4.5 4.5"/><path d="m3 9.5 4.5 4.5"/></svg>';
+		case 'star':
+			return '<svg ' . $common . '><path d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.123 5.114 5.517.449a.562.562 0 0 1 .325.996l-4.11 3.526 1.26 5.605a.562.562 0 0 1-.86.643L12 18.27l-4.887 2.93a.562.562 0 0 1-.86-.643l1.26-5.605-4.11-3.526a.562.562 0 0 1 .325-.996l5.517-.449 2.123-5.114Z"/></svg>';
+		default:
+			return '<svg ' . $common . '><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>';
+	}
+}
+
+/**
  * Sun/moon icons for the circular theme toggle.
  */
 function cvc_theme_toggle_icon( $variant ) {

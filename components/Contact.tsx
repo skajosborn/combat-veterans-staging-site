@@ -8,7 +8,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative isolate scroll-mt-[calc(var(--cvc-nav-utility-height)+var(--cvc-nav-main-height))] overflow-hidden bg-[#0a0e27] py-14 pb-20 sm:py-16 sm:pb-24 lg:min-h-[calc(100svh-var(--cvc-nav-utility-height)-var(--cvc-nav-main-height))] lg:py-20 lg:pb-28"
+      className="relative isolate scroll-mt-[var(--cvc-nav-height)] overflow-hidden bg-[#0a0e27] py-14 pb-20 sm:py-16 sm:pb-24 lg:min-h-[calc(100svh-var(--cvc-nav-height))] lg:py-20 lg:pb-28"
     >
       <Image
         src="/flagwithsoldiers.png"

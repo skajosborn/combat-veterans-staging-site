@@ -89,7 +89,7 @@ export default function NavDropdown({
           top: menuPosition.top,
           left: menuPosition.left,
           minWidth: menuPosition.minWidth,
-          zIndex: 200,
+          zIndex: 100010,
         }}
         className="overflow-hidden rounded-lg border border-cvc-border bg-cvc-card py-1 shadow-xl"
         onMouseDown={(e) => e.stopPropagation()}

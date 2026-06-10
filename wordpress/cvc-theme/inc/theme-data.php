@@ -138,6 +138,31 @@ function cvc_get_programs() {
 	);
 }
 
+function cvc_get_hero_pillars() {
+	return array(
+		array(
+			'title'       => __( 'Personalized Support', 'cvc-theme' ),
+			'description' => __( 'Guidance every step of the way.', 'cvc-theme' ),
+			'icon'        => 'users',
+		),
+		array(
+			'title'       => __( 'Career Navigation', 'cvc-theme' ),
+			'description' => __( 'Find your path. Build your future.', 'cvc-theme' ),
+			'icon'        => 'compass',
+		),
+		array(
+			'title'       => __( 'Community', 'cvc-theme' ),
+			'description' => __( 'Connect with those who understand.', 'cvc-theme' ),
+			'icon'        => 'handshake',
+		),
+		array(
+			'title'       => __( 'Proven Impact', 'cvc-theme' ),
+			'description' => __( 'Empowering veterans to succeed.', 'cvc-theme' ),
+			'icon'        => 'star',
+		),
+	);
+}
+
 function cvc_get_vision_pillars() {
 	return array(
 		array(

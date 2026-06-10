@@ -39,10 +39,11 @@ if ( has_custom_logo() ) {
 
 		<div class="cvc-nav__desktop">
 			<?php cvc_render_primary_nav_menu(); ?>
+			<?php echo cvc_theme_toggle_button( '', 'cvc-theme-toggle' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			<a class="cvc-nav__donate" href="<?php echo esc_url( cvc_page_url( 'donate' ) ); ?>">
+				<?php echo cvc_donate_nav_icon(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				<?php esc_html_e( 'DONATE', 'cvc-theme' ); ?>
 			</a>
-			<?php echo cvc_theme_toggle_button( '', 'cvc-theme-toggle' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		</div>
 
 		<div class="cvc-nav__mobile-tools">
@@ -59,6 +60,7 @@ if ( has_custom_logo() ) {
 		<?php cvc_render_primary_nav_menu(); ?>
 		<div class="cvc-nav__mobile-donate-wrap">
 			<a class="cvc-nav__donate cvc-nav__donate--mobile" href="<?php echo esc_url( cvc_page_url( 'donate' ) ); ?>">
+				<?php echo cvc_donate_nav_icon(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				<?php esc_html_e( 'DONATE', 'cvc-theme' ); ?>
 			</a>
 		</div>

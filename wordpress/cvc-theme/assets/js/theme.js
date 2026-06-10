@@ -40,6 +40,44 @@
     });
   }
 
+  function closeDesktopSubmenus(except) {
+    document.querySelectorAll('.cvc-nav__desktop .menu-item-has-children.is-submenu-open').forEach(function (item) {
+      if (item !== except) {
+        item.classList.remove('is-submenu-open');
+      }
+    });
+  }
+
+  document.querySelectorAll('.cvc-nav__desktop .menu-item-has-children > a').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      if (window.matchMedia('(min-width: 768px)').matches) {
+        e.preventDefault();
+        var parent = link.parentElement;
+        if (!parent) return;
+        var willOpen = !parent.classList.contains('is-submenu-open');
+        closeDesktopSubmenus(parent);
+        parent.classList.toggle('is-submenu-open', willOpen);
+      }
+    });
+  });
+
+  document.querySelectorAll('.cvc-nav__mobile-panel .menu-item-has-children > a').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      if (!window.matchMedia('(max-width: 767px)').matches) return;
+      e.preventDefault();
+      var parent = link.parentElement;
+      if (!parent) return;
+      parent.classList.toggle('is-submenu-open');
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!(e.target instanceof Element)) return;
+    if (!e.target.closest('.cvc-nav__desktop .menu-item-has-children')) {
+      closeDesktopSubmenus(null);
+    }
+  });
+
   var heroToggle = document.getElementById('cvc-hero-quick-toggle');
   var heroMenu = document.getElementById('cvc-hero-quick-menu');
   var heroHub = document.getElementById('cvc-hero-hub');

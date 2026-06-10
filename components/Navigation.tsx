@@ -1,21 +1,26 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { HandHeart } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import NavLinkButton from './NavLinkButton'
 import NavDropdown from './NavDropdown'
 import NavUtilityBar from './NavUtilityBar'
 import ThemeToggle from './ThemeToggle'
-import { getMainNavItems, getNavDisplayLabel, getNavItems } from '@/lib/navItems'
+import { getMainNavItems, getNavDisplayLabel } from '@/lib/navItems'
 import { showVision } from '@/lib/siteConfig'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const [openMobileSections, setOpenMobileSections] = useState<Record<string, boolean>>({})
   const pathname = usePathname()
+
+  const toggleMobileSection = useCallback((label: string) => {
+    setOpenMobileSections((prev) => ({ ...prev, [label]: !prev[label] }))
+  }, [])
   const isHomeHero = pathname === '/'
-  const navItems = getNavItems()
   const mainNavItems = getMainNavItems()
 
   const desktopNavLinkClass =
@@ -31,10 +36,10 @@ export default function Navigation() {
     <header className="fixed top-0 left-0 right-0 z-50">
       <NavUtilityBar />
       <nav
-        className={`relative border-b border-cvc-nav-border bg-cvc-nav shadow-sm backdrop-blur-md ${
+        className={`relative border-b border-cvc-nav-border shadow-sm backdrop-blur-md ${
           isHomeHero
-            ? 'md:dark:border-white/15 md:dark:bg-transparent md:dark:shadow-none'
-            : 'md:shadow-xl'
+            ? 'bg-white/95 dark:bg-cvc-nav md:dark:border-white/15 md:dark:bg-transparent md:dark:shadow-none'
+            : 'bg-cvc-nav md:shadow-xl'
         }`}
       >
       <div className="mx-auto w-full max-w-[96rem] px-3 sm:px-4 lg:px-5">
@@ -77,7 +82,7 @@ export default function Navigation() {
 
           {/* Tablet/desktop — scrollable links; stores menu sits outside overflow so dropdown is clickable */}
           <div className="hidden min-w-0 flex-1 items-center gap-3 md:flex lg:gap-4">
-            <div className="scrollbar-hide flex min-w-0 flex-1 flex-nowrap items-center justify-between overflow-x-auto px-2 py-0.5 md:px-4 lg:px-6 xl:px-8">
+            <div className="scrollbar-hide flex min-w-0 flex-1 flex-nowrap items-center justify-between overflow-x-auto px-2 py-0.5 md:overflow-visible md:px-4 lg:px-6 xl:px-8">
               {mainNavItems.map((item) => {
                 if (item.type === 'dropdown') {
                   return (
@@ -102,12 +107,6 @@ export default function Navigation() {
                 )
               })}
             </div>
-            <Link
-              href="/donate"
-              className="hidden shrink-0 rounded-md bg-cvc-cta-fill px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow-md transition-[filter] hover:brightness-110 md:inline-flex xl:px-3 xl:py-1.5 xl:text-[11px]"
-            >
-              DONATE
-            </Link>
             <ThemeToggle
               className={
                 isHomeHero
@@ -115,6 +114,13 @@ export default function Navigation() {
                   : 'shrink-0'
               }
             />
+            <Link
+              href="/donate"
+              className="hidden shrink-0 items-center gap-2 rounded-md bg-cvc-cta-fill px-3 py-2 text-[10px] font-bold uppercase tracking-[0.1em] text-white shadow-md transition-[filter] hover:brightness-110 md:inline-flex xl:px-4 xl:py-2.5 xl:text-[11px]"
+            >
+              <HandHeart className="h-4 w-4 shrink-0" strokeWidth={2} aria-hidden />
+              DONATE
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -144,22 +150,41 @@ export default function Navigation() {
         <div className="absolute left-0 right-0 top-full z-50 max-h-[min(80vh,85dvh)] overflow-y-auto border-t border-cvc-border bg-cvc-page shadow-lg md:hidden">
           <div className="mx-auto max-w-7xl px-4 pb-4 pt-3 sm:px-6 lg:px-8">
             <div className="flex flex-col gap-1">
-              {navItems.map((item) =>
+              {mainNavItems.map((item) =>
                 item.type === 'dropdown' ? (
                   <div key={item.label} className="py-1">
-                    <p className={mobileNavLinkClass}>
+                    <button
+                      type="button"
+                      className={`${mobileNavLinkClass} flex w-full items-center justify-between text-left`}
+                      aria-expanded={!!openMobileSections[item.label]}
+                      onClick={() => toggleMobileSection(item.label)}
+                    >
                       {getNavDisplayLabel(item)}
-                    </p>
-                    {item.items.map(({ label: linkLabel, href }) => (
-                      <Link
-                        key={href}
-                        href={href}
-                        onClick={() => setIsOpen(false)}
-                        className={mobileNavSubLinkClass}
+                      <svg
+                        className={`h-4 w-4 shrink-0 transition-transform ${openMobileSections[item.label] ? 'rotate-180' : ''}`}
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden
                       >
-                        {linkLabel}
-                      </Link>
-                    ))}
+                        <path
+                          fillRule="evenodd"
+                          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                    {openMobileSections[item.label]
+                      ? item.items.map(({ label: linkLabel, href }) => (
+                          <Link
+                            key={href}
+                            href={href}
+                            onClick={() => setIsOpen(false)}
+                            className={mobileNavSubLinkClass}
+                          >
+                            {linkLabel}
+                          </Link>
+                        ))
+                      : null}
                   </div>
                 ) : (
                   <Link
@@ -172,6 +197,16 @@ export default function Navigation() {
                   </Link>
                 )
               )}
+            </div>
+            <div className="mt-3 border-t border-cvc-border pt-3">
+              <Link
+                href="/donate"
+                onClick={() => setIsOpen(false)}
+                className="flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-cvc-cta-fill px-4 text-sm font-bold uppercase tracking-[0.12em] text-white shadow-md transition-[filter] hover:brightness-110"
+              >
+                <HandHeart className="h-5 w-5 shrink-0" strokeWidth={2} aria-hidden />
+                DONATE
+              </Link>
             </div>
             <div className="mt-3 grid min-w-0 grid-cols-2 gap-2 border-t border-cvc-border pt-3 [&>a]:min-w-0">
             <NavLinkButton
@@ -256,17 +291,6 @@ export default function Navigation() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5-6L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
                 </svg>
               }
-            />
-            <NavLinkButton
-              href="/donate"
-              title="DONATE"
-              subtitle="Help Our Veterans"
-              icon={
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.123 5.114 5.517.449a.562.562 0 0 1 .325.996l-4.11 3.526 1.26 5.605a.562.562 0 0 1-.86.643L12 18.27l-4.887 2.93a.562.562 0 0 1-.86-.643l1.26-5.605-4.11-3.526a.562.562 0 0 1 .325-.996l5.517-.449 2.123-5.114Z" />
-                </svg>
-              }
-              type="donate"
             />
             </div>
           </div>
