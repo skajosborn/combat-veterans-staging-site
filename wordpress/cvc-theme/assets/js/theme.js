@@ -37,6 +37,15 @@
     navToggle.addEventListener('click', function () {
       var open = navPanel.classList.toggle('is-open');
       navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) {
+        navPanel.querySelectorAll('.menu > .menu-item-has-children').forEach(function (item) {
+          item.classList.add('is-submenu-open');
+        });
+      } else {
+        navPanel.querySelectorAll('.menu-item-has-children').forEach(function (item) {
+          item.classList.remove('is-submenu-open');
+        });
+      }
     });
   }
 

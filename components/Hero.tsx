@@ -74,20 +74,20 @@ export default function Hero() {
             <div className="absolute inset-0 bg-cvc-hero-shade" />
           </div>
 
-          <div className="relative z-10 mx-auto flex w-full max-w-lg flex-col items-center px-4 pb-10 pt-[calc(var(--cvc-nav-height)+0.5rem)] sm:px-6 sm:pb-12">
-            <div className="mb-6 flex w-full max-w-[220px] shrink-0 justify-center overflow-visible px-1 pt-2 sm:mb-8 sm:max-w-[240px]">
+          <div className="relative z-10 mx-auto flex w-full max-w-lg flex-col items-center px-4 pb-8 pt-[calc(var(--cvc-nav-height)+1rem)] sm:px-6 sm:pb-10 sm:pt-[calc(var(--cvc-nav-height)+0.75rem)]">
+            <div className="mb-5 flex w-full max-w-[200px] shrink-0 justify-center overflow-visible px-1 sm:mb-6 sm:max-w-[240px]">
               <Image
                 src="/CVClogo.png"
                 alt="Combat Veterans to Careers Organization Logo"
                 width={480}
                 height={480}
-                className="h-auto w-full max-h-[165px] object-contain object-center drop-shadow-[0_8px_24px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_12px_40px_rgba(0,0,0,0.55)] sm:max-h-[180px]"
-                sizes="(max-width: 640px) 220px, 240px"
+                className="h-auto w-full max-h-[120px] object-contain object-center drop-shadow-[0_8px_24px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_12px_40px_rgba(0,0,0,0.55)] sm:max-h-[165px] md:max-h-[180px]"
+                sizes="(max-width: 640px) 200px, 240px"
                 priority
               />
             </div>
 
-            <div className="flex w-full flex-col gap-5 sm:gap-6">
+            <div className="flex w-full flex-col gap-4 sm:gap-6">
               {renderHeroHeadlines(false)}
               <HeroStarSeparator />
               <HeroLeadParagraph />
@@ -96,7 +96,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative z-20 w-full pb-4">
+        <div className="relative z-20 hidden w-full pb-4 min-[480px]:block lg:hidden">
           <HeroPillarsGrid />
         </div>
       </div>

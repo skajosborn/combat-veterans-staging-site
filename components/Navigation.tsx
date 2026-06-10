@@ -37,16 +37,16 @@ function MobileDropdownLinks({
     if (item.children?.length) {
       const nestedKey = `${sectionKey}:${item.label}`
       return (
-        <div key={nestedKey} className={depth > 0 ? 'pl-4' : ''}>
+        <div key={nestedKey} className={depth > 0 ? 'mt-0.5' : ''}>
           <button
             type="button"
-            className={`${linkClassName} flex w-full items-center justify-between text-left`}
+            className={`${linkClassName} flex w-full items-center justify-between gap-3 text-left`}
             aria-expanded={!!openMobileSections[nestedKey]}
             onClick={() => toggleMobileSection(nestedKey)}
           >
-            {item.label}
+            <span className="min-w-0 flex-1">{item.label}</span>
             <svg
-              className={`h-4 w-4 shrink-0 transition-transform ${openMobileSections[nestedKey] ? 'rotate-180' : ''}`}
+              className={`h-4 w-4 shrink-0 text-cvc-fg-subtle transition-transform ${openMobileSections[nestedKey] ? 'rotate-180' : ''}`}
               viewBox="0 0 20 20"
               fill="currentColor"
               aria-hidden
@@ -59,16 +59,18 @@ function MobileDropdownLinks({
             </svg>
           </button>
           {openMobileSections[nestedKey] ? (
-            <MobileDropdownLinks
-              links={item.children}
-              sectionKey={nestedKey}
-              depth={depth + 1}
-              openMobileSections={openMobileSections}
-              toggleMobileSection={toggleMobileSection}
-              onNavigate={onNavigate}
-              linkClassName={linkClassName}
-              subLinkClassName={subLinkClassName}
-            />
+            <div className="mb-1 ml-3 flex flex-col gap-0.5 border-l-2 border-cvc-border pl-3">
+              <MobileDropdownLinks
+                links={item.children}
+                sectionKey={nestedKey}
+                depth={depth + 1}
+                openMobileSections={openMobileSections}
+                toggleMobileSection={toggleMobileSection}
+                onNavigate={onNavigate}
+                linkClassName={linkClassName}
+                subLinkClassName={subLinkClassName}
+              />
+            </div>
           ) : null}
         </div>
       )
@@ -79,7 +81,7 @@ function MobileDropdownLinks({
         key={item.href ?? `${sectionKey}-${item.label}`}
         href={item.href ?? '#'}
         onClick={onNavigate}
-        className={depth > 0 ? `${subLinkClassName} ${depth > 1 ? 'pl-12' : ''}` : subLinkClassName}
+        className={subLinkClassName}
       >
         {item.label}
       </Link>
@@ -101,6 +103,21 @@ export default function Navigation() {
     return () => media.removeEventListener('change', update)
   }, [])
 
+  useEffect(() => {
+    if (!isOpen) {
+      setOpenMobileSections({})
+      return
+    }
+
+    const defaults: Record<string, boolean> = {}
+    for (const item of getMainNavItems()) {
+      if (item.type === 'dropdown') {
+        defaults[item.label] = true
+      }
+    }
+    setOpenMobileSections(defaults)
+  }, [isOpen])
+
   const toggleMobileSection = useCallback((label: string) => {
     setOpenMobileSections((prev) => ({ ...prev, [label]: !prev[label] }))
   }, [])
@@ -116,7 +133,7 @@ export default function Navigation() {
     'block rounded-lg px-3 py-2.5 text-sm font-medium text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg'
 
   const mobileNavSubLinkClass =
-    'block rounded-lg py-2 pl-9 pr-3 text-xs font-medium text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg'
+    'block rounded-lg px-3 py-2 text-xs font-medium text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg'
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
@@ -244,10 +261,12 @@ export default function Navigation() {
           </div>
         </div>
       </div>
+      </nav>
+      <NavQuickTabs />
 
-      {/* Mobile Navigation — full viewport width; below bar */}
+      {/* Mobile drawer — below full header (incl. quick tabs) so sublinks aren't hidden */}
       {isOpen && (
-        <div className="absolute left-0 right-0 top-full z-50 max-h-[min(80vh,85dvh)] overflow-y-auto border-t border-cvc-border bg-cvc-page shadow-lg xl:hidden">
+        <div className="absolute left-0 right-0 top-full z-[60] max-h-[calc(100dvh-var(--cvc-nav-height))] overflow-y-auto border-t border-cvc-border bg-cvc-page shadow-lg xl:hidden">
           <div className="mx-auto max-w-7xl px-4 pb-4 pt-3 sm:px-6 lg:px-8">
             <div className="flex flex-col gap-1">
               {mainNavItems.map((item) =>
@@ -255,17 +274,22 @@ export default function Navigation() {
                   <div key={item.label} className="py-1">
                     <button
                       type="button"
-                      className={`${mobileNavLinkClass} flex w-full items-center justify-between text-left`}
+                      className={`${mobileNavLinkClass} flex w-full items-center justify-between gap-3 text-left`}
                       aria-expanded={!!openMobileSections[item.label]}
                       onClick={() => toggleMobileSection(item.label)}
                     >
-                      {item.navLabelLines ? (
-                        <NavStackedLabel lines={item.navLabelLines} />
-                      ) : (
-                        getNavDisplayLabel(item)
-                      )}
+                      <span className="min-w-0 flex-1">
+                        {item.navLabelLines ? (
+                          <NavStackedLabel
+                            lines={item.navLabelLines}
+                            className="items-start text-left uppercase tracking-wide"
+                          />
+                        ) : (
+                          getNavDisplayLabel(item)
+                        )}
+                      </span>
                       <svg
-                        className={`h-4 w-4 shrink-0 transition-transform ${openMobileSections[item.label] ? 'rotate-180' : ''}`}
+                        className={`h-4 w-4 shrink-0 text-cvc-fg-subtle transition-transform ${openMobileSections[item.label] ? 'rotate-180' : ''}`}
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden
@@ -278,15 +302,17 @@ export default function Navigation() {
                       </svg>
                     </button>
                     {openMobileSections[item.label] ? (
-                      <MobileDropdownLinks
-                        links={item.items}
-                        sectionKey={item.label}
-                        openMobileSections={openMobileSections}
-                        toggleMobileSection={toggleMobileSection}
-                        onNavigate={() => setIsOpen(false)}
-                        linkClassName={mobileNavLinkClass}
-                        subLinkClassName={mobileNavSubLinkClass}
-                      />
+                      <div className="mb-1 ml-3 flex flex-col gap-0.5 border-l-2 border-cvc-border pl-3">
+                        <MobileDropdownLinks
+                          links={item.items}
+                          sectionKey={item.label}
+                          openMobileSections={openMobileSections}
+                          toggleMobileSection={toggleMobileSection}
+                          onNavigate={() => setIsOpen(false)}
+                          linkClassName={mobileNavLinkClass}
+                          subLinkClassName={mobileNavSubLinkClass}
+                        />
+                      </div>
                     ) : null}
                   </div>
                 ) : (
@@ -399,8 +425,6 @@ export default function Navigation() {
           </div>
         </div>
       )}
-      </nav>
-      <NavQuickTabs />
     </header>
   )
 }

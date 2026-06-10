@@ -56,6 +56,9 @@ if ( has_custom_logo() ) {
 		</div>
 	</div>
 
+	</div>
+	<?php get_template_part( 'template-parts/nav', 'quick-tabs' ); ?>
+
 	<div class="cvc-nav__mobile-panel" id="cvc-nav-mobile">
 		<?php cvc_render_primary_nav_menu(); ?>
 		<div class="cvc-nav__mobile-donate-wrap">
@@ -65,8 +68,6 @@ if ( has_custom_logo() ) {
 			</a>
 		</div>
 	</div>
-	</div>
-	<?php get_template_part( 'template-parts/nav', 'quick-tabs' ); ?>
 </header>
 
 <div class="cvc-site">

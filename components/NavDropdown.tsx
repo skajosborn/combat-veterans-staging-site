@@ -16,7 +16,7 @@ type Props = {
 }
 
 const submenuLinkClass =
-  'block px-4 py-2.5 text-sm text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg'
+  'block bg-cvc-card px-4 py-2.5 text-sm text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg'
 
 function SubmenuChevron() {
   return (
@@ -60,7 +60,7 @@ function DropdownFlyoutItem({
         </span>
         <ul
           role="menu"
-          className="invisible absolute left-full top-0 z-10 ml-1 min-w-[16rem] overflow-hidden rounded-lg border border-cvc-border bg-cvc-card py-1 opacity-0 shadow-xl transition-[opacity,visibility] duration-150 group-hover/submenu:visible group-hover/submenu:opacity-100 group-focus-within/submenu:visible group-focus-within/submenu:opacity-100"
+          className="invisible absolute left-full top-0 z-[100110] ml-1 min-w-[16rem] overflow-hidden rounded-lg border border-cvc-border bg-cvc-card py-1 opacity-0 shadow-xl transition-[visibility] duration-150 group-hover/submenu:visible group-hover/submenu:opacity-100 group-focus-within/submenu:visible group-focus-within/submenu:opacity-100"
         >
           {item.children?.map((child) => (
             <li key={child.href ?? child.label}>
@@ -133,8 +133,14 @@ export default function NavDropdown({
     const minWidth = Math.max(256, rect.width)
     let left = rect.left
     left = Math.max(8, Math.min(left, window.innerWidth - minWidth - 8))
+
+    const navHeightRaw = getComputedStyle(document.documentElement)
+      .getPropertyValue('--cvc-nav-height')
+      .trim()
+    const navHeight = Number.parseFloat(navHeightRaw) || rect.bottom
+
     setMenuPosition({
-      top: rect.bottom + 8,
+      top: navHeight + 8,
       left,
       minWidth,
     })
@@ -188,9 +194,9 @@ export default function NavDropdown({
           top: menuPosition.top,
           left: menuPosition.left,
           minWidth: menuPosition.minWidth,
-          zIndex: 100010,
+          zIndex: 100100,
         }}
-        className="overflow-visible rounded-lg border border-cvc-border bg-cvc-card py-1 shadow-xl"
+        className="isolate overflow-hidden rounded-lg border border-cvc-border bg-cvc-card py-1 shadow-xl"
         onMouseDown={(e) => e.stopPropagation()}
       >
         <ul className="divide-y divide-cvc-border">
