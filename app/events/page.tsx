@@ -27,7 +27,10 @@ export default function EventsPage() {
 
         <EventsCarousel />
 
-        <div className="mb-8 rounded-2xl border border-cvc-border bg-cvc-card p-6 sm:p-8">
+        <div
+          id="upcoming"
+          className="mb-8 scroll-mt-28 rounded-2xl border border-cvc-border bg-cvc-card p-6 sm:p-8"
+        >
           <SectionTitle
             title="Event Timeline"
             size="subsection"
@@ -97,7 +100,7 @@ export default function EventsPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-8">
+        <div id="event-gallery" className="scroll-mt-28 grid grid-cols-1 gap-8">
           {events.filter((event) => Boolean(event.embedSrc)).map((event) => (
             <div
               key={event.slug}

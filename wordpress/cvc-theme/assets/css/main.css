@@ -745,6 +745,10 @@ html.dark .cvc-nav-utility {
   width: 0.75rem;
 }
 
+.cvc-nav__desktop .menu > .menu-item-has-children > .sub-menu .menu-item-has-children:not(.is-submenu-open) > .sub-menu {
+  display: none;
+}
+
 .cvc-nav__desktop .menu > .menu-item-has-children > .sub-menu .menu-item-has-children.is-submenu-open > .sub-menu {
   display: block;
 }

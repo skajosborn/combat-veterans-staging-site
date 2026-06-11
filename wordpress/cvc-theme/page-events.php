@@ -27,7 +27,7 @@ $calendar_months = array( 'February', 'March', 'April', 'May', 'June' );
 		get_template_part( 'template-parts/events', 'carousel' );
 		?>
 
-		<div class="cvc-card cvc-card--inner">
+		<div class="cvc-card cvc-card--inner" id="upcoming">
 			<?php
 			cvc_section_title(
 				array(
@@ -89,6 +89,7 @@ $calendar_months = array( 'February', 'March', 'April', 'May', 'June' );
 			</div>
 		</div>
 
+		<div id="event-gallery">
 		<?php foreach ( $events as $event ) : ?>
 			<?php if ( empty( $event['embed'] ) && empty( $event['image'] ) ) { continue; } ?>
 			<div class="cvc-card cvc-card--inner" id="event-<?php echo esc_attr( $event['slug'] ); ?>">
@@ -109,6 +110,7 @@ $calendar_months = array( 'February', 'March', 'April', 'May', 'June' );
 				?>
 			</div>
 		<?php endforeach; ?>
+		</div>
 
 	<?php endif; ?>
 </article>

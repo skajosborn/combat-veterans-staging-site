@@ -94,7 +94,7 @@ function cvc_create_primary_menu( $force = false ) {
 		! $force
 		&& $menu_version >= CVC_NAV_MENU_VERSION
 		&& $existing
-		&& count( $existing ) >= $expected_count
+		&& count( $existing ) === $expected_count
 	) {
 		return;
 	}
@@ -138,7 +138,7 @@ function cvc_insert_nav_menu_branch( $menu_id, $item, $order, $parent_id = 0 ) {
 
 		if ( ! empty( $item['slug'] ) ) {
 			$page = get_page_by_path( $item['slug'] );
-			if ( $page ) {
+			if ( $page && empty( $item['hash'] ) ) {
 				$args['menu-item-object']    = 'page';
 				$args['menu-item-object-id'] = $page->ID;
 				$args['menu-item-type']      = 'post_type';
@@ -200,7 +200,7 @@ function cvc_insert_nav_menu_item( $menu_id, $item, $order, $parent_id = 0 ) {
 
 	if ( ! empty( $item['slug'] ) ) {
 		$page = get_page_by_path( $item['slug'] );
-		if ( $page ) {
+		if ( $page && empty( $item['hash'] ) ) {
 			$args['menu-item-object']    = 'page';
 			$args['menu-item-object-id'] = $page->ID;
 			$args['menu-item-type']      = 'post_type';

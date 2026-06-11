@@ -52,7 +52,7 @@ function cvc_get_default_pages() {
 /**
  * Bump when primary nav structure changes (triggers menu rebuild).
  */
-define( 'CVC_NAV_MENU_VERSION', 14 );
+define( 'CVC_NAV_MENU_VERSION', 17 );
 
 /**
  * Primary nav (label, url callback key or raw path).
@@ -64,7 +64,6 @@ function cvc_get_about_nav_children() {
 		array( 'label' => __( 'Mission', 'cvc-theme' ), 'slug' => 'mission' ),
 		array(
 			'label'    => __( 'Get Involved', 'cvc-theme' ),
-			'slug'     => 'get-involved',
 			'children' => cvc_get_get_involved_nav_children(),
 		),
 		array(
@@ -113,6 +112,21 @@ function cvc_get_our_team_nav_children() {
 	return array(
 		array( 'label' => __( 'CVC Staff', 'cvc-theme' ), 'slug' => 'staff' ),
 		array( 'label' => __( 'Board Members', 'cvc-theme' ), 'slug' => 'board-members' ),
+	);
+}
+
+function cvc_get_events_nav_children() {
+	return array(
+		array(
+			'label' => __( 'Upcoming Events', 'cvc-theme' ),
+			'slug'  => 'events',
+			'hash'  => 'upcoming',
+		),
+		array(
+			'label' => __( 'Event Gallery', 'cvc-theme' ),
+			'slug'  => 'events',
+			'hash'  => 'event-gallery',
+		),
 	);
 }
 
@@ -165,7 +179,10 @@ function cvc_get_nav_items() {
 			'label'    => __( 'ABOUT', 'cvc-theme' ),
 			'children' => cvc_get_about_nav_children(),
 		),
-		array( 'label' => __( 'EVENTS', 'cvc-theme' ), 'slug' => 'events' ),
+		array(
+			'label'    => __( 'EVENTS', 'cvc-theme' ),
+			'children' => cvc_get_events_nav_children(),
+		),
 		array( 'label' => __( 'SPONSORS', 'cvc-theme' ), 'slug' => 'sponsors' ),
 		array( 'label' => __( 'CONTACT', 'cvc-theme' ), 'anchor' => 'contact' ),
 		array(

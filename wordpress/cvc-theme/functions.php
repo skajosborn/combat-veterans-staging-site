@@ -114,7 +114,16 @@ function cvc_filter_primary_nav_menu_objects( $items, $args ) {
 			continue;
 		}
 
-		if ( 'donate' === $title || false !== strpos( $url, '/donate' ) ) {
+		// Only strip the standalone DONATE nav item — not "Donate" under Get Involved.
+		if ( 0 !== (int) $item->menu_item_parent ) {
+			continue;
+		}
+		if ( 'donate' === $title ) {
+			unset( $items[ $key ] );
+			continue;
+		}
+		$donate_page = get_page_by_path( 'donate' );
+		if ( $donate_page && (int) $item->object_id === (int) $donate_page->ID ) {
 			unset( $items[ $key ] );
 		}
 	}

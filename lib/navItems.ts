@@ -90,6 +90,11 @@ export const ourTeamLinks: NavDropdownLink[] = [
   { label: 'Board Members', href: '/board-members' },
 ]
 
+export const eventsLinks: NavDropdownLink[] = [
+  { label: 'Upcoming Events', href: '/events#upcoming' },
+  { label: 'Event Gallery', href: '/events#event-gallery' },
+]
+
 export const getInvolvedLinks: NavDropdownLink[] = [
   { label: 'Donate', href: 'https://combatveteranstocareers.org/donate/' },
   { label: 'Donate Your Car', href: 'https://combatveteranstocareers.org/car-donation/' },
@@ -121,7 +126,7 @@ const allNavItems: NavItem[] = [
     items: [...ourProgramsLinks],
   },
   { type: 'dropdown', label: 'About', navLabel: 'ABOUT', items: [...aboutLinks] },
-  { type: 'link', label: 'Events', navLabel: 'EVENTS', href: '/events' },
+  { type: 'dropdown', label: 'Events', navLabel: 'EVENTS', items: [...eventsLinks] },
   { type: 'link', label: 'Sponsors', navLabel: 'SPONSORS', href: '/sponsors' },
   { type: 'link', label: 'Contact', navLabel: 'CONTACT', href: '/#contact' },
   { type: 'dropdown', label: 'Our Thrift Stores', navLabel: 'THRIFT STORES', items: [...ourThriftStoresLinks] },
