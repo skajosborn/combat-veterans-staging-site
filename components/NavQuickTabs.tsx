@@ -23,7 +23,7 @@ export default function NavQuickTabs() {
   const pathname = usePathname()
 
   return (
-    <nav aria-label="Quick program links" className="relative z-30 bg-transparent px-3 py-2 sm:px-4 sm:py-2.5">
+    <nav aria-label="Quick program links" className="relative z-20 bg-transparent px-3 py-2 sm:px-4 sm:py-2.5">
       <div className="mx-auto flex max-w-[96rem] gap-2 sm:gap-3">
         {navQuickTabs.map((tab) => {
           const active = isTabActive(pathname, tab.href)

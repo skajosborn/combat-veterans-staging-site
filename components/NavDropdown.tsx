@@ -15,8 +15,15 @@ type Props = {
   linkClassName?: string
 }
 
+const CLOSE_DELAY_MS = 350
+const DESKTOP_NAV_MQ = '(min-width: 1024px)'
+
 const submenuLinkClass =
   'block bg-cvc-card px-4 py-2.5 text-sm text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg'
+
+function isDesktopNav() {
+  return typeof window !== 'undefined' && window.matchMedia(DESKTOP_NAV_MQ).matches
+}
 
 function SubmenuChevron() {
   return (
@@ -60,7 +67,7 @@ function DropdownFlyoutItem({
         </span>
         <ul
           role="menu"
-          className="invisible absolute left-full top-0 z-[100110] ml-1 min-w-[16rem] overflow-hidden rounded-lg border border-cvc-border bg-cvc-card py-1 opacity-0 shadow-xl transition-[visibility] duration-150 group-hover/submenu:visible group-hover/submenu:opacity-100 group-focus-within/submenu:visible group-focus-within/submenu:opacity-100"
+          className="invisible absolute left-full top-0 z-[100110] ml-0 min-w-[16rem] overflow-visible rounded-lg border border-cvc-border bg-cvc-card py-1 pl-2 opacity-0 shadow-xl transition-[visibility,opacity] duration-150 before:absolute before:-left-2 before:bottom-0 before:top-0 before:w-2 before:content-[''] group-hover/submenu:visible group-hover/submenu:opacity-100 group-focus-within/submenu:visible group-focus-within/submenu:opacity-100"
         >
           {item.children?.map((child) => (
             <li key={child.href ?? child.label}>
@@ -124,7 +131,20 @@ export default function NavDropdown({
   const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0, minWidth: 256 })
   const buttonRef = useRef<HTMLButtonElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
+  const closeTimerRef = useRef<number | undefined>(undefined)
   const menuId = useId()
+
+  const clearCloseTimer = useCallback(() => {
+    if (closeTimerRef.current !== undefined) {
+      window.clearTimeout(closeTimerRef.current)
+      closeTimerRef.current = undefined
+    }
+  }, [])
+
+  const scheduleClose = useCallback(() => {
+    clearCloseTimer()
+    closeTimerRef.current = window.setTimeout(() => setOpen(false), CLOSE_DELAY_MS)
+  }, [clearCloseTimer])
 
   const updateMenuPosition = useCallback(() => {
     const button = buttonRef.current
@@ -134,13 +154,8 @@ export default function NavDropdown({
     let left = rect.left
     left = Math.max(8, Math.min(left, window.innerWidth - minWidth - 8))
 
-    const navHeightRaw = getComputedStyle(document.documentElement)
-      .getPropertyValue('--cvc-nav-height')
-      .trim()
-    const navHeight = Number.parseFloat(navHeightRaw) || rect.bottom
-
     setMenuPosition({
-      top: navHeight + 8,
+      top: rect.bottom + 6,
       left,
       minWidth,
     })
@@ -169,13 +184,26 @@ export default function NavDropdown({
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setOpen(false)
     }
-    document.addEventListener('mousedown', closeIfOutside)
+    document.addEventListener('click', closeIfOutside)
     document.addEventListener('keydown', onKeyDown)
     return () => {
-      document.removeEventListener('mousedown', closeIfOutside)
+      document.removeEventListener('click', closeIfOutside)
       document.removeEventListener('keydown', onKeyDown)
     }
   }, [open])
+
+  useEffect(() => () => clearCloseTimer(), [clearCloseTimer])
+
+  const handlePointerEnter = () => {
+    if (!isDesktopNav()) return
+    clearCloseTimer()
+    setOpen(true)
+  }
+
+  const handlePointerLeave = () => {
+    if (!isDesktopNav()) return
+    scheduleClose()
+  }
 
   const buttonClass = linkClassName
     ? `inline-flex items-center gap-0.5 ${linkClassName}`
@@ -196,10 +224,11 @@ export default function NavDropdown({
           minWidth: menuPosition.minWidth,
           zIndex: 100100,
         }}
-        className="isolate overflow-hidden rounded-lg border border-cvc-border bg-cvc-card py-1 shadow-xl"
-        onMouseDown={(e) => e.stopPropagation()}
+        className="isolate overflow-visible rounded-lg border border-cvc-border bg-cvc-card py-1 shadow-xl before:absolute before:-top-[calc(var(--cvc-nav-tabs-height)+0.25rem)] before:-left-6 before:-right-6 before:h-[calc(var(--cvc-nav-tabs-height)+0.5rem)] before:content-['']"
+        onMouseEnter={handlePointerEnter}
+        onMouseLeave={handlePointerLeave}
       >
-        <ul className="divide-y divide-cvc-border">
+        <ul className="divide-y divide-cvc-border overflow-hidden rounded-lg">
           <DropdownMenuItems links={links} onNavigate={() => setOpen(false)} />
         </ul>
       </div>
@@ -207,7 +236,11 @@ export default function NavDropdown({
 
   return (
     <>
-      <div className={`relative shrink-0 ${className}`}>
+      <div
+        className={`relative shrink-0 ${className}`}
+        onMouseEnter={handlePointerEnter}
+        onMouseLeave={handlePointerLeave}
+      >
         <button
           ref={buttonRef}
           type="button"
@@ -217,10 +250,8 @@ export default function NavDropdown({
           aria-controls={menuId}
           onClick={(e) => {
             e.stopPropagation()
+            clearCloseTimer()
             setOpen((v) => !v)
-          }}
-          onMouseDown={(e) => {
-            e.preventDefault()
           }}
         >
           {labelLines ? <NavStackedLabel lines={labelLines} /> : label}

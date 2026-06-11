@@ -76,9 +76,61 @@
     document.querySelectorAll('.cvc-nav__desktop .menu-item-has-children.is-submenu-open').forEach(function (item) {
       if (item !== except) {
         item.classList.remove('is-submenu-open');
+        var link = item.querySelector(':scope > a');
+        if (link) {
+          link.setAttribute('aria-expanded', 'false');
+        }
       }
     });
   }
+
+  var desktopSubmenuTimers = new WeakMap();
+  var DESKTOP_NAV_MQ = window.matchMedia('(min-width: 1024px)');
+  var SUBMENU_CLOSE_DELAY = 320;
+
+  function clearDesktopSubmenuTimer(item) {
+    var timer = desktopSubmenuTimers.get(item);
+    if (timer) {
+      window.clearTimeout(timer);
+      desktopSubmenuTimers.delete(item);
+    }
+  }
+
+  function openDesktopSubmenu(item) {
+    clearDesktopSubmenuTimer(item);
+    closeDesktopSubmenus(item);
+    item.classList.add('is-submenu-open');
+    var link = item.querySelector(':scope > a');
+    if (link) {
+      link.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  function scheduleCloseDesktopSubmenu(item) {
+    clearDesktopSubmenuTimer(item);
+    desktopSubmenuTimers.set(
+      item,
+      window.setTimeout(function () {
+        item.classList.remove('is-submenu-open');
+        var link = item.querySelector(':scope > a');
+        if (link) {
+          link.setAttribute('aria-expanded', 'false');
+        }
+        desktopSubmenuTimers.delete(item);
+      }, SUBMENU_CLOSE_DELAY)
+    );
+  }
+
+  document.querySelectorAll('.cvc-nav__desktop .menu-item-has-children').forEach(function (item) {
+    item.addEventListener('mouseenter', function () {
+      if (!DESKTOP_NAV_MQ.matches) return;
+      openDesktopSubmenu(item);
+    });
+    item.addEventListener('mouseleave', function () {
+      if (!DESKTOP_NAV_MQ.matches) return;
+      scheduleCloseDesktopSubmenu(item);
+    });
+  });
 
   document.querySelectorAll('.cvc-nav__desktop .cvc-nav__menu-wrap > .menu > .menu-item-has-children > a').forEach(function (link) {
     link.addEventListener('click', function (e) {
@@ -89,6 +141,7 @@
         var willOpen = !parent.classList.contains('is-submenu-open');
         closeDesktopSubmenus(parent);
         parent.classList.toggle('is-submenu-open', willOpen);
+        link.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
       }
     });
   });

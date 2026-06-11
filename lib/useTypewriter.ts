@@ -44,7 +44,7 @@ export function useTypewriter(
 
     let segmentIndex = 0
     let charIndex = 0
-    let timer: ReturnType<typeof setTimeout>
+    let timer: number | undefined
     let cancelled = false
 
     const schedule = (delay: number, fn: () => void) => {
@@ -80,7 +80,9 @@ export function useTypewriter(
 
     return () => {
       cancelled = true
-      window.clearTimeout(timer)
+      if (timer !== undefined) {
+        window.clearTimeout(timer)
+      }
     }
   }, [segments, fullCounts, charDelay, segmentPause, startDelay])
 

@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  nextjs:
+    name: Next.js build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+  wordpress-theme:
+    name: Package WordPress theme
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sync theme assets and create zip
+        run: |
+          chmod +x wordpress/cvc-theme/scripts/*.sh
+          ./wordpress/cvc-theme/scripts/copy-theme-assets.sh
+          ./wordpress/cvc-theme/scripts/package-theme.sh
+
+      - name: Upload theme zip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cvc-theme
+          path: wordpress/cvc-theme.zip
+          retention-days: 14

@@ -31,6 +31,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# packaged wordpress theme (built by scripts/package-theme.sh or CI)
+wordpress/cvc-theme.zip
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
