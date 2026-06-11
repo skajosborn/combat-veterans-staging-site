@@ -86,7 +86,7 @@ export const ourThriftStoresLinks: NavDropdownLink[] = [
 ]
 
 export const ourTeamLinks: NavDropdownLink[] = [
-  { label: 'Staff', href: '/staff' },
+  { label: 'CVC Staff', href: '/staff' },
   { label: 'Board Members', href: '/board-members' },
 ]
 

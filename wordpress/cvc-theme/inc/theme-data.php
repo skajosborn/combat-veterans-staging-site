@@ -52,7 +52,7 @@ function cvc_get_default_pages() {
 /**
  * Bump when primary nav structure changes (triggers menu rebuild).
  */
-define( 'CVC_NAV_MENU_VERSION', 13 );
+define( 'CVC_NAV_MENU_VERSION', 14 );
 
 /**
  * Primary nav (label, url callback key or raw path).
@@ -111,7 +111,7 @@ function cvc_get_get_involved_nav_children() {
 
 function cvc_get_our_team_nav_children() {
 	return array(
-		array( 'label' => __( 'Staff', 'cvc-theme' ), 'slug' => 'staff' ),
+		array( 'label' => __( 'CVC Staff', 'cvc-theme' ), 'slug' => 'staff' ),
 		array( 'label' => __( 'Board Members', 'cvc-theme' ), 'slug' => 'board-members' ),
 	);
 }

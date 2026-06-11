@@ -39,16 +39,20 @@ function SubmenuChevron() {
 
 function DropdownFlyoutItem({
   item,
+  isOpen,
+  onOpen,
   onNavigate,
 }: {
   item: NavDropdownLink
+  isOpen: boolean
+  onOpen: () => void
   onNavigate: () => void
 }) {
   const rowClass =
-    'group/submenu relative flex w-full items-center justify-between gap-2 text-left transition-colors hover:bg-cvc-hover'
+    'flex w-full items-center justify-between gap-2 text-left transition-colors hover:bg-cvc-hover'
 
   return (
-    <li className="list-none">
+    <li className="relative z-0 list-none" onMouseEnter={onOpen}>
       <div className={rowClass}>
         {item.href ? (
           <Link
@@ -65,16 +69,18 @@ function DropdownFlyoutItem({
         <span className="pointer-events-none pr-3" aria-hidden>
           <SubmenuChevron />
         </span>
+      </div>
+      {isOpen ? (
         <ul
           role="menu"
-          className="invisible absolute left-full top-0 z-[100110] ml-0 min-w-[16rem] overflow-visible rounded-lg border border-cvc-border bg-cvc-card py-1 pl-2 opacity-0 shadow-xl transition-[visibility,opacity] duration-150 before:absolute before:-left-2 before:bottom-0 before:top-0 before:w-2 before:content-[''] group-hover/submenu:visible group-hover/submenu:opacity-100 group-focus-within/submenu:visible group-focus-within/submenu:opacity-100"
+          className="absolute left-full top-0 z-[100110] m-0 ml-0 min-w-[16rem] max-w-xs list-none overflow-visible rounded-lg border border-cvc-border bg-cvc-card py-1 shadow-xl before:absolute before:-left-2 before:bottom-0 before:top-0 before:w-2 before:content-['']"
         >
           {item.children?.map((child) => (
-            <li key={child.href ?? child.label}>
+            <li key={child.href ?? child.label} className="border-b border-cvc-border last:border-b-0">
               <Link
                 href={child.href ?? '#'}
                 role="menuitem"
-                className={submenuLinkClass}
+                className={`${submenuLinkClass} text-xs font-medium`}
                 onClick={onNavigate}
               >
                 {child.label}
@@ -82,7 +88,7 @@ function DropdownFlyoutItem({
             </li>
           ))}
         </ul>
-      </div>
+      ) : null}
     </li>
   )
 }
@@ -94,20 +100,35 @@ function DropdownMenuItems({
   links: NavDropdownLink[]
   onNavigate: () => void
 }) {
+  const [openFlyoutKey, setOpenFlyoutKey] = useState<string | null>(null)
+
   return (
     <>
       {links.map((item) => {
         if (item.children?.length) {
-          return <DropdownFlyoutItem key={item.label} item={item} onNavigate={onNavigate} />
+          return (
+            <DropdownFlyoutItem
+              key={item.label}
+              item={item}
+              isOpen={openFlyoutKey === item.label}
+              onOpen={() => setOpenFlyoutKey(item.label)}
+              onNavigate={onNavigate}
+            />
+          )
         }
 
         return (
-          <li key={item.href ?? item.label}>
+          <li
+            key={item.href ?? item.label}
+            className="relative z-0"
+            onMouseEnter={() => setOpenFlyoutKey(null)}
+          >
             <Link
               href={item.href ?? '#'}
               role="menuitem"
               className={submenuLinkClass}
               onClick={onNavigate}
+              onMouseEnter={() => setOpenFlyoutKey(null)}
             >
               {item.label}
             </Link>
@@ -228,7 +249,7 @@ export default function NavDropdown({
         onMouseEnter={handlePointerEnter}
         onMouseLeave={handlePointerLeave}
       >
-        <ul className="divide-y divide-cvc-border overflow-hidden rounded-lg">
+        <ul className="divide-y divide-cvc-border overflow-visible rounded-lg">
           <DropdownMenuItems links={links} onNavigate={() => setOpen(false)} />
         </ul>
       </div>
