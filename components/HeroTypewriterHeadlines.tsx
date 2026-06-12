@@ -34,15 +34,15 @@ function TypewriterCursor() {
   )
 }
 
-function lineClass(started: boolean, large: boolean) {
+function lineClass(started: boolean) {
   return [
     'm-0 min-h-[1.15em] font-black uppercase leading-[1.12] tracking-tight text-cvc-hero-fg transition-opacity duration-500 ease-out',
-    large ? 'text-[1.625rem] xl:text-[2rem]' : 'text-[1.5rem] sm:text-[1.75rem]',
+    'text-[1.5rem] sm:text-[1.75rem] lg:text-[1.625rem] xl:text-[2rem]',
     started ? 'opacity-100' : 'opacity-0',
   ].join(' ')
 }
 
-export default function HeroTypewriterHeadlines({ large = false }: { large?: boolean }) {
+export default function HeroTypewriterHeadlines() {
   const { counts, activeSegmentId, isComplete } = useTypewriter(SEGMENTS, TYPEWRITER_OPTIONS)
 
   const showCursor = (id: string) => !isComplete && activeSegmentId === id
@@ -52,11 +52,11 @@ export default function HeroTypewriterHeadlines({ large = false }: { large?: boo
   return (
     <div
       data-hero-headlines
-      className={`flex flex-col text-left ${large ? 'gap-0.5 xl:gap-1' : 'gap-2 sm:gap-2.5'}`}
+      className="flex flex-col gap-2 text-left sm:gap-2.5 lg:gap-0.5 xl:gap-1"
       aria-label="WHAT'S NEXT? SERVICE TO SUCCESS"
     >
       <p
-        className={lineClass(line1Started, large)}
+        className={lineClass(line1Started)}
         style={{ fontStretch: 'condensed' }}
         aria-hidden="true"
       >
@@ -68,7 +68,7 @@ export default function HeroTypewriterHeadlines({ large = false }: { large?: boo
         </span>
       </p>
       <p
-        className={lineClass(line2Started, large)}
+        className={lineClass(line2Started)}
         style={{ fontStretch: 'condensed' }}
         aria-hidden="true"
       >

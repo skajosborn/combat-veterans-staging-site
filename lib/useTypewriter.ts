@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 export type TypewriterSegment = {
   id: string
@@ -9,6 +9,7 @@ type Options = {
   charDelay?: number
   segmentPause?: number
   startDelay?: number
+  enabled?: boolean
 }
 
 function charDelayMs(charIndex: number, totalChars: number, baseDelay: number) {
@@ -20,8 +21,11 @@ function charDelayMs(charIndex: number, totalChars: number, baseDelay: number) {
 
 export function useTypewriter(
   segments: readonly TypewriterSegment[],
-  { charDelay = 72, segmentPause = 320, startDelay = 550 }: Options = {}
+  { charDelay = 72, segmentPause = 320, startDelay = 550, enabled = true }: Options = {}
 ) {
+  const segmentsRef = useRef(segments)
+  segmentsRef.current = segments
+
   const fullCounts = useMemo(
     () => Object.fromEntries(segments.map((segment) => [segment.id, segment.text.length])),
     [segments]
@@ -34,6 +38,8 @@ export function useTypewriter(
   const [isComplete, setIsComplete] = useState(false)
 
   useEffect(() => {
+    if (!enabled) return
+
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduced) {
       setCounts(fullCounts)
@@ -41,6 +47,10 @@ export function useTypewriter(
       setIsComplete(true)
       return
     }
+
+    setCounts(Object.fromEntries(segmentsRef.current.map((segment) => [segment.id, 0])))
+    setActiveSegmentId(null)
+    setIsComplete(false)
 
     let segmentIndex = 0
     let charIndex = 0
@@ -54,7 +64,8 @@ export function useTypewriter(
     }
 
     const tick = () => {
-      const segment = segments[segmentIndex]
+      const currentSegments = segmentsRef.current
+      const segment = currentSegments[segmentIndex]
       if (!segment) {
         setActiveSegmentId(null)
         setIsComplete(true)
@@ -84,7 +95,7 @@ export function useTypewriter(
         window.clearTimeout(timer)
       }
     }
-  }, [segments, fullCounts, charDelay, segmentPause, startDelay])
+  }, [enabled, fullCounts, charDelay, segmentPause, startDelay])
 
   return { counts, activeSegmentId, isComplete }
 }

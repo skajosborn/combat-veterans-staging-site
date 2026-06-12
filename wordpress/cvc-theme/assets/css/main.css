@@ -1583,9 +1583,9 @@ html.dark .cvc-hero--home {
 .cvc-hero--home .cvc-hero__shade {
   background: linear-gradient(
     105deg,
-    rgb(255 255 255 / 0.84) 0%,
-    rgb(255 255 255 / 0.58) 45%,
-    rgb(238 242 249 / 0.32) 100%
+    rgb(255 255 255 / 0.78) 0%,
+    rgb(255 255 255 / 0.56) 45%,
+    rgb(238 242 249 / 0.42) 100%
   );
 }
 
@@ -1597,9 +1597,9 @@ html.dark .cvc-hero--home .cvc-hero__shade {
   .cvc-hero--home .cvc-hero__shade {
     background: linear-gradient(
       to right,
-      rgb(255 255 255 / 0.88) 0%,
-      rgb(255 255 255 / 0.62) 40%,
-      rgb(238 242 249 / 0.28) 100%
+      rgb(255 255 255 / 0.84) 0%,
+      rgb(255 255 255 / 0.58) 42%,
+      rgb(255 255 255 / 0.52) 100%
     );
   }
 
@@ -1607,8 +1607,8 @@ html.dark .cvc-hero--home .cvc-hero__shade {
     background: linear-gradient(
       to right,
       rgb(10 14 39 / 0.72) 0%,
-      rgb(10 14 39 / 0.42) 45%,
-      rgb(10 14 39 / 0.12) 100%
+      rgb(10 14 39 / 0.4) 45%,
+      rgb(10 14 39 / 0.16) 100%
     );
   }
 }

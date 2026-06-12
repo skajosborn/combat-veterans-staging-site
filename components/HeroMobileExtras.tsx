@@ -58,7 +58,7 @@ export function HeroLeadParagraph({ compact = false }: { compact?: boolean }) {
     <p
       className={
         compact
-          ? 'text-left text-[0.8125rem] font-light italic leading-[1.45] text-cvc-hero-fg dark:text-cvc-hero-fg-muted xl:text-[0.875rem]'
+          ? 'text-left text-[0.9375rem] font-light italic leading-[1.65] text-cvc-hero-fg dark:text-cvc-hero-fg-muted sm:text-base sm:leading-relaxed lg:text-[0.8125rem] lg:leading-[1.45] xl:text-[0.875rem]'
           : 'text-left text-[0.9375rem] font-light italic leading-[1.65] text-cvc-hero-fg dark:text-cvc-hero-fg-muted sm:text-base sm:leading-relaxed'
       }
     >
@@ -101,10 +101,10 @@ export function HeroPillarsGrid({ compact = false }: { compact?: boolean }) {
               ) : null}
             </div>
             <div className="min-w-0 flex-1 text-left">
-              <p className="text-[11px] font-bold leading-tight text-cvc-fg sm:text-xs dark:text-white">
+              <p className="text-[11px] font-bold leading-tight text-cvc-fg sm:text-xs dark:text-white [text-shadow:0_1px_3px_rgb(255_255_255_/_0.9)] dark:[text-shadow:none]">
                 {title}
               </p>
-              <p className="mt-0.5 text-[10px] leading-snug text-cvc-fg-muted sm:text-[11px] dark:text-white/80">
+              <p className="mt-0.5 text-[10px] leading-snug text-cvc-fg-muted sm:text-[11px] dark:text-white/80 dark:[text-shadow:none] [text-shadow:0_1px_2px_rgb(255_255_255_/_0.85)]">
                 {description}
               </p>
             </div>
