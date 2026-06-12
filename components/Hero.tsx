@@ -9,8 +9,7 @@ import {
 } from '@/components/HeroMobileExtras'
 import HeroTypewriterHeadlines from '@/components/HeroTypewriterHeadlines'
 
-const HERO_BG_DESKTOP = '/flagman.png'
-const HERO_BG_MOBILE = '/flagman.png'
+const HERO_BG = '/flagman.png'
 
 export default function Hero() {
   const renderHeroHeadlines = (large = false) => <HeroTypewriterHeadlines large={large} />
@@ -48,7 +47,7 @@ export default function Hero() {
       {/* Desktop background — full bleed under transparent nav */}
       <div className="pointer-events-none absolute inset-0 z-0 hidden overflow-hidden lg:block">
         <Image
-          src={HERO_BG_DESKTOP}
+          src={HERO_BG}
           alt=""
           fill
           sizes="100vw"
@@ -64,7 +63,7 @@ export default function Hero() {
         <div className="relative overflow-visible">
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-none">
             <Image
-              src={HERO_BG_MOBILE}
+              src={HERO_BG}
               alt=""
               fill
               sizes="100vw"

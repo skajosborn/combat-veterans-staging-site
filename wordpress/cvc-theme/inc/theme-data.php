@@ -52,14 +52,17 @@ function cvc_get_default_pages() {
 /**
  * Bump when primary nav structure changes (triggers menu rebuild).
  */
-define( 'CVC_NAV_MENU_VERSION', 17 );
+define( 'CVC_NAV_MENU_VERSION', 20 );
 
 /**
  * Primary nav (label, url callback key or raw path).
  */
 function cvc_get_about_nav_children() {
 	return array(
-		array( 'label' => __( 'Veterans Path', 'cvc-theme' ), 'slug' => 'whats-next' ),
+		array(
+			'label' => __( 'Veterans Path', 'cvc-theme' ),
+			'url'   => 'https://combatveteranstocareers.org/whats-next/',
+		),
 		array( 'label' => __( 'History', 'cvc-theme' ), 'slug' => 'about', 'hash' => 'history' ),
 		array( 'label' => __( 'Mission', 'cvc-theme' ), 'slug' => 'mission' ),
 		array(
@@ -124,17 +127,25 @@ function cvc_get_events_nav_children() {
 		),
 		array(
 			'label' => __( 'Event Gallery', 'cvc-theme' ),
-			'slug'  => 'events',
-			'hash'  => 'event-gallery',
+			'url'   => 'https://combatveteranstocareers.org/event-gallery/',
 		),
 	);
 }
 
 function cvc_get_our_programs_nav_children() {
 	return array(
-		array( 'label' => __( 'Operation Field Trip', 'cvc-theme' ), 'slug' => 'operation-field-trip' ),
-		array( 'label' => __( 'Save a Veteran', 'cvc-theme' ), 'slug' => 'save-a-veteran' ),
-		array( 'label' => __( "What's Next?", 'cvc-theme' ), 'slug' => 'whats-next' ),
+		array(
+			'label' => __( 'Operation Field Trip', 'cvc-theme' ),
+			'url'   => 'https://combatveteranstocareers.org/operation-field-trip/',
+		),
+		array(
+			'label' => __( 'Save a Veteran', 'cvc-theme' ),
+			'url'   => 'https://combatveteranstocareers.org/support-a-veteran/',
+		),
+		array(
+			'label' => __( "What's Next?", 'cvc-theme' ),
+			'url'   => 'https://combatveteranstocareers.org/whats-next/',
+		),
 		array( 'label' => __( 'Battle Buddy', 'cvc-theme' ), 'slug' => 'battle-buddy' ),
 	);
 }
@@ -153,7 +164,7 @@ function cvc_get_nav_quick_tabs() {
 			'label'    => __( 'Operation Field Trip', 'cvc-theme' ),
 			'short'    => __( 'Field Trip', 'cvc-theme' ),
 			'subtitle' => __( 'Upcoming events & details', 'cvc-theme' ),
-			'slug'     => 'operation-field-trip',
+			'url'      => 'https://combatveteranstocareers.org/operation-field-trip/',
 			'tone'     => 'red',
 			'icon'     => 'calendar',
 		),
@@ -161,7 +172,7 @@ function cvc_get_nav_quick_tabs() {
 			'label'    => __( "What's Next?", 'cvc-theme' ),
 			'short'    => __( "What's Next", 'cvc-theme' ),
 			'subtitle' => __( 'Guidance for your future', 'cvc-theme' ),
-			'slug'     => 'whats-next',
+			'url'      => 'https://combatveteranstocareers.org/whats-next/',
 			'tone'     => 'red',
 			'icon'     => 'compass',
 		),
@@ -207,8 +218,14 @@ function cvc_get_nav_items() {
 function cvc_get_quick_links() {
 	return array(
 		array( 'label' => __( 'Application', 'cvc-theme' ), 'slug' => 'veteran-application' ),
-		array( 'label' => __( 'Operation Field Trip', 'cvc-theme' ), 'slug' => 'operation-field-trip' ),
-		array( 'label' => __( "What's Next", 'cvc-theme' ), 'slug' => 'whats-next' ),
+		array(
+			'label' => __( 'Operation Field Trip', 'cvc-theme' ),
+			'url'   => 'https://combatveteranstocareers.org/operation-field-trip/',
+		),
+		array(
+			'label' => __( "What's Next", 'cvc-theme' ),
+			'url'   => 'https://combatveteranstocareers.org/whats-next/',
+		),
 		array( 'label' => __( 'About', 'cvc-theme' ), 'slug' => 'about' ),
 		array( 'label' => __( 'Events', 'cvc-theme' ), 'slug' => 'events' ),
 		array( 'label' => __( 'Thrift Store', 'cvc-theme' ), 'slug' => 'restoring-hope-thrift-store' ),
@@ -220,34 +237,22 @@ function cvc_get_quick_links() {
 function cvc_get_programs() {
 	return array(
 		array(
-			'title'       => __( 'Career Transition Program', 'cvc-theme' ),
-			'description' => __( 'Comprehensive 12-week program designed to help veterans identify their strengths and transition into civilian careers.', 'cvc-theme' ),
-			'image'       => 'skills.jpg',
+			'title'       => __( 'Operation Field Trip', 'cvc-theme' ),
+			'description' => __( 'A healing mission by veterans, for veterans and first responders—ketamine-assisted therapy with integrative counseling for PTSD, depression, and anxiety.', 'cvc-theme' ),
+			'image'       => 'OFT-Heading.png',
+			'url'         => 'https://combatveteranstocareers.org/operation-field-trip/',
 		),
 		array(
-			'title'       => __( 'Skills Assessment', 'cvc-theme' ),
-			'description' => __( 'Professional evaluation of military skills and their translation to civilian job markets.', 'cvc-theme' ),
-			'image'       => 'skills2.jpg',
+			'title'       => __( "What's Next", 'cvc-theme' ),
+			'description' => __( 'A veteran-centered wellness plan that helps service members keep moving forward into education, employment, housing, and wellness.', 'cvc-theme' ),
+			'image'       => 'WN-1.jpg',
+			'url'         => 'https://combatveteranstocareers.org/whats-next/',
 		),
 		array(
-			'title'       => __( 'Mentorship Network', 'cvc-theme' ),
-			'description' => __( 'Connect with successful veterans who have made the transition and can guide your journey.', 'cvc-theme' ),
-			'image'       => 'skills3.jpg',
-		),
-		array(
-			'title'       => __( 'Job Placement', 'cvc-theme' ),
-			'description' => __( 'Direct connections with employers who value the skills and dedication of combat veterans.', 'cvc-theme' ),
-			'image'       => 'skills4.jpg',
-		),
-		array(
-			'title'       => __( 'Resume Building', 'cvc-theme' ),
-			'description' => __( 'Expert assistance in crafting resumes that highlight military experience in civilian terms.', 'cvc-theme' ),
-			'image'       => 'skills5.jpg',
-		),
-		array(
-			'title'       => __( 'Interview Prep', 'cvc-theme' ),
-			'description' => __( 'Mock interviews and coaching to help you confidently present your value to employers.', 'cvc-theme' ),
-			'image'       => 'skills6.jpg',
+			'title'       => __( 'Save a Veteran', 'cvc-theme' ),
+			'description' => __( 'Support local combat veterans and their families through giving that funds life-changing programs and care.', 'cvc-theme' ),
+			'image'       => 'SAV.jpg',
+			'url'         => 'https://combatveteranstocareers.org/support-a-veteran/',
 		),
 	);
 }
@@ -315,25 +320,22 @@ function cvc_get_vision_pillars() {
 function cvc_get_success_stories() {
 	return array(
 		array(
-			'name'  => 'Marcus Johnson',
-			'rank'  => __( 'Former Army Sergeant', 'cvc-theme' ),
-			'role'  => __( 'Software Engineer at TechCorp', 'cvc-theme' ),
+			'name'  => 'Jeff Cabral',
+			'rank'  => __( 'Former Army', 'cvc-theme' ),
 			'quote' => __( 'The foundation helped me discover a new purpose. My military leadership skills translated perfectly into tech.', 'cvc-theme' ),
-			'image' => 'army.png',
+			'image' => 'Jeff Cabral 1.png',
 		),
 		array(
-			'name'  => 'Miles Martinez',
-			'rank'  => __( 'Former Marine Captain', 'cvc-theme' ),
-			'role'  => __( 'Operations Director at Logistics Plus', 'cvc-theme' ),
+			'name'  => 'Derek Mahoney',
+			'rank'  => __( 'Former Marine', 'cvc-theme' ),
 			'quote' => __( 'The mentorship program showed me how valuable my skills really are.', 'cvc-theme' ),
-			'image' => 'army2.png',
+			'image' => 'Derek 1.png',
 		),
 		array(
-			'name'  => 'James Wilson',
-			'rank'  => __( 'Former Navy SEAL', 'cvc-theme' ),
-			'role'  => __( 'Project Manager at Global Solutions', 'cvc-theme' ),
+			'name'  => 'Kris Hassenauer',
+			'rank'  => __( 'Former Army Captain', 'cvc-theme' ),
 			'quote' => __( 'I went from uncertain to employed in 90 days.', 'cvc-theme' ),
-			'image' => 'navy.png',
+			'image' => 'Kris.jpg',
 		),
 	);
 }

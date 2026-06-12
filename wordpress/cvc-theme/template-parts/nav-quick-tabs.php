@@ -15,8 +15,8 @@ $current_slug = is_page() ? get_post_field( 'post_name', get_queried_object_id()
 	<div class="cvc-nav-tabs__inner">
 		<?php foreach ( cvc_get_nav_quick_tabs() as $tab ) : ?>
 			<?php
-			$url    = cvc_page_url( $tab['slug'] );
-			$active = $current_slug === $tab['slug'];
+			$url    = ! empty( $tab['url'] ) ? $tab['url'] : cvc_page_url( $tab['slug'] );
+			$active = ! empty( $tab['slug'] ) && $current_slug === $tab['slug'];
 			?>
 			<a
 				class="cvc-nav-tabs__link cvc-nav-tabs__link--<?php echo esc_attr( $tab['tone'] ?? 'red' ); ?><?php echo $active ? ' is-active' : ''; ?>"

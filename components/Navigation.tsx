@@ -353,7 +353,7 @@ export default function Navigation() {
               />
             )}
             <NavLinkButton
-              href="/operation-field-trip"
+              href="https://combatveteranstocareers.org/operation-field-trip/"
               title="OPERATION FIELD TRIP"
               subtitle="Explore Career Paths"
               icon={
@@ -363,7 +363,7 @@ export default function Navigation() {
               }
             />
             <NavLinkButton
-              href="/whats-next"
+              href="https://combatveteranstocareers.org/whats-next/"
               title="WHAT'S NEXT"
               subtitle="Find Your Next Mission"
               icon={

@@ -40,6 +40,10 @@ export type NavQuickTab = {
   icon: NavQuickTabIcon
 }
 
+const OPERATION_FIELD_TRIP_URL = 'https://combatveteranstocareers.org/operation-field-trip/'
+const SAVE_A_VETERAN_URL = 'https://combatveteranstocareers.org/support-a-veteran/'
+const WHATS_NEXT_URL = 'https://combatveteranstocareers.org/whats-next/'
+
 export const navQuickTabs: NavQuickTab[] = [
   {
     label: 'Veteran Application',
@@ -53,7 +57,7 @@ export const navQuickTabs: NavQuickTab[] = [
     label: 'Operation Field Trip',
     shortLabel: 'Field Trip',
     subtitle: 'Upcoming events & details',
-    href: '/operation-field-trip',
+    href: OPERATION_FIELD_TRIP_URL,
     tone: 'red',
     icon: 'calendar',
   },
@@ -61,16 +65,16 @@ export const navQuickTabs: NavQuickTab[] = [
     label: "What's Next?",
     shortLabel: "What's Next",
     subtitle: 'Guidance for your future',
-    href: '/whats-next',
+    href: WHATS_NEXT_URL,
     tone: 'red',
     icon: 'compass',
   },
 ]
 
 export const ourProgramsLinks: NavDropdownLink[] = [
-  { label: 'Operation Field Trip', href: '/operation-field-trip' },
-  { label: 'Save a Veteran', href: '/save-a-veteran' },
-  { label: "What's Next?", href: '/whats-next' },
+  { label: 'Operation Field Trip', href: OPERATION_FIELD_TRIP_URL },
+  { label: 'Save a Veteran', href: SAVE_A_VETERAN_URL },
+  { label: "What's Next?", href: WHATS_NEXT_URL },
   { label: 'Battle Buddy', href: '/battle-buddy' },
 ]
 
@@ -92,7 +96,7 @@ export const ourTeamLinks: NavDropdownLink[] = [
 
 export const eventsLinks: NavDropdownLink[] = [
   { label: 'Upcoming Events', href: '/events#upcoming' },
-  { label: 'Event Gallery', href: '/events#event-gallery' },
+  { label: 'Event Gallery', href: 'https://combatveteranstocareers.org/event-gallery/' },
 ]
 
 export const getInvolvedLinks: NavDropdownLink[] = [
@@ -109,7 +113,7 @@ export const getInvolvedLinks: NavDropdownLink[] = [
 ]
 
 export const aboutLinks: NavDropdownLink[] = [
-  { label: 'Veterans Path', href: '/whats-next' },
+  { label: 'Veterans Path', href: WHATS_NEXT_URL },
   { label: 'History', href: '/about#history' },
   { label: 'Mission', href: '/mission' },
   { label: 'Get Involved', href: '/get-involved', children: [...getInvolvedLinks] },

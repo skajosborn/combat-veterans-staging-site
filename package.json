@@ -10,7 +10,10 @@
     "lint": "next lint",
     "wordpress:up": "docker compose -f wordpress/docker-compose.yml up -d",
     "wordpress:down": "docker compose -f wordpress/docker-compose.yml down",
-    "wordpress:logs": "docker compose -f wordpress/docker-compose.yml logs -f wordpress"
+    "wordpress:logs": "docker compose -f wordpress/docker-compose.yml logs -f wordpress",
+    "build:wp-veteran-app": "npm run build:wp-veteran-app:js && npm run build:wp-veteran-app:css",
+    "build:wp-veteran-app:js": "node scripts/build-wp-veteran-app.mjs",
+    "build:wp-veteran-app:css": "tailwindcss -c tailwind.wp-veteran.config.ts -i wordpress/cvc-theme/src/veteran-application.css -o wordpress/cvc-theme/assets/css/veteran-application.css --minify"
   },
   "dependencies": {
     "lucide-react": "^0.575.0",
@@ -24,6 +27,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.19",
+    "esbuild": "^0.25.0",
     "postcss": "^8.4.40",
     "tailwindcss": "^3.4.7",
     "typescript": "^5.5.4"

@@ -17,6 +17,7 @@ require get_template_directory() . '/inc/sponsors.php';
 require get_template_directory() . '/inc/setup.php';
 require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/page-content.php';
+require get_template_directory() . '/inc/veteran-application.php';
 
 /**
  * Theme setup.

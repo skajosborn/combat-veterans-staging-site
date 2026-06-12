@@ -26,7 +26,9 @@
 					<div class="cvc-tile__body">
 						<h3 class="cvc-tile__title"><?php echo esc_html( $story['name'] ); ?></h3>
 						<p class="cvc-tile__meta"><?php echo esc_html( $story['rank'] ); ?></p>
-						<p class="cvc-tile__meta cvc-tile__meta--role"><?php echo esc_html( $story['role'] ); ?></p>
+						<?php if ( ! empty( $story['role'] ) ) : ?>
+							<p class="cvc-tile__meta cvc-tile__meta--role"><?php echo esc_html( $story['role'] ); ?></p>
+						<?php endif; ?>
 						<blockquote class="cvc-tile__quote"><?php echo esc_html( $story['quote'] ); ?></blockquote>
 					</div>
 				</article>

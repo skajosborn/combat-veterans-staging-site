@@ -4,25 +4,25 @@ import SectionTitle from '@/components/SectionTitle'
 export default function SuccessStories() {
   const stories = [
     {
-      name: 'Marcus Johnson',
-      rank: 'Former Army Sergeant',
-      role: 'Software Engineer at TechCorp',
+      name: 'Jeff Cabral',
+      rank: 'Former Army',
+      role: '',
       quote: 'The foundation didn\'t just help me find a job—they helped me discover a new purpose. My military leadership skills translated perfectly into tech.',
-      image: '/army.png',
+      image: '/Jeff Cabral 1.png',
     },
     {
-      name: 'Miles Martinez',
-      rank: 'Former Marine Captain',
-      role: 'Operations Director at Logistics Plus',
+      name: 'Derek Mahoney',
+      rank: 'Former Marine',
+      role: '',
       quote: 'I was worried my combat experience wouldn\'t matter in the civilian world. The mentorship program showed me how valuable my skills really are.',
-      image: '/army2.png',
+      image: '/Derek 1.png',
     },
     {
-      name: 'James Wilson',
-      rank: 'Former Navy SEAL',
-      role: 'Project Manager at Global Solutions',
+      name: 'Kris Hassenauer',
+      rank: 'Former Army Captain',
+      role: '',
       quote: 'The career transition program gave me the confidence and tools I needed. I went from uncertain to employed in 90 days.',
-      image: '/navy.png',
+      image: '/Kris.jpg',
     },
   ]
 
@@ -80,9 +80,11 @@ export default function SuccessStories() {
               <div className="mb-2 text-sm text-cvc-fg-subtle">
                 {story.rank}
               </div>
-              <div className="mb-4 text-sm font-medium text-cvc-fg-muted">
-                {story.role}
-              </div>
+              {story.role ? (
+                <div className="mb-4 text-sm font-medium text-cvc-fg-muted">
+                  {story.role}
+                </div>
+              ) : null}
               <blockquote className="text-sm italic leading-relaxed text-cvc-fg-subtle">
                 "{story.quote}"
               </blockquote>
