@@ -72,29 +72,15 @@
     });
   });
 
-  function closeDesktopSubmenuItem(item) {
-    clearDesktopSubmenuTimer(item);
-    item.classList.remove('is-submenu-open');
-    var link = item.querySelector(':scope > a');
-    if (link) {
-      link.setAttribute('aria-expanded', 'false');
-    }
-  }
-
-  function closeNestedFlyoutsInSubmenu(submenu, except) {
-    if (!submenu) return;
-    submenu.querySelectorAll(':scope > .menu-item-has-children').forEach(function (item) {
-      if (item !== except) {
-        closeDesktopSubmenuItem(item);
-      }
-    });
-  }
-
   function closeDesktopSubmenus(except) {
     document.querySelectorAll('.cvc-nav__desktop .menu-item-has-children.is-submenu-open').forEach(function (item) {
-      if (item === except) return;
-      if (except && item.contains(except)) return;
-      closeDesktopSubmenuItem(item);
+      if (item !== except) {
+        item.classList.remove('is-submenu-open');
+        var link = item.querySelector(':scope > a');
+        if (link) {
+          link.setAttribute('aria-expanded', 'false');
+        }
+      }
     });
   }
 
@@ -113,10 +99,6 @@
   function openDesktopSubmenu(item) {
     clearDesktopSubmenuTimer(item);
     closeDesktopSubmenus(item);
-    var parentSubmenu = item.parentElement;
-    if (parentSubmenu && parentSubmenu.classList.contains('sub-menu')) {
-      closeNestedFlyoutsInSubmenu(parentSubmenu, item);
-    }
     item.classList.add('is-submenu-open');
     var link = item.querySelector(':scope > a');
     if (link) {
@@ -129,55 +111,23 @@
     desktopSubmenuTimers.set(
       item,
       window.setTimeout(function () {
-        closeDesktopSubmenuItem(item);
+        item.classList.remove('is-submenu-open');
+        var link = item.querySelector(':scope > a');
+        if (link) {
+          link.setAttribute('aria-expanded', 'false');
+        }
         desktopSubmenuTimers.delete(item);
       }, SUBMENU_CLOSE_DELAY)
     );
   }
 
-  function getDirectSubmenuLi(submenu, target) {
-    if (!(target instanceof Element)) return null;
-    var li = target.closest('li');
-    while (li && li.parentElement !== submenu) {
-      li = li.parentElement ? li.parentElement.closest('li') : null;
-    }
-    return li && li.parentElement === submenu ? li : null;
-  }
-
-  document.querySelectorAll('.cvc-nav__desktop .menu > .menu-item-has-children > .sub-menu').forEach(function (submenu) {
-    submenu.addEventListener('mouseover', function (e) {
-      if (!DESKTOP_NAV_MQ.matches) return;
-      var li = getDirectSubmenuLi(submenu, e.target);
-      if (!li) return;
-      if (li.classList.contains('menu-item-has-children')) {
-        openDesktopSubmenu(li);
-        return;
-      }
-      closeNestedFlyoutsInSubmenu(submenu, null);
-    });
-  });
-
-  document.querySelectorAll('.cvc-nav__desktop .menu > .menu-item-has-children').forEach(function (item) {
+  document.querySelectorAll('.cvc-nav__desktop .menu-item-has-children').forEach(function (item) {
     item.addEventListener('mouseenter', function () {
       if (!DESKTOP_NAV_MQ.matches) return;
       openDesktopSubmenu(item);
     });
     item.addEventListener('mouseleave', function () {
       if (!DESKTOP_NAV_MQ.matches) return;
-      scheduleCloseDesktopSubmenu(item);
-    });
-  });
-
-  document.querySelectorAll('.cvc-nav__desktop .menu > .menu-item-has-children > .sub-menu .menu-item-has-children').forEach(function (item) {
-    item.addEventListener('mouseleave', function (e) {
-      if (!DESKTOP_NAV_MQ.matches) return;
-      var submenu = item.parentElement;
-      if (!submenu) return;
-      var related = e.relatedTarget;
-      if (related instanceof Element) {
-        var nextLi = getDirectSubmenuLi(submenu, related);
-        if (nextLi && nextLi !== item) return;
-      }
       scheduleCloseDesktopSubmenu(item);
     });
   });
@@ -203,12 +153,7 @@
       e.stopPropagation();
       var parent = link.parentElement;
       if (!parent) return;
-      var willOpen = !parent.classList.contains('is-submenu-open');
-      if (willOpen) {
-        openDesktopSubmenu(parent);
-      } else {
-        closeDesktopSubmenuItem(parent);
-      }
+      parent.classList.toggle('is-submenu-open');
     });
   });
 

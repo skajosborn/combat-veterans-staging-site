@@ -25,7 +25,9 @@ if ( has_custom_logo() ) {
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<header class="cvc-nav" role="banner">
+<header class="cvc-nav-shell" role="banner">
+	<?php get_template_part( 'template-parts/nav', 'utility-bar' ); ?>
+	<div class="cvc-nav">
 	<div class="cvc-nav__inner">
 		<a class="cvc-nav__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 			<img src="<?php echo esc_url( $logo_url ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="40" height="40" />
@@ -37,15 +39,15 @@ if ( has_custom_logo() ) {
 
 		<div class="cvc-nav__desktop">
 			<?php cvc_render_primary_nav_menu(); ?>
-			<button type="button" class="cvc-theme-toggle" id="cvc-theme-toggle" aria-label="<?php esc_attr_e( 'Toggle light/dark theme', 'cvc-theme' ); ?>">
-				<?php esc_html_e( 'Theme', 'cvc-theme' ); ?>
-			</button>
+			<?php echo cvc_theme_toggle_button( '', 'cvc-theme-toggle' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<a class="cvc-nav__donate" href="<?php echo esc_url( cvc_page_url( 'donate' ) ); ?>">
+				<?php echo cvc_donate_nav_icon(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php esc_html_e( 'DONATE', 'cvc-theme' ); ?>
+			</a>
 		</div>
 
 		<div class="cvc-nav__mobile-tools">
-			<button type="button" class="cvc-theme-toggle cvc-theme-toggle--mobile" id="cvc-theme-toggle-mobile" aria-label="<?php esc_attr_e( 'Toggle theme', 'cvc-theme' ); ?>">
-				<?php esc_html_e( 'Theme', 'cvc-theme' ); ?>
-			</button>
+			<?php echo cvc_theme_toggle_button( 'cvc-theme-toggle--mobile', 'cvc-theme-toggle-mobile' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			<button type="button" class="cvc-nav__mobile-toggle" id="cvc-nav-toggle" aria-expanded="false" aria-controls="cvc-nav-mobile">
 				<svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -54,8 +56,17 @@ if ( has_custom_logo() ) {
 		</div>
 	</div>
 
+	</div>
+	<?php get_template_part( 'template-parts/nav', 'quick-tabs' ); ?>
+
 	<div class="cvc-nav__mobile-panel" id="cvc-nav-mobile">
 		<?php cvc_render_primary_nav_menu(); ?>
+		<div class="cvc-nav__mobile-donate-wrap">
+			<a class="cvc-nav__donate cvc-nav__donate--mobile" href="<?php echo esc_url( cvc_page_url( 'donate' ) ); ?>">
+				<?php echo cvc_donate_nav_icon(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php esc_html_e( 'DONATE', 'cvc-theme' ); ?>
+			</a>
+		</div>
 	</div>
 </header>
 

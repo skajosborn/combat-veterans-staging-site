@@ -43,8 +43,11 @@ function cvc_section_title( $args ) {
 			</<?php echo esc_attr( $tag ); ?>>
 			<span class="cvc-section-title__rule" aria-hidden="true"></span>
 		</div>
-		<div class="cvc-section-title__stars" aria-hidden="true">
-			<span class="cvc-star">★</span><span class="cvc-star cvc-star--lg">★</span><span class="cvc-star">★</span>
+		<div class="cvc-section-title__blueprint-rule" aria-hidden="true">
+			<div class="cvc-section-title__blueprint-rule-line"></div>
+			<div class="cvc-section-title__blueprint-stars">
+				<span class="cvc-star">★</span><span class="cvc-star cvc-star--lg">★</span><span class="cvc-star">★</span>
+			</div>
 		</div>
 		<?php if ( ! empty( $args['subtitle'] ) ) : ?>
 			<div class="cvc-section-title__subtitle">
@@ -58,23 +61,16 @@ function cvc_section_title( $args ) {
 /**
  * Primary nav fallback when no menu assigned.
  */
-function cvc_primary_nav_fallback() {
-	echo '<ul class="menu cvc-nav__list">';
-	foreach ( cvc_get_nav_items() as $item ) {
+function cvc_render_nav_fallback_branch( $items ) {
+	foreach ( $items as $item ) {
 		if ( ! empty( $item['children'] ) ) {
 			echo '<li class="menu-item menu-item-has-children">';
 			printf(
-				'<span class="cvc-nav__parent">%s</span>',
+				'<a href="#">%s</a>',
 				esc_html( $item['label'] )
 			);
 			echo '<ul class="sub-menu">';
-			foreach ( $item['children'] as $child ) {
-				printf(
-					'<li><a href="%s">%s</a></li>',
-					esc_url( cvc_nav_item_url( $child ) ),
-					esc_html( $child['label'] )
-				);
-			}
+			cvc_render_nav_fallback_branch( $item['children'] );
 			echo '</ul></li>';
 			continue;
 		}
@@ -84,6 +80,11 @@ function cvc_primary_nav_fallback() {
 			esc_html( $item['label'] )
 		);
 	}
+}
+
+function cvc_primary_nav_fallback() {
+	echo '<ul class="menu cvc-nav__list">';
+	cvc_render_nav_fallback_branch( cvc_get_nav_items() );
 	echo '</ul>';
 }
 
@@ -108,7 +109,7 @@ function cvc_render_primary_nav_menu() {
 				'container'      => false,
 				'menu_class'     => 'menu',
 				'fallback_cb'    => false,
-				'depth'          => 2,
+				'depth'          => 3,
 				'sub_menu_class' => 'sub-menu',
 			)
 		);

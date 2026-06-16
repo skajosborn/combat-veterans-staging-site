@@ -12,7 +12,14 @@
 		?>
 		<div class="cvc-grid cvc-grid--3">
 			<?php foreach ( cvc_get_programs() as $program ) : ?>
-				<article class="cvc-tile cvc-tile--media">
+				<?php
+				$tag  = ! empty( $program['url'] ) ? 'a' : 'article';
+				$attr = ! empty( $program['url'] )
+					? ' href="' . esc_url( $program['url'] ) . '"'
+					: '';
+				$class = 'cvc-tile cvc-tile--media' . ( ! empty( $program['url'] ) ? ' cvc-tile--link' : '' );
+				?>
+				<<?php echo esc_html( $tag ); ?> class="<?php echo esc_attr( $class ); ?>"<?php echo $attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 					<?php if ( cvc_img_exists( $program['image'] ) ) : ?>
 						<div class="cvc-tile__media">
 							<img src="<?php echo esc_url( cvc_img( $program['image'] ) ); ?>" alt="" loading="lazy" />
@@ -22,7 +29,7 @@
 						<h3 class="cvc-tile__title"><?php echo esc_html( $program['title'] ); ?></h3>
 						<p class="cvc-tile__text"><?php echo esc_html( $program['description'] ); ?></p>
 					</div>
-				</article>
+				</<?php echo esc_html( $tag ); ?>>
 			<?php endforeach; ?>
 		</div>
 	</div>
