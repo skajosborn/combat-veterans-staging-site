@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation'
 import NavLinkButton from './NavLinkButton'
 import NavDropdown from './NavDropdown'
 import NavUtilityBar from './NavUtilityBar'
+import NavQuickTabs from './NavQuickTabs'
 import ThemeToggle from './ThemeToggle'
 import { getNavItems } from '@/lib/navItems'
 import { showVision } from '@/lib/siteConfig'
@@ -271,6 +272,7 @@ export default function Navigation() {
         </div>
       )}
       </nav>
+      <NavQuickTabs />
     </header>
   )
 }

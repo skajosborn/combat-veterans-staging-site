@@ -1,5 +1,43 @@
 import { showVision } from '@/lib/siteConfig'
 
+export type NavQuickTabIcon = 'application' | 'calendar' | 'compass'
+
+export type NavQuickTab = {
+  label: string
+  shortLabel: string
+  subtitle: string
+  href: string
+  tone: 'red'
+  icon: NavQuickTabIcon
+}
+
+export const navQuickTabs: NavQuickTab[] = [
+  {
+    label: 'Veteran Application',
+    shortLabel: 'Veteran App',
+    subtitle: 'Start your next chapter',
+    href: '/veteran-application',
+    tone: 'red',
+    icon: 'application',
+  },
+  {
+    label: 'Operation Field Trip',
+    shortLabel: 'Field Trip',
+    subtitle: 'Upcoming events & details',
+    href: '/operation-field-trip',
+    tone: 'red',
+    icon: 'calendar',
+  },
+  {
+    label: "What's Next?",
+    shortLabel: "What's Next",
+    subtitle: 'Guidance for your future',
+    href: '/whats-next',
+    tone: 'red',
+    icon: 'compass',
+  },
+]
+
 export type NavLinkItem = {
   type: 'link'
   label: string

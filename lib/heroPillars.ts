@@ -1,31 +1,32 @@
 import type { LucideIcon } from 'lucide-react'
-import { Compass, Handshake, Shield, Flag } from 'lucide-react'
+import { Compass } from 'lucide-react'
 
 export type HeroPillar = {
   title: string
   description: string
-  Icon: LucideIcon
+  Icon?: LucideIcon
+  iconSrc?: string
 }
 
 export const HERO_PILLARS: HeroPillar[] = [
   {
-    title: 'FIND YOUR PATH',
-    description: 'Discover career opportunities and next steps.',
+    title: 'Personalized Support',
+    description: 'Guidance every step of the way.',
+    iconSrc: '/icons/user.png',
+  },
+  {
+    title: 'Career Navigation',
+    description: 'Find your path. Build your future.',
     Icon: Compass,
   },
   {
-    title: 'GET CONNECTED',
-    description: 'Access mentors, resources, and a strong community.',
-    Icon: Handshake,
+    title: 'Community',
+    description: 'Connect with those who understand.',
+    iconSrc: '/icons/group.png',
   },
   {
-    title: "YOU'VE GOT SUPPORT",
-    description: '360° support for you and your family.',
-    Icon: Shield,
-  },
-  {
-    title: 'CONTINUE THE MISSION',
-    description: 'Turn your experience into purpose.',
-    Icon: Flag,
+    title: 'Proven Impact',
+    description: 'Empowering veterans to succeed.',
+    iconSrc: '/icons/graph.png',
   },
 ]

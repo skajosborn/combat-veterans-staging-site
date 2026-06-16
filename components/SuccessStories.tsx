@@ -4,25 +4,25 @@ import SectionTitle from '@/components/SectionTitle'
 export default function SuccessStories() {
   const stories = [
     {
-      name: 'Marcus Johnson',
-      rank: 'Former Army Sergeant',
+      name: 'Derek Mahoney',
+      rank: 'Former U.S. Marine',
       role: 'Software Engineer at TechCorp',
       quote: 'The foundation didn\'t just help me find a job—they helped me discover a new purpose. My military leadership skills translated perfectly into tech.',
-      image: '/army.png',
+      image: '/veterans/Derek%201.png',
     },
     {
-      name: 'Miles Martinez',
+      name: 'Jeff Cabral',
       rank: 'Former Marine Captain',
       role: 'Operations Director at Logistics Plus',
       quote: 'I was worried my combat experience wouldn\'t matter in the civilian world. The mentorship program showed me how valuable my skills really are.',
-      image: '/army2.png',
+      image: '/veterans/Jeff%20Cabral%201.png',
     },
     {
-      name: 'James Wilson',
-      rank: 'Former Navy SEAL',
+      name: 'Kris Hasenauer',
+      rank: 'Former U.S. Army Major',
       role: 'Project Manager at Global Solutions',
       quote: 'The career transition program gave me the confidence and tools I needed. I went from uncertain to employed in 90 days.',
-      image: '/navy.png',
+      image: '/veterans/Kris.jpg',
     },
   ]
 
@@ -59,9 +59,9 @@ export default function SuccessStories() {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {stories.map((story, index) => (
+          {stories.map((story) => (
             <div
-              key={index}
+              key={story.name}
               className="rounded-lg border border-cvc-border bg-cvc-tile p-8 shadow-lg transition-shadow duration-300 hover:shadow-[0_20px_50px_-12px_rgba(15,23,42,0.22)] dark:hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.55)]"
             >
               <div className="mb-6 flex justify-center">
@@ -70,7 +70,8 @@ export default function SuccessStories() {
                     src={story.image}
                     alt={`${story.name} testimonial`}
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
+                    sizes="96px"
                   />
                 </div>
               </div>
