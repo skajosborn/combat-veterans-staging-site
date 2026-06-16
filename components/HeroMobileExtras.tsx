@@ -114,15 +114,3 @@ export function HeroPillarsGrid({ compact = false }: { compact?: boolean }) {
     </div>
   )
 }
-
-export function HeroHonorBar() {
-  return (
-    <div className="relative flex w-full shrink-0 items-center justify-center gap-3 bg-cvc-cta-fill px-4 py-3.5 sm:py-4 lg:gap-2 lg:py-2">
-      <Star className="h-2.5 w-2.5 shrink-0 fill-white text-white" strokeWidth={0} aria-hidden />
-      <p className="text-center text-[11px] font-bold uppercase tracking-[0.12em] text-white sm:text-xs">
-        Honor. Purpose. Transition. Together.
-      </p>
-      <Star className="h-2.5 w-2.5 shrink-0 fill-white text-white" strokeWidth={0} aria-hidden />
-    </div>
-  )
-}
