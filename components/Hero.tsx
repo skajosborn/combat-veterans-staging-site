@@ -82,13 +82,13 @@ export default function Hero() {
             priority
           />
         </div>
-        <div className="absolute inset-0 bg-cvc-hero-shade" aria-hidden />
+        <div className="absolute inset-0 bg-white/[0.52]" aria-hidden />
         <div
-          className="absolute inset-0 bg-gradient-to-r from-white/55 via-white/35 to-white/15 dark:from-slate-950/55 dark:via-slate-950/28 dark:to-slate-950/10"
+          className="absolute inset-0 bg-gradient-to-r from-white/55 via-white/35 to-white/15"
           aria-hidden
         />
         <div
-          className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white/92 via-white/55 to-transparent dark:from-slate-950/50 dark:via-slate-950/22"
+          className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white/92 via-white/55 to-transparent"
           aria-hidden
         />
       </div>
@@ -104,7 +104,7 @@ export default function Hero() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-cvc-hero-shade" aria-hidden />
+        <div className="absolute inset-0 bg-white/[0.52]" aria-hidden />
       </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 pb-4 pt-[calc(var(--cvc-nav-height)+1rem)] sm:px-6 sm:pb-6 lg:px-10 lg:pb-5 lg:pt-[var(--cvc-nav-height)]">
