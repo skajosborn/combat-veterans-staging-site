@@ -96,6 +96,15 @@
     background-color: var(--cvc-page);
     color: var(--cvc-fg);
   }
+
+  /* Homepage hero: always use light comp wash + dark text (even in dark mode) */
+  #home {
+    --cvc-hero-fg: #1a2b3c;
+    --cvc-hero-fg-muted: #4a5568;
+    --cvc-hero-accent: #3d4a2c;
+    --cvc-fg: #0f172a;
+    --cvc-fg-muted: #475569;
+  }
 }
 
 @keyframes pulse-red {
