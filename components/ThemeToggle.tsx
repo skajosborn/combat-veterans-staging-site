@@ -36,7 +36,11 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
     setIsDark(dark)
   }
 
-  const buttonClass = `inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-cvc-border text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg ${className}`
+  const buttonClass = `h-8 w-8 shrink-0 items-center justify-center rounded-full border border-cvc-border text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg ${
+    className.includes('inline-flex') || className.includes('hidden') || className.includes('flex')
+      ? className
+      : `inline-flex ${className}`
+  }`
 
   if (isDark === null) {
     return <span className={`${buttonClass} border-transparent`} aria-hidden />

@@ -52,7 +52,7 @@ function cvc_get_default_pages() {
 /**
  * Bump when primary nav structure changes (triggers menu rebuild).
  */
-define( 'CVC_NAV_MENU_VERSION', 20 );
+define( 'CVC_NAV_MENU_VERSION', 21 );
 
 /**
  * Primary nav (label, url callback key or raw path).
@@ -182,22 +182,24 @@ function cvc_get_nav_quick_tabs() {
 function cvc_get_nav_items() {
 	return array(
 		array(
-			'stack'    => array( 'OUR', 'PROGRAMS' ),
+			'label' => __( 'Application', 'cvc-theme' ),
+			'slug'  => 'veteran-application',
+		),
+		array(
+			'label'    => __( 'Programs', 'cvc-theme' ),
 			'anchor'   => 'programs',
 			'children' => cvc_get_our_programs_nav_children(),
 		),
 		array(
-			'label'    => __( 'ABOUT', 'cvc-theme' ),
+			'label'    => __( 'About', 'cvc-theme' ),
 			'children' => cvc_get_about_nav_children(),
 		),
 		array(
-			'label'    => __( 'EVENTS', 'cvc-theme' ),
+			'label'    => __( 'Events', 'cvc-theme' ),
 			'children' => cvc_get_events_nav_children(),
 		),
-		array( 'label' => __( 'SPONSORS', 'cvc-theme' ), 'slug' => 'sponsors' ),
-		array( 'label' => __( 'CONTACT', 'cvc-theme' ), 'anchor' => 'contact' ),
 		array(
-			'label'    => __( 'THRIFT STORES', 'cvc-theme' ),
+			'label'    => __( 'Our Stores', 'cvc-theme' ),
 			'children' => array(
 				array(
 					'label' => __( 'Restoring Hope Thrift Store', 'cvc-theme' ),
@@ -209,6 +211,8 @@ function cvc_get_nav_items() {
 				),
 			),
 		),
+		array( 'label' => __( 'Sponsors', 'cvc-theme' ), 'slug' => 'sponsors' ),
+		array( 'label' => __( 'Contact', 'cvc-theme' ), 'anchor' => 'contact' ),
 	);
 }
 

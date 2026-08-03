@@ -68,21 +68,7 @@ $hero_img = cvc_img_exists( 'flagman.png' )
 				</div>
 			</div>
 		</div>
-
-		<div class="cvc-hero-pillars">
-			<div class="cvc-hero-pillars__grid">
-				<?php foreach ( cvc_get_hero_pillars() as $pillar ) : ?>
-					<div class="cvc-hero-pillars__item">
-						<div class="cvc-hero-pillars__icon" aria-hidden="true">
-							<?php echo cvc_hero_pillar_icon( $pillar['icon'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-						</div>
-						<div class="cvc-hero-pillars__text">
-							<p class="cvc-hero-pillars__title"><?php echo esc_html( $pillar['title'] ); ?></p>
-							<p class="cvc-hero-pillars__desc"><?php echo esc_html( $pillar['description'] ); ?></p>
-						</div>
-					</div>
-				<?php endforeach; ?>
-			</div>
-		</div>
 	</div>
+
+	<?php get_template_part( 'template-parts/home', 'upcoming-events' ); ?>
 </section>

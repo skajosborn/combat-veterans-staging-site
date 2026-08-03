@@ -124,16 +124,28 @@ export const aboutLinks: NavDropdownLink[] = [
 
 const allNavItems: NavItem[] = [
   {
+    type: 'link',
+    label: 'Application',
+    navLabel: 'Application',
+    href: '/veteran-application',
+  },
+  {
     type: 'dropdown',
-    label: 'CVC Programs',
-    navLabelLines: ['OUR', 'PROGRAMS'],
+    label: 'Programs',
+    navLabel: 'Programs',
     items: [...ourProgramsLinks],
   },
-  { type: 'dropdown', label: 'About', navLabel: 'ABOUT', items: [...aboutLinks] },
-  { type: 'dropdown', label: 'Events', navLabel: 'EVENTS', items: [...eventsLinks] },
-  { type: 'link', label: 'Sponsors', navLabel: 'SPONSORS', href: '/sponsors' },
-  { type: 'link', label: 'Contact', navLabel: 'CONTACT', href: '/#contact' },
-  { type: 'dropdown', label: 'Our Thrift Stores', navLabel: 'THRIFT STORES', items: [...ourThriftStoresLinks] },
+  { type: 'dropdown', label: 'About', navLabel: 'About', items: [...aboutLinks] },
+  { type: 'dropdown', label: 'Events', navLabel: 'Events', items: [...eventsLinks] },
+  {
+    type: 'dropdown',
+    label: 'Our Stores',
+    navLabel: 'Our Stores',
+    compactNavLabel: 'Stores',
+    items: [...ourThriftStoresLinks],
+  },
+  { type: 'link', label: 'Sponsors', navLabel: 'Sponsors', href: '/sponsors' },
+  { type: 'link', label: 'Contact', navLabel: 'Contact', href: '/#contact' },
   { type: 'link', label: 'Donate', href: '/donate' },
 ]
 

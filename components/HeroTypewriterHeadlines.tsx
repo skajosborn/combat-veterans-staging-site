@@ -26,7 +26,7 @@ function lineStarted(counts: Record<string, number>, ids: string[]) {
 function TypewriterCursor() {
   return (
     <span
-      className="hero-typewriter-cursor ml-0.5 inline text-cvc-hero-accent motion-reduce:hidden"
+      className="hero-typewriter-cursor ml-0.5 inline text-[#d4e3b5] motion-reduce:hidden"
       aria-hidden
     >
       |
@@ -36,7 +36,7 @@ function TypewriterCursor() {
 
 function lineClass(started: boolean) {
   return [
-    'm-0 min-h-[1.15em] font-black uppercase leading-[1.12] tracking-tight text-cvc-hero-fg transition-opacity duration-500 ease-out',
+    'm-0 min-h-[1.15em] font-black uppercase leading-[1.12] tracking-tight text-white [text-shadow:0_1px_3px_rgb(0_0_0_/_0.55)] transition-opacity duration-500 ease-out',
     'text-[1.5rem] sm:text-[1.75rem] lg:text-[1.625rem] xl:text-[2rem]',
     started ? 'opacity-100' : 'opacity-0',
   ].join(' ')
@@ -62,7 +62,7 @@ export default function HeroTypewriterHeadlines() {
       >
         {slice(counts, 'whats', "WHAT'S ")}
         {showCursor('whats') ? <TypewriterCursor /> : null}
-        <span className="text-cvc-hero-accent">
+        <span className="text-[#d4e3b5] [text-shadow:0_1px_3px_rgb(0_0_0_/_0.55)]">
           {slice(counts, 'next', 'NEXT?')}
           {showCursor('next') ? <TypewriterCursor /> : null}
         </span>
@@ -74,7 +74,7 @@ export default function HeroTypewriterHeadlines() {
       >
         {slice(counts, 'service', 'SERVICE TO ')}
         {showCursor('service') ? <TypewriterCursor /> : null}
-        <span className="text-cvc-hero-accent">
+        <span className="text-[#d4e3b5] [text-shadow:0_1px_3px_rgb(0_0_0_/_0.55)]">
           {slice(counts, 'success', 'SUCCESS')}
           {showCursor('success') ? <TypewriterCursor /> : null}
         </span>

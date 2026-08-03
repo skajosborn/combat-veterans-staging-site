@@ -3,13 +3,10 @@
 import { useState, useCallback, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { HandHeart } from 'lucide-react'
-import { usePathname } from 'next/navigation'
 import NavLinkButton from './NavLinkButton'
 import NavDropdown from './NavDropdown'
 import NavStackedLabel from './NavStackedLabel'
 import NavUtilityBar from './NavUtilityBar'
-import NavQuickTabs from './NavQuickTabs'
 import ThemeToggle from './ThemeToggle'
 import { getMainNavItems, getNavDisplayLabel, type NavDropdownLink } from '@/lib/navItems'
 import { showVision } from '@/lib/siteConfig'
@@ -99,8 +96,6 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [openMobileSections, setOpenMobileSections] = useState<Record<string, boolean>>({})
   const [compactNavLabels, setCompactNavLabels] = useState(false)
-  const pathname = usePathname()
-
   useEffect(() => {
     const media = window.matchMedia('(min-width: 1024px) and (max-width: 1535px)')
     const update = () => setCompactNavLabels(media.matches)
@@ -123,11 +118,10 @@ export default function Navigation() {
   const toggleMobileSection = useCallback((label: string) => {
     setOpenMobileSections((prev) => ({ ...prev, [label]: !prev[label] }))
   }, [])
-  const isHomeHero = pathname === '/'
   const mainNavItems = getMainNavItems()
 
   const desktopNavLinkClass =
-    'shrink-0 px-1.5 text-[10px] font-bold uppercase tracking-[0.05em] text-cvc-fg transition-colors hover:opacity-80 lg:px-2 lg:text-[11px] lg:tracking-[0.07em] 2xl:px-2.5 2xl:tracking-[0.08em] md:dark:text-white/90 md:dark:hover:text-white'
+    'shrink-0 px-1.5 text-[11px] font-bold tracking-[0.02em] text-cvc-fg transition-colors hover:text-cvc-fg/70 lg:px-2 lg:text-xs dark:text-white dark:hover:text-white/80'
 
   const desktopNavLinkInlineClass = `${desktopNavLinkClass} whitespace-nowrap`
 
@@ -138,57 +132,36 @@ export default function Navigation() {
     'block rounded-lg px-3 py-2 text-xs font-medium text-cvc-fg-muted transition-colors hover:bg-cvc-hover hover:text-cvc-fg'
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="fixed top-0 left-0 right-0 z-50 overflow-visible">
       <NavUtilityBar />
-      <nav
-        className={`relative border-b border-cvc-nav-border shadow-sm backdrop-blur-md ${
-          isHomeHero
-            ? 'bg-white/90 dark:bg-cvc-nav md:border-transparent md:bg-transparent md:shadow-none'
-            : 'bg-cvc-nav md:shadow-xl'
-        }`}
-      >
-      <div className="mx-auto w-full max-w-[96rem] px-3 sm:px-4 lg:px-5">
-        <div className="flex flex-nowrap items-center justify-between gap-1.5 py-2 min-w-0 md:gap-2 md:py-0.5">
-          {/* Logo — small mark; hero carries the large crest */}
-          <div className="flex min-w-0 shrink-0 items-center">
-            <a href="/" className="flex min-w-0 items-center gap-2 hover:opacity-80 transition-opacity">
-              <div className="relative h-9 w-9 shrink-0 sm:h-10 sm:w-10">
-                <Image
-                  src="/CVClogo.png"
-                  alt="Combat Veterans to Careers Organization Logo"
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 640px) 36px, 40px"
-                  priority
-                />
-              </div>
-              <div className="hidden min-w-0 text-left leading-tight 2xl:block">
-                <p
-                  className={
-                    isHomeHero
-                      ? 'text-[9px] font-bold uppercase tracking-wide text-patriotic-navy dark:text-white sm:text-[10px] md:text-[10px] md:font-bold md:tracking-[0.12em] md:text-cvc-fg md:dark:text-white lg:text-[11px]'
-                      : 'text-[9px] font-bold uppercase tracking-wide text-patriotic-navy dark:text-white sm:text-[10px] md:text-xs md:font-semibold md:normal-case md:tracking-normal md:text-cvc-fg'
-                  }
-                >
-                  Combat Veterans
-                </p>
-                <p
-                  className={
-                    isHomeHero
-                      ? 'text-[9px] font-bold uppercase tracking-wide text-patriotic-navy dark:text-white/90 sm:text-[10px] md:text-[10px] md:font-bold md:tracking-[0.12em] md:text-cvc-fg md:dark:text-white/90 lg:text-[11px]'
-                      : 'text-[9px] font-bold uppercase tracking-wide text-patriotic-navy dark:text-white/90 sm:text-[10px] md:text-[11px] md:font-medium md:normal-case md:tracking-normal md:text-cvc-fg-subtle'
-                  }
-                >
-                  to Careers
-                </p>
-              </div>
+      <nav className="relative overflow-visible border-b border-cvc-nav-border bg-cvc-nav shadow-sm">
+      <div className="mx-auto w-full max-w-[96rem] overflow-visible px-3 sm:px-4 lg:px-6 xl:px-8">
+        <div className="flex min-h-[var(--cvc-nav-main-height)] flex-nowrap items-center justify-between gap-2 min-w-0 overflow-visible md:gap-3">
+          <div className="relative z-[60] flex min-w-0 shrink-0 items-center overflow-visible">
+            <a href="/" className="group flex min-w-0 items-center gap-2.5 transition-opacity hover:opacity-90 sm:gap-3">
+              {/* Spacer keeps bar height; logo is absolute so it can hang below */}
+              <span className="relative block h-[var(--cvc-nav-main-height)] w-[4.25rem] shrink-0 sm:w-[5.5rem] lg:w-[6.75rem]" aria-hidden>
+                <span className="absolute left-0 top-0 z-[60] block h-[4.75rem] w-[4.75rem] -translate-y-[22%] sm:h-24 sm:w-24 lg:h-[7.25rem] lg:w-[7.25rem]">
+                  <Image
+                    src="/CVClogo.png"
+                    alt=""
+                    fill
+                    className="object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.18)]"
+                    sizes="(max-width: 640px) 76px, (max-width: 1024px) 96px, 116px"
+                    priority
+                  />
+                </span>
+              </span>
+              <p className="relative z-10 hidden min-w-0 text-[11px] font-bold uppercase leading-tight tracking-[0.06em] text-cvc-fg dark:text-white sm:block sm:text-xs lg:text-[13px] lg:tracking-[0.08em]">
+                Combat Veterans to Careers
+              </p>
+              <span className="sr-only sm:hidden">Combat Veterans to Careers</span>
             </a>
           </div>
 
-          {/* Desktop inline nav — lg+; below lg uses mobile drawer */}
           <div className="hidden min-w-0 flex-1 items-center overflow-visible lg:flex">
-            <div className="flex min-w-0 flex-1 justify-center overflow-visible px-1 2xl:px-2">
-              <div className="mx-auto flex w-max max-w-full flex-nowrap items-center justify-center gap-x-3 overflow-visible py-0.5 lg:gap-x-4 xl:gap-x-6 2xl:gap-x-8">
+            <div className="flex min-w-0 flex-1 justify-end overflow-visible px-1 xl:px-2">
+              <div className="flex w-max max-w-full flex-nowrap items-center justify-end gap-x-3 overflow-visible py-0.5 lg:gap-x-4 xl:gap-x-5 2xl:gap-x-6">
                   {mainNavItems.map((item) => {
                     const displayLabel = getNavDisplayLabel(item, { compact: compactNavLabels })
                     if (item.type === 'dropdown') {
@@ -198,7 +171,6 @@ export default function Navigation() {
                           label={item.navLabelLines ? undefined : displayLabel}
                           labelLines={item.navLabelLines}
                           links={item.items}
-                          overlay={isHomeHero}
                           className="relative z-20 shrink-0"
                           linkClassName={desktopNavLinkInlineClass}
                         />
@@ -224,27 +196,18 @@ export default function Navigation() {
                   })}
               </div>
             </div>
-            <div className="ml-1 flex shrink-0 items-center gap-2 2xl:ml-2 2xl:gap-3">
-            <ThemeToggle
-              className={
-                isHomeHero
-                  ? 'hidden shrink-0 lg:inline-flex lg:dark:border-white/40 lg:dark:text-white lg:dark:hover:bg-white/10 lg:dark:hover:text-white'
-                  : 'shrink-0'
-              }
-            />
+            <div className="ml-2 flex shrink-0 items-center 2xl:ml-3">
             <Link
               href="/donate"
-              className="hidden shrink-0 items-center gap-2 rounded-md bg-cvc-cta-fill px-3 py-2 text-[10px] font-bold uppercase tracking-[0.1em] text-white shadow-md transition-[filter] hover:brightness-110 lg:inline-flex 2xl:px-4 2xl:py-2.5 2xl:text-[11px]"
+              className="hidden shrink-0 items-center rounded-full bg-cvc-cta-fill px-4 py-2 text-xs font-bold text-white shadow-sm transition-[filter] hover:brightness-110 lg:inline-flex 2xl:px-5"
             >
-              <HandHeart className="h-4 w-4 shrink-0" strokeWidth={2} aria-hidden />
-              DONATE
+              Donate
             </Link>
             </div>
           </div>
 
-          {/* Mobile menu button */}
           <div className="flex flex-shrink-0 items-center gap-2 lg:hidden">
-            <ThemeToggle className="border-cvc-border text-cvc-fg hover:bg-cvc-hover hover:text-cvc-fg dark:border-white/40 dark:text-white dark:hover:bg-white/10 dark:hover:text-white" />
+            <ThemeToggle className="border-cvc-border text-cvc-fg hover:bg-cvc-hover hover:text-cvc-fg dark:border-white/40 dark:text-white dark:hover:bg-white/10 dark:hover:text-white sm:hidden" />
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
@@ -264,9 +227,8 @@ export default function Navigation() {
         </div>
       </div>
       </nav>
-      <NavQuickTabs />
 
-      {/* Mobile drawer — below full header (incl. quick tabs) so sublinks aren't hidden */}
+      {/* Mobile drawer — below header so sublinks aren't hidden */}
       {isOpen && (
         <div className="absolute left-0 right-0 top-full z-[60] max-h-[calc(100dvh-var(--cvc-nav-height))] overflow-y-auto overscroll-contain border-t border-cvc-border bg-cvc-page shadow-lg isolate lg:hidden">
           <div className="mx-auto max-w-7xl px-4 pb-4 pt-3 sm:px-6 lg:px-8">
@@ -322,10 +284,9 @@ export default function Navigation() {
               <Link
                 href="/donate"
                 onClick={() => setIsOpen(false)}
-                className="flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-cvc-cta-fill px-4 text-sm font-bold uppercase tracking-[0.12em] text-white shadow-md transition-[filter] hover:brightness-110"
+                className="flex min-h-12 w-full items-center justify-center rounded-full bg-cvc-cta-fill px-4 text-sm font-bold text-white shadow-sm transition-[filter] hover:brightness-110"
               >
-                <HandHeart className="h-5 w-5 shrink-0" strokeWidth={2} aria-hidden />
-                DONATE
+                Donate
               </Link>
             </div>
             <div className="mt-3 grid min-w-0 grid-cols-2 gap-2 border-t border-cvc-border pt-3 [&>a]:min-w-0">

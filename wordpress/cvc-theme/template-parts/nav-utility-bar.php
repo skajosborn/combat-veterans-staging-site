@@ -30,5 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</a>
 			<?php endforeach; ?>
 		</div>
+		<span class="cvc-nav-utility__divider" aria-hidden="true"></span>
+		<?php echo cvc_theme_toggle_button( 'cvc-theme-toggle--utility', 'cvc-theme-toggle' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 	</div>
 </div>

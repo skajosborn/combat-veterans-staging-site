@@ -30,19 +30,14 @@ if ( has_custom_logo() ) {
 	<div class="cvc-nav">
 	<div class="cvc-nav__inner">
 		<a class="cvc-nav__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-			<img src="<?php echo esc_url( $logo_url ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="40" height="40" />
-			<div class="cvc-nav__brand-text">
-				<strong><?php esc_html_e( 'Combat Veterans', 'cvc-theme' ); ?></strong>
-				<span><?php esc_html_e( 'to Careers', 'cvc-theme' ); ?></span>
-			</div>
+			<img src="<?php echo esc_url( $logo_url ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="60" height="60" />
+			<span class="cvc-nav__brand-text"><?php esc_html_e( 'Combat Veterans to Careers', 'cvc-theme' ); ?></span>
 		</a>
 
 		<div class="cvc-nav__desktop">
 			<?php cvc_render_primary_nav_menu(); ?>
-			<?php echo cvc_theme_toggle_button( '', 'cvc-theme-toggle' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			<a class="cvc-nav__donate" href="<?php echo esc_url( cvc_page_url( 'donate' ) ); ?>">
-				<?php echo cvc_donate_nav_icon(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				<?php esc_html_e( 'DONATE', 'cvc-theme' ); ?>
+				<?php esc_html_e( 'Donate', 'cvc-theme' ); ?>
 			</a>
 		</div>
 
@@ -57,14 +52,12 @@ if ( has_custom_logo() ) {
 	</div>
 
 	</div>
-	<?php get_template_part( 'template-parts/nav', 'quick-tabs' ); ?>
 
 	<div class="cvc-nav__mobile-panel" id="cvc-nav-mobile">
 		<?php cvc_render_primary_nav_menu(); ?>
 		<div class="cvc-nav__mobile-donate-wrap">
 			<a class="cvc-nav__donate cvc-nav__donate--mobile" href="<?php echo esc_url( cvc_page_url( 'donate' ) ); ?>">
-				<?php echo cvc_donate_nav_icon(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				<?php esc_html_e( 'DONATE', 'cvc-theme' ); ?>
+				<?php esc_html_e( 'Donate', 'cvc-theme' ); ?>
 			</a>
 		</div>
 	</div>

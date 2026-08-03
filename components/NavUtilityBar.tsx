@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Phone } from 'lucide-react'
 import { CVC_PHONE_DISPLAY, CVC_PHONE_HREF, socialLinks } from '@/lib/siteContact'
+import ThemeToggle from './ThemeToggle'
 
 function SocialIcon({ label }: { label: string }) {
   const className = 'h-3.5 w-3.5 fill-current sm:h-4 sm:w-4'
@@ -43,8 +44,8 @@ function SocialIcon({ label }: { label: string }) {
 
 export default function NavUtilityBar() {
   return (
-    <div className="border-b border-white/10 bg-[#0a1628] text-white dark:border-white/10 dark:bg-[#070d18]">
-      <div className="mx-auto flex h-8 max-w-7xl items-center justify-end gap-3 px-4 sm:h-9 sm:gap-4 sm:px-6 lg:px-8">
+    <div className="border-b border-white/10 bg-[#0a1628] text-white">
+      <div className="mx-auto flex h-8 max-w-[96rem] items-center justify-end gap-3 px-4 sm:h-9 sm:gap-3.5 sm:px-6 lg:px-8">
         <a
           href={CVC_PHONE_HREF}
           className="inline-flex items-center gap-1.5 rounded bg-[#1e4a7a] px-2 py-0.5 text-[11px] font-semibold tracking-wide text-white transition-colors hover:bg-[#2563a8] sm:gap-2 sm:px-2.5 sm:text-xs"
@@ -66,6 +67,8 @@ export default function NavUtilityBar() {
             </Link>
           ))}
         </div>
+        <div className="hidden h-4 w-px bg-white/30 sm:block" aria-hidden />
+        <ThemeToggle className="hidden border-white/25 text-white hover:bg-white/10 hover:text-white sm:inline-flex lg:inline-flex" />
       </div>
     </div>
   )
