@@ -6,6 +6,7 @@ import {
   HeroMobileCta,
   HeroStarSeparator,
 } from '@/components/HeroMobileExtras'
+import HeroFeatureCards from '@/components/HeroFeatureCards'
 import HeroStatsBar from '@/components/HeroStatsBar'
 import HeroTypewriterHeadlines from '@/components/HeroTypewriterHeadlines'
 import UpcomingEvents from '@/components/UpcomingEvents'
@@ -15,7 +16,7 @@ const HERO_BG = '/herobg2.png'
 export default function Hero() {
   return (
     <section id="home" className="relative flex flex-col overflow-x-hidden">
-      <div className="relative flex min-h-[min(100svh,56rem)] flex-col">
+      <div className="relative flex min-h-[min(100svh,58rem)] flex-col">
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-[#0a111a]">
           <div className="absolute inset-0">
             <Image
@@ -28,12 +29,11 @@ export default function Hero() {
               className="object-cover object-[78%_28%]"
             />
           </div>
-          {/* Left + bottom wash for copy/stats readability; keep right subject open */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent lg:via-black/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/35" />
         </div>
 
-        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-4 pb-10 pt-[calc(var(--cvc-nav-height)+2rem)] sm:px-6 sm:pb-12 lg:px-10 lg:pb-14 lg:pt-[calc(var(--cvc-nav-height)+2.75rem)]">
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-4 pb-6 pt-[calc(var(--cvc-nav-height)+1.75rem)] sm:px-6 sm:pb-8 lg:px-10 lg:pb-8 lg:pt-[calc(var(--cvc-nav-height)+2.25rem)]">
           <div className="flex w-full max-w-xl flex-col items-start gap-4 text-left sm:max-w-2xl sm:gap-5">
             <HeroTypewriterHeadlines />
             <HeroStarSeparator className="my-0.5 max-w-md sm:my-1" />
@@ -49,10 +49,11 @@ export default function Hero() {
           </div>
         </div>
 
-        <HeroStatsBar className="mt-auto" />
+        <HeroFeatureCards className="mt-auto" />
       </div>
 
       <UpcomingEvents embedded className="bg-[#f2f1e6] dark:bg-[#1a2118]" />
+      <HeroStatsBar />
     </section>
   )
 }

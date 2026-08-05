@@ -10,7 +10,7 @@ const STATS = [
 export default function HeroStatsBar({ className = '' }: { className?: string }) {
   return (
     <div
-      className={`relative z-10 border-t border-white/15 bg-black/45 backdrop-blur-md ${className}`.trim()}
+      className={`relative z-10 border-t border-white/12 bg-[#0a111a] ${className}`.trim()}
       aria-label="Combat Veterans to Careers impact statistics"
     >
       <ul className="mx-auto grid w-full max-w-7xl grid-cols-2 gap-y-4 px-4 py-4 sm:gap-y-5 sm:px-6 sm:py-5 lg:grid-cols-4 lg:gap-0 lg:px-10 lg:py-4">

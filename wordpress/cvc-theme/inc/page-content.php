@@ -169,28 +169,41 @@ function cvc_get_upcoming_event_cards() {
 		array(
 			'title'      => __( '2027 Gun Raffle', 'cvc-theme' ),
 			'date_label' => __( 'Every Friday in 2027', 'cvc-theme' ),
+			'date_parts' => array(
+				'month' => 'FRI',
+				'day'   => '—',
+				'year'  => '2027',
+			),
+			'location'   => __( 'Weekly drawing all year', 'cvc-theme' ),
 			'image'      => 'events/gun-raffle-2027.jpg',
 			'url'        => 'https://combatveteranstocareers.org/gun_raffle_2027/',
 			'external'   => true,
-			'accent'     => 'olive',
 		),
 		array(
 			'title'      => __( '2027 Battle Buddy Clay Shoot', 'cvc-theme' ),
 			'date_label' => __( 'January 9, 2027', 'cvc-theme' ),
+			'date_parts' => array(
+				'month' => 'JAN',
+				'day'   => '09',
+				'year'  => '2027',
+			),
 			'location'   => __( 'Blackjack Sporting Clays, Sumterville', 'cvc-theme' ),
 			'image'      => 'events/clay-shoot-2027.jpg',
 			'url'        => 'https://combatveteranstocareers.org/battle-buddy-clay-shoot',
 			'external'   => true,
-			'accent'     => 'navy',
 		),
 		array(
 			'title'      => __( '2027 Fashion Show', 'cvc-theme' ),
 			'date_label' => __( 'January 28, 2027', 'cvc-theme' ),
-			'location'   => __( '6:00 – 9:00 pm • Restoring Hope Clothing Boutique, Wildwood', 'cvc-theme' ),
+			'date_parts' => array(
+				'month' => 'JAN',
+				'day'   => '28',
+				'year'  => '2027',
+			),
+			'location'   => __( 'Restoring Hope Clothing Boutique, Wildwood', 'cvc-theme' ),
 			'image'      => 'events/fashion-show-2027.jpg',
 			'url'        => 'https://combatveteranstocareers.org/fashionshow',
 			'external'   => true,
-			'accent'     => 'burgundy',
 		),
 	);
 }
