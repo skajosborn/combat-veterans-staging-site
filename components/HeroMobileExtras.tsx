@@ -67,7 +67,7 @@ export function HeroLeadParagraph({ compact = false }: { compact?: boolean }) {
           : 'max-w-lg text-left text-base font-medium leading-relaxed text-white/95 [text-shadow:0_1px_3px_rgb(0_0_0_/_0.45)] sm:text-lg sm:leading-relaxed'
       }
     >
-      Helping combat veterans transition from military service to meaningful careers.
+      Our mission is to provide 360° of support and opportunities, and to enhance the quality of life for our post-911 combat veterans and their families.
     </p>
   )
 }
