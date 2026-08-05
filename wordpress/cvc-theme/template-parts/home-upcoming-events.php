@@ -22,8 +22,11 @@ $events = cvc_get_upcoming_event_cards();
 
 		<div class="cvc-hero-events__grid">
 			<?php foreach ( $events as $event ) : ?>
+				<?php
+				$accent = isset( $event['accent'] ) ? $event['accent'] : 'olive';
+				?>
 				<a
-					class="cvc-hero-event-card"
+					class="cvc-hero-event-card cvc-hero-event-card--<?php echo esc_attr( $accent ); ?>"
 					href="<?php echo esc_url( $event['url'] ); ?>"
 					<?php echo ! empty( $event['external'] ) ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>
 				>
@@ -33,14 +36,17 @@ $events = cvc_get_upcoming_event_cards();
 							alt="<?php echo esc_attr( $event['title'] ); ?>"
 							loading="lazy"
 						/>
+						<div class="cvc-hero-event-card__overlay">
+							<p class="cvc-hero-event-card__date"><?php echo esc_html( $event['date_label'] ); ?></p>
+							<h3 class="cvc-hero-event-card__title"><?php echo esc_html( $event['title'] ); ?></h3>
+						</div>
 					</div>
-					<div class="cvc-hero-event-card__body">
-						<p class="cvc-hero-event-card__date"><?php echo esc_html( $event['date_label'] ); ?></p>
-						<h3 class="cvc-hero-event-card__title"><?php echo esc_html( $event['title'] ); ?></h3>
-						<?php if ( ! empty( $event['location'] ) ) : ?>
-							<p class="cvc-hero-event-card__location"><?php echo esc_html( $event['location'] ); ?></p>
-						<?php endif; ?>
-					</div>
+					<span class="cvc-hero-event-card__cta">
+						<span><?php esc_html_e( 'Learn More', 'cvc-theme' ); ?></span>
+						<span class="cvc-hero-event-card__cta-icon" aria-hidden="true">
+							<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+						</span>
+					</span>
 				</a>
 			<?php endforeach; ?>
 		</div>

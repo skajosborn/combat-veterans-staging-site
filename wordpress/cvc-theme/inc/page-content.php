@@ -172,6 +172,7 @@ function cvc_get_upcoming_event_cards() {
 			'image'      => 'events/gun-raffle-2027.jpg',
 			'url'        => 'https://combatveteranstocareers.org/gun_raffle_2027/',
 			'external'   => true,
+			'accent'     => 'olive',
 		),
 		array(
 			'title'      => __( '2027 Battle Buddy Clay Shoot', 'cvc-theme' ),
@@ -180,6 +181,7 @@ function cvc_get_upcoming_event_cards() {
 			'image'      => 'events/clay-shoot-2027.jpg',
 			'url'        => 'https://combatveteranstocareers.org/battle-buddy-clay-shoot',
 			'external'   => true,
+			'accent'     => 'navy',
 		),
 		array(
 			'title'      => __( '2027 Fashion Show', 'cvc-theme' ),
@@ -188,6 +190,7 @@ function cvc_get_upcoming_event_cards() {
 			'image'      => 'events/fashion-show-2027.jpg',
 			'url'        => 'https://combatveteranstocareers.org/fashionshow',
 			'external'   => true,
+			'accent'     => 'burgundy',
 		),
 	);
 }

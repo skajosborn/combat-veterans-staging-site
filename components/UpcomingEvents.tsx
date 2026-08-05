@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { upcomingEventCards } from '@/lib/upcomingEvents'
+import { ArrowRight } from 'lucide-react'
+import { eventAccentClasses, upcomingEventCards } from '@/lib/upcomingEvents'
 
 type UpcomingEventsProps = {
   /** When true, omit outer section chrome for embedding inside the hero. */
@@ -13,35 +14,45 @@ export default function UpcomingEvents({ embedded = false, className = '' }: Upc
     <>
       <div className={`text-center ${embedded ? 'mb-4 sm:mb-5' : 'mb-10 sm:mb-12'}`}>
         <h2
-          className={`text-3xl font-black tracking-tight sm:text-4xl ${
-            embedded
-              ? 'text-[#d4e3b5] [text-shadow:0_1px_3px_rgb(0_0_0_/_0.55)]'
-              : 'text-cvc-section-title'
+          className={`font-black tracking-tight ${
+            embedded ? 'text-xl text-[#3d442a] sm:text-2xl' : 'text-3xl text-cvc-section-title sm:text-4xl'
           }`}
         >
           Upcoming Events
         </h2>
         <p
-          className={`mx-auto mt-2 max-w-2xl text-sm sm:text-base ${
+          className={`mx-auto mt-1.5 max-w-2xl ${
             embedded
-              ? 'font-medium text-white/95 [text-shadow:0_1px_3px_rgb(0_0_0_/_0.5)]'
-              : 'text-cvc-fg-muted'
+              ? 'text-xs font-medium text-[#3d442a]/85 sm:text-sm'
+              : 'mt-2 text-sm text-cvc-fg-muted sm:text-base'
           }`}
         >
           Every event funds veteran care — come out and make a difference.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+      <div
+        className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ${
+          embedded ? 'gap-4 lg:gap-5' : 'gap-5 lg:gap-6'
+        }`}
+      >
         {upcomingEventCards.map((event) => (
           <a
             key={event.title}
             href={event.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col overflow-hidden rounded-xl border border-cvc-border/80 bg-white shadow-[0_8px_24px_-12px_rgba(15,23,42,0.28)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_16px_36px_-14px_rgba(15,23,42,0.35)] dark:border-cvc-border dark:bg-cvc-card dark:shadow-[0_8px_24px_-12px_rgba(0,0,0,0.45)]"
+            className={
+              embedded
+                ? 'group flex flex-col overflow-hidden rounded-sm border border-[#1a2b3c]/12 bg-[#0a111a] shadow-[0_8px_24px_-12px_rgba(10,17,26,0.45)] transition-transform hover:-translate-y-0.5'
+                : 'group flex flex-col overflow-hidden rounded-lg border border-cvc-border/80 bg-white shadow-[0_6px_18px_-10px_rgba(15,23,42,0.28)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-12px_rgba(15,23,42,0.35)] dark:border-cvc-border dark:bg-cvc-card'
+            }
           >
-            <div className="relative aspect-[16/10] w-full overflow-hidden bg-cvc-page-elevated">
+            <div
+              className={`relative w-full overflow-hidden ${
+                embedded ? 'aspect-[16/10] bg-[#1a2118]' : 'aspect-[16/10] bg-cvc-page-elevated'
+              }`}
+            >
               <Image
                 src={event.imageSrc}
                 alt={event.title}
@@ -49,27 +60,50 @@ export default function UpcomingEvents({ embedded = false, className = '' }: Upc
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
-            </div>
-            <div className="flex flex-1 flex-col gap-1.5 px-4 py-4 sm:px-5 sm:py-5">
-              <p className="text-[11px] font-bold uppercase tracking-[0.08em] text-cvc-fg-subtle">
-                {event.dateLabel}
-              </p>
-              <h3 className="text-lg font-bold leading-snug text-cvc-fg sm:text-xl">{event.title}</h3>
-              {event.location ? (
-                <p className="mt-0.5 text-sm leading-snug text-cvc-fg-muted">{event.location}</p>
+              {embedded ? (
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent px-3 pb-3 pt-10">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#c4a574]">
+                    {event.dateLabel}
+                  </p>
+                  <h3 className="mt-0.5 text-sm font-bold leading-snug text-white sm:text-base">
+                    {event.title}
+                  </h3>
+                </div>
               ) : null}
             </div>
+
+            {embedded ? (
+              <div
+                className={`flex items-center justify-between gap-2 px-3 py-2.5 text-white ${eventAccentClasses[event.accent]}`}
+              >
+                <span className="text-xs font-bold uppercase tracking-wide">Learn More</span>
+                <span
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/70"
+                  aria-hidden
+                >
+                  <ArrowRight className="h-4 w-4 stroke-[2.5]" />
+                </span>
+              </div>
+            ) : (
+              <div className="flex flex-1 flex-col gap-1.5 px-4 py-4 sm:px-5 sm:py-5">
+                <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-cvc-fg-subtle sm:text-[11px]">
+                  {event.dateLabel}
+                </p>
+                <h3 className="text-lg font-bold leading-snug text-cvc-fg sm:text-xl">{event.title}</h3>
+                {event.location ? (
+                  <p className="mt-0.5 text-sm leading-snug text-cvc-fg-muted">{event.location}</p>
+                ) : null}
+              </div>
+            )}
           </a>
         ))}
       </div>
 
-      <div className={`mt-5 text-center sm:mt-6 ${embedded ? '' : 'sm:mt-8'}`}>
+      <div className={`text-center ${embedded ? 'mt-4 sm:mt-5' : 'mt-5 sm:mt-6 sm:mt-8'}`}>
         <Link
           href="/events#upcoming"
           className={`text-sm font-semibold underline-offset-4 transition-colors hover:underline ${
-            embedded
-              ? 'text-white [text-shadow:0_1px_3px_rgb(0_0_0_/_0.5)] hover:text-[#d4e3b5]'
-              : 'text-cvc-section-title'
+            embedded ? 'text-[#3d442a] hover:text-[#1a2b3c]' : 'text-cvc-section-title'
           }`}
         >
           View all events
@@ -80,8 +114,8 @@ export default function UpcomingEvents({ embedded = false, className = '' }: Upc
 
   if (embedded) {
     return (
-      <div id="upcoming-events" className={`relative w-full bg-transparent ${className}`.trim()}>
-        <div className="w-full">{body}</div>
+      <div id="upcoming-events" className={`relative w-full py-10 sm:py-12 ${className}`.trim()}>
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-10">{body}</div>
       </div>
     )
   }

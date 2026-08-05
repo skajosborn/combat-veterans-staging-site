@@ -1678,12 +1678,6 @@ html.dark .cvc-hero--home .cvc-hero__shade {
   letter-spacing: -0.02em;
   text-transform: uppercase;
   color: var(--cvc-hero-fg);
-  opacity: 0;
-  transition: opacity 0.5s ease-out;
-}
-
-.cvc-hero-copy__line.is-visible {
-  opacity: 1;
 }
 
 .cvc-hero-copy__line--accent {

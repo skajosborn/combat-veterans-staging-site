@@ -4,6 +4,14 @@ export type UpcomingEventCard = {
   location?: string
   imageSrc: string
   href: string
+  /** Footer bar color for homepage event cards */
+  accent: 'olive' | 'navy' | 'burgundy'
+}
+
+export const eventAccentClasses: Record<UpcomingEventCard['accent'], string> = {
+  olive: 'bg-[#5c6b3a]',
+  navy: 'bg-[#0a111a]',
+  burgundy: 'bg-[#7a1212]',
 }
 
 /** Featured homepage / hero upcoming events (matches live CVC upcoming-events). */
@@ -13,6 +21,7 @@ export const upcomingEventCards: UpcomingEventCard[] = [
     dateLabel: 'Every Friday in 2027',
     imageSrc: '/events/gun-raffle-2027.jpg',
     href: 'https://combatveteranstocareers.org/gun_raffle_2027/',
+    accent: 'olive',
   },
   {
     title: '2027 Battle Buddy Clay Shoot',
@@ -20,6 +29,7 @@ export const upcomingEventCards: UpcomingEventCard[] = [
     location: 'Blackjack Sporting Clays, Sumterville',
     imageSrc: '/events/clay-shoot-2027.jpg',
     href: 'https://combatveteranstocareers.org/battle-buddy-clay-shoot',
+    accent: 'navy',
   },
   {
     title: '2027 Fashion Show',
@@ -27,5 +37,6 @@ export const upcomingEventCards: UpcomingEventCard[] = [
     location: '6:00 – 9:00 pm • Restoring Hope Clothing Boutique, Wildwood',
     imageSrc: '/events/fashion-show-2027.jpg',
     href: 'https://combatveteranstocareers.org/fashionshow',
+    accent: 'burgundy',
   },
 ]
