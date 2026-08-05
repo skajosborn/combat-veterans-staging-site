@@ -2038,10 +2038,35 @@ html.nav-menu-open .cvc-hero-copy__headlines {
   }
 }
 
+.cvc-hero-feature-item {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cvc-hero-feature-item__title {
+  margin: 0;
+  padding-inline: 0.125rem;
+  font-size: 0.875rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 1px 8px rgb(0 0 0 / 0.65);
+}
+
+@media (min-width: 640px) {
+  .cvc-hero-feature-item__title {
+    font-size: 0.9375rem;
+  }
+}
+
 .cvc-hero-feature-card {
   position: relative;
   display: flex;
   min-height: 11.5rem;
+  flex: 1 1 auto;
   flex-direction: column;
   overflow: hidden;
   border: 1px solid rgb(255 255 255 / 0.35);
@@ -2087,16 +2112,16 @@ html.nav-menu-open .cvc-hero-copy__headlines {
 }
 
 .cvc-hero-feature-card--green {
-  border-color: rgb(168 184 146 / 0.45);
-  background: rgb(92 107 58 / 0.35);
+  border-color: rgb(168 184 146 / 0.55);
+  background: rgb(92 107 58 / 0.6);
 }
 
 .cvc-hero-feature-card--green:hover {
-  border-color: rgb(200 212 160 / 0.7);
+  border-color: rgb(200 212 160 / 0.8);
 }
 
 .cvc-hero-feature-card--green .cvc-hero-feature-card__shade {
-  background: linear-gradient(to top, rgb(26 36 16 / 0.9), rgb(61 74 44 / 0.55), rgb(92 107 58 / 0.25));
+  background: linear-gradient(to top, rgb(26 36 16 / 0.95), rgb(61 74 44 / 0.75), rgb(92 107 58 / 0.45));
 }
 
 .cvc-hero-feature-card--green .cvc-hero-feature-card__icon {
@@ -2137,28 +2162,28 @@ html.nav-menu-open .cvc-hero-copy__headlines {
 }
 
 .cvc-hero-feature-card--red {
-  border-color: rgb(192 112 112 / 0.45);
-  background: rgb(122 18 18 / 0.35);
+  border-color: rgb(255 255 255 / 0.3);
+  background: rgb(0 0 0 / 0.25);
 }
 
 .cvc-hero-feature-card--red:hover {
-  border-color: rgb(232 160 160 / 0.7);
+  border-color: rgb(255 255 255 / 0.55);
 }
 
 .cvc-hero-feature-card--red .cvc-hero-feature-card__shade {
-  background: linear-gradient(to top, rgb(42 8 8 / 0.9), rgb(90 16 16 / 0.55), rgb(122 18 18 / 0.3));
+  background: linear-gradient(to top, rgb(0 0 0 / 0.85), rgb(0 0 0 / 0.45), rgb(0 0 0 / 0.15));
 }
 
 .cvc-hero-feature-card--red .cvc-hero-feature-card__icon {
-  background: #7a1212;
+  background: #1a1a1a;
 }
 
 .cvc-hero-feature-card--red .cvc-hero-feature-card__cta {
-  color: #e8a0a0;
+  color: rgb(255 255 255 / 0.85);
 }
 
 .cvc-hero-feature-card--red:hover .cvc-hero-feature-card__cta {
-  color: #f0c0c0;
+  color: #ffffff;
 }
 
 .cvc-hero-feature-card__icon {
@@ -2245,20 +2270,11 @@ html.nav-menu-open .cvc-hero-copy__headlines {
   opacity: 0.6;
 }
 
-.cvc-hero-feature-card--carousel .cvc-hero-feature-card__eyebrow {
-  display: block;
-  font-size: 0.625rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgb(255 255 255 / 0.75);
-}
-
 .cvc-hero-feature-card--carousel .cvc-hero-feature-card__copy {
   position: relative;
   display: block;
   min-height: 3.25rem;
-  margin-top: 0.35rem;
+  margin-top: auto;
   flex: 1 1 auto;
 }
 

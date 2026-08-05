@@ -17,7 +17,7 @@ $feature_cards = array(
 		'description' => __( 'Begin your journey. Complete the application and let us help you take the next step forward.', 'cvc-theme' ),
 		'cta'         => __( 'Apply Today', 'cvc-theme' ),
 		'url'         => cvc_page_url( 'veteran-application' ),
-		'image'       => cvc_img_exists( 'Derek 1.png' ) ? 'Derek 1.png' : 'CVClogo.png',
+		'image'       => cvc_img_exists( 'vetapplication.png' ) ? 'vetapplication.png' : 'Derek 1.png',
 		'icon'        => 'icons/application.png',
 		'tint'        => 'green',
 		'external'    => false,
@@ -27,7 +27,7 @@ $feature_cards = array(
 		'description' => __( 'Adventure. Connection. Healing. Explore outdoor experiences and care built for combat veterans.', 'cvc-theme' ),
 		'cta'         => __( 'Learn More', 'cvc-theme' ),
 		'url'         => cvc_page_url( 'operation-field-trip' ),
-		'image'       => cvc_img_exists( 'WN-1.jpg' ) ? 'WN-1.jpg' : 'OFT-Heading.png',
+		'image'       => cvc_img_exists( 'OFT-Heading.png' ) ? 'OFT-Heading.png' : 'WN-1.jpg',
 		'icon'        => 'icons/helicopter.png',
 		'tint'        => 'blue',
 		'external'    => false,
@@ -91,80 +91,84 @@ $event_slides = cvc_get_upcoming_event_cards();
 					<?php
 					$tint = isset( $card['tint'] ) ? $card['tint'] : 'green';
 					?>
+					<div class="cvc-hero-feature-item">
+						<h3 class="cvc-hero-feature-item__title"><?php echo esc_html( $card['title'] ); ?></h3>
+						<a
+							class="cvc-hero-feature-card cvc-hero-feature-card--<?php echo esc_attr( $tint ); ?>"
+							href="<?php echo esc_url( $card['url'] ); ?>"
+							<?php echo ! empty( $card['external'] ) ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>
+						>
+							<span
+								class="cvc-hero-feature-card__bg"
+								style="background-image:url('<?php echo esc_url( cvc_img( $card['image'] ) ); ?>')"
+								aria-hidden="true"
+							></span>
+							<span class="cvc-hero-feature-card__shade" aria-hidden="true"></span>
+							<span class="cvc-hero-feature-card__icon" aria-hidden="true">
+								<img src="<?php echo esc_url( cvc_img( $card['icon'] ) ); ?>" alt="" width="24" height="24" />
+							</span>
+							<span class="cvc-hero-feature-card__body">
+								<span class="cvc-hero-feature-card__desc"><?php echo esc_html( $card['description'] ); ?></span>
+								<span class="cvc-hero-feature-card__cta">
+									<?php echo esc_html( $card['cta'] ); ?>
+									<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+								</span>
+							</span>
+						</a>
+					</div>
+				<?php endforeach; ?>
+
+				<div class="cvc-hero-feature-item">
+					<h3 class="cvc-hero-feature-item__title"><?php esc_html_e( 'Upcoming Events', 'cvc-theme' ); ?></h3>
 					<a
-						class="cvc-hero-feature-card cvc-hero-feature-card--<?php echo esc_attr( $tint ); ?>"
-						href="<?php echo esc_url( $card['url'] ); ?>"
-						<?php echo ! empty( $card['external'] ) ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>
+						class="cvc-hero-feature-card cvc-hero-feature-card--red cvc-hero-feature-card--carousel"
+						href="<?php echo esc_url( cvc_page_url( 'events' ) ); ?>#upcoming"
+						data-cvc-events-carousel
+						aria-label="<?php esc_attr_e( 'Upcoming events', 'cvc-theme' ); ?>"
 					>
-						<span
-							class="cvc-hero-feature-card__bg"
-							style="background-image:url('<?php echo esc_url( cvc_img( $card['image'] ) ); ?>')"
-							aria-hidden="true"
-						></span>
+						<span class="cvc-hero-feature-card__slides" aria-hidden="true">
+							<?php foreach ( $event_slides as $i => $slide ) : ?>
+								<span
+									class="cvc-hero-feature-card__slide<?php echo 0 === (int) $i ? ' is-active' : ''; ?>"
+									style="background-image:url('<?php echo esc_url( cvc_img( $slide['image'] ) ); ?>')"
+									data-slide-index="<?php echo esc_attr( (string) $i ); ?>"
+								></span>
+							<?php endforeach; ?>
+						</span>
 						<span class="cvc-hero-feature-card__shade" aria-hidden="true"></span>
 						<span class="cvc-hero-feature-card__icon" aria-hidden="true">
-							<img src="<?php echo esc_url( cvc_img( $card['icon'] ) ); ?>" alt="" width="24" height="24" />
+							<img src="<?php echo esc_url( cvc_img( 'icons/calendar.png' ) ); ?>" alt="" width="24" height="24" />
 						</span>
 						<span class="cvc-hero-feature-card__body">
-							<span class="cvc-hero-feature-card__title"><?php echo esc_html( $card['title'] ); ?></span>
-							<span class="cvc-hero-feature-card__desc"><?php echo esc_html( $card['description'] ); ?></span>
-							<span class="cvc-hero-feature-card__cta">
-								<?php echo esc_html( $card['cta'] ); ?>
-								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+							<span class="cvc-hero-feature-card__copy" aria-live="polite">
+								<?php foreach ( $event_slides as $i => $slide ) : ?>
+									<?php
+									$title_display = preg_replace( '/^\d{4}\s+/', '', $slide['title'] );
+									$desc          = $slide['date_label'];
+									if ( ! empty( $slide['location'] ) ) {
+										$desc .= ' · ' . $slide['location'];
+									}
+									?>
+									<span class="cvc-hero-feature-card__copy-slide<?php echo 0 === (int) $i ? ' is-active' : ''; ?>" data-slide-index="<?php echo esc_attr( (string) $i ); ?>">
+										<span class="cvc-hero-feature-card__title"><?php echo esc_html( $title_display ); ?></span>
+										<span class="cvc-hero-feature-card__desc"><?php echo esc_html( $desc ); ?></span>
+									</span>
+								<?php endforeach; ?>
+							</span>
+							<span class="cvc-hero-feature-card__footer">
+								<span class="cvc-hero-feature-card__cta">
+									<?php esc_html_e( 'View Calendar', 'cvc-theme' ); ?>
+									<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+								</span>
+								<span class="cvc-hero-feature-card__dots" aria-hidden="true">
+									<?php foreach ( $event_slides as $i => $slide ) : ?>
+										<span class="cvc-hero-feature-card__dot<?php echo 0 === (int) $i ? ' is-active' : ''; ?>" data-slide-index="<?php echo esc_attr( (string) $i ); ?>"></span>
+									<?php endforeach; ?>
+								</span>
 							</span>
 						</span>
 					</a>
-				<?php endforeach; ?>
-
-				<a
-					class="cvc-hero-feature-card cvc-hero-feature-card--red cvc-hero-feature-card--carousel"
-					href="<?php echo esc_url( cvc_page_url( 'events' ) ); ?>#upcoming"
-					data-cvc-events-carousel
-					aria-label="<?php esc_attr_e( 'Upcoming events', 'cvc-theme' ); ?>"
-				>
-					<span class="cvc-hero-feature-card__slides" aria-hidden="true">
-						<?php foreach ( $event_slides as $i => $slide ) : ?>
-							<span
-								class="cvc-hero-feature-card__slide<?php echo 0 === (int) $i ? ' is-active' : ''; ?>"
-								style="background-image:url('<?php echo esc_url( cvc_img( $slide['image'] ) ); ?>')"
-								data-slide-index="<?php echo esc_attr( (string) $i ); ?>"
-							></span>
-						<?php endforeach; ?>
-					</span>
-					<span class="cvc-hero-feature-card__shade" aria-hidden="true"></span>
-					<span class="cvc-hero-feature-card__icon" aria-hidden="true">
-						<img src="<?php echo esc_url( cvc_img( 'icons/calendar.png' ) ); ?>" alt="" width="24" height="24" />
-					</span>
-					<span class="cvc-hero-feature-card__body">
-						<span class="cvc-hero-feature-card__eyebrow"><?php esc_html_e( 'Upcoming Events', 'cvc-theme' ); ?></span>
-						<span class="cvc-hero-feature-card__copy" aria-live="polite">
-							<?php foreach ( $event_slides as $i => $slide ) : ?>
-								<?php
-								$title_display = preg_replace( '/^\d{4}\s+/', '', $slide['title'] );
-								$desc          = $slide['date_label'];
-								if ( ! empty( $slide['location'] ) ) {
-									$desc .= ' · ' . $slide['location'];
-								}
-								?>
-								<span class="cvc-hero-feature-card__copy-slide<?php echo 0 === (int) $i ? ' is-active' : ''; ?>" data-slide-index="<?php echo esc_attr( (string) $i ); ?>">
-									<span class="cvc-hero-feature-card__title"><?php echo esc_html( $title_display ); ?></span>
-									<span class="cvc-hero-feature-card__desc"><?php echo esc_html( $desc ); ?></span>
-								</span>
-							<?php endforeach; ?>
-						</span>
-						<span class="cvc-hero-feature-card__footer">
-							<span class="cvc-hero-feature-card__cta">
-								<?php esc_html_e( 'View Calendar', 'cvc-theme' ); ?>
-								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-							</span>
-							<span class="cvc-hero-feature-card__dots" aria-hidden="true">
-								<?php foreach ( $event_slides as $i => $slide ) : ?>
-									<span class="cvc-hero-feature-card__dot<?php echo 0 === (int) $i ? ' is-active' : ''; ?>" data-slide-index="<?php echo esc_attr( (string) $i ); ?>"></span>
-								<?php endforeach; ?>
-							</span>
-						</span>
-					</span>
-				</a>
+				</div>
 			</div>
 		</div>
 	</div>
