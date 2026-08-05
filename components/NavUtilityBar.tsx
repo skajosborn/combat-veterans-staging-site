@@ -68,7 +68,7 @@ export default function NavUtilityBar() {
           ))}
         </div>
         <div className="hidden h-4 w-px bg-white/30 sm:block" aria-hidden />
-        <ThemeToggle className="hidden border-white/25 text-white hover:bg-white/10 hover:text-white sm:inline-flex lg:inline-flex" />
+        <ThemeToggle className="max-sm:hidden border-white/25 text-white hover:bg-white/10 hover:text-white" />
       </div>
     </div>
   )

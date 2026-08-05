@@ -1045,6 +1045,7 @@ html.dark .cvc-nav__desktop .menu a:hover {
   width: 2rem;
   height: 2rem;
   padding: 0;
+  line-height: 0;
   border: 1px solid var(--cvc-border);
   border-radius: 9999px;
   background: transparent;
@@ -1061,6 +1062,7 @@ html.dark .cvc-nav__desktop .menu a:hover {
 
 .cvc-theme-toggle__icon {
   display: block;
+  flex-shrink: 0;
 }
 
 html.dark .cvc-theme-toggle__icon--sun {
