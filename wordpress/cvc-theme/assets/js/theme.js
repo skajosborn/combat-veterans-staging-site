@@ -336,4 +336,36 @@
     if (next) next.addEventListener('click', function () { show(index + 1); });
     window.setInterval(function () { show(index + 1); }, 5000);
   });
+
+  document.querySelectorAll('[data-cvc-events-carousel]').forEach(function (card) {
+    var slides = card.querySelectorAll('.cvc-hero-feature-card__slide');
+    var copies = card.querySelectorAll('.cvc-hero-feature-card__copy-slide');
+    var dots = card.querySelectorAll('.cvc-hero-feature-card__dot');
+    if (slides.length < 2) return;
+
+    var index = 0;
+    var paused = false;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function show(i) {
+      slides[index].classList.remove('is-active');
+      if (copies[index]) copies[index].classList.remove('is-active');
+      if (dots[index]) dots[index].classList.remove('is-active');
+      index = (i + slides.length) % slides.length;
+      slides[index].classList.add('is-active');
+      if (copies[index]) copies[index].classList.add('is-active');
+      if (dots[index]) dots[index].classList.add('is-active');
+    }
+
+    card.addEventListener('mouseenter', function () { paused = true; });
+    card.addEventListener('mouseleave', function () { paused = false; });
+    card.addEventListener('focusin', function () { paused = true; });
+    card.addEventListener('focusout', function () { paused = false; });
+
+    if (!reduceMotion) {
+      window.setInterval(function () {
+        if (!paused) show(index + 1);
+      }, 4500);
+    }
+  });
 })();

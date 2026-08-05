@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import HeroEventsFeatureCard from '@/components/HeroEventsFeatureCard'
 
-type FeatureTint = 'green' | 'blue' | 'red'
+type FeatureTint = 'green' | 'blue'
 
 type FeatureCard = {
   title: string
@@ -35,13 +36,6 @@ const TINT_STYLES: Record<
     cta: 'text-[#8eb4d4] group-hover:text-[#b4d0ea]',
     border: 'border-[#6a8fb0]/45 hover:border-[#8eb4d4]/70',
   },
-  red: {
-    card: 'bg-[#7a1212]/35',
-    wash: 'bg-gradient-to-t from-[#2a0808]/90 via-[#5a1010]/55 to-[#7a1212]/30',
-    icon: 'bg-[#7a1212]',
-    cta: 'text-[#e8a0a0] group-hover:text-[#f0c0c0]',
-    border: 'border-[#c07070]/45 hover:border-[#e8a0a0]/70',
-  },
 }
 
 const FEATURES: FeatureCard[] = [
@@ -70,19 +64,6 @@ const FEATURES: FeatureCard[] = [
     iconAlt: '',
     imagePosition: 'object-center',
     tint: 'blue',
-  },
-  {
-    title: 'Upcoming Events',
-    description:
-      "From fundraisers to special events, see what's coming up and how you can get involved.",
-    href: '/events#upcoming',
-    cta: 'View Calendar',
-    imageSrc: '/events/clay-shoot-2027.jpg',
-    imageAlt: 'Combat Veterans to Careers community event',
-    iconSrc: '/icons/calendar.png',
-    iconAlt: '',
-    imagePosition: 'object-top',
-    tint: 'red',
   },
 ]
 
@@ -136,6 +117,8 @@ export default function HeroFeatureCards({ className = '' }: { className?: strin
             </Link>
           )
         })}
+
+        <HeroEventsFeatureCard />
       </div>
     </div>
   )
