@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import HeroEventsFeatureCard from '@/components/HeroEventsFeatureCard'
 
-type FeatureTint = 'green' | 'blue'
+type FeatureTint = 'gray' | 'blue'
 
 type FeatureCard = {
   title: string
@@ -22,12 +22,12 @@ const TINT_STYLES: Record<
   FeatureTint,
   { card: string; wash: string; icon: string; cta: string; border: string }
 > = {
-  green: {
-    card: 'bg-[#5c6b3a]/60',
-    wash: 'bg-gradient-to-t from-[#1a2410]/95 via-[#3d4a2c]/75 to-[#5c6b3a]/45',
-    icon: 'bg-[#5c6b3a]',
-    cta: 'text-[#c8d4a0] group-hover:text-[#e0e8c4]',
-    border: 'border-[#a8b892]/55 hover:border-[#c8d4a0]/80',
+  gray: {
+    card: 'bg-[#4b5563]/60',
+    wash: 'bg-gradient-to-t from-[#111827]/95 via-[#374151]/75 to-[#4b5563]/45',
+    icon: 'bg-[#4b5563]',
+    cta: 'text-[#cbd5e1] group-hover:text-[#e2e8f0]',
+    border: 'border-[#94a3b8]/55 hover:border-[#cbd5e1]/80',
   },
   blue: {
     card: 'bg-[#1a2b3c]/40',
@@ -50,7 +50,7 @@ const FEATURES: FeatureCard[] = [
     iconSrc: '/icons/application.png',
     iconAlt: '',
     imagePosition: 'object-center',
-    tint: 'green',
+    tint: 'gray',
   },
   {
     title: 'Operation Field Trip',

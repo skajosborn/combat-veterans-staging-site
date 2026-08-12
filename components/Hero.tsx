@@ -29,8 +29,9 @@ export default function Hero() {
               className="object-cover object-[78%_28%]"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent lg:via-black/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/35" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-black/10 to-transparent lg:via-black/5" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/10" />
+          <div className="absolute inset-0 bg-white/50" />
         </div>
 
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-4 pb-6 pt-[calc(var(--cvc-nav-height)+1.75rem)] sm:px-6 sm:pb-8 lg:px-10 lg:pb-8 lg:pt-[calc(var(--cvc-nav-height)+2.25rem)]">

@@ -19,10 +19,12 @@ function slice(counts: Record<string, number>, id: string, text: string) {
   return text.slice(0, counts[id] ?? 0)
 }
 
-function TypewriterCursor() {
+function TypewriterCursor({ accent = false }: { accent?: boolean }) {
   return (
     <span
-      className="hero-typewriter-cursor ml-0.5 inline text-[#c4a574] motion-reduce:hidden"
+      className={`hero-typewriter-cursor ml-0.5 inline motion-reduce:hidden ${
+        accent ? 'text-[#CE2029]' : 'text-[#111827]'
+      }`}
       aria-hidden
     >
       |
@@ -31,9 +33,9 @@ function TypewriterCursor() {
 }
 
 const lineClass =
-  'm-0 min-h-[1.1em] font-black uppercase leading-[1.05] tracking-tight text-white [text-shadow:0_1px_3px_rgb(0_0_0_/_0.45)] text-[2rem] sm:text-[2.5rem] lg:text-[3rem] xl:text-[3.35rem]'
+  'm-0 min-h-[1.1em] font-black uppercase leading-[1.05] tracking-tight text-[#111827] [text-shadow:0_1px_2px_rgb(255_255_255_/_0.45)] text-[2rem] sm:text-[2.5rem] lg:text-[3rem] xl:text-[3.35rem]'
 
-const accentClass = 'text-[#c4a574] [text-shadow:0_1px_3px_rgb(0_0_0_/_0.4)]'
+const accentClass = 'text-[#CE2029] [text-shadow:0_1px_2px_rgb(255_255_255_/_0.4)]'
 
 export default function HeroTypewriterHeadlines() {
   const { counts, activeSegmentId, isComplete } = useTypewriter(SEGMENTS, TYPEWRITER_OPTIONS)
@@ -55,9 +57,9 @@ export default function HeroTypewriterHeadlines() {
       <p className={lineClass} style={{ fontStretch: 'condensed' }} aria-hidden="true">
         <span className={accentClass}>
           {slice(counts, 'service', 'SERVICE TO ')}
-          {showCursor('service') ? <TypewriterCursor /> : null}
+          {showCursor('service') ? <TypewriterCursor accent /> : null}
           {slice(counts, 'success', 'SUCCESS')}
-          {showCursor('success') ? <TypewriterCursor /> : null}
+          {showCursor('success') ? <TypewriterCursor accent /> : null}
         </span>
       </p>
     </div>

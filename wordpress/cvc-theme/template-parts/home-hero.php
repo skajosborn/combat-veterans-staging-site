@@ -19,7 +19,7 @@ $feature_cards = array(
 		'url'         => cvc_page_url( 'veteran-application' ),
 		'image'       => cvc_img_exists( 'vetapplication.png' ) ? 'vetapplication.png' : 'Derek 1.png',
 		'icon'        => 'icons/application.png',
-		'tint'        => 'green',
+		'tint'        => 'gray',
 		'external'    => false,
 	),
 	array(
