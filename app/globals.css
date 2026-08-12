@@ -159,3 +159,61 @@ html.nav-menu-open [data-hero-headlines] {
   visibility: hidden !important;
 }
 
+/* Hero feature cards — colored glow on left + bottom only (no blur wrap) */
+.hero-feature-shell {
+  position: relative;
+}
+
+.hero-feature-shell > a {
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 6px 16px -8px rgb(0 0 0 / 0.45);
+}
+
+.hero-feature-shell::before,
+.hero-feature-shell::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Left glow — outside the card, short of top/bottom corners */
+.hero-feature-shell::before {
+  top: 10%;
+  bottom: 12%;
+  left: -10px;
+  width: 12px;
+  background: linear-gradient(
+    to left,
+    color-mix(in srgb, var(--hero-feature-glow) 70%, transparent),
+    transparent 100%
+  );
+}
+
+/* Bottom glow — outside the card, short of left/right corners */
+.hero-feature-shell::after {
+  left: 8%;
+  right: 14%;
+  bottom: -11px;
+  height: 12px;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--hero-feature-glow) 65%, transparent),
+    transparent 100%
+  );
+}
+
+.hero-feature-shell--blue {
+  --hero-feature-glow: #3d8fd4;
+}
+
+.hero-feature-shell--green {
+  --hero-feature-glow: #7a9a3a;
+}
+
+.hero-feature-shell--red {
+  --hero-feature-glow: #d04040;
+}
+
+
