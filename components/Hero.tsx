@@ -4,7 +4,6 @@ import Image from 'next/image'
 import {
   HeroLeadParagraph,
   HeroMobileCta,
-  HeroStarSeparator,
 } from '@/components/HeroMobileExtras'
 import HeroFeatureCards from '@/components/HeroFeatureCards'
 import HeroStatsBar from '@/components/HeroStatsBar'
@@ -37,7 +36,6 @@ export default function Hero() {
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-4 pb-6 pt-[calc(var(--cvc-nav-height)+1.75rem)] sm:px-6 sm:pb-8 lg:px-10 lg:pb-8 lg:pt-[calc(var(--cvc-nav-height)+2.25rem)]">
           <div className="flex w-full max-w-xl flex-col items-start gap-4 text-left sm:max-w-2xl sm:gap-5">
             <HeroTypewriterHeadlines />
-            <HeroStarSeparator className="my-0.5 max-w-md sm:my-1" />
             <HeroLeadParagraph />
             <div className="flex w-full max-w-lg flex-col gap-2.5 pt-1 sm:flex-row sm:items-stretch">
               <HeroMobileCta href="/veteran-application" variant="primary" className="sm:min-w-0 sm:flex-1">

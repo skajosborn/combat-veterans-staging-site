@@ -36,7 +36,7 @@ export function HeroMobileCta({
       href={href}
       className={
         (isPrimary
-          ? 'flex w-full min-h-11 items-center justify-between gap-2 overflow-hidden rounded-md bg-[#4b5563] py-1.5 pl-4 pr-1.5 text-left shadow-[inset_0_1px_0_0_rgb(255_255_255_/_0.12),0_4px_14px_-4px_rgb(0_0_0_/_0.35)] transition-[filter] hover:brightness-110'
+          ? 'flex w-full min-h-11 items-center justify-between gap-2 overflow-hidden rounded-md bg-[#1a2744] py-1.5 pl-4 pr-1.5 text-left shadow-[inset_0_1px_0_0_rgb(255_255_255_/_0.12),0_4px_14px_-4px_rgb(0_0_0_/_0.35)] transition-[filter] hover:brightness-110'
           : 'flex w-full min-h-11 items-center justify-between gap-2 overflow-hidden rounded-md border border-[#374151]/70 bg-transparent py-1.5 pl-4 pr-1.5 text-left transition-colors hover:border-[#111827] hover:bg-black/5') +
         (className ? ` ${className}` : '')
       }
@@ -51,7 +51,7 @@ export function HeroMobileCta({
       <span
         className={
           isPrimary
-            ? 'flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#4b5563]'
+            ? 'flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#1a2744]'
             : 'flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#374151]/70 bg-transparent text-[#1f2937]'
         }
         aria-hidden

@@ -2027,7 +2027,7 @@ html.nav-menu-open .cvc-hero-copy__headlines {
 .cvc-hero-features__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.75rem;
+  gap: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 1.25rem;
 }
@@ -2035,53 +2035,27 @@ html.nav-menu-open .cvc-hero-copy__headlines {
 @media (min-width: 768px) {
   .cvc-hero-features__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
+    gap: 1.25rem;
     padding-bottom: 1.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .cvc-hero-features__grid {
-    gap: 1.25rem;
+    gap: 1.5rem;
     padding-bottom: 1.75rem;
-  }
-}
-
-.cvc-hero-feature-item {
-  display: flex;
-  min-width: 0;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.cvc-hero-feature-item__title {
-  margin: 0;
-  padding-inline: 0.125rem;
-  font-size: 0.875rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #ffffff;
-  text-shadow: 0 1px 8px rgb(0 0 0 / 0.65);
-}
-
-@media (min-width: 640px) {
-  .cvc-hero-feature-item__title {
-    font-size: 0.9375rem;
   }
 }
 
 .cvc-hero-feature-card {
   position: relative;
   display: flex;
-  min-height: 11.5rem;
-  flex: 1 1 auto;
+  min-height: 13rem;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid rgb(255 255 255 / 0.35);
-  border-radius: 0.75rem;
+  border: 3px solid transparent;
+  border-radius: 1rem;
   background: rgb(0 0 0 / 0.35);
-  box-shadow: 0 12px 32px -16px rgb(0 0 0 / 0.65);
   text-decoration: none;
   color: #ffffff;
   transition: transform 0.2s ease, border-color 0.2s ease;
@@ -2096,7 +2070,7 @@ html.nav-menu-open .cvc-hero-copy__headlines {
 
 @media (min-width: 640px) {
   .cvc-hero-feature-card {
-    min-height: 12.5rem;
+    min-height: 14rem;
   }
 }
 
@@ -2105,13 +2079,13 @@ html.nav-menu-open .cvc-hero-copy__headlines {
   inset: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.5;
+  opacity: 0.4;
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .cvc-hero-feature-card:hover .cvc-hero-feature-card__bg {
   transform: scale(1.04);
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .cvc-hero-feature-card__shade {
@@ -2120,79 +2094,67 @@ html.nav-menu-open .cvc-hero-copy__headlines {
   pointer-events: none;
 }
 
-.cvc-hero-feature-card--gray {
-  border-color: rgb(148 163 184 / 0.55);
-  background: rgb(75 85 99 / 0.6);
-}
-
-.cvc-hero-feature-card--gray:hover {
-  border-color: rgb(203 213 225 / 0.8);
-}
-
-.cvc-hero-feature-card--gray .cvc-hero-feature-card__shade {
-  background: linear-gradient(to top, rgb(17 24 39 / 0.95), rgb(55 65 81 / 0.75), rgb(75 85 99 / 0.45));
-}
-
-.cvc-hero-feature-card--gray .cvc-hero-feature-card__icon {
-  background: #4b5563;
-}
-
-.cvc-hero-feature-card--gray .cvc-hero-feature-card__cta {
-  color: #cbd5e1;
-}
-
-.cvc-hero-feature-card--gray:hover .cvc-hero-feature-card__cta {
-  color: #e2e8f0;
-}
-
 .cvc-hero-feature-card--blue {
-  border-color: rgb(106 143 176 / 0.45);
-  background: rgb(26 43 60 / 0.4);
+  border-color: #2f7fd4;
+  background: rgb(10 35 64 / 0.55);
+  box-shadow:
+    0 0 0 1px rgb(47 127 212 / 0.35),
+    0 8px 28px -6px rgb(47 127 212 / 0.75),
+    0 0 22px rgb(47 127 212 / 0.45);
 }
 
 .cvc-hero-feature-card--blue:hover {
-  border-color: rgb(142 180 212 / 0.7);
+  border-color: #5aa0ef;
 }
 
 .cvc-hero-feature-card--blue .cvc-hero-feature-card__shade {
-  background: linear-gradient(to top, rgb(10 21 32 / 0.9), rgb(26 43 60 / 0.55), rgb(42 74 108 / 0.3));
+  background: linear-gradient(to top, rgb(4 16 28 / 0.95), rgb(12 42 74 / 0.6), rgb(26 74 122 / 0.2));
 }
 
 .cvc-hero-feature-card--blue .cvc-hero-feature-card__icon {
-  background: #1a3a5c;
+  background: #1e6bb8;
 }
 
-.cvc-hero-feature-card--blue .cvc-hero-feature-card__cta {
-  color: #8eb4d4;
+.cvc-hero-feature-card--green {
+  border-color: #6f8f32;
+  background: rgb(31 46 16 / 0.55);
+  box-shadow:
+    0 0 0 1px rgb(111 143 50 / 0.35),
+    0 8px 28px -6px rgb(111 143 50 / 0.75),
+    0 0 22px rgb(111 143 50 / 0.45);
 }
 
-.cvc-hero-feature-card--blue:hover .cvc-hero-feature-card__cta {
-  color: #b4d0ea;
+.cvc-hero-feature-card--green:hover {
+  border-color: #91b34a;
+}
+
+.cvc-hero-feature-card--green .cvc-hero-feature-card__shade {
+  background: linear-gradient(to top, rgb(12 20 6 / 0.95), rgb(42 58 24 / 0.6), rgb(74 92 40 / 0.2));
+}
+
+.cvc-hero-feature-card--green .cvc-hero-feature-card__icon {
+  background: #5a7a2e;
 }
 
 .cvc-hero-feature-card--red {
-  border-color: rgb(255 255 255 / 0.3);
-  background: rgb(0 0 0 / 0.25);
+  border-color: #c83232;
+  background: rgb(58 12 12 / 0.55);
+  box-shadow:
+    0 0 0 1px rgb(200 50 50 / 0.35),
+    0 8px 28px -6px rgb(200 50 50 / 0.75),
+    0 0 22px rgb(200 50 50 / 0.45);
 }
 
 .cvc-hero-feature-card--red:hover {
-  border-color: rgb(255 255 255 / 0.55);
+  border-color: #ef5a5a;
 }
 
 .cvc-hero-feature-card--red .cvc-hero-feature-card__shade {
-  background: linear-gradient(to top, rgb(0 0 0 / 0.85), rgb(0 0 0 / 0.45), rgb(0 0 0 / 0.15));
+  background: linear-gradient(to top, rgb(31 6 6 / 0.95), rgb(90 21 21 / 0.6), rgb(122 32 32 / 0.2));
 }
 
 .cvc-hero-feature-card--red .cvc-hero-feature-card__icon {
-  background: #1a1a1a;
-}
-
-.cvc-hero-feature-card--red .cvc-hero-feature-card__cta {
-  color: rgb(255 255 255 / 0.85);
-}
-
-.cvc-hero-feature-card--red:hover .cvc-hero-feature-card__cta {
-  color: #ffffff;
+  background: #c02828;
 }
 
 .cvc-hero-feature-card__icon {
@@ -2205,14 +2167,19 @@ html.nav-menu-open .cvc-hero-copy__headlines {
   height: 2.5rem;
   margin: 1rem 1rem 0;
   border-radius: 9999px;
-  background: #5c6b3a;
-  box-shadow: 0 4px 12px rgb(0 0 0 / 0.35), 0 0 0 2px rgb(255 255 255 / 0.2);
+  background: #1e6bb8;
+  color: #fff;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.4), 0 0 0 2px rgb(255 255 255 / 0.3);
 }
 
-.cvc-hero-feature-card__icon img {
+.cvc-hero-feature-card__icon img,
+.cvc-hero-feature-card__icon svg {
   width: 1.25rem;
   height: 1.25rem;
   object-fit: contain;
+}
+
+.cvc-hero-feature-card__icon img {
   filter: brightness(0) invert(1);
 }
 
@@ -2225,18 +2192,41 @@ html.nav-menu-open .cvc-hero-copy__headlines {
   padding: 0.75rem 1rem 1rem;
 }
 
+.cvc-hero-feature-card__label {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.9);
+}
+
+@media (min-width: 640px) {
+  .cvc-hero-feature-card__label {
+    font-size: 0.6875rem;
+  }
+}
+
 .cvc-hero-feature-card__title {
   display: block;
-  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  font-size: 1.35rem;
   font-weight: 900;
-  letter-spacing: 0.06em;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
   text-transform: uppercase;
   color: #ffffff;
 }
 
+@media (min-width: 640px) {
+  .cvc-hero-feature-card__title {
+    font-size: 1.5rem;
+  }
+}
+
 .cvc-hero-feature-card__desc {
   display: block;
-  margin-top: 0.375rem;
+  margin-top: 0.5rem;
   flex: 1 1 auto;
   font-size: 0.75rem;
   line-height: 1.45;
@@ -2252,7 +2242,7 @@ html.nav-menu-open .cvc-hero-copy__headlines {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #c4a574;
+  color: #ffffff;
 }
 
 /* Events feature card — fade carousel */
@@ -2271,19 +2261,19 @@ html.nav-menu-open .cvc-hero-copy__headlines {
 }
 
 .cvc-hero-feature-card--carousel .cvc-hero-feature-card__slide.is-active {
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .cvc-hero-feature-card--carousel:hover .cvc-hero-feature-card__slide.is-active {
   transform: scale(1.04);
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .cvc-hero-feature-card--carousel .cvc-hero-feature-card__copy {
   position: relative;
   display: block;
-  min-height: 3.25rem;
-  margin-top: auto;
+  min-height: 4rem;
+  margin-top: 0.25rem;
   flex: 1 1 auto;
 }
 
@@ -2454,7 +2444,7 @@ html.nav-menu-open .cvc-hero-copy__headlines {
 }
 
 .cvc-btn--hero-primary {
-  background: #4b5563;
+  background: #1a2744;
   color: #fff;
   border: 1px solid rgb(255 255 255 / 0.12);
   box-shadow:
@@ -2464,7 +2454,7 @@ html.nav-menu-open .cvc-hero-copy__headlines {
 
 .cvc-btn--hero-primary .cvc-btn__hero-icon {
   background: #fff;
-  color: #4b5563;
+  color: #1a2744;
 }
 
 .cvc-btn--hero-secondary {
